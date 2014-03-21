@@ -129,7 +129,7 @@
             this.txtNumeroLote.Name = "txtNumeroLote";
             this.txtNumeroLote.Size = new System.Drawing.Size(44, 18);
             this.txtNumeroLote.TabIndex = 3;
-            this.txtNumeroLote.TextChanged += new System.EventHandler(this.txtNumeroLote_TextChanged);
+        
             // 
             // cbNumeroManzana
             // 
@@ -138,7 +138,7 @@
             this.cbNumeroManzana.Name = "cbNumeroManzana";
             this.cbNumeroManzana.Size = new System.Drawing.Size(44, 20);
             this.cbNumeroManzana.TabIndex = 2;
-            this.cbNumeroManzana.SelectedIndexChanged += new System.EventHandler(this.cbNumeroManzana_SelectedIndexChanged);
+            
             // 
             // lLotes
             // 
@@ -168,7 +168,7 @@
             this.txtNumManzanaLote.Size = new System.Drawing.Size(37, 18);
             this.txtNumManzanaLote.TabIndex = 19;
             this.txtNumManzanaLote.Visible = false;
-            this.txtNumManzanaLote.TextChanged += new System.EventHandler(this.txtNumManzanaLote_TextChanged);
+           
             // 
             // lNumeroManzana
             // 
@@ -227,7 +227,7 @@
             this.cmdGenerarPredio.TabIndex = 16;
             this.cmdGenerarPredio.Text = "Generar Predio";
             this.cmdGenerarPredio.UseVisualStyleBackColor = true;
-            this.cmdGenerarPredio.Click += new System.EventHandler(this.cmdGenerarPredio_Click);
+           
             // 
             // textBox5
             // 

@@ -78,26 +78,12 @@ namespace PvTerrenos
 
 
 
-        private void txtNumManzanaLote_TextChanged(object sender, EventArgs e)
-        {
+       
+        
 
-        }
+      
 
-        private void cbNumeroManzana_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtNumeroLote_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmdGenerarPredio_Click(object sender, EventArgs e)
-        {
-            WSpvt.PVT ws = new WSpvt.PVT();
-            
-        }
+       
 
        
   
