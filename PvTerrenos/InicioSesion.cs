@@ -24,19 +24,7 @@ namespace PvTerrenos
         {
             string mail = Convert.ToString(txtUsuario.Text);
             string contraseña = Convert.ToString(txtContraseña.Text);
-
-            //XDocument usuarioXML = new XDocument(
-              //  new XDeclaration("1.0", "utf-8", "yes"),
-                //new XComment("Inicio Sesion"),
-                //new XElement("Sesion",
-                  //                    new XElement("Sesion",
-                    //                      new XAttribute(mail, contraseña))
-                      //                    )
-                        //                  );
-            //usuarioXML.Save(@"c:\usuario.xml");
-            //WSpvt.loginCompletedEventArgs iniciarSesion = new WSpvt.loginCompletedEventArgs();
-           // loginCompletedEventHandler iniciarSesion = new loginCompletedEventHandler();
-     
+ 
 
             WSpvt.PVT ws = new WSpvt.PVT();
             String resp = ws.login(mail, contraseña);
