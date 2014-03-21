@@ -77,7 +77,7 @@
             // cmdGeneraManzanas
             // 
             this.cmdGeneraManzanas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGeneraManzanas.Location = new System.Drawing.Point(369, 60);
+            this.cmdGeneraManzanas.Location = new System.Drawing.Point(369, 61);
             this.cmdGeneraManzanas.Name = "cmdGeneraManzanas";
             this.cmdGeneraManzanas.Size = new System.Drawing.Size(148, 23);
             this.cmdGeneraManzanas.TabIndex = 4;
@@ -129,6 +129,7 @@
             this.txtNumeroLote.Name = "txtNumeroLote";
             this.txtNumeroLote.Size = new System.Drawing.Size(44, 18);
             this.txtNumeroLote.TabIndex = 3;
+            this.txtNumeroLote.TextChanged += new System.EventHandler(this.txtNumeroLote_TextChanged);
             // 
             // cbNumeroManzana
             // 
@@ -137,6 +138,7 @@
             this.cbNumeroManzana.Name = "cbNumeroManzana";
             this.cbNumeroManzana.Size = new System.Drawing.Size(44, 20);
             this.cbNumeroManzana.TabIndex = 2;
+            this.cbNumeroManzana.SelectedIndexChanged += new System.EventHandler(this.cbNumeroManzana_SelectedIndexChanged);
             // 
             // lLotes
             // 
@@ -166,6 +168,7 @@
             this.txtNumManzanaLote.Size = new System.Drawing.Size(37, 18);
             this.txtNumManzanaLote.TabIndex = 19;
             this.txtNumManzanaLote.Visible = false;
+            this.txtNumManzanaLote.TextChanged += new System.EventHandler(this.txtNumManzanaLote_TextChanged);
             // 
             // lNumeroManzana
             // 
@@ -224,6 +227,7 @@
             this.cmdGenerarPredio.TabIndex = 16;
             this.cmdGenerarPredio.Text = "Generar Predio";
             this.cmdGenerarPredio.UseVisualStyleBackColor = true;
+            this.cmdGenerarPredio.Click += new System.EventHandler(this.cmdGenerarPredio_Click);
             // 
             // textBox5
             // 

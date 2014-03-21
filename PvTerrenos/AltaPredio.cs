@@ -26,6 +26,7 @@ namespace PvTerrenos
                 lNumeroManzana.Visible = true;
                 lNumeroLotes.Visible = false;
                 txtNumManzanaLote.Visible = true;
+                txtNumeroLote.Visible = false;
                 cmdGenerarLotes.Visible = false;
                 cmdGeneraManzanas.Visible = true;
                 }
@@ -38,6 +39,8 @@ namespace PvTerrenos
                 txtNumManzanaLote.Visible = true;
                 cmdGenerarLotes.Visible = true;
                 cmdGeneraManzanas.Visible = false;
+                gbRegistrarLotes.Visible = false;
+
             }
         }
 
@@ -45,12 +48,55 @@ namespace PvTerrenos
         {
             lManzana.Visible = true;
             lLotes.Visible = true;
-            txtNumeroLote.Visible = true;
             txtNumManzanaLote.Visible = true;
-            gbRegistrarLotes.Visible = true;
-            cmdGeneraManzanas.Visible = false;
-            cmdGenerarLotes.Visible = true;
+            cbNumeroManzana.Visible = true;
+            
+            if (txtNumManzanaLote.Text != "")
+            {
+                gbRegistrarLotes.Visible = true;
+                txtNumeroLote.Visible = true;
+                cmdGenerarLotes.Visible = true;
+                cmdGeneraManzanas.Visible = false;
+                
+                int i = Convert.ToInt32(txtNumManzanaLote.Text);
+                for (int x = 0; x < i; x++)
+                {
+                    cbNumeroManzana.Items.Add(x + 1);
 
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debes ingresar un dato");
+              
+            }
+
+           
+
+        }
+
+
+
+        private void txtNumManzanaLote_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbNumeroManzana_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtNumeroLote_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmdGenerarPredio_Click(object sender, EventArgs e)
+        {
+            WSpvt.PVT ws = new WSpvt.PVT();
+            
         }
 
        
