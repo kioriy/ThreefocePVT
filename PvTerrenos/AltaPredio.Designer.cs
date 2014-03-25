@@ -43,12 +43,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmdGenerarPredio = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtIdPredio = new System.Windows.Forms.TextBox();
+            this.txtNombrePredio = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gbMazanaLote.SuspendLayout();
             this.gbRegistrarLotes.SuspendLayout();
@@ -77,7 +75,7 @@
             // cmdGeneraManzanas
             // 
             this.cmdGeneraManzanas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGeneraManzanas.Location = new System.Drawing.Point(369, 61);
+            this.cmdGeneraManzanas.Location = new System.Drawing.Point(373, 61);
             this.cmdGeneraManzanas.Name = "cmdGeneraManzanas";
             this.cmdGeneraManzanas.Size = new System.Drawing.Size(148, 23);
             this.cmdGeneraManzanas.TabIndex = 4;
@@ -89,13 +87,14 @@
             // cmdGenerarLotes
             // 
             this.cmdGenerarLotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGenerarLotes.Location = new System.Drawing.Point(369, 60);
+            this.cmdGenerarLotes.Location = new System.Drawing.Point(373, 60);
             this.cmdGenerarLotes.Name = "cmdGenerarLotes";
             this.cmdGenerarLotes.Size = new System.Drawing.Size(148, 23);
             this.cmdGenerarLotes.TabIndex = 5;
             this.cmdGenerarLotes.Text = "Generar Lotes";
             this.cmdGenerarLotes.UseVisualStyleBackColor = true;
             this.cmdGenerarLotes.Visible = false;
+            this.cmdGenerarLotes.Click += new System.EventHandler(this.cmdGenerarLotes_Click);
             // 
             // lNumeroLotes
             // 
@@ -129,7 +128,6 @@
             this.txtNumeroLote.Name = "txtNumeroLote";
             this.txtNumeroLote.Size = new System.Drawing.Size(44, 18);
             this.txtNumeroLote.TabIndex = 3;
-        
             // 
             // cbNumeroManzana
             // 
@@ -138,7 +136,6 @@
             this.cbNumeroManzana.Name = "cbNumeroManzana";
             this.cbNumeroManzana.Size = new System.Drawing.Size(44, 20);
             this.cbNumeroManzana.TabIndex = 2;
-            
             // 
             // lLotes
             // 
@@ -168,7 +165,6 @@
             this.txtNumManzanaLote.Size = new System.Drawing.Size(37, 18);
             this.txtNumManzanaLote.TabIndex = 19;
             this.txtNumManzanaLote.Visible = false;
-           
             // 
             // lNumeroManzana
             // 
@@ -204,12 +200,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cmdGenerarPredio);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtIdPredio);
+            this.groupBox1.Controls.Add(this.txtNombrePredio);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 24);
             this.groupBox1.Name = "groupBox1";
@@ -227,41 +221,33 @@
             this.cmdGenerarPredio.TabIndex = 16;
             this.cmdGenerarPredio.Text = "Generar Predio";
             this.cmdGenerarPredio.UseVisualStyleBackColor = true;
-           
+            this.cmdGenerarPredio.Click += new System.EventHandler(this.cmdGenerarPredio_Click);
             // 
-            // textBox5
+            // txtIdPredio
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(69, 57);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(179, 20);
-            this.textBox5.TabIndex = 15;
+            this.txtIdPredio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdPredio.Location = new System.Drawing.Point(319, 21);
+            this.txtIdPredio.Name = "txtIdPredio";
+            this.txtIdPredio.Size = new System.Drawing.Size(204, 20);
+            this.txtIdPredio.TabIndex = 14;
             // 
-            // textBox4
+            // txtNombrePredio
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(319, 21);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(204, 20);
-            this.textBox4.TabIndex = 14;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(69, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 20);
-            this.textBox1.TabIndex = 11;
+            this.txtNombrePredio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombrePredio.Location = new System.Drawing.Point(69, 23);
+            this.txtNombrePredio.Name = "txtNombrePredio";
+            this.txtNombrePredio.Size = new System.Drawing.Size(179, 20);
+            this.txtNombrePredio.TabIndex = 11;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(271, 25);
+            this.label5.Location = new System.Drawing.Point(264, 25);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Dueño:";
+            this.label5.Text = "ID predio:";
             // 
             // label1
             // 
@@ -272,16 +258,6 @@
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Nombre:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "# Catastro:";
             // 
             // dataGridView1
             // 
@@ -318,12 +294,10 @@
         private System.Windows.Forms.ComboBox cbSeleccionaManzanaLote;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtIdPredio;
+        private System.Windows.Forms.TextBox txtNombrePredio;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button cmdGenerarPredio;
         private System.Windows.Forms.GroupBox gbRegistrarLotes;

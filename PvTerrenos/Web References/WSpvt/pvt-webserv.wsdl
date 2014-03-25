@@ -53,6 +53,7 @@
   </wsdl:message>
   <wsdl:message name="getPerfilUsuarioRequest">
     <wsdl:part name="id-sesion" type="xsd:string" />
+    <wsdl:part name="id_usuario" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="getPerfilUsuarioResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -130,23 +131,17 @@
   <wsdl:message name="eliminaCompradorResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
-  <wsdl:message name="registraventaRequest">
-    <wsdl:part name="id_sesion" type="xsd:string" />
+  <wsdl:message name="registraVentaRequest">
+    <wsdl:part name="id_venta" type="xsd:string" />
     <wsdl:part name="comprador" type="xsd:string" />
-    <wsdl:part name="vendedor" type="xsd:string" />
     <wsdl:part name="lote" type="xsd:string" />
-    <wsdl:part name="total_venta" type="xsd:string" />
-    <wsdl:part name="saldo_actual" type="xsd:string" />
-    <wsdl:part name="mensualidades" type="xsd:string" />
-    <wsdl:part name="pago" type="xsd:string" />
-    <wsdl:part name="pago_minimo" type="xsd:string" />
-    <wsdl:part name="fecha_alta" type="xsd:string" />
-    <wsdl:part name="fecha_corte" type="xsd:string" />
     <wsdl:part name="tipo_pago" type="xsd:string" />
-    <wsdl:part name="comicion" type="xsd:string" />
-    <wsdl:part name="interes_tardio" type="xsd:string" />
+    <wsdl:part name="monto" type="xsd:string" />
+    <wsdl:part name="plazo" type="xsd:string" />
+    <wsdl:part name="Fecha_corte" type="xsd:string" />
+    <wsdl:part name="fecha_compra" type="xsd:string" />
   </wsdl:message>
-  <wsdl:message name="registraventaResponse">
+  <wsdl:message name="registraVentaResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="updateVentaRequest">
@@ -160,7 +155,7 @@
     <wsdl:part name="mensualidades" type="xsd:string" />
     <wsdl:part name="pago" type="xsd:string" />
     <wsdl:part name="pago_minimo" type="xsd:string" />
-    <wsdl:part name="fecha_alta" type="xsd:string" />
+    <wsdl:part name="fecha_compra" type="xsd:string" />
     <wsdl:part name="fecha_corte" type="xsd:string" />
     <wsdl:part name="tipo_pago" type="xsd:string" />
     <wsdl:part name="comicion" type="xsd:string" />
@@ -205,18 +200,35 @@
   <wsdl:message name="buscarVentaPorResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="registraPredioRequest">
+    <wsdl:part name="id_predio" type="xsd:string" />
+    <wsdl:part name="nombre_predio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="registraPredioResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updatePredioRequest" />
+  <wsdl:message name="updatePredioResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="registraManzanaRequest">
+    <wsdl:part name="numero_manzana" type="xsd:string" />
+    <wsdl:part name="pk_predio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="registraManzanaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getManzanaRequest">
+    <wsdl:part name="numero_manzana" type="xsd:string" />
+    <wsdl:part name="pk_predio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getManzanaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="registraLoteRequest">
-    <wsdl:part name="id_sesion" type="xsd:string" />
+    <wsdl:part name="pk_predio" type="xsd:string" />
     <wsdl:part name="pk_manzana" type="xsd:string" />
-    <wsdl:part name="estatus" type="xsd:string" />
     <wsdl:part name="n_lote" type="xsd:string" />
-    <wsdl:part name="descripcion" type="xsd:string" />
-    <wsdl:part name="precio" type="xsd:string" />
-    <wsdl:part name="medida" type="xsd:string" />
-    <wsdl:part name="pk_norte" type="xsd:string" />
-    <wsdl:part name="pk_sur" type="xsd:string" />
-    <wsdl:part name="pk_este" type="xsd:string" />
-    <wsdl:part name="pk_oeste" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraLoteResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -328,9 +340,9 @@
       <wsdl:input message="tns:eliminaCompradorRequest" />
       <wsdl:output message="tns:eliminaCompradorResponse" />
     </wsdl:operation>
-    <wsdl:operation name="registraventa">
-      <wsdl:input message="tns:registraventaRequest" />
-      <wsdl:output message="tns:registraventaResponse" />
+    <wsdl:operation name="registraVenta">
+      <wsdl:input message="tns:registraVentaRequest" />
+      <wsdl:output message="tns:registraVentaResponse" />
     </wsdl:operation>
     <wsdl:operation name="updateVenta">
       <wsdl:input message="tns:updateVentaRequest" />
@@ -355,6 +367,22 @@
     <wsdl:operation name="buscarVentaPor">
       <wsdl:input message="tns:buscarVentaPorRequest" />
       <wsdl:output message="tns:buscarVentaPorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="registraPredio">
+      <wsdl:input message="tns:registraPredioRequest" />
+      <wsdl:output message="tns:registraPredioResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePredio">
+      <wsdl:input message="tns:updatePredioRequest" />
+      <wsdl:output message="tns:updatePredioResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="registraManzana">
+      <wsdl:input message="tns:registraManzanaRequest" />
+      <wsdl:output message="tns:registraManzanaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getManzana">
+      <wsdl:input message="tns:getManzanaRequest" />
+      <wsdl:output message="tns:getManzanaResponse" />
     </wsdl:operation>
     <wsdl:operation name="registraLote">
       <wsdl:input message="tns:registraLoteRequest" />
@@ -504,8 +532,8 @@
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="registraventa">
-      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraventa" style="rpc" />
+    <wsdl:operation name="registraVenta">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraVenta" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
@@ -560,6 +588,42 @@
     </wsdl:operation>
     <wsdl:operation name="buscarVentaPor">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/buscarVentaPor" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraPredio">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraPredio" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePredio">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/updatePredio" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraManzana">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraManzana" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getManzana">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getManzana" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

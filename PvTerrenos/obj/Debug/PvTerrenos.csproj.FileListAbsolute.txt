@@ -33,3 +33,16 @@ C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.Pr
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.csproj.GenerateResource.Cache
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.pdb
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.frmInicioSesion.resources
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Debug\PvTerrenos.exe.config
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.exe
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.pdb
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Debug\PvTerrenos.exe
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Debug\PvTerrenos.pdb
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.csprojResolveAssemblyReference.cache
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.frmInicioSesion.resources
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.FrmVentaLote.resources
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.FrmAltaPredio.resources
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.FrmAltaCliente.resources
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.FrmPago.resources
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.Properties.Resources.resources
+C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.csproj.GenerateResource.Cache

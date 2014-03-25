@@ -22,12 +22,12 @@ namespace PvTerrenos
 
         private void cmdIncioSecion_Click(object sender, EventArgs e)
         {
-            string mail = Convert.ToString(txtUsuario.Text);
-            string contraseña = Convert.ToString(txtContraseña.Text);
- 
-
+            string mail = txtUsuario.Text;
+            string contraseña = txtContraseña.Text;
+            
             WSpvt.PVT ws = new WSpvt.PVT();
             String resp = ws.login(mail, contraseña);
+           
             MessageBox.Show(resp);
         }
     }

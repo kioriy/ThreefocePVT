@@ -15,6 +15,8 @@ namespace PvTerrenos
         public FrmVentaLote()
         {
             InitializeComponent();
+            cbFormaPago.Items.Add("Abonos");
+            cbFormaPago.Items.Add("Contado");
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,6 +37,22 @@ namespace PvTerrenos
             abrirPago.Show();
         }
 
+        private void txtId_Enter(object sender, EventArgs e)
+        {
+            WSpvt.PVT ws = new WSpvt.PVT();
+
+            string idCliente = txtId.Text;
+            DataSet ds = new DataSet();
+            
+            string cargaPredio = ws.updatePredio();
+            
+        }
+
+        
+
+        
+
+       
        
 
        
