@@ -207,8 +207,8 @@
   <wsdl:message name="registraPredioResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
-  <wsdl:message name="updatePredioRequest" />
-  <wsdl:message name="updatePredioResponse">
+  <wsdl:message name="cargaPredioRequest" />
+  <wsdl:message name="cargaPredioResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraManzanaRequest">
@@ -372,9 +372,9 @@
       <wsdl:input message="tns:registraPredioRequest" />
       <wsdl:output message="tns:registraPredioResponse" />
     </wsdl:operation>
-    <wsdl:operation name="updatePredio">
-      <wsdl:input message="tns:updatePredioRequest" />
-      <wsdl:output message="tns:updatePredioResponse" />
+    <wsdl:operation name="cargaPredio">
+      <wsdl:input message="tns:cargaPredioRequest" />
+      <wsdl:output message="tns:cargaPredioResponse" />
     </wsdl:operation>
     <wsdl:operation name="registraManzana">
       <wsdl:input message="tns:registraManzanaRequest" />
@@ -604,8 +604,8 @@
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="updatePredio">
-      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/updatePredio" style="rpc" />
+    <wsdl:operation name="cargaPredio">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/cargaPredio" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

@@ -71,7 +71,7 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback registraPredioOperationCompleted;
         
-        private System.Threading.SendOrPostCallback updatePredioOperationCompleted;
+        private System.Threading.SendOrPostCallback cargaPredioOperationCompleted;
         
         private System.Threading.SendOrPostCallback registraManzanaOperationCompleted;
         
@@ -193,7 +193,7 @@ namespace PvTerrenos.WSpvt {
         public event registraPredioCompletedEventHandler registraPredioCompleted;
         
         /// <remarks/>
-        public event updatePredioCompletedEventHandler updatePredioCompleted;
+        public event cargaPredioCompletedEventHandler cargaPredioCompleted;
         
         /// <remarks/>
         public event registraManzanaCompletedEventHandler registraManzanaCompleted;
@@ -1020,30 +1020,30 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/updatePredio", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/cargaPredio", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string updatePredio() {
-            object[] results = this.Invoke("updatePredio", new object[0]);
+        public string cargaPredio() {
+            object[] results = this.Invoke("cargaPredio", new object[0]);
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void updatePredioAsync() {
-            this.updatePredioAsync(null);
+        public void cargaPredioAsync() {
+            this.cargaPredioAsync(null);
         }
         
         /// <remarks/>
-        public void updatePredioAsync(object userState) {
-            if ((this.updatePredioOperationCompleted == null)) {
-                this.updatePredioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdatePredioOperationCompleted);
+        public void cargaPredioAsync(object userState) {
+            if ((this.cargaPredioOperationCompleted == null)) {
+                this.cargaPredioOperationCompleted = new System.Threading.SendOrPostCallback(this.OncargaPredioOperationCompleted);
             }
-            this.InvokeAsync("updatePredio", new object[0], this.updatePredioOperationCompleted, userState);
+            this.InvokeAsync("cargaPredio", new object[0], this.cargaPredioOperationCompleted, userState);
         }
         
-        private void OnupdatePredioOperationCompleted(object arg) {
-            if ((this.updatePredioCompleted != null)) {
+        private void OncargaPredioOperationCompleted(object arg) {
+            if ((this.cargaPredioCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.updatePredioCompleted(this, new updatePredioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.cargaPredioCompleted(this, new cargaPredioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1928,17 +1928,17 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void updatePredioCompletedEventHandler(object sender, updatePredioCompletedEventArgs e);
+    public delegate void cargaPredioCompletedEventHandler(object sender, cargaPredioCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class updatePredioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class cargaPredioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal updatePredioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal cargaPredioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -37,33 +37,15 @@ namespace PvTerrenos
             abrirPago.Show();
         }
 
-        private void txtId_Enter(object sender, EventArgs e)
+        private void txtId_ChangeUICues(object sender, UICuesEventArgs e)
         {
-            WSpvt.PVT ws = new WSpvt.PVT();
 
-            string idCliente = txtId.Text;
-            DataSet ds = new DataSet();
-            
-            string cargaPredio = ws.updatePredio();
-            
+            MessageBox.Show("hoal baboso");
         }
 
         
 
         
 
-       
-       
-
-       
-
-        
-
-        
-       
-
-        
-
-       
     }
 }
