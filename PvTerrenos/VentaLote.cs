@@ -17,6 +17,10 @@ namespace PvTerrenos
             InitializeComponent();
             cbFormaPago.Items.Add("Abonos");
             cbFormaPago.Items.Add("Contado");
+            cbPredio.Items.Add("Prueba");
+            cbManzana.Items.Add("1");
+            cbLotes.Items.Add("1");
+       
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -39,13 +43,30 @@ namespace PvTerrenos
 
         private void txtId_ChangeUICues(object sender, UICuesEventArgs e)
         {
+            WSpvt.PVT ws = new WSpvt.PVT();
+            string id = txtId.Text;
+            string respuestaGetUsuario = ws.getComprador(id);
 
-            MessageBox.Show("hoal baboso");
+            txtNombre.Text = respuestaGetUsuario;
         }
 
-        
+        private void cmdAgregar_Click(object sender, EventArgs e)
+        {
+            WSpvt.PVT ws = new WSpvt.PVT();
 
-        
+            string id_comprador = txtId.Text;
+            string lote = cbLotes.SelectedItem.ToString();
+            string tipo_pago = cbFormaPago.SelectedItem.ToString();
+            string monto = txtCostoTerreno.Text;
+            string plazo = txtPlazo.Text;
+            string fechaCompra = dtpFecha.Value.ToString();
+            string fechaCorte = txtFechaCorte.Text;
 
+            MessageBox.Show(id_comprador + " " + lote + " " + tipo_pago + " " + monto + " " + plazo + " " + fechaCompra + " " + fechaCorte);
+
+            string respuestaAltaVenta = ws.registraVenta(id_comprador, lote, tipo_pago, monto, plazo, fechaCompra, fechaCorte);
+
+            MessageBox.Show(respuestaAltaVenta);
+        }
     }
 }

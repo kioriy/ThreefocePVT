@@ -104,7 +104,6 @@
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="getCompradorRequest">
-    <wsdl:part name="id_sesion" type="xsd:string" />
     <wsdl:part name="id_comprador" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="getCompradorResponse">
@@ -132,14 +131,13 @@
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraVentaRequest">
-    <wsdl:part name="id_venta" type="xsd:string" />
-    <wsdl:part name="comprador" type="xsd:string" />
+    <wsdl:part name="id_comprador" type="xsd:string" />
     <wsdl:part name="lote" type="xsd:string" />
     <wsdl:part name="tipo_pago" type="xsd:string" />
     <wsdl:part name="monto" type="xsd:string" />
     <wsdl:part name="plazo" type="xsd:string" />
-    <wsdl:part name="Fecha_corte" type="xsd:string" />
-    <wsdl:part name="fecha_compra" type="xsd:string" />
+    <wsdl:part name="Fecha_compra" type="xsd:string" />
+    <wsdl:part name="fecha_corte" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraVentaResponse">
     <wsdl:part name="return" type="xsd:string" />

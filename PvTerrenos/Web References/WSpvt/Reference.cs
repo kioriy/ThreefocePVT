@@ -582,25 +582,23 @@ namespace PvTerrenos.WSpvt {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getComprador", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string getComprador(string id_sesion, string id_comprador) {
+        public string getComprador(string id_comprador) {
             object[] results = this.Invoke("getComprador", new object[] {
-                        id_sesion,
                         id_comprador});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void getCompradorAsync(string id_sesion, string id_comprador) {
-            this.getCompradorAsync(id_sesion, id_comprador, null);
+        public void getCompradorAsync(string id_comprador) {
+            this.getCompradorAsync(id_comprador, null);
         }
         
         /// <remarks/>
-        public void getCompradorAsync(string id_sesion, string id_comprador, object userState) {
+        public void getCompradorAsync(string id_comprador, object userState) {
             if ((this.getCompradorOperationCompleted == null)) {
                 this.getCompradorOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetCompradorOperationCompleted);
             }
             this.InvokeAsync("getComprador", new object[] {
-                        id_sesion,
                         id_comprador}, this.getCompradorOperationCompleted, userState);
         }
         
@@ -710,38 +708,36 @@ namespace PvTerrenos.WSpvt {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraVenta", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string registraVenta(string id_venta, string comprador, string lote, string tipo_pago, string monto, string plazo, string Fecha_corte, string fecha_compra) {
+        public string registraVenta(string id_comprador, string lote, string tipo_pago, string monto, string plazo, string Fecha_compra, string fecha_corte) {
             object[] results = this.Invoke("registraVenta", new object[] {
-                        id_venta,
-                        comprador,
+                        id_comprador,
                         lote,
                         tipo_pago,
                         monto,
                         plazo,
-                        Fecha_corte,
-                        fecha_compra});
+                        Fecha_compra,
+                        fecha_corte});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void registraVentaAsync(string id_venta, string comprador, string lote, string tipo_pago, string monto, string plazo, string Fecha_corte, string fecha_compra) {
-            this.registraVentaAsync(id_venta, comprador, lote, tipo_pago, monto, plazo, Fecha_corte, fecha_compra, null);
+        public void registraVentaAsync(string id_comprador, string lote, string tipo_pago, string monto, string plazo, string Fecha_compra, string fecha_corte) {
+            this.registraVentaAsync(id_comprador, lote, tipo_pago, monto, plazo, Fecha_compra, fecha_corte, null);
         }
         
         /// <remarks/>
-        public void registraVentaAsync(string id_venta, string comprador, string lote, string tipo_pago, string monto, string plazo, string Fecha_corte, string fecha_compra, object userState) {
+        public void registraVentaAsync(string id_comprador, string lote, string tipo_pago, string monto, string plazo, string Fecha_compra, string fecha_corte, object userState) {
             if ((this.registraVentaOperationCompleted == null)) {
                 this.registraVentaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnregistraVentaOperationCompleted);
             }
             this.InvokeAsync("registraVenta", new object[] {
-                        id_venta,
-                        comprador,
+                        id_comprador,
                         lote,
                         tipo_pago,
                         monto,
                         plazo,
-                        Fecha_corte,
-                        fecha_compra}, this.registraVentaOperationCompleted, userState);
+                        Fecha_compra,
+                        fecha_corte}, this.registraVentaOperationCompleted, userState);
         }
         
         private void OnregistraVentaOperationCompleted(object arg) {
