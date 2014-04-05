@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmdAgregar = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPagoFinal = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPagoActual = new System.Windows.Forms.TextBox();
             this.cbLotes = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cbManzana = new System.Windows.Forms.ComboBox();
@@ -44,7 +46,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtAbono = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtPlazo = new System.Windows.Forms.TextBox();
+            this.txtMensualidad = new System.Windows.Forms.TextBox();
             this.cbPredio = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -54,7 +56,6 @@
             this.txtCostoTerreno = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.cmdAgregar = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,7 +67,6 @@
             this.predioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.predioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -93,9 +93,9 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.cmdAgregar);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtPagoFinal);
             this.groupBox2.Controls.Add(this.dtpFecha);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtPagoActual);
             this.groupBox2.Controls.Add(this.cbLotes);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.cbManzana);
@@ -103,7 +103,7 @@
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.txtAbono);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.txtPlazo);
+            this.groupBox2.Controls.Add(this.txtMensualidad);
             this.groupBox2.Controls.Add(this.cbPredio);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label17);
@@ -118,46 +118,72 @@
             this.groupBox2.Size = new System.Drawing.Size(589, 128);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Forma de pago";
+            this.groupBox2.Text = "Datos de compra";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(296, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.TabIndex = 49;
+            this.label2.Text = "Fecha de  compra:";
+            // 
+            // cmdAgregar
+            // 
+            this.cmdAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdAgregar.Location = new System.Drawing.Point(423, 82);
+            this.cmdAgregar.Name = "cmdAgregar";
+            this.cmdAgregar.Size = new System.Drawing.Size(159, 37);
+            this.cmdAgregar.TabIndex = 15;
+            this.cmdAgregar.Text = "Agregar venta";
+            this.cmdAgregar.UseVisualStyleBackColor = true;
+            this.cmdAgregar.Click += new System.EventHandler(this.cmdAgregar_Click);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(247, 56);
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(235, 49);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(19, 13);
+            this.label19.Size = new System.Drawing.Size(21, 29);
             this.label19.TabIndex = 48;
-            this.label19.Text = "de";
+            this.label19.Text = "/";
             // 
-            // textBox2
+            // txtPagoFinal
             // 
-            this.textBox2.Location = new System.Drawing.Point(270, 54);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(35, 18);
-            this.textBox2.TabIndex = 47;
+            this.txtPagoFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPagoFinal.Location = new System.Drawing.Point(257, 54);
+            this.txtPagoFinal.Name = "txtPagoFinal";
+            this.txtPagoFinal.Size = new System.Drawing.Size(27, 20);
+            this.txtPagoFinal.TabIndex = 9;
             // 
             // dtpFecha
             // 
-            this.dtpFecha.Location = new System.Drawing.Point(414, 54);
+            this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFecha.Location = new System.Drawing.Point(398, 54);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(168, 18);
-            this.dtpFecha.TabIndex = 41;
+            this.dtpFecha.Size = new System.Drawing.Size(184, 20);
+            this.dtpFecha.TabIndex = 10;
+            this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
-            // textBox1
+            // txtPagoActual
             // 
-            this.textBox1.Location = new System.Drawing.Point(206, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(35, 18);
-            this.textBox1.TabIndex = 46;
+            this.txtPagoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPagoActual.Location = new System.Drawing.Point(206, 54);
+            this.txtPagoActual.Name = "txtPagoActual";
+            this.txtPagoActual.Size = new System.Drawing.Size(27, 20);
+            this.txtPagoActual.TabIndex = 8;
             // 
             // cbLotes
             // 
+            this.cbLotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLotes.FormattingEnabled = true;
             this.cbLotes.Location = new System.Drawing.Point(321, 93);
             this.cbLotes.Name = "cbLotes";
-            this.cbLotes.Size = new System.Drawing.Size(38, 20);
-            this.cbLotes.TabIndex = 33;
+            this.cbLotes.Size = new System.Drawing.Size(38, 21);
+            this.cbLotes.TabIndex = 13;
             // 
             // label12
             // 
@@ -171,19 +197,21 @@
             // 
             // cbManzana
             // 
+            this.cbManzana.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbManzana.FormattingEnabled = true;
             this.cbManzana.Location = new System.Drawing.Point(253, 93);
             this.cbManzana.Name = "cbManzana";
-            this.cbManzana.Size = new System.Drawing.Size(37, 20);
-            this.cbManzana.TabIndex = 25;
+            this.cbManzana.Size = new System.Drawing.Size(37, 21);
+            this.cbManzana.TabIndex = 12;
             // 
             // cbFormaPago
             // 
+            this.cbFormaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFormaPago.FormattingEnabled = true;
             this.cbFormaPago.Location = new System.Drawing.Point(88, 18);
             this.cbFormaPago.Name = "cbFormaPago";
-            this.cbFormaPago.Size = new System.Drawing.Size(66, 20);
-            this.cbFormaPago.TabIndex = 44;
+            this.cbFormaPago.Size = new System.Drawing.Size(66, 21);
+            this.cbFormaPago.TabIndex = 3;
             // 
             // label18
             // 
@@ -197,10 +225,11 @@
             // 
             // txtAbono
             // 
+            this.txtAbono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAbono.Location = new System.Drawing.Point(357, 18);
             this.txtAbono.Name = "txtAbono";
-            this.txtAbono.Size = new System.Drawing.Size(81, 18);
-            this.txtAbono.TabIndex = 39;
+            this.txtAbono.Size = new System.Drawing.Size(81, 20);
+            this.txtAbono.TabIndex = 5;
             // 
             // label13
             // 
@@ -212,12 +241,13 @@
             this.label13.TabIndex = 32;
             this.label13.Text = "M°";
             // 
-            // txtPlazo
+            // txtMensualidad
             // 
-            this.txtPlazo.Location = new System.Drawing.Point(522, 18);
-            this.txtPlazo.Name = "txtPlazo";
-            this.txtPlazo.Size = new System.Drawing.Size(60, 18);
-            this.txtPlazo.TabIndex = 42;
+            this.txtMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMensualidad.Location = new System.Drawing.Point(522, 18);
+            this.txtMensualidad.Name = "txtMensualidad";
+            this.txtMensualidad.Size = new System.Drawing.Size(60, 20);
+            this.txtMensualidad.TabIndex = 6;
             // 
             // cbPredio
             // 
@@ -226,7 +256,7 @@
             this.cbPredio.Location = new System.Drawing.Point(55, 93);
             this.cbPredio.Name = "cbPredio";
             this.cbPredio.Size = new System.Drawing.Size(166, 21);
-            this.cbPredio.TabIndex = 9;
+            this.cbPredio.TabIndex = 11;
             // 
             // label8
             // 
@@ -250,10 +280,11 @@
             // 
             // txtFechaCorte
             // 
+            this.txtFechaCorte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFechaCorte.Location = new System.Drawing.Point(88, 53);
             this.txtFechaCorte.Name = "txtFechaCorte";
-            this.txtFechaCorte.Size = new System.Drawing.Size(66, 18);
-            this.txtFechaCorte.TabIndex = 39;
+            this.txtFechaCorte.Size = new System.Drawing.Size(66, 20);
+            this.txtFechaCorte.TabIndex = 7;
             // 
             // label9
             // 
@@ -277,10 +308,11 @@
             // 
             // txtCostoTerreno
             // 
+            this.txtCostoTerreno.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCostoTerreno.Location = new System.Drawing.Point(239, 18);
             this.txtCostoTerreno.Name = "txtCostoTerreno";
-            this.txtCostoTerreno.Size = new System.Drawing.Size(66, 18);
-            this.txtCostoTerreno.TabIndex = 37;
+            this.txtCostoTerreno.Size = new System.Drawing.Size(66, 20);
+            this.txtCostoTerreno.TabIndex = 4;
             // 
             // label15
             // 
@@ -302,25 +334,14 @@
             this.label14.TabIndex = 34;
             this.label14.Text = "Forma de pago:";
             // 
-            // cmdAgregar
-            // 
-            this.cmdAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdAgregar.Location = new System.Drawing.Point(423, 82);
-            this.cmdAgregar.Name = "cmdAgregar";
-            this.cmdAgregar.Size = new System.Drawing.Size(159, 37);
-            this.cmdAgregar.TabIndex = 26;
-            this.cmdAgregar.Text = "Agregar venta";
-            this.cmdAgregar.UseVisualStyleBackColor = true;
-            this.cmdAgregar.Click += new System.EventHandler(this.cmdAgregar_Click);
-            // 
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Location = new System.Drawing.Point(45, 29);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(94, 20);
-            this.txtId.TabIndex = 15;
-            this.txtId.ChangeUICues += new System.Windows.Forms.UICuesEventHandler(this.txtId_ChangeUICues);
+            this.txtId.TabIndex = 1;
+            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // label7
             // 
@@ -348,37 +369,37 @@
             this.txtNombre.Location = new System.Drawing.Point(278, 29);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(304, 20);
-            this.txtNombre.TabIndex = 1;
+            this.txtNombre.TabIndex = 2;
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(7, 232);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(589, 212);
             this.dataGridView1.TabIndex = 25;
             // 
@@ -430,16 +451,6 @@
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.consultasToolStripMenuItem.Text = "Consulta";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(312, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
-            this.label2.TabIndex = 49;
-            this.label2.Text = "Fecha de  compra:";
-            // 
             // FrmVentaLote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -490,14 +501,14 @@
         private System.Windows.Forms.TextBox txtFechaCorte;
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtPlazo;
+        private System.Windows.Forms.TextBox txtMensualidad;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.TextBox txtAbono;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox cbFormaPago;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPagoFinal;
+        private System.Windows.Forms.TextBox txtPagoActual;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label2;
     }

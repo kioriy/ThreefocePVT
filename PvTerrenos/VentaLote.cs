@@ -12,15 +12,16 @@ namespace PvTerrenos
 {
     public partial class FrmVentaLote : Form
     {
+        DateTime? proximoPago = null;
+
         public FrmVentaLote()
         {
             InitializeComponent();
             cbFormaPago.Items.Add("Abonos");
             cbFormaPago.Items.Add("Contado");
-            cbPredio.Items.Add("Prueba");
-            cbManzana.Items.Add("1");
-            cbLotes.Items.Add("1");
-       
+            cbPredio.Items.Add("SANTA ANITA");
+            cbManzana.Items.Add("2");
+            cbLotes.Items.Add("2");
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -41,32 +42,58 @@ namespace PvTerrenos
             abrirPago.Show();
         }
 
-        private void txtId_ChangeUICues(object sender, UICuesEventArgs e)
+        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            WSpvt.PVT ws = new WSpvt.PVT();
-            string id = txtId.Text;
-            string respuestaGetUsuario = ws.getComprador(id);
-
-            txtNombre.Text = respuestaGetUsuario;
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                WSpvt.PVT ws = new WSpvt.PVT();
+                string id = txtId.Text;
+                string respuestaGetUsuario = ws.getComprador(id);
+                txtNombre.Text = respuestaGetUsuario;
+            }
         }
 
         private void cmdAgregar_Click(object sender, EventArgs e)
         {
             WSpvt.PVT ws = new WSpvt.PVT();
-
+        
             string id_comprador = txtId.Text;
-            string lote = cbLotes.SelectedItem.ToString();
+            string idLote = ws.getIdLote(ws.getManzana(cbManzana.SelectedItem.ToString(),ws.getPredio(cbPredio.SelectedItem.ToString())), cbLotes.SelectedItem.ToString());
             string tipo_pago = cbFormaPago.SelectedItem.ToString();
             string monto = txtCostoTerreno.Text;
-            string plazo = txtPlazo.Text;
+            string mensualidad = txtMensualidad.Text;
             string fechaCompra = dtpFecha.Value.ToString();
-            string fechaCorte = txtFechaCorte.Text;
+            string fechaCorte = dtpFecha.Value.Day.ToString();
+            //MessageBox.Show(fechaCorte);
+            string respuestaAltaVenta = ws.registraVenta(id_comprador, idLote, tipo_pago, monto, mensualidad, fechaCompra, fechaCorte);
+            //MessageBox.Show(respuestaAltaVenta);
 
-            MessageBox.Show(id_comprador + " " + lote + " " + tipo_pago + " " + monto + " " + plazo + " " + fechaCompra + " " + fechaCorte);
+            string respuestaStatus = ws.updateStatusLote(idLote);
 
-            string respuestaAltaVenta = ws.registraVenta(id_comprador, lote, tipo_pago, monto, plazo, fechaCompra, fechaCorte);
+            string idVenta = ws.getIdVenta(idLote);
 
-            MessageBox.Show(respuestaAltaVenta);
+            int pagoActualMasUno = Convert.ToInt32(txtPagoActual.Text) + 1;
+           
+            //MessageBox.Show(Convert.ToString(pagoActualMasUno));
+            //MessageBox.Show(idVenta+" "+proximoPago.Value.ToString()+" "+txtPagoActual.Text+" "+txtPagoFinal.Text);
+            
+            string registraProximoPago = ws.registraPago(idVenta,proximoPago.Value.ToString(),Convert.ToString(pagoActualMasUno),txtPagoFinal.Text);
+            //MessageBox.Show(registraProximoPago);
+        }
+
+        private void dtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+            if (txtPagoActual.Text != "" && txtPagoFinal.Text !="") {
+
+                Fecha obtenerProximoPago = new Fecha(dtpFecha.Value, txtPagoActual.Text);
+
+                proximoPago =  obtenerProximoPago.setProximoPago(dtpFecha.Value, txtPagoActual.Text);
+
+                //MessageBox.Show(resultado.ToString());
+
+            }else{
+                MessageBox.Show("es necesario ingresar pagos:   /    ");
+            }
         }
     }
 }

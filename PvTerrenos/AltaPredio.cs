@@ -164,9 +164,6 @@ namespace PvTerrenos
                     {
                       control = Convert.ToInt32(txtNumManzanaLote.Text);
                     } 
-                       
-                    
-                   // String hayLotes = cbSeleccionaManzanaLote.SelectedItem == "Lotes";
 
                     if ((Int32)cbNumeroManzana.SelectedItem == control)
                     {
