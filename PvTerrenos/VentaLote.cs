@@ -21,7 +21,7 @@ namespace PvTerrenos
             cbFormaPago.Items.Add("Contado");
             cbPredio.Items.Add("SANTA ANITA");
             cbManzana.Items.Add("1");
-            cbLotes.Items.Add("5");
+            cbLotes.Items.Add("6");
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)

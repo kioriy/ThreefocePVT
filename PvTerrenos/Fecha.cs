@@ -9,8 +9,7 @@ namespace PvTerrenos
     class Fecha
     {
         //variable tipo datetime
-        DateTime fecha;
-        string pago_actual;
+        
     
         //constructor
         /*public Fecha(DateTime fecha, string pago_actual) {
@@ -30,16 +29,51 @@ namespace PvTerrenos
             return (fechaProximoPago = fechaCompra.AddMonths(auxiliar));
         }
 
-        public Boolean estaEnMora(DateTime fechaActual, DateTime fechaProximoPago) {
+        public Boolean estaEnMora(DateTime fechaProximoPago) {
 
-            if (fechaProximoPago.AddDays(6) <= fechaActual)
+            if (fechaProximoPago.AddDays(6) <= DateTime.Today)
+            {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        public Boolean statusMora(string statusMora) {
+
+            if (statusMora == "1")
             {
                 return true;
-                
             }
             else {
                 return false;
             }
+        }
+
+       public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago) {
+
+            if (esMoroso && !statusMora) { 
+                
+                int fechaDeCambio = Convert.ToInt32(DateTime.Today.Month);
+                
+                for (int incremento = Convert.ToInt32(proximoPago.Month); incremento <= fechaDeCambio; fechaDeCambio--) { 
+                    
+                    for()
+                
+                
+                
+                }
+            
+            }
+            if (esMoroso && statusMora) { 
+
+
+            
+            }
+            
+        
+        
+        
         }
        /* public DateTime setDiferenciaFecha(DateTime fechaInicio, DateTime FechaFinal) {
 

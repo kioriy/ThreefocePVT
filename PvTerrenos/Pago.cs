@@ -64,6 +64,7 @@ namespace PvTerrenos
                 txtPagoActual.Text = pago_actual;
                 txtPagoFinal.Text = pago_final;
                 txtMensualidad.Text = mensualidad;
+                txtProximoPago.Text = Convert.ToDateTime(proximoPago).ToString("D");
 
                 cbPredio.Items.Add(nombrePredio);
                 cbManzana.Items.Add(numeroManzana);
@@ -71,18 +72,16 @@ namespace PvTerrenos
                 cbPredio.SelectedIndex = 0;
                 cbManzana.SelectedIndex = 0;
                 cbLote.SelectedIndex = 0;
-
-
-               
-               
                 
-                Fecha mora = new Fecha();
+                //Fecha mora = new Fecha();
 
-                MessageBox.Show(Convert.ToString(DateTime.Today) + " " + proximoPago);
+                //MessageBox.Show(Convert.ToString(DateTime.Today) + " " + proximoPago);
                 
-                Boolean respuesta = mora.estaEnMora(DateTime.Today, Convert.ToDateTime(proximoPago));
+                //Boolean respuesta = mora.estaEnMora(Convert.ToDateTime(proximoPago));
 
-                MessageBox.Show(Convert.ToString(respuesta));
+                //int mes = Convert.ToInt32(DateTime.Today.Month);
+
+                //MessageBox.Show(Convert.ToString(DateTime.Today.Month));
 
                /* DateTime fechaHoy = new DateTime(2014, 04, 2);
                 DateTime fechaAnterior = new DateTime(2014, 04, 30);
