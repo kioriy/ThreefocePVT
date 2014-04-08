@@ -107,6 +107,8 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback buscarPagosOperationCompleted;
         
+        private System.Threading.SendOrPostCallback registraPagoOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -261,6 +263,9 @@ namespace PvTerrenos.WSpvt {
         
         /// <remarks/>
         public event buscarPagosCompletedEventHandler buscarPagosCompleted;
+        
+        /// <remarks/>
+        public event registraPagoCompletedEventHandler registraPagoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/login", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
@@ -1636,6 +1641,46 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraPago", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string registraPago(string id_venta, string monto, string fecha_pago, string fecha_corte, string tipo_pago, string pago_actual) {
+            object[] results = this.Invoke("registraPago", new object[] {
+                        id_venta,
+                        monto,
+                        fecha_pago,
+                        fecha_corte,
+                        tipo_pago,
+                        pago_actual});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void registraPagoAsync(string id_venta, string monto, string fecha_pago, string fecha_corte, string tipo_pago, string pago_actual) {
+            this.registraPagoAsync(id_venta, monto, fecha_pago, fecha_corte, tipo_pago, pago_actual, null);
+        }
+        
+        /// <remarks/>
+        public void registraPagoAsync(string id_venta, string monto, string fecha_pago, string fecha_corte, string tipo_pago, string pago_actual, object userState) {
+            if ((this.registraPagoOperationCompleted == null)) {
+                this.registraPagoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnregistraPagoOperationCompleted);
+            }
+            this.InvokeAsync("registraPago", new object[] {
+                        id_venta,
+                        monto,
+                        fecha_pago,
+                        fecha_corte,
+                        tipo_pago,
+                        pago_actual}, this.registraPagoOperationCompleted, userState);
+        }
+        
+        private void OnregistraPagoOperationCompleted(object arg) {
+            if ((this.registraPagoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.registraPagoCompleted(this, new registraPagoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -2655,6 +2700,32 @@ namespace PvTerrenos.WSpvt {
         private object[] results;
         
         internal buscarPagosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void registraPagoCompletedEventHandler(object sender, registraPagoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class registraPagoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal registraPagoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

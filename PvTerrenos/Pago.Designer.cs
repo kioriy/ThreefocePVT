@@ -45,7 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbMeses = new System.Windows.Forms.ComboBox();
             this.cbLote = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtMensualidad = new System.Windows.Forms.TextBox();
@@ -156,7 +156,7 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.textBox2);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.cmbMeses);
             this.groupBox3.Location = new System.Drawing.Point(368, 0);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(291, 256);
@@ -230,13 +230,14 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Mes a pagar:";
             // 
-            // comboBox1
+            // cmbMeses
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(79, 23);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(98, 20);
-            this.comboBox1.TabIndex = 1;
+            this.cmbMeses.FormattingEnabled = true;
+            this.cmbMeses.Location = new System.Drawing.Point(79, 23);
+            this.cmbMeses.Name = "cmbMeses";
+            this.cmbMeses.Size = new System.Drawing.Size(98, 20);
+            this.cmbMeses.TabIndex = 1;
+            this.cmbMeses.SelectedIndexChanged += new System.EventHandler(this.cmbMeses_SelectedIndexChanged);
             // 
             // cbLote
             // 
@@ -290,7 +291,7 @@
             this.cmdPagoMensualidad.TabIndex = 26;
             this.cmdPagoMensualidad.Text = "Pagar Mensualidad";
             this.cmdPagoMensualidad.UseVisualStyleBackColor = true;
-          
+            this.cmdPagoMensualidad.Click += new System.EventHandler(this.cmdPagoMensualidad_Click);
             // 
             // txtPagoActual
             // 
@@ -472,7 +473,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "FrmPago";
             this.Text = "Pago";
-            
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -513,7 +513,7 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbMeses;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;

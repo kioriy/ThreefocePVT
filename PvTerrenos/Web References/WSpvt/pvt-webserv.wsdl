@@ -332,6 +332,17 @@
   <wsdl:message name="buscarPagosResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="registraPagoRequest">
+    <wsdl:part name="id_venta" type="xsd:string" />
+    <wsdl:part name="monto" type="xsd:string" />
+    <wsdl:part name="fecha_pago" type="xsd:string" />
+    <wsdl:part name="fecha_corte" type="xsd:string" />
+    <wsdl:part name="tipo_pago" type="xsd:string" />
+    <wsdl:part name="pago_actual" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="registraPagoResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:portType name="PVTPortType">
     <wsdl:operation name="login">
       <wsdl:input message="tns:loginRequest" />
@@ -488,6 +499,10 @@
     <wsdl:operation name="buscarPagos">
       <wsdl:input message="tns:buscarPagosRequest" />
       <wsdl:output message="tns:buscarPagosResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="registraPago">
+      <wsdl:input message="tns:registraPagoRequest" />
+      <wsdl:output message="tns:registraPagoResponse" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="PVTBinding" type="tns:PVTPortType">
@@ -836,6 +851,15 @@
     </wsdl:operation>
     <wsdl:operation name="buscarPagos">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/buscarPagos" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraPago">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraPago" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

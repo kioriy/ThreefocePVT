@@ -12,11 +12,15 @@ namespace PvTerrenos
 {
     public partial class FrmPago : Form
     {
+        WSpvt.PVT ws = new WSpvt.PVT();
+        string idVenta = "";
+        string pago_actual = "";
+        string proximoPago = "";
+
+
         public FrmPago()
         {
             InitializeComponent();
-
-
         }
 
         private void txtId_KeyPress(object sender, KeyPressEventArgs e)
@@ -24,27 +28,28 @@ namespace PvTerrenos
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
 
-                WSpvt.PVT ws = new WSpvt.PVT();
+               
 
-                ///////// CONSULATA DE LA TABLA VENTAS /////////////////
+                ///////// CONSULTA DE LA TABLA VENTAS /////////////////
                 string superStringVenta = ws.getVenta(txtId.Text); //cadena de string seprado por comas
                 string[] splitVenta = superStringVenta.Split(new char[] { ',' });
-                string idVenta = splitVenta[0];
+                idVenta = splitVenta[0];
                 string idLote = splitVenta[1];
                 string mensualidad = splitVenta[2];
                 string fecha_compra = splitVenta[3];
                 string fecha_corte = splitVenta[4];
                 ////////////////////////////////////////////////////////
 
+
                 /////// CONSULTA DE LA TABLA PROXIMO PAGO  //////////////
                 string superStringProximoPago = ws.getProximoPago(idVenta); //cadena de string separado por comas
                 string[] splitProximoPago = superStringProximoPago.Split(new char[] { ',' });
-                string proximoPago = splitProximoPago[0];
-                string pago_actual = splitProximoPago[1];
+                proximoPago = splitProximoPago[0];
+                pago_actual = splitProximoPago[1];
                 string pago_final = splitProximoPago[2];
                 string status_mora = splitProximoPago[3];
                 /////////////////////////////////////////////////////////
-
+                
                 /////// CONSULTA PREDIO MANZANA LOTE ////////////////////
                 string idManzana = ws.getIdManzanaPkLote(idLote);
                 string numeroManzana = ws.getNumeroManzana(idManzana);
@@ -67,8 +72,14 @@ namespace PvTerrenos
                 cbManzana.SelectedIndex = 0;
                 cbLote.SelectedIndex = 0;
 
+
+               
+               
+                
                 Fecha mora = new Fecha();
 
+                MessageBox.Show(Convert.ToString(DateTime.Today) + " " + proximoPago);
+                
                 Boolean respuesta = mora.estaEnMora(DateTime.Today, Convert.ToDateTime(proximoPago));
 
                 MessageBox.Show(Convert.ToString(respuesta));
@@ -85,6 +96,17 @@ namespace PvTerrenos
                 MessageBox.Show(prueba.ToString());*/
 
             }
+        }
+
+        private void cmbMeses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cmdPagoMensualidad_Click(object sender, EventArgs e)
+        {
+            String registraPago = ws.registraPago(idVenta, "monto", Convert.ToString(DateTime.Today), proximoPago, "abono", pago_actual);
+            MessageBox.Show(registraPago);
         }
     }
 }

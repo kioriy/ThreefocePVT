@@ -30,9 +30,9 @@ namespace PvTerrenos
             return (fechaProximoPago = fechaCompra.AddMonths(auxiliar));
         }
 
-        public Boolean estaEnMora(DateTime fechaProximoPago, DateTime FechaActual) {
+        public Boolean estaEnMora(DateTime fechaActual, DateTime fechaProximoPago) {
 
-            if (fechaProximoPago.AddDays(6) <= FechaActual)
+            if (fechaProximoPago.AddDays(6) <= fechaActual)
             {
                 return true;
                 
