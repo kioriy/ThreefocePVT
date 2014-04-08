@@ -150,7 +150,7 @@ namespace PvTerrenos
                         else
                         {
                             string numeroManzana = Convert.ToString(cbNumeroManzana.SelectedItem);
-                            string idManzana = altaLote.getManzana(numeroManzana, idPredio);
+                            string idManzana = altaLote.getIdManzana(numeroManzana, idPredio);
                             banderaRegistroLote = altaLote.registraLote(j, idPredio, idManzana);
                         }
                     }//cierre for

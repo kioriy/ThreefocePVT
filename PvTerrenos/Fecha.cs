@@ -11,13 +11,13 @@ namespace PvTerrenos
         //variable tipo datetime
         DateTime fecha;
         string pago_actual;
-        string pago_final;
+    
         //constructor
-        public Fecha(DateTime fecha, string pago_actual) {
+        /*public Fecha(DateTime fecha, string pago_actual) {
 
             this.fecha = fecha;
             this.pago_actual = pago_actual;
-        }
+        }*/
 
         public DateTime setProximoPago(DateTime fechaCompra, string pago_actual) {
 
@@ -29,5 +29,23 @@ namespace PvTerrenos
             }
             return (fechaProximoPago = fechaCompra.AddMonths(auxiliar));
         }
+
+        public Boolean estaEnMora(DateTime fechaProximoPago, DateTime FechaActual) {
+
+            if (fechaProximoPago.AddDays(6) <= FechaActual)
+            {
+                return true;
+                
+            }
+            else {
+                return false;
+            }
+        }
+       /* public DateTime setDiferenciaFecha(DateTime fechaInicio, DateTime FechaFinal) {
+
+
+
+            return;
+        }*/
     }
 }

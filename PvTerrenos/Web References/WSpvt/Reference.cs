@@ -59,13 +59,13 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback updateVentaOperationCompleted;
         
-        private System.Threading.SendOrPostCallback listaVentasOperationCompleted;
+        private System.Threading.SendOrPostCallback getVentaOperationCompleted;
         
-        private System.Threading.SendOrPostCallback getComisionOperationCompleted;
+        private System.Threading.SendOrPostCallback registraAbonoOperationCompleted;
         
-        private System.Threading.SendOrPostCallback setComisionOperationCompleted;
+        private System.Threading.SendOrPostCallback getAbonoOperationCompleted;
         
-        private System.Threading.SendOrPostCallback getIdVentaOperationCompleted;
+        private System.Threading.SendOrPostCallback getIdVentaPkLoteOperationCompleted;
         
         private System.Threading.SendOrPostCallback buscarVentaPorOperationCompleted;
         
@@ -73,17 +73,27 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback cargaPredioOperationCompleted;
         
-        private System.Threading.SendOrPostCallback getPredioOperationCompleted;
+        private System.Threading.SendOrPostCallback getIdPredioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getIdPredioPkLoteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getNombrePredioOperationCompleted;
         
         private System.Threading.SendOrPostCallback registraManzanaOperationCompleted;
         
-        private System.Threading.SendOrPostCallback getManzanaOperationCompleted;
+        private System.Threading.SendOrPostCallback getIdManzanaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getIdManzanaPkLoteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getNumeroManzanaOperationCompleted;
         
         private System.Threading.SendOrPostCallback registraLoteOperationCompleted;
         
         private System.Threading.SendOrPostCallback updateLoteOperationCompleted;
         
         private System.Threading.SendOrPostCallback getIdLoteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getNumeroLoteOperationCompleted;
         
         private System.Threading.SendOrPostCallback updateStatusLoteOperationCompleted;
         
@@ -93,7 +103,7 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback registraProximoPagoOperationCompleted;
         
-        private System.Threading.SendOrPostCallback cancelarPagoOperationCompleted;
+        private System.Threading.SendOrPostCallback getProximoPagoOperationCompleted;
         
         private System.Threading.SendOrPostCallback buscarPagosOperationCompleted;
         
@@ -181,16 +191,16 @@ namespace PvTerrenos.WSpvt {
         public event updateVentaCompletedEventHandler updateVentaCompleted;
         
         /// <remarks/>
-        public event listaVentasCompletedEventHandler listaVentasCompleted;
+        public event getVentaCompletedEventHandler getVentaCompleted;
         
         /// <remarks/>
-        public event getComisionCompletedEventHandler getComisionCompleted;
+        public event registraAbonoCompletedEventHandler registraAbonoCompleted;
         
         /// <remarks/>
-        public event setComisionCompletedEventHandler setComisionCompleted;
+        public event getAbonoCompletedEventHandler getAbonoCompleted;
         
         /// <remarks/>
-        public event getIdVentaCompletedEventHandler getIdVentaCompleted;
+        public event getIdVentaPkLoteCompletedEventHandler getIdVentaPkLoteCompleted;
         
         /// <remarks/>
         public event buscarVentaPorCompletedEventHandler buscarVentaPorCompleted;
@@ -202,13 +212,25 @@ namespace PvTerrenos.WSpvt {
         public event cargaPredioCompletedEventHandler cargaPredioCompleted;
         
         /// <remarks/>
-        public event getPredioCompletedEventHandler getPredioCompleted;
+        public event getIdPredioCompletedEventHandler getIdPredioCompleted;
+        
+        /// <remarks/>
+        public event getIdPredioPkLoteCompletedEventHandler getIdPredioPkLoteCompleted;
+        
+        /// <remarks/>
+        public event getNombrePredioCompletedEventHandler getNombrePredioCompleted;
         
         /// <remarks/>
         public event registraManzanaCompletedEventHandler registraManzanaCompleted;
         
         /// <remarks/>
-        public event getManzanaCompletedEventHandler getManzanaCompleted;
+        public event getIdManzanaCompletedEventHandler getIdManzanaCompleted;
+        
+        /// <remarks/>
+        public event getIdManzanaPkLoteCompletedEventHandler getIdManzanaPkLoteCompleted;
+        
+        /// <remarks/>
+        public event getNumeroManzanaCompletedEventHandler getNumeroManzanaCompleted;
         
         /// <remarks/>
         public event registraLoteCompletedEventHandler registraLoteCompleted;
@@ -218,6 +240,9 @@ namespace PvTerrenos.WSpvt {
         
         /// <remarks/>
         public event getIdLoteCompletedEventHandler getIdLoteCompleted;
+        
+        /// <remarks/>
+        public event getNumeroLoteCompletedEventHandler getNumeroLoteCompleted;
         
         /// <remarks/>
         public event updateStatusLoteCompletedEventHandler updateStatusLoteCompleted;
@@ -232,7 +257,7 @@ namespace PvTerrenos.WSpvt {
         public event registraProximoPagoCompletedEventHandler registraProximoPagoCompleted;
         
         /// <remarks/>
-        public event cancelarPagoCompletedEventHandler cancelarPagoCompleted;
+        public event getProximoPagoCompletedEventHandler getProximoPagoCompleted;
         
         /// <remarks/>
         public event buscarPagosCompletedEventHandler buscarPagosCompleted;
@@ -837,128 +862,124 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/listaVentas", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getVenta", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string listaVentas(string id_sesion) {
-            object[] results = this.Invoke("listaVentas", new object[] {
-                        id_sesion});
+        public string getVenta(string id_comprador) {
+            object[] results = this.Invoke("getVenta", new object[] {
+                        id_comprador});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void listaVentasAsync(string id_sesion) {
-            this.listaVentasAsync(id_sesion, null);
+        public void getVentaAsync(string id_comprador) {
+            this.getVentaAsync(id_comprador, null);
         }
         
         /// <remarks/>
-        public void listaVentasAsync(string id_sesion, object userState) {
-            if ((this.listaVentasOperationCompleted == null)) {
-                this.listaVentasOperationCompleted = new System.Threading.SendOrPostCallback(this.OnlistaVentasOperationCompleted);
+        public void getVentaAsync(string id_comprador, object userState) {
+            if ((this.getVentaOperationCompleted == null)) {
+                this.getVentaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetVentaOperationCompleted);
             }
-            this.InvokeAsync("listaVentas", new object[] {
-                        id_sesion}, this.listaVentasOperationCompleted, userState);
+            this.InvokeAsync("getVenta", new object[] {
+                        id_comprador}, this.getVentaOperationCompleted, userState);
         }
         
-        private void OnlistaVentasOperationCompleted(object arg) {
-            if ((this.listaVentasCompleted != null)) {
+        private void OngetVentaOperationCompleted(object arg) {
+            if ((this.getVentaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.listaVentasCompleted(this, new listaVentasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getVentaCompleted(this, new getVentaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getComision", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraAbono", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string getComision(string id_sesion, string venta) {
-            object[] results = this.Invoke("getComision", new object[] {
-                        id_sesion,
-                        venta});
+        public string registraAbono(string id_comprador, string abono) {
+            object[] results = this.Invoke("registraAbono", new object[] {
+                        id_comprador,
+                        abono});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void getComisionAsync(string id_sesion, string venta) {
-            this.getComisionAsync(id_sesion, venta, null);
+        public void registraAbonoAsync(string id_comprador, string abono) {
+            this.registraAbonoAsync(id_comprador, abono, null);
         }
         
         /// <remarks/>
-        public void getComisionAsync(string id_sesion, string venta, object userState) {
-            if ((this.getComisionOperationCompleted == null)) {
-                this.getComisionOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetComisionOperationCompleted);
+        public void registraAbonoAsync(string id_comprador, string abono, object userState) {
+            if ((this.registraAbonoOperationCompleted == null)) {
+                this.registraAbonoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnregistraAbonoOperationCompleted);
             }
-            this.InvokeAsync("getComision", new object[] {
-                        id_sesion,
-                        venta}, this.getComisionOperationCompleted, userState);
+            this.InvokeAsync("registraAbono", new object[] {
+                        id_comprador,
+                        abono}, this.registraAbonoOperationCompleted, userState);
         }
         
-        private void OngetComisionOperationCompleted(object arg) {
-            if ((this.getComisionCompleted != null)) {
+        private void OnregistraAbonoOperationCompleted(object arg) {
+            if ((this.registraAbonoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getComisionCompleted(this, new getComisionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.registraAbonoCompleted(this, new registraAbonoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/setComision", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getAbono", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string setComision(string id_sesion, string venta, string comicion) {
-            object[] results = this.Invoke("setComision", new object[] {
-                        id_sesion,
-                        venta,
-                        comicion});
+        public string getAbono(string id_comprador) {
+            object[] results = this.Invoke("getAbono", new object[] {
+                        id_comprador});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void setComisionAsync(string id_sesion, string venta, string comicion) {
-            this.setComisionAsync(id_sesion, venta, comicion, null);
+        public void getAbonoAsync(string id_comprador) {
+            this.getAbonoAsync(id_comprador, null);
         }
         
         /// <remarks/>
-        public void setComisionAsync(string id_sesion, string venta, string comicion, object userState) {
-            if ((this.setComisionOperationCompleted == null)) {
-                this.setComisionOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsetComisionOperationCompleted);
+        public void getAbonoAsync(string id_comprador, object userState) {
+            if ((this.getAbonoOperationCompleted == null)) {
+                this.getAbonoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAbonoOperationCompleted);
             }
-            this.InvokeAsync("setComision", new object[] {
-                        id_sesion,
-                        venta,
-                        comicion}, this.setComisionOperationCompleted, userState);
+            this.InvokeAsync("getAbono", new object[] {
+                        id_comprador}, this.getAbonoOperationCompleted, userState);
         }
         
-        private void OnsetComisionOperationCompleted(object arg) {
-            if ((this.setComisionCompleted != null)) {
+        private void OngetAbonoOperationCompleted(object arg) {
+            if ((this.getAbonoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.setComisionCompleted(this, new setComisionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getAbonoCompleted(this, new getAbonoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdVenta", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdVentaPkLote", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string getIdVenta(string id_lote) {
-            object[] results = this.Invoke("getIdVenta", new object[] {
+        public string getIdVentaPkLote(string id_lote) {
+            object[] results = this.Invoke("getIdVentaPkLote", new object[] {
                         id_lote});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void getIdVentaAsync(string id_lote) {
-            this.getIdVentaAsync(id_lote, null);
+        public void getIdVentaPkLoteAsync(string id_lote) {
+            this.getIdVentaPkLoteAsync(id_lote, null);
         }
         
         /// <remarks/>
-        public void getIdVentaAsync(string id_lote, object userState) {
-            if ((this.getIdVentaOperationCompleted == null)) {
-                this.getIdVentaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetIdVentaOperationCompleted);
+        public void getIdVentaPkLoteAsync(string id_lote, object userState) {
+            if ((this.getIdVentaPkLoteOperationCompleted == null)) {
+                this.getIdVentaPkLoteOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetIdVentaPkLoteOperationCompleted);
             }
-            this.InvokeAsync("getIdVenta", new object[] {
-                        id_lote}, this.getIdVentaOperationCompleted, userState);
+            this.InvokeAsync("getIdVentaPkLote", new object[] {
+                        id_lote}, this.getIdVentaPkLoteOperationCompleted, userState);
         }
         
-        private void OngetIdVentaOperationCompleted(object arg) {
-            if ((this.getIdVentaCompleted != null)) {
+        private void OngetIdVentaPkLoteOperationCompleted(object arg) {
+            if ((this.getIdVentaPkLoteCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getIdVentaCompleted(this, new getIdVentaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getIdVentaPkLoteCompleted(this, new getIdVentaPkLoteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1057,32 +1078,92 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getPredio", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdPredio", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string getPredio(string nombre_predio) {
-            object[] results = this.Invoke("getPredio", new object[] {
+        public string getIdPredio(string nombre_predio) {
+            object[] results = this.Invoke("getIdPredio", new object[] {
                         nombre_predio});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void getPredioAsync(string nombre_predio) {
-            this.getPredioAsync(nombre_predio, null);
+        public void getIdPredioAsync(string nombre_predio) {
+            this.getIdPredioAsync(nombre_predio, null);
         }
         
         /// <remarks/>
-        public void getPredioAsync(string nombre_predio, object userState) {
-            if ((this.getPredioOperationCompleted == null)) {
-                this.getPredioOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetPredioOperationCompleted);
+        public void getIdPredioAsync(string nombre_predio, object userState) {
+            if ((this.getIdPredioOperationCompleted == null)) {
+                this.getIdPredioOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetIdPredioOperationCompleted);
             }
-            this.InvokeAsync("getPredio", new object[] {
-                        nombre_predio}, this.getPredioOperationCompleted, userState);
+            this.InvokeAsync("getIdPredio", new object[] {
+                        nombre_predio}, this.getIdPredioOperationCompleted, userState);
         }
         
-        private void OngetPredioOperationCompleted(object arg) {
-            if ((this.getPredioCompleted != null)) {
+        private void OngetIdPredioOperationCompleted(object arg) {
+            if ((this.getIdPredioCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getPredioCompleted(this, new getPredioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getIdPredioCompleted(this, new getIdPredioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdPredioPkLote", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string getIdPredioPkLote(string pk_lote) {
+            object[] results = this.Invoke("getIdPredioPkLote", new object[] {
+                        pk_lote});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getIdPredioPkLoteAsync(string pk_lote) {
+            this.getIdPredioPkLoteAsync(pk_lote, null);
+        }
+        
+        /// <remarks/>
+        public void getIdPredioPkLoteAsync(string pk_lote, object userState) {
+            if ((this.getIdPredioPkLoteOperationCompleted == null)) {
+                this.getIdPredioPkLoteOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetIdPredioPkLoteOperationCompleted);
+            }
+            this.InvokeAsync("getIdPredioPkLote", new object[] {
+                        pk_lote}, this.getIdPredioPkLoteOperationCompleted, userState);
+        }
+        
+        private void OngetIdPredioPkLoteOperationCompleted(object arg) {
+            if ((this.getIdPredioPkLoteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getIdPredioPkLoteCompleted(this, new getIdPredioPkLoteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getNombrePredio", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string getNombrePredio(string id_predio) {
+            object[] results = this.Invoke("getNombrePredio", new object[] {
+                        id_predio});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getNombrePredioAsync(string id_predio) {
+            this.getNombrePredioAsync(id_predio, null);
+        }
+        
+        /// <remarks/>
+        public void getNombrePredioAsync(string id_predio, object userState) {
+            if ((this.getNombrePredioOperationCompleted == null)) {
+                this.getNombrePredioOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetNombrePredioOperationCompleted);
+            }
+            this.InvokeAsync("getNombrePredio", new object[] {
+                        id_predio}, this.getNombrePredioOperationCompleted, userState);
+        }
+        
+        private void OngetNombrePredioOperationCompleted(object arg) {
+            if ((this.getNombrePredioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getNombrePredioCompleted(this, new getNombrePredioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1119,34 +1200,94 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getManzana", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdManzana", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string getManzana(string numero_manzana, string pk_predio) {
-            object[] results = this.Invoke("getManzana", new object[] {
+        public string getIdManzana(string numero_manzana, string pk_predio) {
+            object[] results = this.Invoke("getIdManzana", new object[] {
                         numero_manzana,
                         pk_predio});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void getManzanaAsync(string numero_manzana, string pk_predio) {
-            this.getManzanaAsync(numero_manzana, pk_predio, null);
+        public void getIdManzanaAsync(string numero_manzana, string pk_predio) {
+            this.getIdManzanaAsync(numero_manzana, pk_predio, null);
         }
         
         /// <remarks/>
-        public void getManzanaAsync(string numero_manzana, string pk_predio, object userState) {
-            if ((this.getManzanaOperationCompleted == null)) {
-                this.getManzanaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetManzanaOperationCompleted);
+        public void getIdManzanaAsync(string numero_manzana, string pk_predio, object userState) {
+            if ((this.getIdManzanaOperationCompleted == null)) {
+                this.getIdManzanaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetIdManzanaOperationCompleted);
             }
-            this.InvokeAsync("getManzana", new object[] {
+            this.InvokeAsync("getIdManzana", new object[] {
                         numero_manzana,
-                        pk_predio}, this.getManzanaOperationCompleted, userState);
+                        pk_predio}, this.getIdManzanaOperationCompleted, userState);
         }
         
-        private void OngetManzanaOperationCompleted(object arg) {
-            if ((this.getManzanaCompleted != null)) {
+        private void OngetIdManzanaOperationCompleted(object arg) {
+            if ((this.getIdManzanaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getManzanaCompleted(this, new getManzanaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getIdManzanaCompleted(this, new getIdManzanaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdManzanaPkLote", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string getIdManzanaPkLote(string pk_lote) {
+            object[] results = this.Invoke("getIdManzanaPkLote", new object[] {
+                        pk_lote});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getIdManzanaPkLoteAsync(string pk_lote) {
+            this.getIdManzanaPkLoteAsync(pk_lote, null);
+        }
+        
+        /// <remarks/>
+        public void getIdManzanaPkLoteAsync(string pk_lote, object userState) {
+            if ((this.getIdManzanaPkLoteOperationCompleted == null)) {
+                this.getIdManzanaPkLoteOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetIdManzanaPkLoteOperationCompleted);
+            }
+            this.InvokeAsync("getIdManzanaPkLote", new object[] {
+                        pk_lote}, this.getIdManzanaPkLoteOperationCompleted, userState);
+        }
+        
+        private void OngetIdManzanaPkLoteOperationCompleted(object arg) {
+            if ((this.getIdManzanaPkLoteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getIdManzanaPkLoteCompleted(this, new getIdManzanaPkLoteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getNumeroManzana", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string getNumeroManzana(string id_manzana) {
+            object[] results = this.Invoke("getNumeroManzana", new object[] {
+                        id_manzana});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getNumeroManzanaAsync(string id_manzana) {
+            this.getNumeroManzanaAsync(id_manzana, null);
+        }
+        
+        /// <remarks/>
+        public void getNumeroManzanaAsync(string id_manzana, object userState) {
+            if ((this.getNumeroManzanaOperationCompleted == null)) {
+                this.getNumeroManzanaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetNumeroManzanaOperationCompleted);
+            }
+            this.InvokeAsync("getNumeroManzana", new object[] {
+                        id_manzana}, this.getNumeroManzanaOperationCompleted, userState);
+        }
+        
+        private void OngetNumeroManzanaOperationCompleted(object arg) {
+            if ((this.getNumeroManzanaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getNumeroManzanaCompleted(this, new getNumeroManzanaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1265,6 +1406,36 @@ namespace PvTerrenos.WSpvt {
             if ((this.getIdLoteCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getIdLoteCompleted(this, new getIdLoteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getNumeroLote", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string getNumeroLote(string id_lote) {
+            object[] results = this.Invoke("getNumeroLote", new object[] {
+                        id_lote});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getNumeroLoteAsync(string id_lote) {
+            this.getNumeroLoteAsync(id_lote, null);
+        }
+        
+        /// <remarks/>
+        public void getNumeroLoteAsync(string id_lote, object userState) {
+            if ((this.getNumeroLoteOperationCompleted == null)) {
+                this.getNumeroLoteOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetNumeroLoteOperationCompleted);
+            }
+            this.InvokeAsync("getNumeroLote", new object[] {
+                        id_lote}, this.getNumeroLoteOperationCompleted, userState);
+        }
+        
+        private void OngetNumeroLoteOperationCompleted(object arg) {
+            if ((this.getNumeroLoteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getNumeroLoteCompleted(this, new getNumeroLoteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1401,34 +1572,32 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/cancelarPago", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getProximoPago", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string cancelarPago(string id_sesion, string id_venta) {
-            object[] results = this.Invoke("cancelarPago", new object[] {
-                        id_sesion,
+        public string getProximoPago(string id_venta) {
+            object[] results = this.Invoke("getProximoPago", new object[] {
                         id_venta});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void cancelarPagoAsync(string id_sesion, string id_venta) {
-            this.cancelarPagoAsync(id_sesion, id_venta, null);
+        public void getProximoPagoAsync(string id_venta) {
+            this.getProximoPagoAsync(id_venta, null);
         }
         
         /// <remarks/>
-        public void cancelarPagoAsync(string id_sesion, string id_venta, object userState) {
-            if ((this.cancelarPagoOperationCompleted == null)) {
-                this.cancelarPagoOperationCompleted = new System.Threading.SendOrPostCallback(this.OncancelarPagoOperationCompleted);
+        public void getProximoPagoAsync(string id_venta, object userState) {
+            if ((this.getProximoPagoOperationCompleted == null)) {
+                this.getProximoPagoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetProximoPagoOperationCompleted);
             }
-            this.InvokeAsync("cancelarPago", new object[] {
-                        id_sesion,
-                        id_venta}, this.cancelarPagoOperationCompleted, userState);
+            this.InvokeAsync("getProximoPago", new object[] {
+                        id_venta}, this.getProximoPagoOperationCompleted, userState);
         }
         
-        private void OncancelarPagoOperationCompleted(object arg) {
-            if ((this.cancelarPagoCompleted != null)) {
+        private void OngetProximoPagoOperationCompleted(object arg) {
+            if ((this.getProximoPagoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.cancelarPagoCompleted(this, new cancelarPagoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getProximoPagoCompleted(this, new getProximoPagoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1877,17 +2046,17 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void listaVentasCompletedEventHandler(object sender, listaVentasCompletedEventArgs e);
+    public delegate void getVentaCompletedEventHandler(object sender, getVentaCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class listaVentasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class getVentaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal listaVentasCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal getVentaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1903,17 +2072,17 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void getComisionCompletedEventHandler(object sender, getComisionCompletedEventArgs e);
+    public delegate void registraAbonoCompletedEventHandler(object sender, registraAbonoCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getComisionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class registraAbonoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal getComisionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal registraAbonoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1929,17 +2098,17 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void setComisionCompletedEventHandler(object sender, setComisionCompletedEventArgs e);
+    public delegate void getAbonoCompletedEventHandler(object sender, getAbonoCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class setComisionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class getAbonoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal setComisionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal getAbonoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1955,17 +2124,17 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void getIdVentaCompletedEventHandler(object sender, getIdVentaCompletedEventArgs e);
+    public delegate void getIdVentaPkLoteCompletedEventHandler(object sender, getIdVentaPkLoteCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getIdVentaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class getIdVentaPkLoteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal getIdVentaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal getIdVentaPkLoteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2059,17 +2228,69 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void getPredioCompletedEventHandler(object sender, getPredioCompletedEventArgs e);
+    public delegate void getIdPredioCompletedEventHandler(object sender, getIdPredioCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getPredioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class getIdPredioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal getPredioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal getIdPredioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void getIdPredioPkLoteCompletedEventHandler(object sender, getIdPredioPkLoteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getIdPredioPkLoteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getIdPredioPkLoteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void getNombrePredioCompletedEventHandler(object sender, getNombrePredioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getNombrePredioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getNombrePredioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2111,17 +2332,69 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void getManzanaCompletedEventHandler(object sender, getManzanaCompletedEventArgs e);
+    public delegate void getIdManzanaCompletedEventHandler(object sender, getIdManzanaCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getManzanaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class getIdManzanaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal getManzanaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal getIdManzanaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void getIdManzanaPkLoteCompletedEventHandler(object sender, getIdManzanaPkLoteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getIdManzanaPkLoteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getIdManzanaPkLoteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void getNumeroManzanaCompletedEventHandler(object sender, getNumeroManzanaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getNumeroManzanaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getNumeroManzanaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2200,6 +2473,32 @@ namespace PvTerrenos.WSpvt {
         private object[] results;
         
         internal getIdLoteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void getNumeroLoteCompletedEventHandler(object sender, getNumeroLoteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getNumeroLoteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getNumeroLoteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -2319,17 +2618,17 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void cancelarPagoCompletedEventHandler(object sender, cancelarPagoCompletedEventArgs e);
+    public delegate void getProximoPagoCompletedEventHandler(object sender, getProximoPagoCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class cancelarPagoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class getProximoPagoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal cancelarPagoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal getProximoPagoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
