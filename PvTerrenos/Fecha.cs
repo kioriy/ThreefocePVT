@@ -49,7 +49,6 @@ namespace PvTerrenos
                 return false;
             }
         }
-<<<<<<< HEAD
 
        public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago, string idVenta, string monto) {
 
@@ -63,13 +62,8 @@ namespace PvTerrenos
            int aMaxMes = 0;
            int bMaxMes = 0;
            string respuestaRegistraMora= "";
-            
-=======
-        
-      /* public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago) {
->>>>>>> 77b74ecfc43b27e17df20ee197a0e62a81888d0e
-
-            if (esMoroso && !statusMora) { 
+                    
+           if (esMoroso && !statusMora) { 
                 
                 for (int i = 0; minMes <= maxMes-i; i++) {//Es el mes donde se genraran la moras
                         
@@ -91,20 +85,11 @@ namespace PvTerrenos
 
 
             
-<<<<<<< HEAD
             }*/
 
 
             return respuestaRegistraMora;
         }
-=======
-            }
-            
-        
-        
-        
-        }*/
->>>>>>> 77b74ecfc43b27e17df20ee197a0e62a81888d0e
        /* public DateTime setDiferenciaFecha(DateTime fechaInicio, DateTime FechaFinal) {
 
 
