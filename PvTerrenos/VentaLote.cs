@@ -105,6 +105,8 @@ namespace PvTerrenos
 
         private void cmdAgregar_Click(object sender, EventArgs e)
         {
+
+
             ///llamamos a la funcion que nos valida que el formulario no tenga campos nulos
             validar(this);
 
@@ -113,8 +115,10 @@ namespace PvTerrenos
             string caption = "Registro de venta";
             MessageBoxButtons botones = MessageBoxButtons.OKCancel;
             DialogResult resultado;
-            
 
+            // para agregar las medidas del lote
+            frmMedidaLote MedidaLote = new frmMedidaLote();
+            MedidaLote.Show();
 
             if (vacio == false)
             
@@ -123,8 +127,10 @@ namespace PvTerrenos
 
                 if (resultado == System.Windows.Forms.DialogResult.OK)
             {
-               
 
+
+            
+            
                 WSpvt.PVT ws = new WSpvt.PVT();
 
                 string id_comprador = txtId.Text;
@@ -135,6 +141,8 @@ namespace PvTerrenos
                 string mensualidad = txtMensualidad.Text;
                 string fechaCompra = dtpFecha.Value.ToString();
                 string fechaCorte = dtpFecha.Value.Day.ToString();
+
+
                 //MessageBox.Show(fechaCorte);
                 string respuestaAltaVenta = ws.registraVenta(id_comprador, idLote, tipo_pago, monto, mensualidad, fechaCompra, fechaCorte);
                 MessageBox.Show(respuestaAltaVenta);
@@ -168,6 +176,8 @@ namespace PvTerrenos
 
         private void dtpFecha_ValueChanged(object sender, EventArgs e)
         {
+
+            
             if (txtPagoActual.Text != "" && txtPagoFinal.Text !="") {
 
                 Fecha obtenerProximoPago = new Fecha();
