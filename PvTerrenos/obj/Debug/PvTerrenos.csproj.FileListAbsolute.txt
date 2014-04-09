@@ -46,3 +46,16 @@ C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.Fr
 C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.FrmPago.resources
 C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.Properties.Resources.resources
 C:\Users\Miriam\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.csproj.GenerateResource.Cache
+C:\Users\Miriam\terrenos\PvTerrenos\bin\Debug\PvTerrenos.exe.config
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.exe
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.pdb
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.csprojResolveAssemblyReference.cache
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.frmInicioSesion.resources
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.FrmVentaLote.resources
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.FrmAltaPredio.resources
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.FrmAltaCliente.resources
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.FrmPago.resources
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.Properties.Resources.resources
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.csproj.GenerateResource.Cache
+C:\Users\Miriam\terrenos\PvTerrenos\bin\Debug\PvTerrenos.exe
+C:\Users\Miriam\terrenos\PvTerrenos\bin\Debug\PvTerrenos.pdb

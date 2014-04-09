@@ -49,8 +49,8 @@ namespace PvTerrenos
                 return false;
             }
         }
-
-       public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago) {
+        
+      /* public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago) {
 
             if (esMoroso && !statusMora) { 
                 
@@ -74,7 +74,7 @@ namespace PvTerrenos
         
         
         
-        }
+        }*/
        /* public DateTime setDiferenciaFecha(DateTime fechaInicio, DateTime FechaFinal) {
 
 
