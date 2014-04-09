@@ -64,7 +64,7 @@ namespace PvTerrenos
                 txtPagoActual.Text = pago_actual;
                 txtPagoFinal.Text = pago_final;
                 txtMensualidad.Text = mensualidad;
-                txtProximoPago.Text = Convert.ToDateTime(proximoPago).ToString("D");
+                txtProximoPago.Text = Convert.ToDateTime(proximoPago).ToString("d");
 
                 cbPredio.Items.Add(nombrePredio);
                 cbManzana.Items.Add(numeroManzana);
@@ -72,6 +72,10 @@ namespace PvTerrenos
                 cbPredio.SelectedIndex = 0;
                 cbManzana.SelectedIndex = 0;
                 cbLote.SelectedIndex = 0;
+
+                Fecha f  = new Fecha();
+
+                string respuestaResgistraMora = f.calculaMesesMorosos(f.estaEnMora(Convert.ToDateTime(proximoPago)), f.statusMora(status_mora), Convert.ToDateTime(proximoPago), idVenta, mensualidad);
                 
                 //Fecha mora = new Fecha();
 

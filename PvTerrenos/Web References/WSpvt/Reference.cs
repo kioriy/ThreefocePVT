@@ -109,6 +109,8 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback registraPagoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback registraMoraOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -266,6 +268,9 @@ namespace PvTerrenos.WSpvt {
         
         /// <remarks/>
         public event registraPagoCompletedEventHandler registraPagoCompleted;
+        
+        /// <remarks/>
+        public event registraMoraCompletedEventHandler registraMoraCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/login", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
@@ -1681,6 +1686,44 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraMora", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string registraMora(string id_venta, string monto_mora, string fecha_pago, string mes_mora, string fecha_mora) {
+            object[] results = this.Invoke("registraMora", new object[] {
+                        id_venta,
+                        monto_mora,
+                        fecha_pago,
+                        mes_mora,
+                        fecha_mora});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void registraMoraAsync(string id_venta, string monto_mora, string fecha_pago, string mes_mora, string fecha_mora) {
+            this.registraMoraAsync(id_venta, monto_mora, fecha_pago, mes_mora, fecha_mora, null);
+        }
+        
+        /// <remarks/>
+        public void registraMoraAsync(string id_venta, string monto_mora, string fecha_pago, string mes_mora, string fecha_mora, object userState) {
+            if ((this.registraMoraOperationCompleted == null)) {
+                this.registraMoraOperationCompleted = new System.Threading.SendOrPostCallback(this.OnregistraMoraOperationCompleted);
+            }
+            this.InvokeAsync("registraMora", new object[] {
+                        id_venta,
+                        monto_mora,
+                        fecha_pago,
+                        mes_mora,
+                        fecha_mora}, this.registraMoraOperationCompleted, userState);
+        }
+        
+        private void OnregistraMoraOperationCompleted(object arg) {
+            if ((this.registraMoraCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.registraMoraCompleted(this, new registraMoraCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -2726,6 +2769,32 @@ namespace PvTerrenos.WSpvt {
         private object[] results;
         
         internal registraPagoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void registraMoraCompletedEventHandler(object sender, registraMoraCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class registraMoraCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal registraMoraCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -33,10 +33,10 @@ namespace PvTerrenos
 
             if (fechaProximoPago.AddDays(6) <= DateTime.Today)
             {
-                return false;
+                return true;
             }
             else {
-                return true;
+                return false;
             }
         }
         public Boolean statusMora(string statusMora) {
@@ -50,30 +50,46 @@ namespace PvTerrenos
             }
         }
 
-       public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago) {
+       public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago, string idVenta, string monto) {
+
+           WSpvt.PVT ws = new WSpvt.PVT();
+           
+           DateTime hoy = DateTime.Today;
+           
+           double montoMora = 0;
+           int minMes = proximoPago.Month;
+           int maxMes = hoy.Month;
+           int aMaxMes = 0;
+           int bMaxMes = 0;
+           string respuestaRegistraMora= "";
+            
 
             if (esMoroso && !statusMora) { 
                 
-                int fechaDeCambio = Convert.ToInt32(DateTime.Today.Month);
-                
-                for (int incremento = Convert.ToInt32(proximoPago.Month); incremento <= fechaDeCambio; fechaDeCambio--) { 
-                    
-                    for()
-                
-                
-                
+                for (int i = 0; minMes <= maxMes-i; i++) {//Es el mes donde se genraran la moras
+                        
+                        aMaxMes = i;
+                        bMaxMes = maxMes-i;
+
+                    for (int j = 0; minMes <= bMaxMes-j ; j++ ) {//es el ciclo que generara las moras 
+
+                        montoMora = Convert.ToDouble(monto) * 0.06;  
+
+                        DateTime mesPrincipal = hoy.AddMonths(-aMaxMes);
+                        DateTime mesRecorrido = mesPrincipal.AddMonths(-j);
+
+                        respuestaRegistraMora= ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(),mesPrincipal.ToString());
+                    }
                 }
-            
             }
-            if (esMoroso && statusMora) { 
+            /*if (esMoroso && statusMora) { 
 
 
             
-            }
-            
-        
-        
-        
+            }*/
+
+
+            return respuestaRegistraMora;
         }
        /* public DateTime setDiferenciaFecha(DateTime fechaInicio, DateTime FechaFinal) {
 
