@@ -166,6 +166,7 @@
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(184, 20);
             this.dtpFecha.TabIndex = 10;
+            this.dtpFecha.Value = new System.DateTime(2014, 4, 8, 21, 19, 43, 0);
             this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
             // txtPagoActual

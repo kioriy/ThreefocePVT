@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fecha.cs" />
+    <Compile Include="frmMedidaLote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMedidaLote.Designer.cs">
+      <DependentUpon>frmMedidaLote.cs</DependentUpon>
+    </Compile>
     <Compile Include="InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmMedidaLote.resx">
+      <DependentUpon>frmMedidaLote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </EmbeddedResource>
