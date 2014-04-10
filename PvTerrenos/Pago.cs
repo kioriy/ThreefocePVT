@@ -76,7 +76,7 @@ namespace PvTerrenos
                 Fecha f  = new Fecha();
 
                 string respuestaResgistraMora = f.calculaMesesMorosos(f.estaEnMora(Convert.ToDateTime(proximoPago)), f.statusMora(status_mora), Convert.ToDateTime(proximoPago), idVenta, mensualidad);
-                
+                MessageBox.Show(respuestaResgistraMora);
                 //Fecha mora = new Fecha();
 
                 //MessageBox.Show(Convert.ToString(DateTime.Today) + " " + proximoPago);

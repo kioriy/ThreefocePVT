@@ -19,9 +19,12 @@ namespace PvTerrenos
             InitializeComponent();
             cbFormaPago.Items.Add("Abonos");
             cbFormaPago.Items.Add("Contado");
-            cbPredio.Items.Add("SANTA ANITA");
-            cbManzana.Items.Add("1");
-            cbLotes.Items.Add("7");
+
+            llenarCombos();
+            /*WSpvt.PVT ws = new WSpvt.PVT();
+            string respuesta = ws.cargaManzana("SA");
+
+            MessageBox.Show(respuesta);*/
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,12 +69,10 @@ namespace PvTerrenos
             cbLotes.Text = "";
             cbManzana.Text = "";
             txtNombre.Text = "";
-
-            
-        
         }
 
         public bool vacio;
+
         private bool validar(Form VentaLote ) {
 
             String id = txtId.Text;
@@ -117,8 +118,8 @@ namespace PvTerrenos
             DialogResult resultado;
 
             // para agregar las medidas del lote
-            frmMedidaLote MedidaLote = new frmMedidaLote();
-            MedidaLote.Show();
+           // frmMedidaLote MedidaLote = new frmMedidaLote();
+           // MedidaLote.Show();
 
             if (vacio == false)
             
@@ -128,9 +129,6 @@ namespace PvTerrenos
                 if (resultado == System.Windows.Forms.DialogResult.OK)
             {
 
-
-            
-            
                 WSpvt.PVT ws = new WSpvt.PVT();
 
                 string id_comprador = txtId.Text;
@@ -142,8 +140,6 @@ namespace PvTerrenos
                 string fechaCompra = dtpFecha.Value.ToString();
                 string fechaCorte = dtpFecha.Value.Day.ToString();
 
-
-                //MessageBox.Show(fechaCorte);
                 string respuestaAltaVenta = ws.registraVenta(id_comprador, idLote, tipo_pago, monto, mensualidad, fechaCompra, fechaCorte);
                 MessageBox.Show(respuestaAltaVenta);
 
@@ -153,26 +149,14 @@ namespace PvTerrenos
 
                 int pagoActualMasUno = Convert.ToInt32(txtPagoActual.Text) + 1;
 
-                //MessageBox.Show(Convert.ToString(pagoActualMasUno));
-                //MessageBox.Show(idVenta+" "+proximoPago.Value.ToString()+" "+txtPagoActual.Text+" "+txtPagoFinal.Text);
-
-                string registraProximoPago = ws.registraProximoPago(idVenta, proximoPago.Value.ToString(), Convert.ToString(pagoActualMasUno), txtPagoFinal.Text);
-                //MessageBox.Show(registraProximoPago);
+                string respuestaProximoPago = ws.registraProximoPago(idVenta, mensualidad, proximoPago.Value.ToString(),"0", Convert.ToString(pagoActualMasUno), txtPagoFinal.Text);
+                MessageBox.Show(respuestaProximoPago);
                 string registraAbono = ws.registraAbono(id_comprador, abono);
-                //MessageBox.Show(registraAbono);
 
                limpiar(this);
-
-
             }
-
          }
-
-            
-
         }
-
- 
 
         private void dtpFecha_ValueChanged(object sender, EventArgs e)
         {
@@ -188,6 +172,54 @@ namespace PvTerrenos
 
             }else{
                 MessageBox.Show("es necesario ingresar pagos:   /    ");
+            }
+        }
+
+        private void llenarCombos() {
+
+
+            WSpvt.PVT ws = new WSpvt.PVT();
+
+            string respuestaCargaPredio = ws.cargaPredio();
+
+            string[] splitPredios = respuestaCargaPredio.Split(new char[] {','});
+
+            foreach (string cargaCombo in splitPredios) {
+
+                cbPredio.Items.Add(cargaCombo);
+            }
+        }
+
+        private void cbPredio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbManzana.Items.Clear();
+            WSpvt.PVT ws = new WSpvt.PVT();
+
+            string idPredio = ws.getIdPredio((string)cbPredio.SelectedItem);
+            string respuestaCargaManzana = ws.cargaManzana(idPredio);
+
+            string[] splitCargaManzana = respuestaCargaManzana.Split(new char[] { ',' });
+
+            foreach (string cargaCombo in splitCargaManzana) {
+
+                cbManzana.Items.Add(cargaCombo);
+            }
+        }
+
+        private void cbManzana_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbLotes.Items.Clear();
+            WSpvt.PVT ws = new WSpvt.PVT();
+
+            string idPredio = ws.getIdPredio((string)cbPredio.SelectedItem);
+            string idManzana = ws.getIdManzana((string)cbManzana.SelectedItem, idPredio);
+            string respuestaCargaLote = ws.cargaLotes(idManzana);
+
+            string[] splitCargaLotes = respuestaCargaLote.Split(new char[] { ',' });
+
+            foreach (string cargaLotes in splitCargaLotes) {
+
+                cbLotes.Items.Add(cargaLotes);
             }
         }
     }

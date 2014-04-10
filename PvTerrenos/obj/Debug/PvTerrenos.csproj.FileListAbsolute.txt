@@ -60,3 +60,4 @@ C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.csproj.GenerateResource
 C:\Users\Miriam\terrenos\PvTerrenos\bin\Debug\PvTerrenos.exe
 C:\Users\Miriam\terrenos\PvTerrenos\bin\Debug\PvTerrenos.pdb
 C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.frmMedidaLote.resources
+C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.frmMedidaLote.resources

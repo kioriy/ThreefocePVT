@@ -158,14 +158,14 @@ namespace PvTerrenos
                     {
                         MessageBox.Show("Lotes registrados con EXITO");
                     }
-                    int control = 0;
+                   /* int control = 0;
 
                     if ((String)cbSeleccionaManzanaLote.SelectedItem == "Manzanas" || (String)cbSeleccionaManzanaLote.SelectedItem == "Lotes")
                     {
                       control = Convert.ToInt32(txtNumManzanaLote.Text);
-                    } 
+                    } */
 
-                    if ((Int32)cbNumeroManzana.SelectedItem == control)
+                    if ( cbNumeroManzana.SelectedIndex == Convert.ToInt32(txtNumManzanaLote.Text)-1||  cbSeleccionaManzanaLote.SelectedIndex == 1)
                     {
                         txtNombrePredio.Text = "";
                         txtIdPredio.Text = "";
@@ -178,6 +178,7 @@ namespace PvTerrenos
                         cmdGenerarPredio.Enabled = true;
                         cmdGenerarLotes.Visible = false;
                         cmdGeneraManzanas.Visible = false;
+                        cbSeleccionaManzanaLote.SelectedIndex = -1;
                     }
                 }//cierre de else en condicion de if cuando txtNumeroManzanaLote esta vacio
             }//cierre de else

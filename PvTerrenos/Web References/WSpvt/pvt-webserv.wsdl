@@ -231,6 +231,12 @@
   <wsdl:message name="registraManzanaResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="cargaManzanaRequest">
+    <wsdl:part name="id_predio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargaManzanaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="getIdManzanaRequest">
     <wsdl:part name="numero_manzana" type="xsd:string" />
     <wsdl:part name="pk_predio" type="xsd:string" />
@@ -256,6 +262,12 @@
     <wsdl:part name="n_lote" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraLoteResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargaLotesRequest">
+    <wsdl:part name="id_manzana" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cargaLotesResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="updateLoteRequest">
@@ -311,7 +323,9 @@
   </wsdl:message>
   <wsdl:message name="registraProximoPagoRequest">
     <wsdl:part name="id_venta" type="xsd:string" />
+    <wsdl:part name="monto" type="xsd:string" />
     <wsdl:part name="proximo_pago" type="xsd:string" />
+    <wsdl:part name="tipo_pago" type="xsd:string" />
     <wsdl:part name="pago_actual" type="xsd:string" />
     <wsdl:part name="pago_final" type="xsd:string" />
   </wsdl:message>
@@ -458,6 +472,10 @@
       <wsdl:input message="tns:registraManzanaRequest" />
       <wsdl:output message="tns:registraManzanaResponse" />
     </wsdl:operation>
+    <wsdl:operation name="cargaManzana">
+      <wsdl:input message="tns:cargaManzanaRequest" />
+      <wsdl:output message="tns:cargaManzanaResponse" />
+    </wsdl:operation>
     <wsdl:operation name="getIdManzana">
       <wsdl:input message="tns:getIdManzanaRequest" />
       <wsdl:output message="tns:getIdManzanaResponse" />
@@ -473,6 +491,10 @@
     <wsdl:operation name="registraLote">
       <wsdl:input message="tns:registraLoteRequest" />
       <wsdl:output message="tns:registraLoteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cargaLotes">
+      <wsdl:input message="tns:cargaLotesRequest" />
+      <wsdl:output message="tns:cargaLotesResponse" />
     </wsdl:operation>
     <wsdl:operation name="updateLote">
       <wsdl:input message="tns:updateLoteRequest" />
@@ -755,6 +777,15 @@
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="cargaManzana">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/cargaManzana" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getIdManzana">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdManzana" style="rpc" />
       <wsdl:input>
@@ -784,6 +815,15 @@
     </wsdl:operation>
     <wsdl:operation name="registraLote">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraLote" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargaLotes">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/cargaLotes" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
