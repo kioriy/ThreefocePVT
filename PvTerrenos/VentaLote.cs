@@ -21,10 +21,6 @@ namespace PvTerrenos
             cbFormaPago.Items.Add("Contado");
 
             llenarCombos();
-            /*WSpvt.PVT ws = new WSpvt.PVT();
-            string respuesta = ws.cargaManzana("SA");
-
-            MessageBox.Show(respuesta);*/
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,7 +48,7 @@ namespace PvTerrenos
                 WSpvt.PVT ws = new WSpvt.PVT();
                 string id = txtId.Text;
                 string respuestaGetUsuario = ws.getComprador(id);
-                txtNombre.Text = respuestaGetUsuario;
+                cbNombre.Text = respuestaGetUsuario;
             }
         }
 
@@ -68,7 +64,7 @@ namespace PvTerrenos
             cbPredio.Text = "";
             cbLotes.Text = "";
             cbManzana.Text = "";
-            txtNombre.Text = "";
+            cbNombre.SelectedIndex = -1;
         }
 
         public bool vacio;
@@ -177,7 +173,6 @@ namespace PvTerrenos
 
         private void llenarCombos() {
 
-
             WSpvt.PVT ws = new WSpvt.PVT();
 
             string respuestaCargaPredio = ws.cargaPredio();
@@ -187,6 +182,13 @@ namespace PvTerrenos
             foreach (string cargaCombo in splitPredios) {
 
                 cbPredio.Items.Add(cargaCombo);
+            }
+            string repuestaNombreComprador = ws.cargaComprador();
+            string [] splitNombreComprador = respuestaCargaPredio.Split(new char[] {','});
+
+            foreach (string nombreComprador in splitNombreComprador) {
+
+                cbNombre.Items.Add(nombreComprador);
             }
         }
 

@@ -8,6 +8,7 @@ namespace PvTerrenos
 {
     class Fecha
     {
+        WSpvt.PVT ws = new WSpvt.PVT();
         //variable tipo datetime
         
     
@@ -51,61 +52,118 @@ namespace PvTerrenos
             }
         }
 
-       public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago, string idVenta, string monto) {
+        public bool mesYaEstaEnMora(DateTime proximoPago, string idVenta) {
 
-           WSpvt.PVT ws = new WSpvt.PVT();
+            int bandera = 0;
+            string respuestaFechaMora = ws.getFechaMora(idVenta);
+            string[] splitFechaMora = respuestaFechaMora.Split(new char[] { ',' });
 
-           DateTime hoy = DateTime.Today;
-
-           if (proximoPago.Day <= DateTime.Today.AddDays(6).Day)
-           {
-               hoy = DateTime.Today.AddMonths(-1);
-           }
-           
-           double montoMora = 0;
-           int auxiliar = 0;
-           int minMes = proximoPago.Month;
-           int maxMes = hoy.Month;
-           int aMaxMes = 0;
-           int bMaxMes = 0;
-           string respuestaRegistraMora= "";
-
-           for (int i = 1; proximoPago <= hoy.AddMonths(-i); i++) {
-               auxiliar = i;
-           }
-
-               if (esMoroso && !statusMora)
-               {
-
-                   for (int i = 0; i <= auxiliar; i++)
-                   {
-                       aMaxMes = i;
-                       bMaxMes = auxiliar-i;
-
-                       for (int j = 0; j <= bMaxMes; j++) {
-
-                           montoMora = Convert.ToDouble(monto) * 0.06;
-
-                           DateTime mesPrincipal = proximoPago.AddMonths(auxiliar -aMaxMes);
-                           DateTime mesRecorrido = mesPrincipal.AddMonths(-j);
-
-                           respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString());
-                       }
-                   }
-               }
-            /*if (esMoroso && statusMora) { 
-
-
+            foreach (string fechaMora in splitFechaMora) { 
             
-            }*/
-            return respuestaRegistraMora;
+                DateTime fechaMoraCompara = Convert.ToDateTime(fechaMora);
+
+                //for (int i = 0; )
+                if (fechaMoraCompara.Year == DateTime.Today.Year && fechaMoraCompara.Month == DateTime.Today.Month)
+                {
+                    bandera++;
+                }
+            }
+            if (bandera > 1)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
 
-       /* public DateTime setDiferenciaFecha(DateTime fechaInicio, DateTime FechaFinal) {
+        public string ultimoMesEnMora(string idVenta) {
 
+            string respuestaUltimoMesMora = ws.getFechaMora(idVenta);
+            string[] splitUltimoMesMora = respuestaUltimoMesMora.Split(new char[] { ',' });
 
+            int tamañoArreglo = splitUltimoMesMora.Length;
 
-            return;
-        }*/
+            return splitUltimoMesMora[tamañoArreglo-1];
+        }
+
+        public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago, string idVenta, string monto){
+
+            DateTime hoy = DateTime.Today;
+
+            if (proximoPago.AddDays(6).Day >= DateTime.Today.Day){
+
+                hoy = DateTime.Today.AddMonths(-1);
+            }
+
+            double montoMora = 0;
+            int auxiliar = 0;
+            int auxiliar2 = 0;
+            int maxMes = hoy.Month;
+            int aMaxMes = 0;
+            int bMaxMes = 0;
+            string respuestaRegistraMora = "";
+
+            for (int i = 1; proximoPago.Month <= hoy.AddMonths(-i).Month; i++){
+
+                auxiliar = i; //en esta variable se guarda la distancia en meses de dos fecha "proximoPago"  y "fecha hoy" 
+            }
+
+            if (esMoroso && !statusMora)//esta sentencia determinamos si la fecha de "proximoPago" ya entro en mora ademas se checa
+            {                           //en el status para saber si ya habia entrado a este ciclo de ser asi no se hace todo el calculo de mora desde su ultima fecha no pagada              
+                for (int i = 0; i <= auxiliar; i++)
+                {
+                    aMaxMes = i; //lleba el registro del mes en en que se esta efectuando la mora o moras ejemplo "mora de febrero en Marzo <-- esta variable seria Marzo"
+                    bMaxMes = auxiliar - i; //varible que servira para recorrer los meses en el siguiente ciclo
+
+                    for (int j = 0; j <= bMaxMes; j++)
+                    { //este recorrera los meses hasta llegar al mes en fecha de proximo pago 
+
+                        montoMora = Convert.ToDouble(monto) * 0.06;
+
+                        DateTime mesPrincipal = proximoPago.AddMonths(auxiliar - aMaxMes);
+                        DateTime mesRecorrido = mesPrincipal.AddMonths(-j);
+
+                        respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString());
+                        ws.updateStatusMora(idVenta);
+                    }
+                } return respuestaRegistraMora;
+            }
+
+            if (esMoroso && statusMora && !mesYaEstaEnMora(proximoPago, idVenta) && proximoPago.AddDays(6).Day <= DateTime.Today.Day)
+            {
+                string ultimoMes = ultimoMesEnMora(idVenta);
+
+                for (int i = 1; Convert.ToDateTime(ultimoMes).Month <= hoy.AddMonths(-i).Month; i++)
+                {
+                    auxiliar = i; 
+                }
+                for (int i = 1; proximoPago.Month <= hoy.AddMonths(-i).Month; i++)
+                {
+                    auxiliar2 = i;
+                }
+
+                for (int i = 0; i < auxiliar; i++)
+                {
+                     aMaxMes = i; //lleba el registro del mes en en que se esta efectuando la mora o moras ejemplo "mora de febrero en Marzo <-- esta variable seria Marzo"
+                     bMaxMes = auxiliar2 - i; //varible que servira para recorrer los meses en el siguiente ciclo
+
+                     for (int j = 0; j <= bMaxMes; j++)
+                     {//este recorrera los meses hasta llegar al mes en fecha de proximo pago 
+
+                         montoMora = Convert.ToDouble(monto) * 0.06;
+
+                         DateTime mesPrincipal = Convert.ToDateTime(ultimoMes).AddMonths(auxiliar - aMaxMes);
+                         DateTime mesRecorrido = mesPrincipal.AddMonths(-j);
+
+                         respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString());   
+                     }
+                 } return (respuestaRegistraMora + " se registro nueva mora para este usuario");   
+            }
+            else
+            {
+                return "No genero mora";
+            }
+        }
     }
 }

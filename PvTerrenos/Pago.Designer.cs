@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbComprador = new System.Windows.Forms.ComboBox();
+            this.txtProximoPago = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtAbono = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -40,12 +43,12 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtTotalIntereses = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtIntereses = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbMeses = new System.Windows.Forms.ComboBox();
+            this.cbMesesMora = new System.Windows.Forms.ComboBox();
             this.cbLote = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtMensualidad = new System.Windows.Forms.TextBox();
@@ -63,12 +66,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtProximoPago = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,6 +77,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbComprador);
             this.groupBox1.Controls.Add(this.txtProximoPago);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtAbono);
@@ -96,7 +96,6 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -104,6 +103,36 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Comprador";
+            // 
+            // cbComprador
+            // 
+            this.cbComprador.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbComprador.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbComprador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbComprador.FormattingEnabled = true;
+            this.cbComprador.Location = new System.Drawing.Point(61, 58);
+            this.cbComprador.Name = "cbComprador";
+            this.cbComprador.Size = new System.Drawing.Size(285, 21);
+            this.cbComprador.TabIndex = 46;
+            // 
+            // txtProximoPago
+            // 
+            this.txtProximoPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProximoPago.Location = new System.Drawing.Point(238, 124);
+            this.txtProximoPago.Name = "txtProximoPago";
+            this.txtProximoPago.Size = new System.Drawing.Size(108, 20);
+            this.txtProximoPago.TabIndex = 45;
+            this.txtProximoPago.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(167, 127);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 13);
+            this.label12.TabIndex = 44;
+            this.label12.Text = "Fecha Pago:";
             // 
             // txtAbono
             // 
@@ -155,15 +184,16 @@
             // 
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.txtTotalIntereses);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.txtIntereses);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.cmbMeses);
-            this.groupBox3.Location = new System.Drawing.Point(368, 0);
+            this.groupBox3.Controls.Add(this.cbMesesMora);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(368, 58);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(291, 256);
+            this.groupBox3.Size = new System.Drawing.Size(291, 198);
             this.groupBox3.TabIndex = 36;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Resumen  intereses";
@@ -171,7 +201,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(126, 223);
+            this.button1.Location = new System.Drawing.Point(126, 165);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(159, 27);
             this.button1.TabIndex = 4;
@@ -186,13 +216,14 @@
             this.textBox4.Size = new System.Drawing.Size(100, 22);
             this.textBox4.TabIndex = 6;
             // 
-            // textBox5
+            // txtTotalIntereses
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(173, 174);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(112, 31);
-            this.textBox5.TabIndex = 44;
+            this.txtTotalIntereses.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalIntereses.Location = new System.Drawing.Point(173, 116);
+            this.txtTotalIntereses.Name = "txtTotalIntereses";
+            this.txtTotalIntereses.Size = new System.Drawing.Size(112, 31);
+            this.txtTotalIntereses.TabIndex = 44;
+            this.txtTotalIntereses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -208,21 +239,22 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(55, 182);
+            this.label3.Location = new System.Drawing.Point(55, 124);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 16);
             this.label3.TabIndex = 43;
             this.label3.Text = "Total intereses";
             // 
-            // textBox2
+            // txtIntereses
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox2.Location = new System.Drawing.Point(183, 21);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(102, 22);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "Interes mensual";
+            this.txtIntereses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIntereses.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.txtIntereses.Location = new System.Drawing.Point(183, 21);
+            this.txtIntereses.Name = "txtIntereses";
+            this.txtIntereses.Size = new System.Drawing.Size(102, 22);
+            this.txtIntereses.TabIndex = 3;
+            this.txtIntereses.Text = "Interes mensual";
+            this.txtIntereses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -234,14 +266,15 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Mes a pagar:";
             // 
-            // cmbMeses
+            // cbMesesMora
             // 
-            this.cmbMeses.FormattingEnabled = true;
-            this.cmbMeses.Location = new System.Drawing.Point(79, 23);
-            this.cmbMeses.Name = "cmbMeses";
-            this.cmbMeses.Size = new System.Drawing.Size(98, 20);
-            this.cmbMeses.TabIndex = 1;
-            this.cmbMeses.SelectedIndexChanged += new System.EventHandler(this.cmbMeses_SelectedIndexChanged);
+            this.cbMesesMora.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMesesMora.FormattingEnabled = true;
+            this.cbMesesMora.Location = new System.Drawing.Point(79, 23);
+            this.cbMesesMora.Name = "cbMesesMora";
+            this.cbMesesMora.Size = new System.Drawing.Size(98, 21);
+            this.cbMesesMora.TabIndex = 1;
+            this.cbMesesMora.SelectedIndexChanged += new System.EventHandler(this.cbMesesMora_SelectedIndexChanged);
             // 
             // cbLote
             // 
@@ -251,6 +284,7 @@
             this.cbLote.Name = "cbLote";
             this.cbLote.Size = new System.Drawing.Size(38, 21);
             this.cbLote.TabIndex = 33;
+            this.cbLote.SelectedIndexChanged += new System.EventHandler(this.cbLote_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -275,6 +309,7 @@
             this.txtMensualidad.Name = "txtMensualidad";
             this.txtMensualidad.Size = new System.Drawing.Size(100, 31);
             this.txtMensualidad.TabIndex = 42;
+            this.txtMensualidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -289,7 +324,7 @@
             // cmdPagoMensualidad
             // 
             this.cmdPagoMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdPagoMensualidad.Location = new System.Drawing.Point(197, 77);
+            this.cmdPagoMensualidad.Location = new System.Drawing.Point(197, 75);
             this.cmdPagoMensualidad.Name = "cmdPagoMensualidad";
             this.cmdPagoMensualidad.Size = new System.Drawing.Size(159, 27);
             this.cmdPagoMensualidad.TabIndex = 26;
@@ -304,6 +339,7 @@
             this.txtPagoActual.Name = "txtPagoActual";
             this.txtPagoActual.Size = new System.Drawing.Size(36, 22);
             this.txtPagoActual.TabIndex = 40;
+            this.txtPagoActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtPagoFinal
             // 
@@ -312,6 +348,7 @@
             this.txtPagoFinal.Name = "txtPagoFinal";
             this.txtPagoFinal.Size = new System.Drawing.Size(36, 22);
             this.txtPagoFinal.TabIndex = 37;
+            this.txtPagoFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label15
             // 
@@ -410,43 +447,35 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "L°";
             // 
-            // txtNombre
-            // 
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(60, 56);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(286, 20);
-            this.txtNombre.TabIndex = 1;
-            // 
             // dataGridView1
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(12, 274);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(362, 160);
             this.dataGridView1.TabIndex = 29;
             // 
@@ -458,37 +487,11 @@
             this.dataGridView2.Size = new System.Drawing.Size(290, 160);
             this.dataGridView2.TabIndex = 31;
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(227, 380);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(286, 30);
-            this.listBox1.TabIndex = 40;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(167, 127);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 13);
-            this.label12.TabIndex = 44;
-            this.label12.Text = "Fecha Pago:";
-            // 
-            // txtProximoPago
-            // 
-            this.txtProximoPago.Location = new System.Drawing.Point(238, 124);
-            this.txtProximoPago.Name = "txtProximoPago";
-            this.txtProximoPago.Size = new System.Drawing.Size(108, 18);
-            this.txtProximoPago.TabIndex = 45;
-            // 
             // FrmPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 443);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
@@ -524,27 +527,26 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtTotalIntereses;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtMensualidad;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox cmbMeses;
+        private System.Windows.Forms.TextBox txtIntereses;
+        private System.Windows.Forms.ComboBox cbMesesMora;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDiaCorte;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtAbono;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtProximoPago;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cbComprador;
     }
 }

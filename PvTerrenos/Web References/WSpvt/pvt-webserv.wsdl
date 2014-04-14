@@ -109,6 +109,10 @@
   <wsdl:message name="getCompradorResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="cargaCompradorRequest" />
+  <wsdl:message name="cargaCompradorResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="listarCompradoresRequest">
     <wsdl:part name="id_sesion" type="xsd:string" />
   </wsdl:message>
@@ -166,6 +170,18 @@
     <wsdl:part name="id_comprador" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="getVentaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getVentadeIdLoteRequest">
+    <wsdl:part name="id_lote" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getVentadeIdLoteResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getIdLoteDeVentaRequest">
+    <wsdl:part name="id_comprador" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getIdLoteDeVentaResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraAbonoRequest">
@@ -321,6 +337,16 @@
   <wsdl:message name="buscaLotePorResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="getMedidaRequest" />
+  <wsdl:message name="getMedidaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="registraMedidaRequest">
+    <wsdl:part name="medida" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="registraMedidaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="registraProximoPagoRequest">
     <wsdl:part name="id_venta" type="xsd:string" />
     <wsdl:part name="monto" type="xsd:string" />
@@ -336,6 +362,12 @@
     <wsdl:part name="id_venta" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="getProximoPagoResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updateStatusMoraRequest">
+    <wsdl:part name="id_venta" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updateStatusMoraResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="buscarPagosRequest">
@@ -365,6 +397,12 @@
     <wsdl:part name="fecha_mora" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraMoraResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getFechaMoraRequest">
+    <wsdl:part name="id_venta" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getFechaMoraResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:portType name="PVTPortType">
@@ -408,6 +446,10 @@
       <wsdl:input message="tns:getCompradorRequest" />
       <wsdl:output message="tns:getCompradorResponse" />
     </wsdl:operation>
+    <wsdl:operation name="cargaComprador">
+      <wsdl:input message="tns:cargaCompradorRequest" />
+      <wsdl:output message="tns:cargaCompradorResponse" />
+    </wsdl:operation>
     <wsdl:operation name="listarCompradores">
       <wsdl:input message="tns:listarCompradoresRequest" />
       <wsdl:output message="tns:listarCompradoresResponse" />
@@ -431,6 +473,14 @@
     <wsdl:operation name="getVenta">
       <wsdl:input message="tns:getVentaRequest" />
       <wsdl:output message="tns:getVentaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getVentadeIdLote">
+      <wsdl:input message="tns:getVentadeIdLoteRequest" />
+      <wsdl:output message="tns:getVentadeIdLoteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getIdLoteDeVenta">
+      <wsdl:input message="tns:getIdLoteDeVentaRequest" />
+      <wsdl:output message="tns:getIdLoteDeVentaResponse" />
     </wsdl:operation>
     <wsdl:operation name="registraAbono">
       <wsdl:input message="tns:registraAbonoRequest" />
@@ -520,6 +570,14 @@
       <wsdl:input message="tns:buscaLotePorRequest" />
       <wsdl:output message="tns:buscaLotePorResponse" />
     </wsdl:operation>
+    <wsdl:operation name="getMedida">
+      <wsdl:input message="tns:getMedidaRequest" />
+      <wsdl:output message="tns:getMedidaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="registraMedida">
+      <wsdl:input message="tns:registraMedidaRequest" />
+      <wsdl:output message="tns:registraMedidaResponse" />
+    </wsdl:operation>
     <wsdl:operation name="registraProximoPago">
       <wsdl:input message="tns:registraProximoPagoRequest" />
       <wsdl:output message="tns:registraProximoPagoResponse" />
@@ -527,6 +585,10 @@
     <wsdl:operation name="getProximoPago">
       <wsdl:input message="tns:getProximoPagoRequest" />
       <wsdl:output message="tns:getProximoPagoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateStatusMora">
+      <wsdl:input message="tns:updateStatusMoraRequest" />
+      <wsdl:output message="tns:updateStatusMoraResponse" />
     </wsdl:operation>
     <wsdl:operation name="buscarPagos">
       <wsdl:input message="tns:buscarPagosRequest" />
@@ -539,6 +601,10 @@
     <wsdl:operation name="registraMora">
       <wsdl:input message="tns:registraMoraRequest" />
       <wsdl:output message="tns:registraMoraResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getFechaMora">
+      <wsdl:input message="tns:getFechaMoraRequest" />
+      <wsdl:output message="tns:getFechaMoraResponse" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="PVTBinding" type="tns:PVTPortType">
@@ -633,6 +699,15 @@
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="cargaComprador">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/cargaComprador" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="listarCompradores">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/listarCompradores" style="rpc" />
       <wsdl:input>
@@ -680,6 +755,24 @@
     </wsdl:operation>
     <wsdl:operation name="getVenta">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getVenta" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVentadeIdLote">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getVentadeIdLote" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIdLoteDeVenta">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdLoteDeVenta" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
@@ -885,6 +978,24 @@
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getMedida">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getMedida" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraMedida">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraMedida" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="registraProximoPago">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraProximoPago" style="rpc" />
       <wsdl:input>
@@ -896,6 +1007,15 @@
     </wsdl:operation>
     <wsdl:operation name="getProximoPago">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getProximoPago" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateStatusMora">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/updateStatusMora" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
@@ -923,6 +1043,15 @@
     </wsdl:operation>
     <wsdl:operation name="registraMora">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraMora" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFechaMora">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getFechaMora" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

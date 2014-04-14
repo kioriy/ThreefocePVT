@@ -56,7 +56,6 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +63,7 @@
             this.predioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.predioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbNombre = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -72,11 +72,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbNombre);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(7, 33);
             this.groupBox1.Name = "groupBox1";
@@ -363,14 +363,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // txtNombre
-            // 
-            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(278, 29);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(304, 20);
-            this.txtNombre.TabIndex = 2;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -427,6 +419,17 @@
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.consultasToolStripMenuItem.Text = "Consulta";
             // 
+            // cbNombre
+            // 
+            this.cbNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNombre.FormattingEnabled = true;
+            this.cbNombre.Location = new System.Drawing.Point(278, 29);
+            this.cbNombre.Name = "cbNombre";
+            this.cbNombre.Size = new System.Drawing.Size(302, 21);
+            this.cbNombre.TabIndex = 36;
+            // 
             // FrmVentaLote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,7 +465,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button cmdAgregar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -488,6 +490,7 @@
         private System.Windows.Forms.TextBox txtPagoActual;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbNombre;
     }
 }
 
