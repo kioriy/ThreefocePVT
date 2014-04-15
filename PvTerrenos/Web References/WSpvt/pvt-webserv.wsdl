@@ -347,6 +347,16 @@
   <wsdl:message name="registraMedidaResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="insertaMedidaRequest">
+    <wsdl:part name="id_lote" type="xsd:string" />
+    <wsdl:part name="medidaNorte" type="xsd:string" />
+    <wsdl:part name="MedidaSur" type="xsd:string" />
+    <wsdl:part name="MedidaEste" type="xsd:string" />
+    <wsdl:part name="MedidaOeste" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="insertaMedidaResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="registraProximoPagoRequest">
     <wsdl:part name="id_venta" type="xsd:string" />
     <wsdl:part name="monto" type="xsd:string" />
@@ -577,6 +587,10 @@
     <wsdl:operation name="registraMedida">
       <wsdl:input message="tns:registraMedidaRequest" />
       <wsdl:output message="tns:registraMedidaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="insertaMedida">
+      <wsdl:input message="tns:insertaMedidaRequest" />
+      <wsdl:output message="tns:insertaMedidaResponse" />
     </wsdl:operation>
     <wsdl:operation name="registraProximoPago">
       <wsdl:input message="tns:registraProximoPagoRequest" />
@@ -989,6 +1003,15 @@
     </wsdl:operation>
     <wsdl:operation name="registraMedida">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraMedida" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertaMedida">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/insertaMedida" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

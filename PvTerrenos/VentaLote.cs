@@ -103,7 +103,7 @@ namespace PvTerrenos
         private void cmdAgregar_Click(object sender, EventArgs e)
         {
 
-
+            frmMedidaLote MedidaLote = new frmMedidaLote();
             ///llamamos a la funcion que nos valida que el formulario no tenga campos nulos
             validar(this);
 
@@ -114,8 +114,8 @@ namespace PvTerrenos
             DialogResult resultado;
 
             // para agregar las medidas del lote
-           // frmMedidaLote MedidaLote = new frmMedidaLote();
-           // MedidaLote.Show();
+           // 
+           
 
             if (vacio == false)
             
@@ -124,7 +124,7 @@ namespace PvTerrenos
 
                 if (resultado == System.Windows.Forms.DialogResult.OK)
             {
-
+                MedidaLote.Show();
                 WSpvt.PVT ws = new WSpvt.PVT();
 
                 string id_comprador = txtId.Text;
@@ -135,6 +135,9 @@ namespace PvTerrenos
                 string mensualidad = txtMensualidad.Text;
                 string fechaCompra = dtpFecha.Value.ToString();
                 string fechaCorte = dtpFecha.Value.Day.ToString();
+
+                /// para pasar el id de lote al formulario de medidaLte
+                MedidaLote.idLote = idLote;
 
                 string respuestaAltaVenta = ws.registraVenta(id_comprador, idLote, tipo_pago, monto, mensualidad, fechaCompra, fechaCorte);
                 MessageBox.Show(respuestaAltaVenta);
