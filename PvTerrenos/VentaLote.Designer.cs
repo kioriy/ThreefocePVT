@@ -337,7 +337,7 @@
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(45, 29);
+            this.txtId.Location = new System.Drawing.Point(488, 26);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(94, 20);
             this.txtId.TabIndex = 1;
@@ -347,7 +347,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 32);
+            this.label7.Location = new System.Drawing.Point(461, 29);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(21, 13);
             this.label7.TabIndex = 6;
@@ -357,7 +357,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(225, 32);
+            this.label1.Location = new System.Drawing.Point(4, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 0;
@@ -425,7 +425,7 @@
             this.cbNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNombre.FormattingEnabled = true;
-            this.cbNombre.Location = new System.Drawing.Point(278, 29);
+            this.cbNombre.Location = new System.Drawing.Point(57, 26);
             this.cbNombre.Name = "cbNombre";
             this.cbNombre.Size = new System.Drawing.Size(302, 21);
             this.cbNombre.TabIndex = 36;

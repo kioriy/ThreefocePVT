@@ -71,7 +71,7 @@ namespace PvTerrenos
 
         private bool validar(Form VentaLote ) {
 
-            String id = txtId.Text;
+            //String id = txtId.Text;
             String pago = cbFormaPago.Text;
             String terreno = txtCostoTerreno.Text;
             String abono = txtAbono.Text;
@@ -83,7 +83,7 @@ namespace PvTerrenos
             String lote = cbLotes.Text;
             String manzana = cbManzana.Text;
 
-            if (id.Length == 0 || pago.Length == 0 || terreno.Length == 0 || abono.Length == 0 || mensaulidad.Length == 0 || fechaCorte.Length == 0 || pagoFinal.Length == 0 || pagoActual.Length == 0 || predio.Length == 0 || lote.Length == 0 || manzana.Length == 0)
+            if (/*id.Length == 0 || */pago.Length == 0 || terreno.Length == 0 || abono.Length == 0 || mensaulidad.Length == 0 || fechaCorte.Length == 0 || pagoFinal.Length == 0 || pagoActual.Length == 0 || predio.Length == 0 || lote.Length == 0 || manzana.Length == 0)
             {
                 MessageBox.Show("Para poder realizar una venta, favor de llenar todos los campos");
 
