@@ -124,7 +124,7 @@ namespace PvTerrenos
 
                 if (resultado == System.Windows.Forms.DialogResult.OK)
             {
-                MedidaLote.Show();
+               
                 WSpvt.PVT ws = new WSpvt.PVT();
 
                 string id_comprador = txtId.Text;
@@ -152,6 +152,7 @@ namespace PvTerrenos
                 MessageBox.Show(respuestaProximoPago);
                 string registraAbono = ws.registraAbono(id_comprador, abono);
 
+                MedidaLote.Show();
                limpiar(this);
             }
          }
@@ -187,7 +188,7 @@ namespace PvTerrenos
                 cbPredio.Items.Add(cargaCombo);
             }
             string repuestaNombreComprador = ws.cargaComprador();
-            string [] splitNombreComprador = respuestaCargaPredio.Split(new char[] {','});
+            string[] splitNombreComprador = repuestaNombreComprador.Split(new char[] { ',' });
 
             foreach (string nombreComprador in splitNombreComprador) {
 
@@ -226,6 +227,11 @@ namespace PvTerrenos
 
                 cbLotes.Items.Add(cargaLotes);
             }
+        }
+
+        private void cbNombre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -161,6 +161,9 @@ namespace PvTerrenos
             MessageBox.Show("id Lote: "+idLote);
             string respInsertar = medida.insertaMedida(idLote, cmbMedidaNorte.Text, cmbMedidaSur.Text, cmbMedidaEste.Text, cmbMedidaOeste.Text);
             MessageBox.Show(respInsertar);
+            if (respInsertar.Length != 0) {
+                this.Visible = false;
+            }
 
         }
 
