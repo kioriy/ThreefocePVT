@@ -2,7 +2,6 @@ C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Release\PvTerrenos.
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Release\PvTerrenos.exe
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Release\PvTerrenos.XmlSerializers.dll
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Release\PvTerrenos.pdb
-C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Release\PvTerrenos.frmMedidaLote.resources
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Release\PvTerrenos.frmInicioSesion.resources
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Release\PvTerrenos.FrmVentaLote.resources
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Release\PvTerrenos.FrmAltaPredio.resources
@@ -30,3 +29,4 @@ C:\Users\Miriam\terrenos\PvTerrenos\obj\Release\PvTerrenos.FrmAltaCliente.resour
 C:\Users\Miriam\terrenos\PvTerrenos\obj\Release\PvTerrenos.FrmPago.resources
 C:\Users\Miriam\terrenos\PvTerrenos\obj\Release\PvTerrenos.Properties.Resources.resources
 C:\Users\Miriam\terrenos\PvTerrenos\obj\Release\PvTerrenos.csproj.GenerateResource.Cache
+C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Release\PvTerrenos.MedidaLote.resources

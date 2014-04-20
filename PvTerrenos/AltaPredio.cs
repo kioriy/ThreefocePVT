@@ -13,7 +13,8 @@ namespace PvTerrenos
     public partial class FrmAltaPredio : Form
     {
         public Boolean predio = false;
-        
+
+        WSpvt.PVT ws = new WSpvt.PVT();
 
         public FrmAltaPredio()
         {
@@ -22,18 +23,19 @@ namespace PvTerrenos
             cbSeleccionaManzanaLote.Items.Add("Lotes");
         }
 
-        private void cbSeleccionaManzanaLote_SelectedIndexChanged(object sender, EventArgs e)//combo box manzana lote
+        private void cbSeleccionaManzanaLote_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((string)cbSeleccionaManzanaLote.SelectedItem == "Manzanas"){
-                
+            if ((string)cbSeleccionaManzanaLote.SelectedItem == "Manzanas")
+            {
                 lNumeroManzana.Visible = true;
                 lNumeroLotes.Visible = false;
                 txtNumManzanaLote.Visible = true;
                 txtNumeroLote.Visible = false;
                 cmdGenerarLotes.Visible = false;
                 cmdGeneraManzanas.Visible = true;
-                }
-            if ((string)cbSeleccionaManzanaLote.SelectedItem == "Lotes"){
+            }
+            if ((string)cbSeleccionaManzanaLote.SelectedItem == "Lotes")
+            {
 
                 lNumeroLotes.Visible = true;
                 lNumeroManzana.Visible = false;
@@ -43,7 +45,27 @@ namespace PvTerrenos
                 gbRegistrarLotes.Visible = false;
 
             }
-        }//combo box seleccionar Lote manzana
+        }
+
+        private void cmdGenerarPredio_Click(object sender, EventArgs e)//boton generar predio
+        {
+            string idPredio = txtIdPredio.Text;
+            string nombrePredio = txtNombrePredio.Text;
+
+            if (idPredio != "" && nombrePredio != "")
+            {//validacion para no registrar un predio si no hay datos
+
+
+                string respuesta = ws.registraPredio(idPredio, nombrePredio);
+                MessageBox.Show(respuesta);
+                predio = true;
+                cmdGenerarPredio.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Debes llenar 'Nombre' y 'ID predio'");
+            }
+        }
 
         private void cmdGeneraManzanas_Click(object sender, EventArgs e)//boton generar manzana
         {
@@ -76,7 +98,7 @@ namespace PvTerrenos
             }
             else
             {
-                WSpvt.PVT altaManzana = new WSpvt.PVT();
+                
                 string idPredio = Convert.ToString(txtIdPredio.Text);
                 string idManzana = Convert.ToString(txtNumManzanaLote.Text);
                 int x = Convert.ToInt32(txtNumManzanaLote.Text);
@@ -84,44 +106,29 @@ namespace PvTerrenos
                 for (int i = 0; i < x; i++)
                 {
                     string j = Convert.ToString(i + 1);
-                    banderaRegistroManzanas = altaManzana.registraManzana(j, idPredio);
+                    banderaRegistroManzanas = ws.registraManzana(j, idPredio);
                 }
-                if (banderaRegistroManzanas == "1") {
+                if (banderaRegistroManzanas == "1")
+                {
                     MessageBox.Show("Manzanas registradas con EXITO");
                 }
             }
         }
 
-        private void cmdGenerarPredio_Click(object sender, EventArgs e)//boton generar predio
-        {
-            string idPredio = txtIdPredio.Text;
-            string nombrePredio = txtNombrePredio.Text;
-
-            if (idPredio != ""  && nombrePredio != ""){//validacion para no registrar un predio si no hay datos
-                
-                WSpvt.PVT altaPredio = new WSpvt.PVT();
-                string respuesta = altaPredio.registraPredio(idPredio, nombrePredio);
-                MessageBox.Show(respuesta);
-                predio = true;
-                cmdGenerarPredio.Enabled = false;
-            }
-            else {
-                MessageBox.Show("Debes llenar 'Nombre' y 'ID predio'");
-            }
-        }
-
         private void cmdGenerarLotes_Click(object sender, EventArgs e)//boton generar lote
         {
+            bool bandera = false;
+
             if (predio == false)
             {
                 MessageBox.Show("Primero debes dar de alta el predio");
             }
             else
             {
-                WSpvt.PVT altaLote = new WSpvt.PVT();
+               
 
                 string idPredio = txtIdPredio.Text;
-                int x;
+                string numeroLote;
                 string banderaRegistroLote = "";
 
                 if (txtNumManzanaLote.Text == "")
@@ -132,40 +139,45 @@ namespace PvTerrenos
                 {
                     if ((string)cbSeleccionaManzanaLote.SelectedItem == "Lotes")
                     {
-                        x = Convert.ToInt32(txtNumManzanaLote.Text);
+                        numeroLote = txtNumManzanaLote.Text;
                     }
                     else
                     {
-                        x = Convert.ToInt32(txtNumeroLote.Text);
+                        numeroLote = txtNumeroLote.Text;
                     }
 
-                    for (int i = 0; i < x; i++)
-                    {
-                        string j = Convert.ToString(i + 1);
+                    //for (int i = 0; i < x; i++)
+                    //{
+                      //  string j = Convert.ToString(i + 1);
 
                         if ((string)cbSeleccionaManzanaLote.SelectedItem == "Lotes")
                         {
-                            banderaRegistroLote = altaLote.registraLote(j, idPredio, "");
+                            banderaRegistroLote = ws.registraLote(numeroLote, idPredio, "");
                         }
                         else
                         {
                             string numeroManzana = Convert.ToString(cbNumeroManzana.SelectedItem);
-                            string idManzana = altaLote.getIdManzana(numeroManzana, idPredio);
-                            banderaRegistroLote = altaLote.registraLote(j, idPredio, idManzana);
+                            string idManzana = ws.getIdManzana(numeroManzana, idPredio);
+                            banderaRegistroLote = ws.registraLote(numeroLote, idPredio, idManzana);
                         }
-                    }//cierre for
+                    //}//cierre for
                     if (banderaRegistroLote == "1")
                     {
                         MessageBox.Show("Lotes registrados con EXITO");
+                        
+                        int items = cbNumeroManzana.Items.Count;
+
+                        if (cbNumeroManzana.SelectedIndex < (items-1))
+                        {
+                            cbNumeroManzana.SelectedIndex += 1;
+                        }
+                        else {
+                            bandera = true;
+                        }
+                        
                     }
-                   /* int control = 0;
 
-                    if ((String)cbSeleccionaManzanaLote.SelectedItem == "Manzanas" || (String)cbSeleccionaManzanaLote.SelectedItem == "Lotes")
-                    {
-                      control = Convert.ToInt32(txtNumManzanaLote.Text);
-                    } */
-
-                    if ( cbNumeroManzana.SelectedIndex == Convert.ToInt32(txtNumManzanaLote.Text)-1||  cbSeleccionaManzanaLote.SelectedIndex == 1)
+                    if (bandera/*cbNumeroManzana.SelectedIndex == Convert.ToInt32(txtNumManzanaLote.Text) */ || cbSeleccionaManzanaLote.SelectedIndex == 1)
                     {
                         txtNombrePredio.Text = "";
                         txtIdPredio.Text = "";
@@ -179,9 +191,10 @@ namespace PvTerrenos
                         cmdGenerarLotes.Visible = false;
                         cmdGeneraManzanas.Visible = false;
                         cbSeleccionaManzanaLote.SelectedIndex = -1;
+
                     }
                 }//cierre de else en condicion de if cuando txtNumeroManzanaLote esta vacio
             }//cierre de else
-        }//cierre genera lotes
+        }
     }//cierre clase frmAltaPredio
 }

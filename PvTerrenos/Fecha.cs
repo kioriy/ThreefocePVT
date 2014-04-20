@@ -10,8 +10,8 @@ namespace PvTerrenos
     {
         WSpvt.PVT ws = new WSpvt.PVT();
         //variable tipo datetime
-        
-    
+
+
         //constructor
         /*public Fecha(DateTime fecha, string pago_actual) {
 
@@ -19,47 +19,60 @@ namespace PvTerrenos
             this.pago_actual = pago_actual;
         }*/
 
-        public DateTime setProximoPago(DateTime fechaCompra, string pago_actual) {
+        public DateTime setProximoPago(DateTime fechaCompra, string pago_actual)
+        {
 
             DateTime fechaProximoPago;
             int auxiliar = 0;
 
-            for (int i = 1; i <= Convert.ToInt32(pago_actual); i++) {
+            for (int i = 1; i <= Convert.ToInt32(pago_actual); i++)
+            {
                 auxiliar = i;
             }
             return (fechaProximoPago = fechaCompra.AddMonths(auxiliar));
         }
 
-        public Boolean estaEnMora(DateTime fechaProximoPago) {
+        public DateTime setProximoPagoDos(DateTime ProximoPago)
+        {
+
+            ProximoPago = ProximoPago.AddMonths(1);
+            return ProximoPago;
+        }
+
+        public Boolean estaEnMora(DateTime fechaProximoPago)
+        {
 
             if (fechaProximoPago <= DateTime.Today.AddDays(6))
             {
                 return true;
             }
-            else {
+            else
+            {
                 return false;
             }
         }
 
-        public Boolean statusMora(string statusMora) {
-
+        public Boolean statusMora(string statusMora)
+        {
             if (statusMora == "1")
             {
                 return true;
             }
-            else {
+            else
+            {
                 return false;
             }
         }
 
-        public bool mesYaEstaEnMora(DateTime proximoPago, string idVenta) {
-
+        public bool mesYaEstaEnMora(DateTime proximoPago, string idVenta)
+        {
             int bandera = 0;
             string respuestaFechaMora = ws.getFechaMora(idVenta);
             string[] splitFechaMora = respuestaFechaMora.Split(new char[] { ',' });
 
-            foreach (string fechaMora in splitFechaMora) { 
-            
+            foreach (string fechaMora in splitFechaMora)
+            {
+
                 DateTime fechaMoraCompara = Convert.ToDateTime(fechaMora);
 
                 //for (int i = 0; )
@@ -72,26 +85,28 @@ namespace PvTerrenos
             {
                 return true;
             }
-            else {
+            else
+            {
                 return false;
             }
         }
 
-        public string ultimoMesEnMora(string idVenta) {
-
+        public string ultimoMesEnMora(string idVenta)
+        {
             string respuestaUltimoMesMora = ws.getFechaMora(idVenta);
             string[] splitUltimoMesMora = respuestaUltimoMesMora.Split(new char[] { ',' });
 
             int tamañoArreglo = splitUltimoMesMora.Length;
 
-            return splitUltimoMesMora[tamañoArreglo-1];
+            return splitUltimoMesMora[tamañoArreglo - 1];
         }
 
-        public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago, string idVenta, string monto){
-
+        public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago, string idVenta, string monto)
+        {
             DateTime hoy = DateTime.Today;
 
-            if (proximoPago.AddDays(6).Day >= DateTime.Today.Day){
+            if (proximoPago.AddDays(6).Day >= DateTime.Today.Day)
+            {
 
                 hoy = DateTime.Today.AddMonths(-1);
             }
@@ -104,7 +119,8 @@ namespace PvTerrenos
             int bMaxMes = 0;
             string respuestaRegistraMora = "";
 
-            for (int i = 1; proximoPago.Month <= hoy.AddMonths(-i).Month; i++){
+            for (int i = 1; proximoPago.Month <= hoy.AddMonths(-i).Month; i++)
+            {
 
                 auxiliar = i; //en esta variable se guarda la distancia en meses de dos fecha "proximoPago"  y "fecha hoy" 
             }
@@ -136,7 +152,7 @@ namespace PvTerrenos
 
                 for (int i = 1; Convert.ToDateTime(ultimoMes).Month <= hoy.AddMonths(-i).Month; i++)
                 {
-                    auxiliar = i; 
+                    auxiliar = i;
                 }
                 for (int i = 1; proximoPago.Month <= hoy.AddMonths(-i).Month; i++)
                 {
@@ -145,20 +161,20 @@ namespace PvTerrenos
 
                 for (int i = 0; i < auxiliar; i++)
                 {
-                     aMaxMes = i; //lleba el registro del mes en en que se esta efectuando la mora o moras ejemplo "mora de febrero en Marzo <-- esta variable seria Marzo"
-                     bMaxMes = auxiliar2 - i; //varible que servira para recorrer los meses en el siguiente ciclo
+                    aMaxMes = i; //lleba el registro del mes en en que se esta efectuando la mora o moras ejemplo "mora de febrero en Marzo <-- esta variable seria Marzo"
+                    bMaxMes = auxiliar2 - i; //varible que servira para recorrer los meses en el siguiente ciclo
 
-                     for (int j = 0; j <= bMaxMes; j++)
-                     {//este recorrera los meses hasta llegar al mes en fecha de proximo pago 
+                    for (int j = 0; j <= bMaxMes; j++)
+                    {//este recorrera los meses hasta llegar al mes en fecha de proximo pago 
 
-                         montoMora = Convert.ToDouble(monto) * 0.06;
+                        montoMora = Convert.ToDouble(monto) * 0.06;
 
-                         DateTime mesPrincipal = Convert.ToDateTime(ultimoMes).AddMonths(auxiliar - aMaxMes);
-                         DateTime mesRecorrido = mesPrincipal.AddMonths(-j);
+                        DateTime mesPrincipal = Convert.ToDateTime(ultimoMes).AddMonths(auxiliar - aMaxMes);
+                        DateTime mesRecorrido = mesPrincipal.AddMonths(-j);
 
-                         respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString());   
-                     }
-                 } return (respuestaRegistraMora + " se registro nueva mora para este usuario");   
+                        respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString());
+                    }
+                } return (respuestaRegistraMora + " se registro nueva mora para este usuario");
             }
             else
             {

@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace PvTerrenos
 {
-    public partial class frmMedidaLote : Form
+    public partial class MedidaLote : Form
     {
 
-        public frmMedidaLote()
+        public MedidaLote()
         {
             InitializeComponent();
             llenarCombos();
@@ -137,30 +137,30 @@ namespace PvTerrenos
             if (nuevoN != 0) {
                 string nuevaMedida = Convert.ToString(nuevoN);
                 string respuestaNuevaM = medida.registraMedida(nuevaMedida);
-                MessageBox.Show(respuestaNuevaM);
+              //  MessageBox.Show(respuestaNuevaM);
             }
             if (nuevoS != 0 && nuevoN != nuevoS)
             {
                 string nuevaMedida = Convert.ToString(nuevoS);
                 string respuestaNuevaM = medida.registraMedida(nuevaMedida);
-                MessageBox.Show(respuestaNuevaM);
+              //  MessageBox.Show(respuestaNuevaM);
             }
             if (nuevoE != 0 && nuevoE != nuevoS)
             {
                 string nuevaMedida = Convert.ToString(nuevoE);
                 string respuestaNuevaM = medida.registraMedida(nuevaMedida);
-                MessageBox.Show(respuestaNuevaM);
+              //  MessageBox.Show(respuestaNuevaM);
             }
             if (nuevoO != 0 && nuevoO != nuevoE)
             {
                 string nuevaMedida = Convert.ToString(nuevoO);
                 string respuestaNuevaM = medida.registraMedida(nuevaMedida);
-                MessageBox.Show(respuestaNuevaM);
+              //  MessageBox.Show(respuestaNuevaM);
             }
 
-            MessageBox.Show("id Lote: "+idLote);
+            //MessageBox.Show("id Lote: "+idLote);
             string respInsertar = medida.insertaMedida(idLote, cmbMedidaNorte.Text, cmbMedidaSur.Text, cmbMedidaEste.Text, cmbMedidaOeste.Text);
-            MessageBox.Show(respInsertar);
+            //MessageBox.Show(respInsertar);
             if (respInsertar.Length != 0) {
                 this.Visible = false;
             }
