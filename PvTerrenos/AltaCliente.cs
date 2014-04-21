@@ -108,6 +108,57 @@ namespace PvTerrenos
               conexion.Close();
           }*/
 
+         
+
+
+          void modificarCliente()
+          {
+              
+              string respuestaCargaComprador = ws.cargaComprador();
+              string[] splitComprador = respuestaCargaComprador.Split(new char[] { ',' });
+              string nombre = cbNombre.Text;
+             
+
+              foreach (string comprador in splitComprador)
+              {
+
+                  if (comprador == nombre)
+                  {
+
+                      string respuestaCliente = ws.getComprador(nombre);
+                      string[] splitDatosComprador = respuestaCliente.Split(new char[] { ',' });
+
+
+                      txtDireccion.Text = splitDatosComprador[0];
+                      txtBeneficiario.Text = splitDatosComprador[1];
+                      txtResidencia.Text = splitDatosComprador[2];
+                      txtOcupacion.Text = splitDatosComprador[3];
+                      txtEc.Text = splitDatosComprador[4];
+                      txtTelefono2.Text = splitDatosComprador[5];
+                      txtTelefono.Text = splitDatosComprador[6];
+
+                      string mensaje = "Este cliente ya se encuentra registrado,¿Deseas modificarlo?";
+                      string caption = "Modificar Usuario";
+                      MessageBoxButtons botones = MessageBoxButtons.OKCancel;
+                      DialogResult resultado;
+
+                      resultado = MessageBox.Show(mensaje, caption, botones);
+
+                      if (resultado == System.Windows.Forms.DialogResult.OK)
+                      {
+
+                          cmdAgregar.Visible = false;
+                          btnActualizar.Visible = true;
+                         
+                      }
+
+                  }
+
+
+              }
+
+          }
+
           private string generaId(string nombreComprador)
           {
 
@@ -123,6 +174,39 @@ namespace PvTerrenos
               }
               idComprador = iniciales;
               return idComprador;
+          }
+
+          private void cbNombre_KeyPress(object sender, KeyPressEventArgs e)
+          {
+           
+          }
+
+          private void cbNombre_SelectedIndexChanged(object sender, EventArgs e)
+          {
+
+          }
+
+          private void cbNombre_KeyDown(object sender, KeyEventArgs e)
+          {
+              if (e.KeyCode == Keys.Enter) {
+                  modificarCliente();
+              }
+          }
+
+          private void btnActualizar_Click(object sender, EventArgs e)
+          {
+             string mensaje = "¿Estas seguro de que quieres actualizar a este cliente?";
+            string caption = "Actualizar Cliente";
+            MessageBoxButtons botones = MessageBoxButtons.OKCancel;
+            DialogResult resultado;
+
+            
+                resultado = MessageBox.Show(mensaje, caption, botones);
+
+                if (resultado == System.Windows.Forms.DialogResult.OK) {
+                   string respuestaActulizaCliente = ws.updateComprador(cbNombre.Text, txtDireccion.Text, txtBeneficiario.Text, txtResidencia.Text, txtOcupacion.Text, txtEc.Text, txtTelefono.Text, txtTelefono2.Text);
+                   MessageBox.Show(respuestaActulizaCliente);
+                }
           }
       }
 }

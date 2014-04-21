@@ -34,21 +34,21 @@
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.cmdAgregar = new System.Windows.Forms.Button();
+            this.cbPredio = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtPagoFinal = new System.Windows.Forms.TextBox();
             this.txtPagoActual = new System.Windows.Forms.TextBox();
-            this.cbLotes = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.cbManzana = new System.Windows.Forms.ComboBox();
-            this.cbFormaPago = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtAbono = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtMensualidad = new System.Windows.Forms.TextBox();
-            this.cbPredio = new System.Windows.Forms.ComboBox();
+            this.cbLotes = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.cbFormaPago = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cbManzana = new System.Windows.Forms.ComboBox();
+            this.txtAbono = new System.Windows.Forms.TextBox();
+            this.txtMensualidad = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.txtCostoTerreno = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -93,6 +93,7 @@
             this.cbNombre.Name = "cbNombre";
             this.cbNombre.Size = new System.Drawing.Size(302, 21);
             this.cbNombre.TabIndex = 36;
+            this.cbNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // groupBox2
             // 
@@ -153,6 +154,16 @@
             this.cmdAgregar.UseVisualStyleBackColor = true;
             this.cmdAgregar.Click += new System.EventHandler(this.cmdAgregar_Click);
             // 
+            // cbPredio
+            // 
+            this.cbPredio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPredio.FormattingEnabled = true;
+            this.cbPredio.Location = new System.Drawing.Point(275, 47);
+            this.cbPredio.Name = "cbPredio";
+            this.cbPredio.Size = new System.Drawing.Size(166, 21);
+            this.cbPredio.TabIndex = 11;
+            this.cbPredio.SelectedIndexChanged += new System.EventHandler(this.cbPredio_SelectedIndexChanged);
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -162,6 +173,16 @@
             this.label19.Size = new System.Drawing.Size(21, 29);
             this.label19.TabIndex = 48;
             this.label19.Text = "/";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(447, 51);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(20, 13);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "M°";
             // 
             // txtPagoFinal
             // 
@@ -179,6 +200,16 @@
             this.txtPagoActual.Size = new System.Drawing.Size(27, 20);
             this.txtPagoActual.TabIndex = 8;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(170, 17);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(40, 13);
+            this.label12.TabIndex = 45;
+            this.label12.Text = "Pagos:";
+            // 
             // cbLotes
             // 
             this.cbLotes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -191,25 +222,15 @@
             this.cbLotes.TabIndex = 13;
             this.cbLotes.SelectedIndexChanged += new System.EventHandler(this.cbLotes_SelectedIndexChanged);
             // 
-            // label12
+            // label8
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(170, 17);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 13);
-            this.label12.TabIndex = 45;
-            this.label12.Text = "Pagos:";
-            // 
-            // cbManzana
-            // 
-            this.cbManzana.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbManzana.FormattingEnabled = true;
-            this.cbManzana.Location = new System.Drawing.Point(473, 47);
-            this.cbManzana.Name = "cbManzana";
-            this.cbManzana.Size = new System.Drawing.Size(37, 21);
-            this.cbManzana.TabIndex = 12;
-            this.cbManzana.SelectedIndexChanged += new System.EventHandler(this.cbManzana_SelectedIndexChanged);
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(222, 51);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Predio:";
             // 
             // cbFormaPago
             // 
@@ -219,6 +240,16 @@
             this.cbFormaPago.Name = "cbFormaPago";
             this.cbFormaPago.Size = new System.Drawing.Size(66, 21);
             this.cbFormaPago.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(518, 51);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(17, 13);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "L°";
             // 
             // label18
             // 
@@ -230,6 +261,16 @@
             this.label18.TabIndex = 43;
             this.label18.Text = "Mensualidad:";
             // 
+            // cbManzana
+            // 
+            this.cbManzana.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbManzana.FormattingEnabled = true;
+            this.cbManzana.Location = new System.Drawing.Point(473, 47);
+            this.cbManzana.Name = "cbManzana";
+            this.cbManzana.Size = new System.Drawing.Size(37, 21);
+            this.cbManzana.TabIndex = 12;
+            this.cbManzana.SelectedIndexChanged += new System.EventHandler(this.cbManzana_SelectedIndexChanged);
+            // 
             // txtAbono
             // 
             this.txtAbono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -238,16 +279,6 @@
             this.txtAbono.Size = new System.Drawing.Size(66, 20);
             this.txtAbono.TabIndex = 5;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(447, 51);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(20, 13);
-            this.label13.TabIndex = 32;
-            this.label13.Text = "M°";
-            // 
             // txtMensualidad
             // 
             this.txtMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -255,26 +286,6 @@
             this.txtMensualidad.Name = "txtMensualidad";
             this.txtMensualidad.Size = new System.Drawing.Size(66, 20);
             this.txtMensualidad.TabIndex = 6;
-            // 
-            // cbPredio
-            // 
-            this.cbPredio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPredio.FormattingEnabled = true;
-            this.cbPredio.Location = new System.Drawing.Point(275, 47);
-            this.cbPredio.Name = "cbPredio";
-            this.cbPredio.Size = new System.Drawing.Size(166, 21);
-            this.cbPredio.TabIndex = 11;
-            this.cbPredio.SelectedIndexChanged += new System.EventHandler(this.cbPredio_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(222, 51);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 13);
-            this.label8.TabIndex = 29;
-            this.label8.Text = "Predio:";
             // 
             // label17
             // 
@@ -285,16 +296,6 @@
             this.label17.Size = new System.Drawing.Size(41, 13);
             this.label17.TabIndex = 38;
             this.label17.Text = "Abono:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(518, 51);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "L°";
             // 
             // txtCostoTerreno
             // 
