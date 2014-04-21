@@ -158,6 +158,9 @@
             // 
             this.cbPredio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPredio.FormattingEnabled = true;
+
+            this.cbPredio.Location = new System.Drawing.Point(275, 55);
+
             this.cbPredio.Location = new System.Drawing.Point(275, 47);
             this.cbPredio.Name = "cbPredio";
             this.cbPredio.Size = new System.Drawing.Size(166, 21);
@@ -178,7 +181,11 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            this.label13.Location = new System.Drawing.Point(447, 59);
+
             this.label13.Location = new System.Drawing.Point(447, 51);
+
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(20, 13);
             this.label13.TabIndex = 32;
@@ -216,7 +223,7 @@
             this.cbLotes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbLotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLotes.FormattingEnabled = true;
-            this.cbLotes.Location = new System.Drawing.Point(541, 47);
+            this.cbLotes.Location = new System.Drawing.Point(541, 55);
             this.cbLotes.Name = "cbLotes";
             this.cbLotes.Size = new System.Drawing.Size(38, 21);
             this.cbLotes.TabIndex = 13;
@@ -226,7 +233,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            this.label8.Location = new System.Drawing.Point(222, 59);
+
             this.label8.Location = new System.Drawing.Point(222, 51);
+
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 29;
@@ -245,7 +256,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            this.label9.Location = new System.Drawing.Point(518, 59);
+
             this.label9.Location = new System.Drawing.Point(518, 51);
+
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(17, 13);
             this.label9.TabIndex = 17;
@@ -265,7 +280,11 @@
             // 
             this.cbManzana.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbManzana.FormattingEnabled = true;
+
+            this.cbManzana.Location = new System.Drawing.Point(473, 55);
+
             this.cbManzana.Location = new System.Drawing.Point(473, 47);
+
             this.cbManzana.Name = "cbManzana";
             this.cbManzana.Size = new System.Drawing.Size(37, 21);
             this.cbManzana.TabIndex = 12;
@@ -277,7 +296,11 @@
             this.txtAbono.Location = new System.Drawing.Point(91, 97);
             this.txtAbono.Name = "txtAbono";
             this.txtAbono.Size = new System.Drawing.Size(66, 20);
+
+            this.txtAbono.TabIndex = 6;
+
             this.txtAbono.TabIndex = 5;
+
             // 
             // txtMensualidad
             // 
@@ -285,7 +308,11 @@
             this.txtMensualidad.Location = new System.Drawing.Point(91, 70);
             this.txtMensualidad.Name = "txtMensualidad";
             this.txtMensualidad.Size = new System.Drawing.Size(66, 20);
+
+            this.txtMensualidad.TabIndex = 5;
+
             this.txtMensualidad.TabIndex = 6;
+
             // 
             // label17
             // 
@@ -420,7 +447,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Name = "FrmVentaLote";
-            this.Text = " Venta - Lote";
+            this.Text = " ";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
