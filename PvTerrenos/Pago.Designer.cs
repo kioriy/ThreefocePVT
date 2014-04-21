@@ -68,6 +68,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -77,6 +79,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.cbComprador);
             this.groupBox1.Controls.Add(this.txtProximoPago);
             this.groupBox1.Controls.Add(this.label12);
@@ -114,6 +118,7 @@
             this.cbComprador.Name = "cbComprador";
             this.cbComprador.Size = new System.Drawing.Size(285, 21);
             this.cbComprador.TabIndex = 46;
+            this.cbComprador.SelectedIndexChanged += new System.EventHandler(this.cbComprador_SelectedIndexChanged);
             // 
             // txtProximoPago
             // 
@@ -128,7 +133,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(167, 127);
+            this.label12.Location = new System.Drawing.Point(167, 126);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 13);
             this.label12.TabIndex = 44;
@@ -305,7 +310,7 @@
             // txtMensualidad
             // 
             this.txtMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMensualidad.Location = new System.Drawing.Point(259, 26);
+            this.txtMensualidad.Location = new System.Drawing.Point(256, 26);
             this.txtMensualidad.Name = "txtMensualidad";
             this.txtMensualidad.Size = new System.Drawing.Size(100, 31);
             this.txtMensualidad.TabIndex = 42;
@@ -487,6 +492,23 @@
             this.dataGridView2.Size = new System.Drawing.Size(290, 160);
             this.dataGridView2.TabIndex = 31;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(453, 21);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 18);
+            this.dateTimePicker1.TabIndex = 47;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(375, 25);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(72, 13);
+            this.label16.TabIndex = 48;
+            this.label16.Text = "Fecha actual:";
+            // 
             // FrmPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,5 +570,7 @@
         private System.Windows.Forms.TextBox txtProximoPago;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbComprador;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
