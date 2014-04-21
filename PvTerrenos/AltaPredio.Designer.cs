@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbMazanaLote = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.cmdGeneraManzanas = new System.Windows.Forms.Button();
             this.cmdGenerarLotes = new System.Windows.Forms.Button();
             this.lNumeroLotes = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnModificaLote = new System.Windows.Forms.Button();
             this.gbMazanaLote.SuspendLayout();
             this.gbRegistrarLotes.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -56,6 +59,9 @@
             // 
             // gbMazanaLote
             // 
+            this.gbMazanaLote.Controls.Add(this.btnModificaLote);
+            this.gbMazanaLote.Controls.Add(this.btnModificar);
+            this.gbMazanaLote.Controls.Add(this.label2);
             this.gbMazanaLote.Controls.Add(this.cmdGeneraManzanas);
             this.gbMazanaLote.Controls.Add(this.cmdGenerarLotes);
             this.gbMazanaLote.Controls.Add(this.lNumeroLotes);
@@ -72,10 +78,21 @@
             this.gbMazanaLote.TabStop = false;
             this.gbMazanaLote.Text = "Datos Mazana/Lote";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(5, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Modificar:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // cmdGeneraManzanas
             // 
             this.cmdGeneraManzanas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGeneraManzanas.Location = new System.Drawing.Point(373, 61);
+            this.cmdGeneraManzanas.Location = new System.Drawing.Point(375, 61);
             this.cmdGeneraManzanas.Name = "cmdGeneraManzanas";
             this.cmdGeneraManzanas.Size = new System.Drawing.Size(148, 23);
             this.cmdGeneraManzanas.TabIndex = 4;
@@ -87,7 +104,7 @@
             // cmdGenerarLotes
             // 
             this.cmdGenerarLotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGenerarLotes.Location = new System.Drawing.Point(373, 60);
+            this.cmdGenerarLotes.Location = new System.Drawing.Point(375, 60);
             this.cmdGenerarLotes.Name = "cmdGenerarLotes";
             this.cmdGenerarLotes.Size = new System.Drawing.Size(148, 23);
             this.cmdGenerarLotes.TabIndex = 5;
@@ -233,6 +250,7 @@
             // 
             // txtNombrePredio
             // 
+            this.txtNombrePredio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtNombrePredio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombrePredio.Location = new System.Drawing.Point(69, 23);
             this.txtNombrePredio.Name = "txtNombrePredio";
@@ -266,6 +284,30 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(529, 219);
             this.dataGridView1.TabIndex = 15;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.Location = new System.Drawing.Point(369, 61);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(158, 23);
+            this.btnModificar.TabIndex = 22;
+            this.btnModificar.Text = "Modificar Manzanas";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Visible = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnModificaLote
+            // 
+            this.btnModificaLote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificaLote.Location = new System.Drawing.Point(396, 61);
+            this.btnModificaLote.Name = "btnModificaLote";
+            this.btnModificaLote.Size = new System.Drawing.Size(109, 23);
+            this.btnModificaLote.TabIndex = 23;
+            this.btnModificaLote.Text = "Modificar Lotes";
+            this.btnModificaLote.UseVisualStyleBackColor = true;
+            this.btnModificaLote.Visible = false;
+            this.btnModificaLote.Click += new System.EventHandler(this.btnModificaLote_Click);
             // 
             // FrmAltaPredio
             // 
@@ -310,5 +352,8 @@
         private System.Windows.Forms.Label lNumeroLotes;
         private System.Windows.Forms.Button cmdGenerarLotes;
         private System.Windows.Forms.Button cmdGeneraManzanas;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnModificaLote;
     }
 }
