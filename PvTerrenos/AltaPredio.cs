@@ -25,7 +25,6 @@ namespace PvTerrenos
             cbSeleccionaManzanaLote.Items.Add("Manzanas");
             cbSeleccionaManzanaLote.Items.Add("Lotes");
             label2.Visible = false;
-           
         }
 
         private void cbSeleccionaManzanaLote_SelectedIndexChanged(object sender, EventArgs e)
@@ -41,7 +40,6 @@ namespace PvTerrenos
             }
             if ((string)cbSeleccionaManzanaLote.SelectedItem == "Lotes")
             {
-
                 lNumeroLotes.Visible = true;
                 lNumeroManzana.Visible = false;
 
@@ -54,12 +52,8 @@ namespace PvTerrenos
 
         private void cmdGenerarPredio_Click(object sender, EventArgs e)//boton generar predio
         {
-            idPredio = txtIdPredio.Text.ToUpper();
-            ///en caso de que el nombre del predio este en minusculas lo cambiamos a mayusculas para que no haya error al comparar
-            string nombrePredio = txtNombrePredio.Text.ToUpper();
+            string nombrePredio = txtNombrePredio.Text;
             cmdGenerarLotes.Visible = false;
-
-            
 
             if (idPredio != "" && nombrePredio != "")
             {
@@ -72,10 +66,8 @@ namespace PvTerrenos
                 string nombres = ws.cargaColumnaTablaPredio("nombre_predio");
                 string[] splitPredios = nombres.Split(new char[] {','});
                 
-               
                 foreach (string nombreP in splitPredios)
                 {
-
                     if (nombreP == nombrePredio)
                     {
                         bandera = true;
@@ -91,7 +83,6 @@ namespace PvTerrenos
                             string hayManzana = ws.contarLotes("0", idPredio);
                             if (Convert.ToInt32(hayManzana) != 0)
                             {
-                                
                                 cmdGeneraManzanas.Visible = false;
                                 btnModificaLote.Visible = true;
                                 btnModificar.Visible = false;
@@ -99,8 +90,6 @@ namespace PvTerrenos
                                 cbSeleccionaManzanaLote.Text = "Lotes";
                                 txtNumManzanaLote.Text = hayManzana;
                                 lNumeroLotes.Visible = true;
-                               
-
                             }
                             else
                             {
@@ -109,7 +98,6 @@ namespace PvTerrenos
                                 cbSeleccionaManzanaLote.Text = "Manzanas";
                                 lNumeroManzana.Visible = true;
                                 txtNumManzanaLote.Text = numeroManzanas;
-
                             }
                             
                         }
@@ -169,8 +157,6 @@ namespace PvTerrenos
                         cbNumeroManzana.Items.Add(a + 1);
                     }
                 }
-
-
             }
 
             if (opcion == "generar")
@@ -216,9 +202,8 @@ namespace PvTerrenos
                     }
                 }
             }
-        
-        
         }
+
         public void cargaLotes(string opcion) {
             bool bandera = false;
             string numeroLote;
@@ -360,16 +345,10 @@ namespace PvTerrenos
         {
             cargarManzanas("generar");
         }
-
-        
+     
         private void cmdGenerarLotes_Click(object sender, EventArgs e)//boton generar lote
         {
             cargaLotes("generar");
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

@@ -223,8 +223,11 @@ namespace PvTerrenos
             MedidaLote.Show();
         }
 
-       
+        private string validaTexBox(object sender, KeyPressEventArgs e) {
 
-       
+
+            return "hola";
+        
+        }
     }
 }

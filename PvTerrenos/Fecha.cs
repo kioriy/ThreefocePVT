@@ -42,7 +42,7 @@ namespace PvTerrenos
         public Boolean estaEnMora(DateTime fechaProximoPago)
         {
 
-            if (fechaProximoPago <= DateTime.Today.AddDays(6))
+            if (fechaProximoPago.AddDays(6) <= DateTime.Today)
             {
                 return true;
             }
@@ -81,7 +81,7 @@ namespace PvTerrenos
                     bandera++;
                 }
             }
-            if (bandera > 1)
+            if (bandera >= 1)
             {
                 return true;
             }
@@ -119,11 +119,12 @@ namespace PvTerrenos
             int bMaxMes = 0;
             string respuestaRegistraMora = "";
 
-            for (int i = 1; proximoPago.Month <= hoy.AddMonths(-i).Month; i++)
-            {
+            /* for (int i = 1; proximoPago.Month <= hoy.AddMonths(-i).Month; i++)
+             {
 
-                auxiliar = i; //en esta variable se guarda la distancia en meses de dos fecha "proximoPago"  y "fecha hoy" 
-            }
+                 auxiliar = i; //en esta variable se guarda la distancia en meses de dos fecha "proximoPago"  y "fecha hoy" 
+             }*/
+            auxiliar = (DateTime.Today.Year * 12 + DateTime.Today.Month) - (Convert.ToDateTime(proximoPago).Year * 12 + Convert.ToDateTime(proximoPago).Month);
 
             if (esMoroso && !statusMora)//esta sentencia determinamos si la fecha de "proximoPago" ya entro en mora ademas se checa
             {                           //en el status para saber si ya habia entrado a este ciclo de ser asi no se hace todo el calculo de mora desde su ultima fecha no pagada              
@@ -178,7 +179,7 @@ namespace PvTerrenos
             }
             else
             {
-                return "No genero mora";
+                return "A la fecha no genera mora o nueva mora";
             }
         }
     }

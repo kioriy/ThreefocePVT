@@ -18,6 +18,7 @@ namespace PvTerrenos
         string idVenta = "";
         string pago_actual = "";
         string proximoPago = "";
+        string mensualidad = "";
         string[] splitFechaMora;
         string[] splitIdLote;
         public FrmPago()
@@ -38,7 +39,7 @@ namespace PvTerrenos
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 llenarComboLote();
-                cbComprador.Text = ws.getComprador(txtId.Text);
+                cbComprador.Text = ws.getNombreComprador(txtId.Text);
             }
         }
 
@@ -57,7 +58,7 @@ namespace PvTerrenos
             string superStringVenta = ws.getVentadeIdLote(splitIdLote[cbLote.SelectedIndex]); //cadena de string seprado por comas
             string[] splitVenta = superStringVenta.Split(new char[] { ',' });
             idVenta = splitVenta[0];
-            string mensualidad = splitVenta[1];
+            mensualidad = splitVenta[1];
             string fecha_compra = splitVenta[2];
             string fecha_corte = splitVenta[3];
             ////////////////////////////////////////////////////////
@@ -164,6 +165,7 @@ namespace PvTerrenos
             {
                 cbMesesMora.Items.Add(Convert.ToDateTime(proximoPago).AddMonths(i).ToString("MMMM"));
             }
+            cbMesesMora.SelectedIndex = 0;
         }
 
         public void llenarComboLote() 
@@ -190,5 +192,17 @@ namespace PvTerrenos
 
             cbLote.SelectedIndex = 0;
         }
+
+        private void lTotalInteres_Click(object sender, EventArgs e)
+        {
+            int tamaño = splitFechaMora.Length;
+            txtTotalIntereses.Text = Convert.ToString(Convert.ToDouble(tamaño) * (Convert.ToDouble(txtMensualidad.Text) * 0.06));
+        }
+
+        private void lMensualidad_Click(object sender, EventArgs e)
+        {
+            txtMensualidad.Text = mensualidad;
+        }
+    
     }
 }

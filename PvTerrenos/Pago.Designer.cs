@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cbComprador = new System.Windows.Forms.ComboBox();
             this.txtProximoPago = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -45,14 +47,14 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.txtTotalIntereses = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lTotalInteres = new System.Windows.Forms.Label();
             this.txtIntereses = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbMesesMora = new System.Windows.Forms.ComboBox();
             this.cbLote = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtMensualidad = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lMensualidad = new System.Windows.Forms.Label();
             this.cmdPagoMensualidad = new System.Windows.Forms.Button();
             this.txtPagoActual = new System.Windows.Forms.TextBox();
             this.txtPagoFinal = new System.Windows.Forms.TextBox();
@@ -68,8 +70,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label16 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -107,6 +107,23 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Comprador";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(375, 25);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(72, 13);
+            this.label16.TabIndex = 48;
+            this.label16.Text = "Fecha actual:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(453, 21);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 18);
+            this.dateTimePicker1.TabIndex = 47;
             // 
             // cbComprador
             // 
@@ -191,7 +208,7 @@
             this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.txtTotalIntereses);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.lTotalInteres);
             this.groupBox3.Controls.Add(this.txtIntereses);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.cbMesesMora);
@@ -240,15 +257,16 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Descuento:";
             // 
-            // label3
+            // lTotalInteres
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(55, 124);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 16);
-            this.label3.TabIndex = 43;
-            this.label3.Text = "Total intereses";
+            this.lTotalInteres.AutoSize = true;
+            this.lTotalInteres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTotalInteres.Location = new System.Drawing.Point(55, 124);
+            this.lTotalInteres.Name = "lTotalInteres";
+            this.lTotalInteres.Size = new System.Drawing.Size(112, 16);
+            this.lTotalInteres.TabIndex = 43;
+            this.lTotalInteres.Text = "Total intereses";
+            this.lTotalInteres.Click += new System.EventHandler(this.lTotalInteres_Click);
             // 
             // txtIntereses
             // 
@@ -294,7 +312,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtMensualidad);
-            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.lMensualidad);
             this.groupBox2.Controls.Add(this.cmdPagoMensualidad);
             this.groupBox2.Controls.Add(this.txtPagoActual);
             this.groupBox2.Controls.Add(this.txtPagoFinal);
@@ -316,15 +334,16 @@
             this.txtMensualidad.TabIndex = 42;
             this.txtMensualidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label4
+            // lMensualidad
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(156, 34);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 16);
-            this.label4.TabIndex = 41;
-            this.label4.Text = "Mensualidad";
+            this.lMensualidad.AutoSize = true;
+            this.lMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lMensualidad.Location = new System.Drawing.Point(156, 34);
+            this.lMensualidad.Name = "lMensualidad";
+            this.lMensualidad.Size = new System.Drawing.Size(97, 16);
+            this.lMensualidad.TabIndex = 41;
+            this.lMensualidad.Text = "Mensualidad";
+            this.lMensualidad.Click += new System.EventHandler(this.lMensualidad_Click);
             // 
             // cmdPagoMensualidad
             // 
@@ -492,23 +511,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(290, 160);
             this.dataGridView2.TabIndex = 31;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(453, 21);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 18);
-            this.dateTimePicker1.TabIndex = 47;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(375, 25);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(72, 13);
-            this.label16.TabIndex = 48;
-            this.label16.Text = "Fecha actual:";
-            // 
             // FrmPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -552,9 +554,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtTotalIntereses;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lTotalInteres;
         private System.Windows.Forms.TextBox txtMensualidad;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lMensualidad;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtIntereses;
