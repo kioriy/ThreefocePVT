@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.cbNombre = new System.Windows.Forms.ComboBox();
             this.txtEc = new System.Windows.Forms.TextBox();
             this.cmdAgregar = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtTelefono2 = new System.Windows.Forms.TextBox();
             this.dgvAltaCliente = new System.Windows.Forms.DataGridView();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAltaCliente)).BeginInit();
             this.SuspendLayout();
@@ -80,6 +80,18 @@
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Comprador";
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Location = new System.Drawing.Point(390, 113);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(175, 23);
+            this.btnActualizar.TabIndex = 32;
+            this.btnActualizar.Text = "Actualizar Cliente";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Visible = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // cbNombre
             // 
@@ -262,18 +274,6 @@
             this.dgvAltaCliente.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvAltaCliente.Size = new System.Drawing.Size(571, 184);
             this.dgvAltaCliente.TabIndex = 29;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(393, 113);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(175, 23);
-            this.btnActualizar.TabIndex = 32;
-            this.btnActualizar.Text = "Actualizar Cliente";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Visible = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // FrmAltaCliente
             // 
