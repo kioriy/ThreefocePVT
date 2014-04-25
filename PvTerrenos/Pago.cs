@@ -19,8 +19,10 @@ namespace PvTerrenos
         string pago_actual = "";
         string proximoPago = "";
         string mensualidad = "";
-        string[] splitFechaMora;
+        string[] splitIdMora;
         string[] splitIdLote;
+        string[] splitFechaMora;
+        int[] arrayMeses;
         public FrmPago()
         {
             InitializeComponent();
@@ -38,7 +40,6 @@ namespace PvTerrenos
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                llenarComboLote();
                 cbComprador.Text = ws.getNombreComprador(txtId.Text);
             }
         }
@@ -95,7 +96,6 @@ namespace PvTerrenos
 
             ////// LLENAR DATOS MORA /////////
             llenarDatosMora();
-
         } 
 
         private void cbMesesMora_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,7 +103,7 @@ namespace PvTerrenos
             int distancia = (DateTime.Today.Year * 12 + DateTime.Today.Month) - (Convert.ToDateTime(proximoPago).Year * 12 + Convert.ToDateTime(proximoPago).Month);
             int tamaño = splitFechaMora.Length;
             int contador=0;
-            int [] arrayMeses = new int[distancia+1];
+            arrayMeses = new int[distancia+1];
 
             for (int i = 0; i <= distancia; i++) {
                 contador = 0;
@@ -130,28 +130,39 @@ namespace PvTerrenos
         public void llenarComboComprador() {
 
             string idComprador = ws.getIdCompradordeVenta();
-            string[] splitIdComprador = idComprador.Split(new char[] { ',' });
-            int tamaño = splitIdComprador.Length;
-            string[] comprador = new string [tamaño];
+            string respuestaNombreComprador = ws.getNombreComprador(idComprador);
+            string[] splitComprador = respuestaNombreComprador.Split(new char[] { ',' });
 
-            for (int i = 0; i < tamaño; i++) {
+            foreach (string comprador in splitComprador) {
 
-                comprador[i] = ws.getNombreComprador(splitIdComprador[i]);
-            }
-
-            foreach (string compradorCombo in comprador) {
-
-                cbComprador.Items.Add(compradorCombo);
+                cbComprador.Items.Add(comprador);
             }
         }
 
         public void llenarDatosMora() {
 
+            bool entra =true;
             string respuestaFechaMora = ws.getFechaMora(idVenta);
-            splitFechaMora = respuestaFechaMora.Split(new char[] { ',' });
-            int tamaño = splitFechaMora.Length;
+            string respuestaMontoMora = ws.getMontoMora(idVenta);
 
-            txtTotalIntereses.Text = Convert.ToString(Convert.ToDouble(tamaño) * (Convert.ToDouble(txtMensualidad.Text) * 0.06));
+            splitFechaMora = respuestaFechaMora.Split(new char[] { ',' });
+            string[] splitMontoMora = respuestaMontoMora.Split(new char[] { ',' });
+
+            double totalInteres = 0;
+            //int tamaño = splitFechaMora.Length;
+            if (splitFechaMora[0] == ""){
+                entra = false;
+            }
+
+           // txtTotalIntereses.Text = Convert.ToString(Convert.ToDouble(tamaño) * (Convert.ToDouble(txtMensualidad.Text) * 0.06));
+            if (entra)
+            {
+                foreach (string MontoMora in splitMontoMora)
+                {
+                    totalInteres = totalInteres + Convert.ToDouble(MontoMora);
+                }
+            }
+                txtTotalIntereses.Text = Convert.ToString(totalInteres);
 
             int contador = 0;
 
@@ -165,7 +176,14 @@ namespace PvTerrenos
             {
                 cbMesesMora.Items.Add(Convert.ToDateTime(proximoPago).AddMonths(i).ToString("MMMM"));
             }
-            cbMesesMora.SelectedIndex = 0;
+            
+            if (cbMesesMora.Items.Count >= 1)
+            {
+                cbMesesMora.SelectedIndex = 0;
+            }
+            else {
+                cbMesesMora.SelectedIndex = -1;
+            }
         }
 
         public void llenarComboLote() 
@@ -203,6 +221,76 @@ namespace PvTerrenos
         {
             txtMensualidad.Text = mensualidad;
         }
-    
+
+        private void cmdPagoInteres_Click(object sender, EventArgs e)
+        {
+            ////// LLENAR MENSAJE DE CONFIRMACION  ////////////////
+            string mensaje = "¿Realizar pago de intereses?";
+            string caption = "Pago interes";
+            MessageBoxButtons botones = MessageBoxButtons.OKCancel;
+            DialogResult resultado;
+            //////////////////////////////////////////////////////
+
+            if (vacio())
+            {
+                resultado = MessageBox.Show(mensaje, caption, botones);
+
+                if (resultado == System.Windows.Forms.DialogResult.OK)
+                {
+                    string respuestaIdMora = ws.getIdMora(idVenta);
+                    splitIdMora = respuestaIdMora.Split(new char[] { ',' });
+                    MessageBox.Show(respuestaIdMora);
+
+                    double interes = Convert.ToDouble(mensualidad) * 0.06;
+                    double cuantosPagos = Convert.ToDouble(txtIntereses.Text) / interes;
+
+                    MessageBox.Show(Convert.ToString(cuantosPagos));
+
+                    double totalInteres = Convert.ToDouble(txtTotalIntereses.Text);
+
+                    pagoAbonoMora(cuantosPagos);
+                }
+            }
+            else {
+                MessageBox.Show("Favor de Llenar el formulario");
+            }
+        }
+
+        private void pagoAbonoMora(double cuantosPagos) {
+
+            string implodeIdMora="";
+            int mesSeleccionado = cbMesesMora.SelectedIndex;
+            int indexIdMora = 0;
+
+            for (int i = 0; i <= cbMesesMora.SelectedIndex; i++) {
+
+                indexIdMora += arrayMeses[cbMesesMora.SelectedIndex];
+                //MessageBox.Show(Convert.ToString(indexIdMora) + " " + Convert.ToString(arrayMeses[cbMesesMora.SelectedIndex]);
+            }
+
+            for (int i=indexIdMora; i < splitIdMora.Length ; i++)
+            {
+                 implodeIdMora += splitIdMora[i];
+
+                if (i<splitIdMora.Length){
+                    implodeIdMora +=",";
+                }
+            }
+
+            
+
+        }
+
+        private bool vacio() { 
+        
+          if(txtId.Text.Length == 0 || cbComprador.Text.Length == 0)
+          {
+              return false;
+          }
+          else
+          {
+            return true;
+          }
+        }
     }
 }
