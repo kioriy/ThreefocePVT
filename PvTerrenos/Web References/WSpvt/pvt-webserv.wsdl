@@ -459,14 +459,33 @@
     <wsdl:part name="fecha_pago" type="xsd:string" />
     <wsdl:part name="mes_mora" type="xsd:string" />
     <wsdl:part name="fecha_mora" type="xsd:string" />
+    <wsdl:part name="status_mora" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraMoraResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getIdMoraRequest">
+    <wsdl:part name="idVenta" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getIdMoraResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="getFechaMoraRequest">
     <wsdl:part name="id_venta" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="getFechaMoraResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getMontoMoraRequest">
+    <wsdl:part name="id_venta" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getMontoMoraResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cambiarStatusMoraRequest">
+    <wsdl:part name="id_mora" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cambiarStatusMoraResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="reportePagoRequest">
@@ -727,9 +746,21 @@
       <wsdl:input message="tns:registraMoraRequest" />
       <wsdl:output message="tns:registraMoraResponse" />
     </wsdl:operation>
+    <wsdl:operation name="getIdMora">
+      <wsdl:input message="tns:getIdMoraRequest" />
+      <wsdl:output message="tns:getIdMoraResponse" />
+    </wsdl:operation>
     <wsdl:operation name="getFechaMora">
       <wsdl:input message="tns:getFechaMoraRequest" />
       <wsdl:output message="tns:getFechaMoraResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMontoMora">
+      <wsdl:input message="tns:getMontoMoraRequest" />
+      <wsdl:output message="tns:getMontoMoraResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cambiarStatusMora">
+      <wsdl:input message="tns:cambiarStatusMoraRequest" />
+      <wsdl:output message="tns:cambiarStatusMoraResponse" />
     </wsdl:operation>
     <wsdl:operation name="reportePago">
       <wsdl:input message="tns:reportePagoRequest" />
@@ -1278,8 +1309,35 @@
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getIdMora">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdMora" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getFechaMora">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getFechaMora" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMontoMora">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getMontoMora" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cambiarStatusMora">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/cambiarStatusMora" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
