@@ -141,7 +141,7 @@ namespace PvTerrenos
                         DateTime mesPrincipal = proximoPago.AddMonths(auxiliar - aMaxMes);
                         DateTime mesRecorrido = mesPrincipal.AddMonths(-j);
 
-                        respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString());
+                        respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString(),"0");
                         ws.updateStatusMora(idVenta);
                     }
                 } return respuestaRegistraMora;
@@ -173,7 +173,7 @@ namespace PvTerrenos
                         DateTime mesPrincipal = Convert.ToDateTime(ultimoMes).AddMonths(auxiliar - aMaxMes);
                         DateTime mesRecorrido = mesPrincipal.AddMonths(-j);
 
-                        respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString());
+                        respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString(),"0");
                     }
                 } return (respuestaRegistraMora + " se registro nueva mora para este usuario");
             }
