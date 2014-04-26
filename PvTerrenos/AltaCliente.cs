@@ -22,6 +22,7 @@ namespace PvTerrenos
         public string ecivil;
         public string telefono;
         public string telefono2;
+        public string Idcomprador;
         public FrmAltaCliente()
         {
             InitializeComponent();
@@ -90,7 +91,8 @@ namespace PvTerrenos
                     txtEc.Text = splitDatosComprador[4];
                     txtTelefono2.Text = splitDatosComprador[5];
                     txtTelefono.Text = splitDatosComprador[6];
-                    
+                  
+
                     string mensaje = "Este cliente ya se encuentra registrado,¿Deseas modificarlo?";
                     string caption = "Modificar Usuario";
                     MessageBoxButtons botones = MessageBoxButtons.OKCancel;
@@ -253,15 +255,15 @@ namespace PvTerrenos
             string caption = "Actualizar Cliente";
             MessageBoxButtons botones = MessageBoxButtons.OKCancel;
             DialogResult resultado;
-            
+            Idcomprador = ws.getIdComprador(nombre);
+              
              
-            
-            
                 resultado = MessageBox.Show(mensaje, caption, botones);
 
                 if (resultado == System.Windows.Forms.DialogResult.OK) {
-                   string respuestaActulizaCliente = ws.updateComprador(cbNombre.Text, txtDireccion.Text, txtBeneficiario.Text, txtResidencia.Text, txtOcupacion.Text, txtEc.Text, txtTelefono.Text, txtTelefono2.Text);
-                   MessageBox.Show(respuestaActulizaCliente);
+                    string nombreNuevo = cbNombre.Text.ToUpper();
+                    string respuestaActulizaCliente = ws.updateComprador(Idcomprador, nombreNuevo, txtDireccion.Text, txtBeneficiario.Text, txtResidencia.Text, txtOcupacion.Text, txtEc.Text, txtTelefono.Text, txtTelefono2.Text);
+                    MessageBox.Show(respuestaActulizaCliente);
                 }
           }
       }

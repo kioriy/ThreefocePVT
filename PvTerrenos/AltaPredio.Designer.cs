@@ -51,6 +51,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cmbModificar = new System.Windows.Forms.ComboBox();
             this.gbMazanaLote.SuspendLayout();
             this.gbRegistrarLotes.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             // gbMazanaLote
             // 
+            this.gbMazanaLote.Controls.Add(this.cmbModificar);
             this.gbMazanaLote.Controls.Add(this.btnModificaLote);
             this.gbMazanaLote.Controls.Add(this.btnModificar);
             this.gbMazanaLote.Controls.Add(this.label2);
@@ -106,7 +108,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 32);
+            this.label2.Location = new System.Drawing.Point(0, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 21;
@@ -310,6 +312,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(529, 219);
             this.dataGridView1.TabIndex = 15;
             // 
+            // cmbModificar
+            // 
+            this.cmbModificar.FormattingEnabled = true;
+            this.cmbModificar.Location = new System.Drawing.Point(64, 30);
+            this.cmbModificar.Name = "cmbModificar";
+            this.cmbModificar.Size = new System.Drawing.Size(100, 20);
+            this.cmbModificar.TabIndex = 24;
+            this.cmbModificar.Visible = false;
+            this.cmbModificar.SelectedIndexChanged += new System.EventHandler(this.cmbModificar_SelectedIndexChanged);
+            // 
             // FrmAltaPredio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,5 +368,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnModificaLote;
+        private System.Windows.Forms.ComboBox cmbModificar;
     }
 }

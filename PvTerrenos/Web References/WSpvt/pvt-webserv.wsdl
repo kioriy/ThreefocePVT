@@ -88,6 +88,7 @@
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="updateCompradorRequest">
+    <wsdl:part name="id" type="xsd:string" />
     <wsdl:part name="nombre" type="xsd:string" />
     <wsdl:part name="direccion" type="xsd:string" />
     <wsdl:part name="beneficiario" type="xsd:string" />
