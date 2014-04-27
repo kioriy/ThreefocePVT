@@ -725,8 +725,9 @@ namespace PvTerrenos.WSpvt {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/updateComprador", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string updateComprador(string nombre, string direccion, string beneficiario, string residencia, string ocupacion, string estado_civil, string tel, string tel1) {
+        public string updateComprador(string id, string nombre, string direccion, string beneficiario, string residencia, string ocupacion, string estado_civil, string tel, string tel1) {
             object[] results = this.Invoke("updateComprador", new object[] {
+                        id,
                         nombre,
                         direccion,
                         beneficiario,
@@ -739,16 +740,17 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
-        public void updateCompradorAsync(string nombre, string direccion, string beneficiario, string residencia, string ocupacion, string estado_civil, string tel, string tel1) {
-            this.updateCompradorAsync(nombre, direccion, beneficiario, residencia, ocupacion, estado_civil, tel, tel1, null);
+        public void updateCompradorAsync(string id, string nombre, string direccion, string beneficiario, string residencia, string ocupacion, string estado_civil, string tel, string tel1) {
+            this.updateCompradorAsync(id, nombre, direccion, beneficiario, residencia, ocupacion, estado_civil, tel, tel1, null);
         }
         
         /// <remarks/>
-        public void updateCompradorAsync(string nombre, string direccion, string beneficiario, string residencia, string ocupacion, string estado_civil, string tel, string tel1, object userState) {
+        public void updateCompradorAsync(string id, string nombre, string direccion, string beneficiario, string residencia, string ocupacion, string estado_civil, string tel, string tel1, object userState) {
             if ((this.updateCompradorOperationCompleted == null)) {
                 this.updateCompradorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateCompradorOperationCompleted);
             }
             this.InvokeAsync("updateComprador", new object[] {
+                        id,
                         nombre,
                         direccion,
                         beneficiario,

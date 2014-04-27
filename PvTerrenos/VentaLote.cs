@@ -25,6 +25,10 @@ namespace PvTerrenos
             cbFormaPago.Items.Add("Contado");
 
             llenarCombos();
+            PdfCreate pdf = new PdfCreate();
+
+            pdf.crearPdf();
+
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
