@@ -32,3 +32,5 @@ C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Release\PvTerrenos.
 C:\Users\Miriam\terrenos\PvTerrenos\obj\Release\PvTerrenos.MedidaLote.resources
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Release\itextsharp.dll
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Release\itextsharp.xml
+C:\Users\Miriam\terrenos\PvTerrenos\bin\Release\itextsharp.dll
+C:\Users\Miriam\terrenos\PvTerrenos\bin\Release\itextsharp.xml

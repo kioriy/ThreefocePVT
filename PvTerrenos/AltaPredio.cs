@@ -16,6 +16,7 @@ namespace PvTerrenos
         public Boolean predioExiste = false;
         public Boolean modificar = false;
         public String numeroManzanas;
+        public Boolean manzanaPredio = false;
         public string idPredio;
 
         WSpvt.PVT ws = new WSpvt.PVT();
@@ -194,6 +195,7 @@ namespace PvTerrenos
                     cmdGeneraManzanas.Visible = false;
                     cmdGenerarLotes.Visible = true;
                     gbRegistrarLotes.Visible = true;
+                    btnModificaLote.Visible = true;
                     txtNumeroLote.Visible = true;
                     for (int a = 0; a < x; a++)
                     {
@@ -281,13 +283,34 @@ namespace PvTerrenos
 
                                                  else
                                                      {
-                                                            numeroLote = txtNumeroLote.Text;
-                                                            string registrarLote = ws.registraLote(numeroLote, idPredio, "", "");
+                                                         if (manzanaPredio == false)
+                                                         {
+
+                                                             numeroLote = txtNumeroLote.Text;
+                                                             string registrarLote = ws.registraLote(numeroLote, idPredio, "", "");
                                                              if (registrarLote == "1")
-                                                                 {
-                                                                      MessageBox.Show("Lotes modificados con EXITO");
-                                                                        bandera = true;
-                                                                  }
+                                                             {
+                                                                 MessageBox.Show("Lotes modificados con EXITO");
+                                                                 bandera = true;
+                                                             }
+                                                         }
+                                                         else {
+                                                                string nManzana = cbNumeroManzana.Text;
+                                                                string idManzanaActual = ws.getIdManzana(nManzana, idPredio);
+                                                                 numeroLote = txtNumeroLote.Text;
+                                                                 string lotesActual = ws.contarLotes(idManzanaActual, idPredio);
+                                                                 int lotes = Convert.ToInt32(lotesActual)+1;
+                                                                 string cantidadActual = Convert.ToString(lotes);
+                                                                 string registrarLote = ws.registraLote(cantidadActual, idPredio, idManzanaActual, numeroLote);
+                                                                if (registrarLote == "1")
+                                                                     {
+                                                                       MessageBox.Show("Lotes modificados con EXITO");
+                                                                         bandera = true;
+                                                                    }
+                                                         
+                                                         }
+
+
                                                        }
 
                     break;
@@ -337,11 +360,13 @@ namespace PvTerrenos
                             
                                 }*/
                                 banderaRegistroLote = ws.registraLote(numeroLote, idPredio, idManzana, "");
+
                             }
                             //}//cierre for
                             if (banderaRegistroLote == "1")
                             {
                                 MessageBox.Show("Lotes registrados con EXITO");
+                                
 
                                 int items = cbNumeroManzana.Items.Count;
 
@@ -358,10 +383,6 @@ namespace PvTerrenos
 
                         }//cierre de else en condicion de if cuando txtNumeroManzanaLote esta vacio
                     }
-                    break;
-
-                case "predio": 
-
                     break;
             
             }
@@ -398,7 +419,8 @@ namespace PvTerrenos
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
-        {
+        {   
+
             cargarManzanas("modificar");
         }
 
@@ -409,6 +431,39 @@ namespace PvTerrenos
 
         private void cmbModificar_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbModificar.Text == "Lotes")
+            {
+                gbRegistrarLotes.Visible = true;
+                btnModificaLote.Visible = true;
+                btnModificar.Visible = false;
+                txtNumManzanaLote.Visible = false;
+                lNumeroManzana.Visible = false;
+                string manzanas = ws.cargaColumnaTablaManzana(idPredio, "n_manzana");
+                string[] splitManzanas = manzanas.Split(new char[] { ',' });
+
+                foreach (string manzana in splitManzanas)
+                {
+                    cbNumeroManzana.Items.Add(manzana);
+                }
+
+            }
+            else
+            {
+                btnModificar.Visible = true;
+                gbRegistrarLotes.Visible = false;
+                txtNumManzanaLote.Visible = true;
+                lNumeroManzana.Visible = true;
+                lNumeroLotes.Visible = false;
+            }
+        }
+
+        private void cbNumeroManzana_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string nManzana = cbNumeroManzana.Text;
+            string idManzanaActual = ws.getIdManzana(nManzana, idPredio);
+            string lotesXmanzana = ws.contarLotes(idManzanaActual, idPredio);
+            txtNumeroLote.Text = lotesXmanzana;
+            manzanaPredio = true;
 
         }
     }//cierre clase frmAltaPredio

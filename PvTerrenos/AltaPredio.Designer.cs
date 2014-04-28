@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbMazanaLote = new System.Windows.Forms.GroupBox();
+            this.cmbModificar = new System.Windows.Forms.ComboBox();
             this.btnModificaLote = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cmbModificar = new System.Windows.Forms.ComboBox();
             this.gbMazanaLote.SuspendLayout();
             this.gbRegistrarLotes.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -80,10 +80,20 @@
             this.gbMazanaLote.TabStop = false;
             this.gbMazanaLote.Text = "Datos Mazana/Lote";
             // 
+            // cmbModificar
+            // 
+            this.cmbModificar.FormattingEnabled = true;
+            this.cmbModificar.Location = new System.Drawing.Point(64, 30);
+            this.cmbModificar.Name = "cmbModificar";
+            this.cmbModificar.Size = new System.Drawing.Size(100, 20);
+            this.cmbModificar.TabIndex = 24;
+            this.cmbModificar.Visible = false;
+            this.cmbModificar.SelectedIndexChanged += new System.EventHandler(this.cmbModificar_SelectedIndexChanged);
+            // 
             // btnModificaLote
             // 
             this.btnModificaLote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificaLote.Location = new System.Drawing.Point(396, 61);
+            this.btnModificaLote.Location = new System.Drawing.Point(393, 61);
             this.btnModificaLote.Name = "btnModificaLote";
             this.btnModificaLote.Size = new System.Drawing.Size(109, 23);
             this.btnModificaLote.TabIndex = 23;
@@ -178,6 +188,7 @@
             this.cbNumeroManzana.Name = "cbNumeroManzana";
             this.cbNumeroManzana.Size = new System.Drawing.Size(44, 20);
             this.cbNumeroManzana.TabIndex = 2;
+            this.cbNumeroManzana.SelectedIndexChanged += new System.EventHandler(this.cbNumeroManzana_SelectedIndexChanged);
             // 
             // lLotes
             // 
@@ -311,16 +322,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(529, 219);
             this.dataGridView1.TabIndex = 15;
-            // 
-            // cmbModificar
-            // 
-            this.cmbModificar.FormattingEnabled = true;
-            this.cmbModificar.Location = new System.Drawing.Point(64, 30);
-            this.cmbModificar.Name = "cmbModificar";
-            this.cmbModificar.Size = new System.Drawing.Size(100, 20);
-            this.cmbModificar.TabIndex = 24;
-            this.cmbModificar.Visible = false;
-            this.cmbModificar.SelectedIndexChanged += new System.EventHandler(this.cmbModificar_SelectedIndexChanged);
             // 
             // FrmAltaPredio
             // 

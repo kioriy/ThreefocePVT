@@ -18,7 +18,7 @@ namespace PvTerrenos
             //Creamos documento con el tamaña de pagina tradicional
             Document recibo = new Document(PageSize.LETTER);
             //Indicamos la ruta donde se guardara el documento
-            PdfWriter escribir = PdfWriter.GetInstance(recibo, new FileStream(@"C:\Users\Kioriy\Desktop\recibo.pdf", FileMode.Create));
+            PdfWriter escribir = PdfWriter.GetInstance(recibo, new FileStream(@"C:\Users\Miriam\Desktop\recibo.pdf", FileMode.Create));
 
             //abrimos archivo
             recibo.Open();
@@ -42,7 +42,7 @@ namespace PvTerrenos
             recibo.Close();
 
             Process prc = new System.Diagnostics.Process();
-            prc.StartInfo.FileName = @"C:\Users\Kioriy\Desktop\recibo.pdf";
+            prc.StartInfo.FileName = @"C:\Users\Miriam\Desktop\recibo.pdf";
             prc.Start();
         
         }
