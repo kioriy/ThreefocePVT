@@ -67,6 +67,7 @@
     <Compile Include="InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="NumeroLetra.cs" />
     <Compile Include="PdfCreate.cs" />
     <Compile Include="VentaLote.cs">
       <SubType>Form</SubType>

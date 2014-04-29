@@ -14,6 +14,7 @@ namespace PvTerrenos
     {
         WSpvt.PVT ws = new WSpvt.PVT();
         Fecha f = new Fecha();
+        PdfCreate recibo = new PdfCreate();
 
         string idVenta = "";
         string pago_actual = "";
@@ -132,6 +133,8 @@ namespace PvTerrenos
                 string registraPago = ws.registraPago(idVenta, mensualidad, Convert.ToString(DateTime.Today), proximoPago, "Mensualidad", pago_actual);
                 MessageBox.Show(registraPago);
                 ws.updateAbonoMensual(txtId.Text,"0");
+
+                recibo.crearPdfRecibo("abono", pago_actual, txtPagoFinal.Text, cbLote.Text, cbManzana.Text, cbComprador.Text, txtMensualidad.Text, proximoPago, cbPredio.Text, "COYULA", "TONALA", "6", "9");
             }
             if (Convert.ToInt32(txtMensualidad.Text) < Convert.ToInt32(mensualidad2))
             {
@@ -143,8 +146,7 @@ namespace PvTerrenos
                 string respuestaAbonoMensualidad = ws.updateAbonoMensual(txtId.Text, txtMensualidad.Text);
                 MessageBox.Show(respuestaAbonoMensualidad+" abono mensualidad");
 
-                string respuestaReportes = ws.reportePago("1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1");
-                MessageBox.Show(respuestaReportes);
+                recibo.crearPdfRecibo("abono", pago_actual, txtPagoFinal.Text, cbLote.Text, cbManzana.Text, cbComprador.Text, txtMensualidad.Text, proximoPago, cbPredio.Text, "COYULA", "TONALA", "6", "9");
             }
         }
 

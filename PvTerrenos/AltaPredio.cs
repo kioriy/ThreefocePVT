@@ -163,6 +163,9 @@ namespace PvTerrenos
             {
                 MessageBox.Show("Debes llenar 'Nombre' y 'ID predio'");
             }
+            FrmVentaLote ventaLote = new FrmVentaLote();
+
+           // ventaLote.llenarCombos();
         }
 
         public void cargarManzanas(string opcion){
@@ -390,7 +393,7 @@ namespace PvTerrenos
           
 
 
-            if (bandera/*cbNumeroManzana.SelectedIndex == Convert.ToInt32(txtNumManzanaLote.Text) */ || cbSeleccionaManzanaLote.SelectedIndex == 1)
+            if (bandera || cbSeleccionaManzanaLote.SelectedIndex == 1)
             {
                 txtNombrePredio.Text = "";
                 txtIdPredio.Text = "";

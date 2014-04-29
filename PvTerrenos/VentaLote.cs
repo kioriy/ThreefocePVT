@@ -27,7 +27,7 @@ namespace PvTerrenos
             llenarCombos();
             PdfCreate pdf = new PdfCreate();
 
-            pdf.crearPdf();
+            //pdf.crearPdfRecibo("4", "100", "22", "10", "HUGO RAFAEL HERNANDEZ LLAMAS", "2000","ABRIL","SAN ANDRES");
 
         }
 
@@ -124,7 +124,7 @@ namespace PvTerrenos
             }
         }
 
-        private void llenarCombos() {
+        public void llenarCombos() {
             
             string respuestaCargaPredio = ws.cargaColumnaTablaPredio("nombre_predio");
             
