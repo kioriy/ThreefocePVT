@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.cbNombre = new System.Windows.Forms.ComboBox();
@@ -49,9 +46,7 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtTelefono2 = new System.Windows.Forms.TextBox();
-            this.dgvAltaCliente = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAltaCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -84,13 +79,12 @@
             // btnActualizar
             // 
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(390, 113);
+            this.btnActualizar.Location = new System.Drawing.Point(309, 113);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(175, 23);
             this.btnActualizar.TabIndex = 32;
             this.btnActualizar.Text = "Actualizar Cliente";
             this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Visible = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // cbNombre
@@ -104,6 +98,7 @@
             this.cbNombre.Size = new System.Drawing.Size(200, 20);
             this.cbNombre.TabIndex = 31;
             this.cbNombre.SelectedIndexChanged += new System.EventHandler(this.cbNombre_SelectedIndexChanged);
+            this.cbNombre.SelectedValueChanged += new System.EventHandler(this.cbNombre_SelectedValueChanged);
             this.cbNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNombre_KeyDown);
             this.cbNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNombre_KeyPress);
             // 
@@ -248,50 +243,17 @@
             this.txtTelefono2.Size = new System.Drawing.Size(100, 20);
             this.txtTelefono2.TabIndex = 8;
             // 
-            // dgvAltaCliente
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAltaCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvAltaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAltaCliente.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvAltaCliente.Location = new System.Drawing.Point(12, 162);
-            this.dgvAltaCliente.Name = "dgvAltaCliente";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAltaCliente.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvAltaCliente.Size = new System.Drawing.Size(571, 184);
-            this.dgvAltaCliente.TabIndex = 29;
-            // 
             // FrmAltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 356);
+            this.ClientSize = new System.Drawing.Size(604, 171);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dgvAltaCliente);
             this.Name = "FrmAltaCliente";
             this.Text = "Alta - Cliente";
+            this.Load += new System.EventHandler(this.FrmAltaCliente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAltaCliente)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -313,7 +275,6 @@
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtTelefono2;
         private System.Windows.Forms.Button cmdAgregar;
-        private System.Windows.Forms.DataGridView dgvAltaCliente;
         private System.Windows.Forms.TextBox txtEc;
         private System.Windows.Forms.ComboBox cbNombre;
         private System.Windows.Forms.Button btnActualizar;

@@ -52,6 +52,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dvgNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dvgManzanas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dvgLotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDisponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbMazanaLote.SuspendLayout();
             this.gbRegistrarLotes.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -318,10 +322,43 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dvgNombre,
+            this.dvgManzanas,
+            this.dvgLotes,
+            this.dgvDisponible});
             this.dataGridView1.Location = new System.Drawing.Point(12, 215);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(529, 219);
             this.dataGridView1.TabIndex = 15;
+            // 
+            // dvgNombre
+            // 
+            this.dvgNombre.HeaderText = "Predio";
+            this.dvgNombre.Name = "dvgNombre";
+            this.dvgNombre.ReadOnly = true;
+            this.dvgNombre.Width = 200;
+            // 
+            // dvgManzanas
+            // 
+            this.dvgManzanas.HeaderText = "Manzanas";
+            this.dvgManzanas.Name = "dvgManzanas";
+            this.dvgManzanas.ReadOnly = true;
+            this.dvgManzanas.Width = 75;
+            // 
+            // dvgLotes
+            // 
+            this.dvgLotes.HeaderText = "Lotes";
+            this.dvgLotes.Name = "dvgLotes";
+            this.dvgLotes.ReadOnly = true;
+            this.dvgLotes.Width = 80;
+            // 
+            // dgvDisponible
+            // 
+            this.dgvDisponible.HeaderText = "Lotes disponibles";
+            this.dgvDisponible.Name = "dgvDisponible";
+            this.dgvDisponible.ReadOnly = true;
+            this.dgvDisponible.Width = 130;
             // 
             // FrmAltaPredio
             // 
@@ -370,5 +407,9 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnModificaLote;
         private System.Windows.Forms.ComboBox cmbModificar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dvgNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dvgManzanas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dvgLotes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvDisponible;
     }
 }

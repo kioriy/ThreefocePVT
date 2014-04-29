@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
 namespace PvTerrenos
 {
     public partial class FrmAltaCliente : Form
@@ -23,6 +24,7 @@ namespace PvTerrenos
         public string telefono;
         public string telefono2;
         public string Idcomprador;
+
         public FrmAltaCliente()
         {
             InitializeComponent();
@@ -143,28 +145,6 @@ namespace PvTerrenos
             }
         }
 
-          private void cmdAgregar_Click(object sender, EventArgs e)
-          {
-              agregarCliente();
-             
-              //cargarAltaCliente();
-          }
-       
-    /*      //carga el datagridview en la venta alta clientes
-          private void cargarAltaCliente() {
-
-              conexion = new MySqlConnection(ruta);
-              conexion.Open();
-              DataTable dtDatos = new DataTable();
-              adaptador = new MySqlDataAdapter("SELECT * FROM cliente", conexion);
-              adaptador.Fill(dtDatos);
-              dgvAltaCliente.DataSource = dtDatos;
-              conexion.Close();
-          }*/
-
-         
-
-
           void modificarCliente()
           {
               
@@ -178,7 +158,8 @@ namespace PvTerrenos
 
                   if (comprador == nombre)
                   {
-
+                      cargaCliente();
+                     /* 
                       string respuestaCliente = ws.getComprador(nombre);
                       string[] splitDatosComprador = respuestaCliente.Split(new char[] { ',' });
 
@@ -189,7 +170,7 @@ namespace PvTerrenos
                       txtOcupacion.Text = splitDatosComprador[3];
                       txtEc.Text = splitDatosComprador[4];
                       txtTelefono2.Text = splitDatosComprador[5];
-                      txtTelefono.Text = splitDatosComprador[6];
+                      txtTelefono.Text = splitDatosComprador[6];*/
 
                       string mensaje = "Este cliente ya se encuentra registrado,¿Deseas modificarlo?";
                       string caption = "Modificar Usuario";
@@ -246,6 +227,7 @@ namespace PvTerrenos
           {
               if (e.KeyCode == Keys.Enter) {
                   modificarCliente();
+                  
               }
           }
 
@@ -266,5 +248,51 @@ namespace PvTerrenos
                     MessageBox.Show(respuestaActulizaCliente);
                 }
           }
+
+
+          private void cmdAgregar_Click(object sender, EventArgs e)
+          {
+              agregarCliente();
+          }
+
+          //carga el datagridview en la venta alta clientes
+          
+
+          private void FrmAltaCliente_Load(object sender, EventArgs e)
+          {
+
+          }
+
+          private void dgvAltaCliente_DataError(object sender, DataGridViewDataErrorEventArgs e)
+          {
+
+          }
+
+
+          public void cargaCliente() {
+              string nombre = cbNombre.Text;
+              string respuestaCliente = ws.getComprador(nombre);
+              string[] splitDatosComprador = respuestaCliente.Split(new char[] { ',' });
+
+
+              txtDireccion.Text = splitDatosComprador[0];
+              txtBeneficiario.Text = splitDatosComprador[1];
+              txtResidencia.Text = splitDatosComprador[2];
+              txtOcupacion.Text = splitDatosComprador[3];
+              txtEc.Text = splitDatosComprador[4];
+              txtTelefono2.Text = splitDatosComprador[5];
+              txtTelefono.Text = splitDatosComprador[6];
+              
+          
+          }
+          private void cbNombre_SelectedValueChanged(object sender, EventArgs e)
+          {
+              cmdAgregar.Visible = true;
+              btnActualizar.Visible = true;
+              cargaCliente();
+              
+
+          }
+
       }
 }

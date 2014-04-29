@@ -18,17 +18,37 @@ namespace PvTerrenos
         public String numeroManzanas;
         public Boolean manzanaPredio = false;
         public string idPredio;
+        
 
         WSpvt.PVT ws = new WSpvt.PVT();
 
         public FrmAltaPredio()
         {
             InitializeComponent();
+            cargarPredios();
             cbSeleccionaManzanaLote.Items.Add("Manzanas");
             cbSeleccionaManzanaLote.Items.Add("Lotes");
             cmbModificar.Items.Add("Manzanas");
             cmbModificar.Items.Add("Lotes");
             label2.Visible = false;
+        }
+
+        public void cargarPredios() {
+
+            string nombrePredio = ws.cargaColumnaTablaPredio("nombre_predio");
+            string[] splitPredio = nombrePredio.Split(new char[] { ',' });
+
+            foreach (string nombre in splitPredio) {
+                string idP = ws.getIdPredio(nombre);
+                string manzanas = ws.contarManzanas(idP);
+                string lotes = ws.contarLotes("", idP);
+                dataGridView1.Rows.Add(nombre, manzanas, lotes);
+
+            }
+            
+            
+
+        
         }
 
         private void cbSeleccionaManzanaLote_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,9 +183,6 @@ namespace PvTerrenos
             {
                 MessageBox.Show("Debes llenar 'Nombre' y 'ID predio'");
             }
-            FrmVentaLote ventaLote = new FrmVentaLote();
-
-           // ventaLote.llenarCombos();
         }
 
         public void cargarManzanas(string opcion){
@@ -393,7 +410,7 @@ namespace PvTerrenos
           
 
 
-            if (bandera || cbSeleccionaManzanaLote.SelectedIndex == 1)
+            if (bandera/*cbNumeroManzana.SelectedIndex == Convert.ToInt32(txtNumManzanaLote.Text) */ || cbSeleccionaManzanaLote.SelectedIndex == 1)
             {
                 txtNombrePredio.Text = "";
                 txtIdPredio.Text = "";
