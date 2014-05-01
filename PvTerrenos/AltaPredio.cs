@@ -347,13 +347,13 @@ namespace PvTerrenos
             {
                 indexManzana = cbNumeroManzana.Text;
                 lotesIngresar = txtNumeroLote.Text;
-                parametro = indexManzana + "," + lotesIngresar;
+                parametro = indexManzana + "," + lotesIngresar+",0";
                 generaLotes(1, parametro);
                 
             }
             else {
                 lotesIngresar = txtNumManzanaLote.Text;
-                parametro = "0," + lotesIngresar + ",";
+                parametro = "0," + lotesIngresar + ",0";
                 generaLotes(4, parametro);
                 
             
