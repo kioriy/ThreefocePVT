@@ -39,12 +39,15 @@ namespace PvTerrenos
 
             //string nombrePredio = ws.cargaColumnaTablaPredio("nombre_predio");
             //string[] splitPredio = nombrePredio.Split(new char[] { ',' });
-
-            while (dataGridView1.RowCount > 1)
+            while (dataGridView1.Rows.Count > 1)
+            
             {
+                if (dataGridView1.Rows.Count > 1)
+                {
 
-                dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+                    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
 
+                }
             }
 
             string infoPredio = ws.getinfoPredio();
@@ -180,6 +183,7 @@ namespace PvTerrenos
                     MessageBox.Show(respuesta);
                     predio = true;
                     cmdGenerarPredio.Enabled = false;
+                    cargarPredios();
                     
                 }
             }
@@ -215,11 +219,13 @@ namespace PvTerrenos
                 txtNumeroLote.Visible = true;
                 cmdGenerarLotes.Visible = true;
                 cmdGeneraManzanas.Visible = false;
+                cargarPredios();
                 
             }
             if (opcion == 2) {
 
                 respuestaRegistrarManzana = ws.registraManzana(Convert.ToString(manzanasActual), idPredio, datosManzana[1]);
+                MessageBox.Show(respuestaRegistrarManzana);
                 int i = Convert.ToInt32(datosManzana[1]);
                     for (int x = 0; x < i; x++)
                     {
@@ -232,6 +238,7 @@ namespace PvTerrenos
                     gbRegistrarLotes.Visible = true;
                     btnModificaLote.Visible = true;
                     txtNumeroLote.Visible = true;
+                    cargarPredios();
             }
 
            
@@ -242,6 +249,7 @@ namespace PvTerrenos
             string numeroLote = txtNumeroLote.Text;
             string []desglosaDatos = datos.Split(new char[] { ',' });
             string idManzana = ws.getIdManzana(desglosaDatos[0], idPredio);
+           
             int lotesActual = 0;
             if (Convert.ToInt32(desglosaDatos[2]) > 0)
             {
@@ -293,6 +301,7 @@ namespace PvTerrenos
                     break;
             
             }
+           
       
 
 
@@ -310,6 +319,7 @@ namespace PvTerrenos
                 cmdGenerarLotes.Visible = false;
                 cmdGeneraManzanas.Visible = false;
                 cbSeleccionaManzanaLote.SelectedIndex = -1;
+                cargarPredios();
 
             }
         }
@@ -330,7 +340,7 @@ namespace PvTerrenos
                 parametro =  "0," + manzanasAgregar;
                 insertaManzanas(1, parametro);
             }
-            cargarPredios();
+           // cargarPredios();
 
                  
         }
@@ -359,7 +369,7 @@ namespace PvTerrenos
             
             }
             
-            cargarPredios();
+            //cargarPredios();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -376,7 +386,7 @@ namespace PvTerrenos
                 parametro = cantidadManzas + "," + manzanasAgregar;
                 insertaManzanas(2, parametro);
             }
-            cargarPredios();
+            //cargarPredios();
         }
 
         private void btnModificaLote_Click(object sender, EventArgs e)
@@ -417,7 +427,7 @@ namespace PvTerrenos
             }
 
             //cargaLotes("modificar");
-            cargarPredios();
+           // cargarPredios();
         }
 
         private void cmbModificar_SelectedIndexChanged(object sender, EventArgs e)
@@ -443,13 +453,26 @@ namespace PvTerrenos
                 lNumeroManzana.Visible = false;
                 //string manzanas = ws.cargaColumnaTablaManzana(idPredio, "n_manzana");
                 string manzanas = txtNumManzanaLote.Text;
-                string[] splitManzanas = manzanas.Split(new char[] { ',' });
+                /*string[] splitManzanas = manzanas.Split(new char[] { ',' });
 
                 foreach (string manzana in splitManzanas)
                 {
                     int agregar = Convert.ToInt32(manzana);
                    
                     cbNumeroManzana.Items.Add(agregar);
+                }*/
+                string numeroManzanas = ws.contarManzanas(idPredio);
+                int total = Convert.ToInt32(numeroManzanas);
+                MessageBox.Show("numero manzanas: " + numeroManzanas);
+                if (total > 0)
+                {
+                    for (int x = 0; x < total; x++)
+                    {
+                        cbNumeroManzana.Items.Add(x + 1);
+
+                    }
+
+
                 }
 
             }
