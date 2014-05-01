@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbMazanaLote = new System.Windows.Forms.GroupBox();
             this.cmbModificar = new System.Windows.Forms.ComboBox();
             this.btnModificaLote = new System.Windows.Forms.Button();
@@ -66,9 +69,9 @@
             // 
             this.gbMazanaLote.Controls.Add(this.cmbModificar);
             this.gbMazanaLote.Controls.Add(this.btnModificaLote);
+            this.gbMazanaLote.Controls.Add(this.cmdGeneraManzanas);
             this.gbMazanaLote.Controls.Add(this.btnModificar);
             this.gbMazanaLote.Controls.Add(this.label2);
-            this.gbMazanaLote.Controls.Add(this.cmdGeneraManzanas);
             this.gbMazanaLote.Controls.Add(this.cmdGenerarLotes);
             this.gbMazanaLote.Controls.Add(this.lNumeroLotes);
             this.gbMazanaLote.Controls.Add(this.gbRegistrarLotes);
@@ -97,7 +100,7 @@
             // btnModificaLote
             // 
             this.btnModificaLote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificaLote.Location = new System.Drawing.Point(393, 61);
+            this.btnModificaLote.Location = new System.Drawing.Point(395, 60);
             this.btnModificaLote.Name = "btnModificaLote";
             this.btnModificaLote.Size = new System.Drawing.Size(109, 23);
             this.btnModificaLote.TabIndex = 23;
@@ -109,7 +112,7 @@
             // btnModificar
             // 
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(369, 61);
+            this.btnModificar.Location = new System.Drawing.Point(365, 60);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(158, 23);
             this.btnModificar.TabIndex = 22;
@@ -131,7 +134,7 @@
             // cmdGeneraManzanas
             // 
             this.cmdGeneraManzanas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGeneraManzanas.Location = new System.Drawing.Point(375, 61);
+            this.cmdGeneraManzanas.Location = new System.Drawing.Point(369, 60);
             this.cmdGeneraManzanas.Name = "cmdGeneraManzanas";
             this.cmdGeneraManzanas.Size = new System.Drawing.Size(148, 23);
             this.cmdGeneraManzanas.TabIndex = 4;
@@ -334,13 +337,15 @@
             // 
             // dvgNombre
             // 
+            this.dvgNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dvgNombre.HeaderText = "Predio";
             this.dvgNombre.Name = "dvgNombre";
             this.dvgNombre.ReadOnly = true;
-            this.dvgNombre.Width = 200;
             // 
             // dvgManzanas
             // 
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgManzanas.DefaultCellStyle = dataGridViewCellStyle25;
             this.dvgManzanas.HeaderText = "Manzanas";
             this.dvgManzanas.Name = "dvgManzanas";
             this.dvgManzanas.ReadOnly = true;
@@ -348,6 +353,8 @@
             // 
             // dvgLotes
             // 
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgLotes.DefaultCellStyle = dataGridViewCellStyle26;
             this.dvgLotes.HeaderText = "Lotes";
             this.dvgLotes.Name = "dvgLotes";
             this.dvgLotes.ReadOnly = true;
@@ -355,6 +362,8 @@
             // 
             // dgvDisponible
             // 
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDisponible.DefaultCellStyle = dataGridViewCellStyle27;
             this.dgvDisponible.HeaderText = "Lotes disponibles";
             this.dgvDisponible.Name = "dgvDisponible";
             this.dgvDisponible.ReadOnly = true;

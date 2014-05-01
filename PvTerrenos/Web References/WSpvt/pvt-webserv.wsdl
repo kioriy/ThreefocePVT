@@ -251,6 +251,10 @@
   <wsdl:message name="getIdPredioResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="getinfoPredioRequest" />
+  <wsdl:message name="getinfoPredioResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="getIdPredioPkLoteRequest">
     <wsdl:part name="pk_lote" type="xsd:string" />
   </wsdl:message>
@@ -266,6 +270,7 @@
   <wsdl:message name="registraManzanaRequest">
     <wsdl:part name="numero_manzana" type="xsd:string" />
     <wsdl:part name="pk_predio" type="xsd:string" />
+    <wsdl:part name="agregarManzana" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraManzanaResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -375,6 +380,18 @@
   <wsdl:message name="contarLotesResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="getMedidaLoteRequest">
+    <wsdl:part name="id_lote" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getMedidaLoteResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getStatusLotesRequest">
+    <wsdl:part name="id_predio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getStatusLotesResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="getMedidaRequest" />
   <wsdl:message name="getMedidaResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -393,30 +410,6 @@
     <wsdl:part name="MedidaOeste" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="insertaMedidaResponse">
-    <wsdl:part name="return" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="getMedidaOesteRequest">
-    <wsdl:part name="id_lote" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="getMedidaOesteResponse">
-    <wsdl:part name="return" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="getMedidaNorteRequest">
-    <wsdl:part name="id_lote" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="getMedidaNorteResponse">
-    <wsdl:part name="return" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="getMedidaSurRequest">
-    <wsdl:part name="id_lote" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="getMedidaSurResponse">
-    <wsdl:part name="return" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="getMedidaEsteRequest">
-    <wsdl:part name="id_lote" type="xsd:string" />
-  </wsdl:message>
-  <wsdl:message name="getMedidaEsteResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraProximoPagoRequest">
@@ -639,6 +632,10 @@
       <wsdl:input message="tns:getIdPredioRequest" />
       <wsdl:output message="tns:getIdPredioResponse" />
     </wsdl:operation>
+    <wsdl:operation name="getinfoPredio">
+      <wsdl:input message="tns:getinfoPredioRequest" />
+      <wsdl:output message="tns:getinfoPredioResponse" />
+    </wsdl:operation>
     <wsdl:operation name="getIdPredioPkLote">
       <wsdl:input message="tns:getIdPredioPkLoteRequest" />
       <wsdl:output message="tns:getIdPredioPkLoteResponse" />
@@ -707,6 +704,14 @@
       <wsdl:input message="tns:contarLotesRequest" />
       <wsdl:output message="tns:contarLotesResponse" />
     </wsdl:operation>
+    <wsdl:operation name="getMedidaLote">
+      <wsdl:input message="tns:getMedidaLoteRequest" />
+      <wsdl:output message="tns:getMedidaLoteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getStatusLotes">
+      <wsdl:input message="tns:getStatusLotesRequest" />
+      <wsdl:output message="tns:getStatusLotesResponse" />
+    </wsdl:operation>
     <wsdl:operation name="getMedida">
       <wsdl:input message="tns:getMedidaRequest" />
       <wsdl:output message="tns:getMedidaResponse" />
@@ -718,22 +723,6 @@
     <wsdl:operation name="insertaMedida">
       <wsdl:input message="tns:insertaMedidaRequest" />
       <wsdl:output message="tns:insertaMedidaResponse" />
-    </wsdl:operation>
-    <wsdl:operation name="getMedidaOeste">
-      <wsdl:input message="tns:getMedidaOesteRequest" />
-      <wsdl:output message="tns:getMedidaOesteResponse" />
-    </wsdl:operation>
-    <wsdl:operation name="getMedidaNorte">
-      <wsdl:input message="tns:getMedidaNorteRequest" />
-      <wsdl:output message="tns:getMedidaNorteResponse" />
-    </wsdl:operation>
-    <wsdl:operation name="getMedidaSur">
-      <wsdl:input message="tns:getMedidaSurRequest" />
-      <wsdl:output message="tns:getMedidaSurResponse" />
-    </wsdl:operation>
-    <wsdl:operation name="getMedidaEste">
-      <wsdl:input message="tns:getMedidaEsteRequest" />
-      <wsdl:output message="tns:getMedidaEsteResponse" />
     </wsdl:operation>
     <wsdl:operation name="registraProximoPago">
       <wsdl:input message="tns:registraProximoPagoRequest" />
@@ -1061,6 +1050,15 @@
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getinfoPredio">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getinfoPredio" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getIdPredioPkLote">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdPredioPkLote" style="rpc" />
       <wsdl:input>
@@ -1214,6 +1212,24 @@
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getMedidaLote">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getMedidaLote" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatusLotes">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getStatusLotes" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getMedida">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getMedida" style="rpc" />
       <wsdl:input>
@@ -1234,42 +1250,6 @@
     </wsdl:operation>
     <wsdl:operation name="insertaMedida">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/insertaMedida" style="rpc" />
-      <wsdl:input>
-        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getMedidaOeste">
-      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getMedidaOeste" style="rpc" />
-      <wsdl:input>
-        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getMedidaNorte">
-      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getMedidaNorte" style="rpc" />
-      <wsdl:input>
-        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getMedidaSur">
-      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getMedidaSur" style="rpc" />
-      <wsdl:input>
-        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getMedidaEste">
-      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getMedidaEste" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
