@@ -59,6 +59,13 @@ namespace PvTerrenos
             }
         }
 
+        void cargaVentaDvg(string nombre, string id, string costo, string mensualidad, string predio, string manzana, string lote) 
+        {
+            this.dataGridView1.Rows.Insert(0, nombre, id, costo, mensualidad, predio, manzana, lote);
+           // this.dataGridView1.Rows.Add(nombre, id,costo,mensualidad,predio, manzana,lote);
+
+        }
+
         private void cmdAgregar_Click(object sender, EventArgs e)
         {
 
@@ -101,7 +108,11 @@ namespace PvTerrenos
                 
                 string registraAbono = ws.registraAbono(idComprador, abono);
 
+                cargaVentaDvg(cbNombre.SelectedItem.ToString(), idComprador, monto, mensualidad, cbPredio.Text, cbManzana.Text, cbLotes.Text);
                 limpiar();
+               
+               
+                
             }
           }
         }

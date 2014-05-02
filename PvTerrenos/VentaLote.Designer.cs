@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbNombre = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -62,6 +67,13 @@
             this.predioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.predioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCostoTerreno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvMensualidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dvgPredio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dvgManzana = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -78,7 +90,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(7, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(589, 193);
+            this.groupBox1.Size = new System.Drawing.Size(739, 193);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Comprador";
@@ -120,7 +132,7 @@
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Location = new System.Drawing.Point(0, 64);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(589, 128);
+            this.groupBox2.Size = new System.Drawing.Size(733, 128);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos de compra";
@@ -146,7 +158,7 @@
             // cmdAgregar
             // 
             this.cmdAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdAgregar.Location = new System.Drawing.Point(459, 92);
+            this.cmdAgregar.Location = new System.Drawing.Point(603, 49);
             this.cmdAgregar.Name = "cmdAgregar";
             this.cmdAgregar.Size = new System.Drawing.Size(124, 31);
             this.cmdAgregar.TabIndex = 15;
@@ -358,9 +370,17 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvNombre,
+            this.dgvId,
+            this.dgvCostoTerreno,
+            this.dgvMensualidad,
+            this.dvgPredio,
+            this.dvgManzana,
+            this.dgvLote});
             this.dataGridView1.Location = new System.Drawing.Point(7, 232);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(589, 212);
+            this.dataGridView1.Size = new System.Drawing.Size(739, 212);
             this.dataGridView1.TabIndex = 25;
             // 
             // menuStrip1
@@ -371,7 +391,7 @@
             this.consultasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(608, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(758, 24);
             this.menuStrip1.TabIndex = 27;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -411,11 +431,69 @@
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.consultasToolStripMenuItem.Text = "Consulta";
             // 
+            // dgvNombre
+            // 
+            this.dgvNombre.HeaderText = "Nombre Cliente";
+            this.dgvNombre.Name = "dgvNombre";
+            this.dgvNombre.ReadOnly = true;
+            this.dgvNombre.Width = 183;
+            // 
+            // dgvId
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvId.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvId.HeaderText = "ID Comprador";
+            this.dgvId.Name = "dgvId";
+            this.dgvId.ReadOnly = true;
+            this.dgvId.Width = 70;
+            // 
+            // dgvCostoTerreno
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvCostoTerreno.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCostoTerreno.HeaderText = "Costo Terreno";
+            this.dgvCostoTerreno.Name = "dgvCostoTerreno";
+            this.dgvCostoTerreno.ReadOnly = true;
+            this.dgvCostoTerreno.Width = 64;
+            // 
+            // dgvMensualidad
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvMensualidad.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvMensualidad.HeaderText = "Mesualidad";
+            this.dgvMensualidad.Name = "dgvMensualidad";
+            this.dgvMensualidad.ReadOnly = true;
+            // 
+            // dvgPredio
+            // 
+            this.dvgPredio.HeaderText = "Predio";
+            this.dvgPredio.Name = "dvgPredio";
+            this.dvgPredio.ReadOnly = true;
+            this.dvgPredio.Width = 140;
+            // 
+            // dvgManzana
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgManzana.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dvgManzana.HeaderText = "Manzana";
+            this.dvgManzana.Name = "dvgManzana";
+            this.dvgManzana.ReadOnly = true;
+            this.dvgManzana.Width = 70;
+            // 
+            // dgvLote
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvLote.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvLote.HeaderText = "Lote";
+            this.dgvLote.Name = "dgvLote";
+            this.dgvLote.ReadOnly = true;
+            this.dgvLote.Width = 70;
+            // 
             // FrmVentaLote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 451);
+            this.ClientSize = new System.Drawing.Size(758, 377);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
@@ -470,6 +548,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbNombre;
         private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCostoTerreno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvMensualidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dvgPredio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dvgManzana;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvLote;
     }
 }
 
