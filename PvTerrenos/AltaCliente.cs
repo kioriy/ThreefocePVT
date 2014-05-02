@@ -23,30 +23,51 @@ namespace PvTerrenos
         public string ecivil;
         public string telefono;
         public string telefono2;
-        public string Idcomprador;
+        public string nombreComprador;
+        public string idComprador;
 
         public FrmAltaCliente()
         {
             InitializeComponent();
-           string respuestaCargaComprador =  ws.cargaComprador();
-           string[] splitComprador = respuestaCargaComprador.Split(new char[] { ',' });
-
-
-           foreach (string comprador in splitComprador) {
-
-               cbNombre.Items.Add(comprador);
-           }
+            llenarComboComprador();
+          
         }
 
-         /* variable que guarda la informacion de la conexion a la base de datos        
-          private string ruta = "Server=db4free.net; Database=dbterrenos; Uid=kioriy; Pwd=yagami;";
-          instancia de la conexion 
-          private MySqlConnection conexion;
-          instancia para el buffer de datos
-          private DataSet ds;
-          instacia para el buffer que carga los datos al grid
-          private MySqlDataAdapter adaptador;*/
-         
+        void llenarComboComprador() {
+
+            string respuestaCargaComprador = ws.cargaComprador();
+            string[] splitComprador = respuestaCargaComprador.Split(new char[] { ',' });
+
+
+
+            foreach (string comprador in splitComprador)
+            {
+
+                cbNombre.Items.Add(comprador);
+            }
+        }
+
+        
+
+        public void cargaDatosCliente(string nombre,string idComprador) {
+            MessageBox.Show(idComprador);
+            string respuestaCliente = ws.getComprador(nombre);
+            string[] splitDatosComprador = respuestaCliente.Split(new char[] { ',' });
+
+            nombreComprador = nombre;
+            cbNombre.Text = nombre;
+            txtDireccion.Text = splitDatosComprador[0];
+            txtBeneficiario.Text = splitDatosComprador[1];
+            txtResidencia.Text = splitDatosComprador[2];
+            txtOcupacion.Text = splitDatosComprador[3];
+            txtEc.Text = splitDatosComprador[4];
+            txtTelefono2.Text = splitDatosComprador[5];
+            txtTelefono.Text = splitDatosComprador[6];
+
+
+           
+        
+        }
         void agregarCliente()
         {
             //guardo la variable que seran enviadas en la consulta insertar
@@ -60,7 +81,8 @@ namespace PvTerrenos
             string ecivil = txtEc.Text;
             string telefono = txtTelefono.Text;
             string telefono2 = txtTelefono2.Text;
-            bool bandera = false;
+            
+            
 
              string respuestaCargaComprador =  ws.cargaComprador();
             string[] splitComprador = respuestaCargaComprador.Split(new char[] { ',' });
@@ -68,8 +90,11 @@ namespace PvTerrenos
            foreach (string comprador in splitComprador)
            {
                if (comprador == cbNombre.Text) {
-                   bandera = true;
+                   string idComprador = ws.getIdComprador(cbNombre.Text);
+                   MessageBox.Show(idComprador);
                    nombre = comprador;
+                   cargaDatosCliente(comprador,idComprador);
+
                    break;
                }
            }
@@ -80,38 +105,8 @@ namespace PvTerrenos
                 MessageBox.Show("Debes proporcionar por lo menos los siguientes datos " + ".:: Nombre ::.");
                 
             }
-            else if (bandera == true)
-                {
-                    string respuestaCliente = ws.getComprador(nombre);
-                    string[] splitDatosComprador = respuestaCliente.Split(new char[] { ',' });
-
-                    cbNombre.Text = nombre;
-                    txtDireccion.Text = splitDatosComprador[0];
-                    txtBeneficiario.Text = splitDatosComprador[1];
-                    txtResidencia.Text = splitDatosComprador[2];
-                    txtOcupacion.Text = splitDatosComprador[3];
-                    txtEc.Text = splitDatosComprador[4];
-                    txtTelefono2.Text = splitDatosComprador[5];
-                    txtTelefono.Text = splitDatosComprador[6];
-                  
-
-                    string mensaje = "Este cliente ya se encuentra registrado,¿Deseas modificarlo?";
-                    string caption = "Modificar Usuario";
-                    MessageBoxButtons botones = MessageBoxButtons.OKCancel;
-                    DialogResult resultado;
-
-                    resultado = MessageBox.Show(mensaje, caption, botones);
-
-                    if (resultado == System.Windows.Forms.DialogResult.OK)
-                    {
-                        
-                        cmdAgregar.Visible = false;
-                        btnActualizar.Visible = true;
-
-                    }
-                } 
-            else
-                {
+           
+           
                 try
                 {
                     string idComprador = generaId(cbNombre.Text);
@@ -127,72 +122,23 @@ namespace PvTerrenos
                     txtEc.Text = "";
                     txtTelefono.Text = "";
                     txtTelefono2.Text = "";
-                    //establesco la conexion
-                    //            conexion = new MySqlConnection(ruta);
-                    //            conexion.Open();
-                    //            MessageBox.Show("Conexion exitosa");
-                    //            //instancia para el comando de consultas
-                    //            MySqlCommand comando = new MySqlCommand();
-                    //            comando.CommandText = "Insert into cliente values ('" + id + "','" + nombre + "','" + domicilio + "','" + beneficiario + "','" + residencia + "','" + ocupacion + "','" + ecivil + "','" + telefono + "','" + telefono2 + "');";
-                    //            comando.Connection = conexion;
-                    //            comando.ExecuteNonQuery();
-                    //            MessageBox.Show("datos agregados con exito");
+                    
                 }
                 catch (Exception error)
                 {
                     MessageBox.Show(error.Message);
                 }
-            }
+            
         }
 
-          void modificarCliente()
+          void modificarCliente(string idcomprador)
           {
               
-              string respuestaCargaComprador = ws.cargaComprador();
-              string[] splitComprador = respuestaCargaComprador.Split(new char[] { ',' });
-              nombre = cbNombre.Text;
-             
+              string nombreNuevo = cbNombre.Text.ToUpper();
+              string respuestaActulizaCliente = ws.updateComprador(idcomprador, nombreNuevo, txtDireccion.Text, txtBeneficiario.Text, txtResidencia.Text, txtOcupacion.Text, txtEc.Text, txtTelefono.Text, txtTelefono2.Text);
+              MessageBox.Show(respuestaActulizaCliente);
+              llenarComboComprador();
 
-              foreach (string comprador in splitComprador)
-              {
-
-                  if (comprador == nombre)
-                  {
-                      cargaCliente();
-                     /* 
-                      string respuestaCliente = ws.getComprador(nombre);
-                      string[] splitDatosComprador = respuestaCliente.Split(new char[] { ',' });
-
-                      
-                      txtDireccion.Text = splitDatosComprador[0];
-                      txtBeneficiario.Text = splitDatosComprador[1];
-                      txtResidencia.Text = splitDatosComprador[2];
-                      txtOcupacion.Text = splitDatosComprador[3];
-                      txtEc.Text = splitDatosComprador[4];
-                      txtTelefono2.Text = splitDatosComprador[5];
-                      txtTelefono.Text = splitDatosComprador[6];*/
-
-                      string mensaje = "Este cliente ya se encuentra registrado,¿Deseas modificarlo?";
-                      string caption = "Modificar Usuario";
-                      MessageBoxButtons botones = MessageBoxButtons.OKCancel;
-                      DialogResult resultado;
-
-                      resultado = MessageBox.Show(mensaje, caption, botones);
-
-                      if (resultado == System.Windows.Forms.DialogResult.OK)
-                      {
-
-                          cmdAgregar.Visible = false;
-                          btnActualizar.Visible = true;
-                         
-                      }
-
-                      break;
-
-                  }
-
-
-              }
 
           }
 
@@ -213,41 +159,33 @@ namespace PvTerrenos
               return idComprador;
           }
 
-          private void cbNombre_KeyPress(object sender, KeyPressEventArgs e)
-          {
-              
-          }
 
-          private void cbNombre_SelectedIndexChanged(object sender, EventArgs e)
-          {
-
-          }
 
           private void cbNombre_KeyDown(object sender, KeyEventArgs e)
           {
               if (e.KeyCode == Keys.Enter) {
-                  modificarCliente();
+                  cargaCliente();
+                 modificarCliente(idComprador);
                   
               }
           }
 
           private void btnActualizar_Click(object sender, EventArgs e)
           {
+              
+              
              string mensaje = "¿Estas seguro de que quieres actualizar a este cliente?";
             string caption = "Actualizar Cliente";
             MessageBoxButtons botones = MessageBoxButtons.OKCancel;
             DialogResult resultado;
-            Idcomprador = ws.getIdComprador(nombre);
+           
               
-             
                 resultado = MessageBox.Show(mensaje, caption, botones);
 
                 if (resultado == System.Windows.Forms.DialogResult.OK) {
-                    string nombreNuevo = cbNombre.Text.ToUpper();
-                    string respuestaActulizaCliente = ws.updateComprador(Idcomprador, nombreNuevo, txtDireccion.Text, txtBeneficiario.Text, txtResidencia.Text, txtOcupacion.Text, txtEc.Text, txtTelefono.Text, txtTelefono2.Text);
-                    MessageBox.Show(respuestaActulizaCliente);
+                    modificarCliente(idComprador);
                 }
-          }
+        }
 
 
           private void cmdAgregar_Click(object sender, EventArgs e)
@@ -272,6 +210,7 @@ namespace PvTerrenos
           public void cargaCliente() {
               string nombre = cbNombre.Text;
               string respuestaCliente = ws.getComprador(nombre);
+              idComprador = ws.getIdComprador(nombre);
               string[] splitDatosComprador = respuestaCliente.Split(new char[] { ',' });
 
 

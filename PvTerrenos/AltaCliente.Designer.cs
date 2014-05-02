@@ -86,6 +86,7 @@
             this.btnActualizar.Text = "Actualizar Cliente";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+           
             // 
             // cbNombre
             // 
@@ -97,10 +98,10 @@
             this.cbNombre.Name = "cbNombre";
             this.cbNombre.Size = new System.Drawing.Size(200, 20);
             this.cbNombre.TabIndex = 31;
-            this.cbNombre.SelectedIndexChanged += new System.EventHandler(this.cbNombre_SelectedIndexChanged);
+            
             this.cbNombre.SelectedValueChanged += new System.EventHandler(this.cbNombre_SelectedValueChanged);
             this.cbNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNombre_KeyDown);
-            this.cbNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNombre_KeyPress);
+            
             // 
             // txtEc
             // 

@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbMazanaLote = new System.Windows.Forms.GroupBox();
             this.cmbModificar = new System.Windows.Forms.ComboBox();
             this.btnModificaLote = new System.Windows.Forms.Button();
+            this.cmdGeneraManzanas = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmdGeneraManzanas = new System.Windows.Forms.Button();
             this.cmdGenerarLotes = new System.Windows.Forms.Button();
             this.lNumeroLotes = new System.Windows.Forms.Label();
             this.gbRegistrarLotes = new System.Windows.Forms.GroupBox();
@@ -59,6 +59,10 @@
             this.dvgManzanas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dvgLotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDisponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtColonia = new System.Windows.Forms.TextBox();
+            this.txtMunicipio = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.gbMazanaLote.SuspendLayout();
             this.gbRegistrarLotes.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -109,6 +113,18 @@
             this.btnModificaLote.Visible = false;
             this.btnModificaLote.Click += new System.EventHandler(this.btnModificaLote_Click);
             // 
+            // cmdGeneraManzanas
+            // 
+            this.cmdGeneraManzanas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdGeneraManzanas.Location = new System.Drawing.Point(369, 60);
+            this.cmdGeneraManzanas.Name = "cmdGeneraManzanas";
+            this.cmdGeneraManzanas.Size = new System.Drawing.Size(148, 23);
+            this.cmdGeneraManzanas.TabIndex = 4;
+            this.cmdGeneraManzanas.Text = "Generar Manzanas";
+            this.cmdGeneraManzanas.UseVisualStyleBackColor = true;
+            this.cmdGeneraManzanas.Visible = false;
+            this.cmdGeneraManzanas.Click += new System.EventHandler(this.cmdGeneraManzanas_Click);
+            // 
             // btnModificar
             // 
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -130,18 +146,6 @@
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 21;
             this.label2.Text = "Modificar:";
-            // 
-            // cmdGeneraManzanas
-            // 
-            this.cmdGeneraManzanas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdGeneraManzanas.Location = new System.Drawing.Point(369, 60);
-            this.cmdGeneraManzanas.Name = "cmdGeneraManzanas";
-            this.cmdGeneraManzanas.Size = new System.Drawing.Size(148, 23);
-            this.cmdGeneraManzanas.TabIndex = 4;
-            this.cmdGeneraManzanas.Text = "Generar Manzanas";
-            this.cmdGeneraManzanas.UseVisualStyleBackColor = true;
-            this.cmdGeneraManzanas.Visible = false;
-            this.cmdGeneraManzanas.Click += new System.EventHandler(this.cmdGeneraManzanas_Click);
             // 
             // cmdGenerarLotes
             // 
@@ -259,6 +263,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtMunicipio);
+            this.groupBox1.Controls.Add(this.txtColonia);
             this.groupBox1.Controls.Add(this.cmdGenerarPredio);
             this.groupBox1.Controls.Add(this.txtIdPredio);
             this.groupBox1.Controls.Add(this.txtNombrePredio);
@@ -344,8 +352,8 @@
             // 
             // dvgManzanas
             // 
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dvgManzanas.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgManzanas.DefaultCellStyle = dataGridViewCellStyle4;
             this.dvgManzanas.HeaderText = "Manzanas";
             this.dvgManzanas.Name = "dvgManzanas";
             this.dvgManzanas.ReadOnly = true;
@@ -353,8 +361,8 @@
             // 
             // dvgLotes
             // 
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dvgLotes.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgLotes.DefaultCellStyle = dataGridViewCellStyle5;
             this.dvgLotes.HeaderText = "Lotes";
             this.dvgLotes.Name = "dvgLotes";
             this.dvgLotes.ReadOnly = true;
@@ -362,12 +370,48 @@
             // 
             // dgvDisponible
             // 
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDisponible.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDisponible.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDisponible.HeaderText = "Lotes disponibles";
             this.dgvDisponible.Name = "dgvDisponible";
             this.dgvDisponible.ReadOnly = true;
             this.dgvDisponible.Width = 130;
+            // 
+            // txtColonia
+            // 
+            this.txtColonia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtColonia.Location = new System.Drawing.Point(69, 60);
+            this.txtColonia.Name = "txtColonia";
+            this.txtColonia.Size = new System.Drawing.Size(138, 18);
+            this.txtColonia.TabIndex = 17;
+            // 
+            // txtMunicipio
+            // 
+            this.txtMunicipio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMunicipio.Location = new System.Drawing.Point(279, 61);
+            this.txtMunicipio.Name = "txtMunicipio";
+            this.txtMunicipio.Size = new System.Drawing.Size(116, 18);
+            this.txtMunicipio.TabIndex = 18;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(17, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Colonia:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(218, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Municipio:";
             // 
             // FrmAltaPredio
             // 
@@ -420,5 +464,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dvgManzanas;
         private System.Windows.Forms.DataGridViewTextBoxColumn dvgLotes;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvDisponible;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMunicipio;
+        private System.Windows.Forms.TextBox txtColonia;
     }
 }

@@ -102,7 +102,7 @@
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="getCompradorRequest">
-    <wsdl:part name="id_comprador" type="xsd:string" />
+    <wsdl:part name="nombreComprador" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="getCompradorResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -235,6 +235,8 @@
   <wsdl:message name="registraPredioRequest">
     <wsdl:part name="id_predio" type="xsd:string" />
     <wsdl:part name="nombre_predio" type="xsd:string" />
+    <wsdl:part name="colonia" type="xsd:string" />
+    <wsdl:part name="municipio" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraPredioResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -243,6 +245,14 @@
     <wsdl:part name="nombreColumna" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="cargaColumnaTablaPredioResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDatoPredioRequest">
+    <wsdl:part name="columna" type="xsd:string" />
+    <wsdl:part name="where" type="xsd:string" />
+    <wsdl:part name="igual" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getDatoPredioResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="getIdPredioRequest">
@@ -627,6 +637,10 @@
     <wsdl:operation name="cargaColumnaTablaPredio">
       <wsdl:input message="tns:cargaColumnaTablaPredioRequest" />
       <wsdl:output message="tns:cargaColumnaTablaPredioResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatoPredio">
+      <wsdl:input message="tns:getDatoPredioRequest" />
+      <wsdl:output message="tns:getDatoPredioResponse" />
     </wsdl:operation>
     <wsdl:operation name="getIdPredio">
       <wsdl:input message="tns:getIdPredioRequest" />
@@ -1034,6 +1048,15 @@
     </wsdl:operation>
     <wsdl:operation name="cargaColumnaTablaPredio">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/cargaColumnaTablaPredio" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatoPredio">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getDatoPredio" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>

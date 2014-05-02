@@ -37,18 +37,9 @@ namespace PvTerrenos
 
         public void cargarPredios() {
 
-            //string nombrePredio = ws.cargaColumnaTablaPredio("nombre_predio");
-            //string[] splitPredio = nombrePredio.Split(new char[] { ',' });
-            while (dataGridView1.Rows.Count > 1)
-            
-            {
-                if (dataGridView1.Rows.Count > 1)
-                {
+           
 
-                    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
-
-                }
-            }
+            dataGridView1.Rows.Clear();
 
             string infoPredio = ws.getinfoPredio();
             string[] splitInfoPredio = infoPredio.Split(new char[] { '|' });
@@ -98,7 +89,7 @@ namespace PvTerrenos
             string[] splitIdPredio = comparaId.Split(new char[] { ',' });
            
            
-            if (idPredio != "" && nombrePredio != "")
+            if (idPredio != "" && nombrePredio != "" && txtMunicipio.Text != "" && txtColonia.Text != "")
             {
                 //validacion en caso de que el predio ya este registrado
                 string mensaje = "El predio que ingresaste ya esta registrado, ¿Deseas modificarlo?";
@@ -179,7 +170,7 @@ namespace PvTerrenos
 
                 if (bandera == false && idP == false)
                 {
-                    string respuesta = ws.registraPredio(idPredio, nombrePredio);
+                    string respuesta = ws.registraPredio(idPredio, nombrePredio, txtColonia.Text, txtMunicipio.Text);
                     MessageBox.Show(respuesta);
                     predio = true;
                     cmdGenerarPredio.Enabled = false;
@@ -190,7 +181,7 @@ namespace PvTerrenos
 
             else
             {
-                MessageBox.Show("Debes llenar 'Nombre' y 'ID predio'");
+                MessageBox.Show("Debes llenar TODOS los datos del predio");
             }
         }
 
@@ -204,29 +195,37 @@ namespace PvTerrenos
             string idPredio = Convert.ToString(txtIdPredio.Text);
             int manzanasActual = Convert.ToInt32(datosManzana[0]) + 1;
 
-            if (opcion == 1)
+            if (Convert.ToInt32(datosManzana[1]) == 0 || datosManzana.Length == 0)
             {
-                int i = Convert.ToInt32(txtNumManzanaLote.Text);
-                for (int x = 0; x < i; x++)
+                MessageBox.Show("Ingresa datos mayores a 0");
+            }
+            else
+            {
+
+                if (opcion == 1)
                 {
-                    cbNumeroManzana.Items.Add(x + 1);
+                    int i = Convert.ToInt32(txtNumManzanaLote.Text);
+                    for (int x = 0; x < i; x++)
+                    {
+                        cbNumeroManzana.Items.Add(x + 1);
+
+                    }
+
+                    respuestaRegistrarManzana = ws.registraManzana("0", idPredio, datosManzana[1]);
+                    MessageBox.Show(respuestaRegistrarManzana);
+                    gbRegistrarLotes.Visible = true;
+                    txtNumeroLote.Visible = true;
+                    cmdGenerarLotes.Visible = true;
+                    cmdGeneraManzanas.Visible = false;
+                    cargarPredios();
 
                 }
+                if (opcion == 2)
+                {
 
-                respuestaRegistrarManzana = ws.registraManzana("0", idPredio, datosManzana[1]);
-                MessageBox.Show(respuestaRegistrarManzana);
-                gbRegistrarLotes.Visible = true;
-                txtNumeroLote.Visible = true;
-                cmdGenerarLotes.Visible = true;
-                cmdGeneraManzanas.Visible = false;
-                cargarPredios();
-                
-            }
-            if (opcion == 2) {
-
-                respuestaRegistrarManzana = ws.registraManzana(Convert.ToString(manzanasActual), idPredio, datosManzana[1]);
-                MessageBox.Show(respuestaRegistrarManzana);
-                int i = Convert.ToInt32(datosManzana[1]);
+                    respuestaRegistrarManzana = ws.registraManzana(Convert.ToString(manzanasActual), idPredio, datosManzana[1]);
+                    MessageBox.Show(respuestaRegistrarManzana);
+                    int i = Convert.ToInt32(datosManzana[1]);
                     for (int x = 0; x < i; x++)
                     {
                         cbNumeroManzana.Items.Add(x + 1);
@@ -239,9 +238,9 @@ namespace PvTerrenos
                     btnModificaLote.Visible = true;
                     txtNumeroLote.Visible = true;
                     cargarPredios();
-            }
+                }
 
-           
+            }  
         }
 
         public void generaLotes(int opcion, string datos) {
@@ -256,50 +255,59 @@ namespace PvTerrenos
                 lotesActual = Convert.ToInt32(desglosaDatos[2]) + 1;
             }
             int items = cbNumeroManzana.Items.Count;
-           
 
-            switch(opcion){
-                case 1:
+            if (Convert.ToInt32(desglosaDatos[1]) == 0 || desglosaDatos.Length == 0)
+            {
+                MessageBox.Show("Ingresa datos mayores a 0");
 
-                    string resgitraLotesM = ws.registraLote("0", idPredio, idManzana, desglosaDatos[1]);
-                     MessageBox.Show(resgitraLotesM);
-                   
+            }
+            else
+            {
 
-                    if (cbNumeroManzana.SelectedIndex < (items - 1))
+                switch (opcion)
+                {
+                    case 1:
+
+                        string resgitraLotesM = ws.registraLote("0", idPredio, idManzana, desglosaDatos[1]);
+                        MessageBox.Show(resgitraLotesM);
+
+
+                        if (cbNumeroManzana.SelectedIndex < (items - 1))
                         {
-                                cbNumeroManzana.SelectedIndex += 1;
+                            cbNumeroManzana.SelectedIndex += 1;
                         }
-                   else
+                        else
                         {
-                                 bandera = true;
+                            bandera = true;
                         }
-                    break;
+                        break;
 
-                case 2:
-                       string resgitraMasLotesM = ws.registraLote(Convert.ToString(lotesActual), idPredio, idManzana, desglosaDatos[1]);
-                       MessageBox.Show(resgitraMasLotesM);
-                       if (cbNumeroManzana.SelectedIndex < (items - 1))
-                       {
-                           cbNumeroManzana.SelectedIndex += 1;
-                       }
-                       else
-                       {
-                           bandera = true;
-                       }
-                    break;
+                    case 2:
+                        string resgitraMasLotesM = ws.registraLote(Convert.ToString(lotesActual), idPredio, idManzana, desglosaDatos[1]);
+                        MessageBox.Show(resgitraMasLotesM);
+                        if (cbNumeroManzana.SelectedIndex < (items - 1))
+                        {
+                            cbNumeroManzana.SelectedIndex += 1;
+                        }
+                        else
+                        {
+                            bandera = true;
+                        }
+                        break;
 
-                case 3:
-                    string resgitraMasLotes = ws.registraLote(Convert.ToString(lotesActual), idPredio, "0", desglosaDatos[1]);
-                       MessageBox.Show(resgitraMasLotes);
-                       bandera = true;
-                    break;
+                    case 3:
+                        string resgitraMasLotes = ws.registraLote(Convert.ToString(lotesActual), idPredio, "0", desglosaDatos[1]);
+                        MessageBox.Show(resgitraMasLotes);
+                        bandera = true;
+                        break;
 
-                case 4:
-                         string resgitraSoloLotes = ws.registraLote("0", idPredio, "0", desglosaDatos[1]);
-                         MessageBox.Show(resgitraSoloLotes);
-                         bandera = true;
-                    break;
-            
+                    case 4:
+                        string resgitraSoloLotes = ws.registraLote("0", idPredio, "0", desglosaDatos[1]);
+                        MessageBox.Show(resgitraSoloLotes);
+                        bandera = true;
+                        break;
+
+                }
             }
            
       
