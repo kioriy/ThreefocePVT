@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbMazanaLote = new System.Windows.Forms.GroupBox();
             this.cmbModificar = new System.Windows.Forms.ComboBox();
             this.btnModificaLote = new System.Windows.Forms.Button();
@@ -49,9 +49,12 @@
             this.cbSeleccionaManzanaLote = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMunicipio = new System.Windows.Forms.TextBox();
+            this.txtColonia = new System.Windows.Forms.TextBox();
             this.cmdGenerarPredio = new System.Windows.Forms.Button();
             this.txtIdPredio = new System.Windows.Forms.TextBox();
-            this.txtNombrePredio = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -59,10 +62,7 @@
             this.dvgManzanas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dvgLotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDisponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtColonia = new System.Windows.Forms.TextBox();
-            this.txtMunicipio = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.cmbNombrePredio = new System.Windows.Forms.ComboBox();
             this.gbMazanaLote.SuspendLayout();
             this.gbRegistrarLotes.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -263,13 +263,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbNombrePredio);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtMunicipio);
             this.groupBox1.Controls.Add(this.txtColonia);
             this.groupBox1.Controls.Add(this.cmdGenerarPredio);
             this.groupBox1.Controls.Add(this.txtIdPredio);
-            this.groupBox1.Controls.Add(this.txtNombrePredio);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -279,6 +279,42 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Predio";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(218, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Municipio:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(17, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Colonia:";
+            // 
+            // txtMunicipio
+            // 
+            this.txtMunicipio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMunicipio.Location = new System.Drawing.Point(279, 61);
+            this.txtMunicipio.Name = "txtMunicipio";
+            this.txtMunicipio.Size = new System.Drawing.Size(116, 18);
+            this.txtMunicipio.TabIndex = 18;
+            // 
+            // txtColonia
+            // 
+            this.txtColonia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtColonia.Location = new System.Drawing.Point(69, 60);
+            this.txtColonia.Name = "txtColonia";
+            this.txtColonia.Size = new System.Drawing.Size(138, 18);
+            this.txtColonia.TabIndex = 17;
             // 
             // cmdGenerarPredio
             // 
@@ -299,16 +335,6 @@
             this.txtIdPredio.Name = "txtIdPredio";
             this.txtIdPredio.Size = new System.Drawing.Size(204, 20);
             this.txtIdPredio.TabIndex = 14;
-            // 
-            // txtNombrePredio
-            // 
-            this.txtNombrePredio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtNombrePredio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombrePredio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombrePredio.Location = new System.Drawing.Point(69, 23);
-            this.txtNombrePredio.Name = "txtNombrePredio";
-            this.txtNombrePredio.Size = new System.Drawing.Size(179, 20);
-            this.txtNombrePredio.TabIndex = 11;
             // 
             // label5
             // 
@@ -352,8 +378,8 @@
             // 
             // dvgManzanas
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dvgManzanas.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgManzanas.DefaultCellStyle = dataGridViewCellStyle7;
             this.dvgManzanas.HeaderText = "Manzanas";
             this.dvgManzanas.Name = "dvgManzanas";
             this.dvgManzanas.ReadOnly = true;
@@ -361,8 +387,8 @@
             // 
             // dvgLotes
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dvgLotes.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgLotes.DefaultCellStyle = dataGridViewCellStyle8;
             this.dvgLotes.HeaderText = "Lotes";
             this.dvgLotes.Name = "dvgLotes";
             this.dvgLotes.ReadOnly = true;
@@ -370,48 +396,21 @@
             // 
             // dgvDisponible
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDisponible.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDisponible.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvDisponible.HeaderText = "Lotes disponibles";
             this.dgvDisponible.Name = "dgvDisponible";
             this.dgvDisponible.ReadOnly = true;
             this.dgvDisponible.Width = 130;
             // 
-            // txtColonia
+            // cmbNombrePredio
             // 
-            this.txtColonia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtColonia.Location = new System.Drawing.Point(69, 60);
-            this.txtColonia.Name = "txtColonia";
-            this.txtColonia.Size = new System.Drawing.Size(138, 18);
-            this.txtColonia.TabIndex = 17;
-            // 
-            // txtMunicipio
-            // 
-            this.txtMunicipio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMunicipio.Location = new System.Drawing.Point(279, 61);
-            this.txtMunicipio.Name = "txtMunicipio";
-            this.txtMunicipio.Size = new System.Drawing.Size(116, 18);
-            this.txtMunicipio.TabIndex = 18;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 63);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Colonia:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(218, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Municipio:";
+            this.cmbNombrePredio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbNombrePredio.FormattingEnabled = true;
+            this.cmbNombrePredio.Location = new System.Drawing.Point(69, 21);
+            this.cmbNombrePredio.Name = "cmbNombrePredio";
+            this.cmbNombrePredio.Size = new System.Drawing.Size(163, 20);
+            this.cmbNombrePredio.TabIndex = 21;
             // 
             // FrmAltaPredio
             // 
@@ -441,7 +440,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtIdPredio;
-        private System.Windows.Forms.TextBox txtNombrePredio;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -468,5 +466,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtMunicipio;
         private System.Windows.Forms.TextBox txtColonia;
+        private System.Windows.Forms.ComboBox cmbNombrePredio;
     }
 }

@@ -62,7 +62,6 @@ namespace PvTerrenos
         void cargaVentaDvg(string nombre, string id, string costo, string mensualidad, string predio, string manzana, string lote) 
         {
             this.dataGridView1.Rows.Insert(0, nombre, id, costo, mensualidad, predio, manzana, lote);
-           // this.dataGridView1.Rows.Add(nombre, id,costo,mensualidad,predio, manzana,lote);
 
         }
 

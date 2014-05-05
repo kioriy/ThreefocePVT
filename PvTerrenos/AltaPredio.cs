@@ -27,6 +27,7 @@ namespace PvTerrenos
         public FrmAltaPredio()
         {
             InitializeComponent();
+            llenaComboPredio();
             cargarPredios();
             cbSeleccionaManzanaLote.Items.Add("Manzanas");
             cbSeleccionaManzanaLote.Items.Add("Lotes");
@@ -79,9 +80,21 @@ namespace PvTerrenos
             }
         }
 
+        void llenaComboPredio() {
+            string comparaId = ws.cargaColumnaTablaPredio("nombre_predio");
+            string[] splitIdPredio = comparaId.Split(new char[] { ',' });
+            foreach (string predio in splitIdPredio)
+            {
+                cmbNombrePredio.Items.Add(predio);
+            }
+            
+        
+        }
+
+
         private void cmdGenerarPredio_Click(object sender, EventArgs e)//boton generar predio
         {
-            string nombrePredio = txtNombrePredio.Text;
+            string nombrePredio = cmbNombrePredio.Text;
             idPredio = txtIdPredio.Text;
             cmdGenerarLotes.Visible = false;
             bool idP = false;
@@ -315,7 +328,7 @@ namespace PvTerrenos
 
             if (bandera/*cbNumeroManzana.SelectedIndex == Convert.ToInt32(txtNumManzanaLote.Text) */ || cbSeleccionaManzanaLote.SelectedIndex == 1)
             {
-                txtNombrePredio.Text = "";
+                cmbNombrePredio.Text = "";
                 txtIdPredio.Text = "";
                 txtNumeroLote.Text = "";
                 txtNumManzanaLote.Text = "";
@@ -393,6 +406,12 @@ namespace PvTerrenos
                 manzanasAgregar = txtNumManzanaLote.Text;
                 parametro = cantidadManzas + "," + manzanasAgregar;
                 insertaManzanas(2, parametro);
+            }
+            else {
+                manzanasAgregar = txtNumManzanaLote.Text;
+                parametro = "0," + manzanasAgregar;
+                insertaManzanas(1, parametro);
+            
             }
             //cargarPredios();
         }
@@ -505,5 +524,7 @@ namespace PvTerrenos
             //manzanaPredio = true;
 
         }
+
+       
     }//cierre clase frmAltaPredio
 }
