@@ -89,6 +89,8 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback cargaColumnaTablaPredioOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getPredioOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getDatoPredioOperationCompleted;
         
         private System.Threading.SendOrPostCallback getIdPredioOperationCompleted;
@@ -288,6 +290,9 @@ namespace PvTerrenos.WSpvt {
         
         /// <remarks/>
         public event cargaColumnaTablaPredioCompletedEventHandler cargaColumnaTablaPredioCompleted;
+        
+        /// <remarks/>
+        public event getPredioCompletedEventHandler getPredioCompleted;
         
         /// <remarks/>
         public event getDatoPredioCompletedEventHandler getDatoPredioCompleted;
@@ -1439,6 +1444,36 @@ namespace PvTerrenos.WSpvt {
             if ((this.cargaColumnaTablaPredioCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.cargaColumnaTablaPredioCompleted(this, new cargaColumnaTablaPredioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getPredio", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string getPredio(string nombrePredio) {
+            object[] results = this.Invoke("getPredio", new object[] {
+                        nombrePredio});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getPredioAsync(string nombrePredio) {
+            this.getPredioAsync(nombrePredio, null);
+        }
+        
+        /// <remarks/>
+        public void getPredioAsync(string nombrePredio, object userState) {
+            if ((this.getPredioOperationCompleted == null)) {
+                this.getPredioOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetPredioOperationCompleted);
+            }
+            this.InvokeAsync("getPredio", new object[] {
+                        nombrePredio}, this.getPredioOperationCompleted, userState);
+        }
+        
+        private void OngetPredioOperationCompleted(object arg) {
+            if ((this.getPredioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getPredioCompleted(this, new getPredioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3421,6 +3456,32 @@ namespace PvTerrenos.WSpvt {
         private object[] results;
         
         internal cargaColumnaTablaPredioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void getPredioCompletedEventHandler(object sender, getPredioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getPredioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getPredioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

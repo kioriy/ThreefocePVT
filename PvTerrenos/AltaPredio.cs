@@ -94,7 +94,7 @@ namespace PvTerrenos
 
         private void cmdGenerarPredio_Click(object sender, EventArgs e)//boton generar predio
         {
-            string nombrePredio = cmbNombrePredio.Text;
+            string nombrePredio = cmbNombrePredio.Text.ToUpper();
             idPredio = txtIdPredio.Text;
             cmdGenerarLotes.Visible = false;
             bool idP = false;
@@ -480,14 +480,7 @@ namespace PvTerrenos
                 lNumeroManzana.Visible = false;
                 //string manzanas = ws.cargaColumnaTablaManzana(idPredio, "n_manzana");
                 string manzanas = txtNumManzanaLote.Text;
-                /*string[] splitManzanas = manzanas.Split(new char[] { ',' });
-
-                foreach (string manzana in splitManzanas)
-                {
-                    int agregar = Convert.ToInt32(manzana);
-                   
-                    cbNumeroManzana.Items.Add(agregar);
-                }*/
+               
                 string numeroManzanas = ws.contarManzanas(idPredio);
                 int total = Convert.ToInt32(numeroManzanas);
                 MessageBox.Show("numero manzanas: " + numeroManzanas);
@@ -523,6 +516,20 @@ namespace PvTerrenos
         
             //manzanaPredio = true;
 
+        }
+
+        void cargaDatosPredio(string nombrePredio) {
+            string datos = ws.getPredio(nombrePredio);
+            string[] desgloseDatos = datos.Split(new char[] { ',' });
+            txtIdPredio.Text = desgloseDatos[0];
+            txtColonia.Text = desgloseDatos[1];
+            txtMunicipio.Text = desgloseDatos[2];
+        }
+
+        private void cmbNombrePredio_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string nombrePredio = cmbNombrePredio.Text;
+            cargaDatosPredio(nombrePredio);
         }
 
        

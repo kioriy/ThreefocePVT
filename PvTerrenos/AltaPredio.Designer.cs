@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbMazanaLote = new System.Windows.Forms.GroupBox();
             this.cmbModificar = new System.Windows.Forms.ComboBox();
             this.btnModificaLote = new System.Windows.Forms.Button();
@@ -378,8 +378,8 @@
             // 
             // dvgManzanas
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dvgManzanas.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgManzanas.DefaultCellStyle = dataGridViewCellStyle13;
             this.dvgManzanas.HeaderText = "Manzanas";
             this.dvgManzanas.Name = "dvgManzanas";
             this.dvgManzanas.ReadOnly = true;
@@ -387,8 +387,8 @@
             // 
             // dvgLotes
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dvgLotes.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgLotes.DefaultCellStyle = dataGridViewCellStyle14;
             this.dvgLotes.HeaderText = "Lotes";
             this.dvgLotes.Name = "dvgLotes";
             this.dvgLotes.ReadOnly = true;
@@ -396,8 +396,8 @@
             // 
             // dgvDisponible
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDisponible.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDisponible.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvDisponible.HeaderText = "Lotes disponibles";
             this.dgvDisponible.Name = "dgvDisponible";
             this.dgvDisponible.ReadOnly = true;
@@ -405,12 +405,14 @@
             // 
             // cmbNombrePredio
             // 
+            this.cmbNombrePredio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbNombrePredio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbNombrePredio.FormattingEnabled = true;
             this.cmbNombrePredio.Location = new System.Drawing.Point(69, 21);
             this.cmbNombrePredio.Name = "cmbNombrePredio";
             this.cmbNombrePredio.Size = new System.Drawing.Size(163, 20);
             this.cmbNombrePredio.TabIndex = 21;
+            this.cmbNombrePredio.SelectedValueChanged += new System.EventHandler(this.cmbNombrePredio_SelectedValueChanged);
             // 
             // FrmAltaPredio
             // 
