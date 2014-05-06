@@ -218,6 +218,7 @@ namespace PvTerrenos
                 if (opcion == 1)
                 {
                     int i = Convert.ToInt32(txtNumManzanaLote.Text);
+                    cbNumeroManzana.Items.Clear();
                     for (int x = 0; x < i; x++)
                     {
                         cbNumeroManzana.Items.Add(x + 1);
@@ -239,6 +240,7 @@ namespace PvTerrenos
                     respuestaRegistrarManzana = ws.registraManzana(Convert.ToString(manzanasActual), idPredio, datosManzana[1]);
                     MessageBox.Show(respuestaRegistrarManzana);
                     int i = Convert.ToInt32(datosManzana[1]);
+                    cbNumeroManzana.Items.Clear();
                     for (int x = 0; x < i; x++)
                     {
                         cbNumeroManzana.Items.Add(x + 1);
@@ -419,8 +421,10 @@ namespace PvTerrenos
         private void btnModificaLote_Click(object sender, EventArgs e)
         {
             String cantidadManzas = ws.contarManzanas(idPredio);
-            String cantidadLotesconM = ws.contarLotes(cbNumeroManzana.Text, idPredio);
+            String idManzana = ws.getIdManzana(cbNumeroManzana.Text, idPredio);
+            String cantidadLotesconM = ws.contarLotes(idManzana, idPredio);
             String cantidadLotesSinM = ws.contarLotes("0", idPredio);
+            
 
             int manzana = Convert.ToInt32(cantidadManzas);
             int lotesManzana = Convert.ToInt32(cantidadLotesconM);
@@ -428,6 +432,7 @@ namespace PvTerrenos
             string indexManzana;
             string lotesIngresar;
             string parametro;
+            //MessageBox.Show("el numero de lotes que quieres ingresar es: "+txt);
 
             if (manzana > 0 && lotesManzana == 0) {
                 indexManzana = cbNumeroManzana.Text;
@@ -435,17 +440,33 @@ namespace PvTerrenos
                 parametro = indexManzana+","+lotesIngresar+",0";
                 generaLotes(1, parametro);
             }else
+
             if (manzana > 0 && lotesManzana > 0) {
-                indexManzana = cbNumeroManzana.Text;
-                lotesIngresar = txtNumeroLote.Text;
-                parametro = indexManzana + "," + lotesIngresar+","+cantidadLotesconM;
-                generaLotes(2, parametro);
+                if (Convert.ToInt32(txtNumeroLote.Text)<lotesManzana )
+                {
+                    MessageBox.Show("El numero de lotes a ingresar debe de ser mayor al actual!!");
+                }
+                else
+                {
+
+                    indexManzana = cbNumeroManzana.Text;
+                    lotesIngresar = txtNumeroLote.Text;
+                    parametro = indexManzana + "," + lotesIngresar + "," + cantidadLotesconM;
+                    generaLotes(2, parametro);
+                }
             
             }else
             if (soloLotes> 0) {
-                lotesIngresar = txtNumManzanaLote.Text;
-                parametro = "0,"+lotesIngresar + "," + cantidadLotesSinM;
-                generaLotes(3, parametro);
+                if (Convert.ToInt32(txtNumManzanaLote.Text) < lotesManzana)
+                {
+                    MessageBox.Show("El numero de lotes a ingresar debe de ser mayor al actual!!");
+                }
+                else
+                {
+                    lotesIngresar = txtNumManzanaLote.Text;
+                    parametro = "0," + lotesIngresar + "," + cantidadLotesSinM;
+                    generaLotes(3, parametro);
+                }
             }else
             if (soloLotes == 0) {
                 lotesIngresar = txtNumManzanaLote.Text;
@@ -483,7 +504,7 @@ namespace PvTerrenos
                
                 string numeroManzanas = ws.contarManzanas(idPredio);
                 int total = Convert.ToInt32(numeroManzanas);
-                MessageBox.Show("numero manzanas: " + numeroManzanas);
+                 cbNumeroManzana.Items.Clear();
                 if (total > 0)
                 {
                     for (int x = 0; x < total; x++)

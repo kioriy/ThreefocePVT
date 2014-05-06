@@ -85,8 +85,8 @@
             this.btnActualizar.TabIndex = 32;
             this.btnActualizar.Text = "Actualizar Cliente";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Visible = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-           
             // 
             // cbNombre
             // 
@@ -98,10 +98,8 @@
             this.cbNombre.Name = "cbNombre";
             this.cbNombre.Size = new System.Drawing.Size(200, 20);
             this.cbNombre.TabIndex = 31;
-            
-            this.cbNombre.SelectedValueChanged += new System.EventHandler(this.cbNombre_SelectedValueChanged);
+            this.cbNombre.SelectedIndexChanged += new System.EventHandler(this.cbNombre_SelectedIndexChanged);
             this.cbNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNombre_KeyDown);
-            
             // 
             // txtEc
             // 
@@ -252,7 +250,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmAltaCliente";
             this.Text = "Alta - Cliente";
-            this.Load += new System.EventHandler(this.FrmAltaCliente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

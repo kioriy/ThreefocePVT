@@ -141,7 +141,7 @@ namespace PvTerrenos
                 string nuevaMensualidad = Convert.ToString(Convert.ToInt32(mensualidad2) - Convert.ToInt32(txtMensualidad.Text));
                 MessageBox.Show(nuevaMensualidad);
                 string registraPago = ws.registraPago(idVenta, txtMensualidad.Text, Convert.ToString(DateTime.Today), proximoPago, "abono", pago_actual);
-                string respuestaUpdateProximoPago = ws.updateProximoPago(idVenta, nuevaMensualidad);
+                string respuestaUpdateProximoPago = ws.updateTablaProximoPago(idVenta, nuevaMensualidad);
                 MessageBox.Show(respuestaUpdateProximoPago+" proximo pago");
                 string respuestaAbonoMensualidad = ws.updateAbonoMensual(txtId.Text, txtMensualidad.Text);
                 MessageBox.Show(respuestaAbonoMensualidad+" abono mensualidad");

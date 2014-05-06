@@ -25,6 +25,7 @@ namespace PvTerrenos
         public string telefono2;
         public string nombreComprador;
         public string idComprador;
+        FrmVentaLote ventaLote = new FrmVentaLote();
 
         public FrmAltaCliente()
         {
@@ -35,10 +36,9 @@ namespace PvTerrenos
 
         void llenarComboComprador() {
 
+            cbNombre.Items.Clear();
             string respuestaCargaComprador = ws.cargaComprador();
             string[] splitComprador = respuestaCargaComprador.Split(new char[] { ',' });
-
-
 
             foreach (string comprador in splitComprador)
             {
@@ -81,25 +81,7 @@ namespace PvTerrenos
             string ecivil = txtEc.Text;
             string telefono = txtTelefono.Text;
             string telefono2 = txtTelefono2.Text;
-            
-            
-
-             string respuestaCargaComprador =  ws.cargaComprador();
-            string[] splitComprador = respuestaCargaComprador.Split(new char[] { ',' });
-
-           foreach (string comprador in splitComprador)
-           {
-               if (comprador == cbNombre.Text) {
-                   string idComprador = ws.getIdComprador(cbNombre.Text);
-                   MessageBox.Show(idComprador);
-                   nombre = comprador;
-                   cargaDatosCliente(comprador,idComprador);
-
-                   break;
-               }
-           }
-
-            //verifico que por lo menos haya un nombre y un id.. el id quedo manual
+         
             if (cbNombre.Text == "")
             {
                 MessageBox.Show("Debes proporcionar por lo menos los siguientes datos " + ".:: Nombre ::.");
@@ -110,10 +92,12 @@ namespace PvTerrenos
                 try
                 {
                     string idComprador = generaId(cbNombre.Text);
-                    string nombre = cbNombre.Text;
+                    string nombre = cbNombre.Text.ToUpper();
 
                     string respuetaAgregarComprador = ws.registraComprador(idComprador, nombre, domicilio, beneficiario, residencia, ocupacion, ecivil, telefono, telefono2);
                     MessageBox.Show(respuetaAgregarComprador+"\n\nEl id de usario es "+idComprador);
+                    ventaLote.llenaComboComprador();
+                    llenarComboComprador();
                     cbNombre.Text = "";
                     txtDireccion.Text = "";
                     txtBeneficiario.Text = "";
@@ -136,8 +120,10 @@ namespace PvTerrenos
               
               string nombreNuevo = cbNombre.Text.ToUpper();
               string respuestaActulizaCliente = ws.updateComprador(idcomprador, nombreNuevo, txtDireccion.Text, txtBeneficiario.Text, txtResidencia.Text, txtOcupacion.Text, txtEc.Text, txtTelefono.Text, txtTelefono2.Text);
-              MessageBox.Show(respuestaActulizaCliente);
+              ventaLote.llenaComboComprador();
               llenarComboComprador();
+              MessageBox.Show(respuestaActulizaCliente);
+              
 
 
           }
@@ -163,48 +149,60 @@ namespace PvTerrenos
 
           private void cbNombre_KeyDown(object sender, KeyEventArgs e)
           {
+              
+
               if (e.KeyCode == Keys.Enter) {
-                  cargaCliente();
-                 modificarCliente(idComprador);
+          
+                  if (cbNombre.FindString(cbNombre.Text) != -1)
+                  {
+                      btnActualizar.Visible = true;
+                      cmdAgregar.Enabled = false;
+                      cargaCliente();
+                  }
+                  else
+                  {
+                      btnActualizar.Visible = false;
+                      cmdAgregar.Enabled = true;
+                  }
                   
               }
           }
 
           private void btnActualizar_Click(object sender, EventArgs e)
-          {
-              
-              
-             string mensaje = "¿Estas seguro de que quieres actualizar a este cliente?";
-            string caption = "Actualizar Cliente";
-            MessageBoxButtons botones = MessageBoxButtons.OKCancel;
-            DialogResult resultado;
-           
-              
-                resultado = MessageBox.Show(mensaje, caption, botones);
+          {     
+             
+             
 
-                if (resultado == System.Windows.Forms.DialogResult.OK) {
-                    modificarCliente(idComprador);
-                }
-        }
+                  string mensaje = "¿Estas seguro de que quieres actualizar a este cliente?";
+                  string caption = "Actualizar Cliente";
+                  MessageBoxButtons botones = MessageBoxButtons.OKCancel;
+                  DialogResult resultado;
+
+
+                  resultado = MessageBox.Show(mensaje, caption, botones);
+
+                  if (resultado == System.Windows.Forms.DialogResult.OK)
+                  {
+                      modificarCliente(idComprador);
+                  }
+              
+          }
 
 
           private void cmdAgregar_Click(object sender, EventArgs e)
           {
-              agregarCliente();
-          }
-
-          //carga el datagridview en la venta alta clientes
-          
-
-          private void FrmAltaCliente_Load(object sender, EventArgs e)
-          {
-
-          }
-
-          private void dgvAltaCliente_DataError(object sender, DataGridViewDataErrorEventArgs e)
-          {
+              if (cbNombre.FindString(cbNombre.Text) == -1)
+              {
+                  agregarCliente();
+                  llenarComboComprador();
+               }
+              else
+              {
+                  MessageBox.Show("El usuario ingresado ya existe");
+              }
 
           }
+
 
 
           public void cargaCliente() {
@@ -224,14 +222,23 @@ namespace PvTerrenos
               
           
           }
-          private void cbNombre_SelectedValueChanged(object sender, EventArgs e)
+
+          private void cbNombre_SelectedIndexChanged(object sender, EventArgs e)
           {
-              cmdAgregar.Visible = true;
-              btnActualizar.Visible = true;
-              cargaCliente();
-              
+              if (cbNombre.FindString(cbNombre.Text) != -1)
+              {
+                  btnActualizar.Visible = true;
+                  cmdAgregar.Enabled = false;
+                  cargaCliente();
+              }
+              else
+              {
+                  btnActualizar.Visible = false;
+                  cmdAgregar.Enabled = true;
+              }
 
           }
 
+        
       }
 }

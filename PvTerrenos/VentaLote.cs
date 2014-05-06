@@ -24,15 +24,16 @@ namespace PvTerrenos
             cbFormaPago.Items.Add("Abonos");
             cbFormaPago.Items.Add("Contado");
 
-            llenarCombos();
-            PdfCreate pdf = new PdfCreate();
 
-            //pdf.crearPdfRecibo("4", "100", "22", "10", "HUGO RAFAEL HERNANDEZ LLAMAS", "2000","ABRIL","SAN ANDRES");
+            llenarComboPredio();
+            llenaComboComprador();
+            PdfCreate pdf = new PdfCreate();
 
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FrmVentaLote ventaLote = new FrmVentaLote();
             FrmAltaCliente abrirCliente = new FrmAltaCliente();
             abrirCliente.Show();
         }
@@ -134,7 +135,23 @@ namespace PvTerrenos
             }
         }
 
-        public void llenarCombos() {
+        public void llenaComboComprador() {
+
+
+
+            cbNombre.Items.Clear();
+            string repuestaNombreComprador = ws.cargaComprador();
+            string[] splitNombreComprador = repuestaNombreComprador.Split(new char[] { ',' });
+
+            foreach (string nombreComprador in splitNombreComprador)
+            {
+                cbNombre.Items.Add(nombreComprador);
+            }
+
+           
+        }
+
+        public void llenarComboPredio(){
             
             string respuestaCargaPredio = ws.cargaColumnaTablaPredio("nombre_predio");
             
@@ -144,12 +161,9 @@ namespace PvTerrenos
 
                 cbPredio.Items.Add(cargaCombo);
             }
-            string repuestaNombreComprador = ws.cargaComprador();
-            string[] splitNombreComprador = repuestaNombreComprador.Split(new char[] { ',' });
 
-            foreach (string nombreComprador in splitNombreComprador) {
-                cbNombre.Items.Add(nombreComprador);
-            }
+
+          
         }
 
         private void cbPredio_SelectedIndexChanged(object sender, EventArgs e)
@@ -243,5 +257,7 @@ namespace PvTerrenos
             return "hola";
         
         }
+
+    
     }
 }

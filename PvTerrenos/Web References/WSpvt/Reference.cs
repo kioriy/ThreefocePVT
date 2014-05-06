@@ -149,7 +149,7 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback updateStatusMoraOperationCompleted;
         
-        private System.Threading.SendOrPostCallback updateProximoPagoOperationCompleted;
+        private System.Threading.SendOrPostCallback updateTablaProximoPagoOperationCompleted;
         
         private System.Threading.SendOrPostCallback registraMoraOperationCompleted;
         
@@ -382,7 +382,7 @@ namespace PvTerrenos.WSpvt {
         public event updateStatusMoraCompletedEventHandler updateStatusMoraCompleted;
         
         /// <remarks/>
-        public event updateProximoPagoCompletedEventHandler updateProximoPagoCompleted;
+        public event updateTablaProximoPagoCompletedEventHandler updateTablaProximoPagoCompleted;
         
         /// <remarks/>
         public event registraMoraCompletedEventHandler registraMoraCompleted;
@@ -2423,34 +2423,35 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/updateProximoPago", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/updateTablaProximoPa" +
+            "go", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string updateProximoPago(string idVenta, string monto) {
-            object[] results = this.Invoke("updateProximoPago", new object[] {
+        public string updateTablaProximoPago(string idVenta, string monto) {
+            object[] results = this.Invoke("updateTablaProximoPago", new object[] {
                         idVenta,
                         monto});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void updateProximoPagoAsync(string idVenta, string monto) {
-            this.updateProximoPagoAsync(idVenta, monto, null);
+        public void updateTablaProximoPagoAsync(string idVenta, string monto) {
+            this.updateTablaProximoPagoAsync(idVenta, monto, null);
         }
         
         /// <remarks/>
-        public void updateProximoPagoAsync(string idVenta, string monto, object userState) {
-            if ((this.updateProximoPagoOperationCompleted == null)) {
-                this.updateProximoPagoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateProximoPagoOperationCompleted);
+        public void updateTablaProximoPagoAsync(string idVenta, string monto, object userState) {
+            if ((this.updateTablaProximoPagoOperationCompleted == null)) {
+                this.updateTablaProximoPagoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdateTablaProximoPagoOperationCompleted);
             }
-            this.InvokeAsync("updateProximoPago", new object[] {
+            this.InvokeAsync("updateTablaProximoPago", new object[] {
                         idVenta,
-                        monto}, this.updateProximoPagoOperationCompleted, userState);
+                        monto}, this.updateTablaProximoPagoOperationCompleted, userState);
         }
         
-        private void OnupdateProximoPagoOperationCompleted(object arg) {
-            if ((this.updateProximoPagoCompleted != null)) {
+        private void OnupdateTablaProximoPagoOperationCompleted(object arg) {
+            if ((this.updateTablaProximoPagoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.updateProximoPagoCompleted(this, new updateProximoPagoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.updateTablaProximoPagoCompleted(this, new updateTablaProximoPagoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4251,17 +4252,17 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void updateProximoPagoCompletedEventHandler(object sender, updateProximoPagoCompletedEventArgs e);
+    public delegate void updateTablaProximoPagoCompletedEventHandler(object sender, updateTablaProximoPagoCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class updateProximoPagoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class updateTablaProximoPagoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal updateProximoPagoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal updateTablaProximoPagoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

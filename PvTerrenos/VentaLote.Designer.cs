@@ -61,12 +61,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.predioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.predioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCostoTerreno = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +68,12 @@
             this.dvgPredio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dvgManzana = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.predioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.predioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -345,6 +345,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(94, 20);
             this.txtId.TabIndex = 1;
+            
             this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // label7
@@ -382,54 +383,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(739, 212);
             this.dataGridView1.TabIndex = 25;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clientesToolStripMenuItem,
-            this.predioToolStripMenuItem,
-            this.consultasToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(758, 24);
-            this.menuStrip1.TabIndex = 27;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clienteToolStripMenuItem,
-            this.predioToolStripMenuItem1});
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.clientesToolStripMenuItem.Text = "Nuevo";
-            // 
-            // clienteToolStripMenuItem
-            // 
-            this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
-            this.clienteToolStripMenuItem.Text = "Cliente";
-            this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
-            // 
-            // predioToolStripMenuItem1
-            // 
-            this.predioToolStripMenuItem1.Name = "predioToolStripMenuItem1";
-            this.predioToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
-            this.predioToolStripMenuItem1.Text = "Predio";
-            this.predioToolStripMenuItem1.Click += new System.EventHandler(this.predioToolStripMenuItem1_Click);
-            // 
-            // predioToolStripMenuItem
-            // 
-            this.predioToolStripMenuItem.Name = "predioToolStripMenuItem";
-            this.predioToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.predioToolStripMenuItem.Text = "Pago";
-            this.predioToolStripMenuItem.Click += new System.EventHandler(this.predioToolStripMenuItem_Click);
-            // 
-            // consultasToolStripMenuItem
-            // 
-            this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.consultasToolStripMenuItem.Text = "Consulta";
             // 
             // dgvNombre
             // 
@@ -488,6 +441,54 @@
             this.dgvLote.Name = "dgvLote";
             this.dgvLote.ReadOnly = true;
             this.dgvLote.Width = 70;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clientesToolStripMenuItem,
+            this.predioToolStripMenuItem,
+            this.consultasToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(758, 24);
+            this.menuStrip1.TabIndex = 27;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clienteToolStripMenuItem,
+            this.predioToolStripMenuItem1});
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.clientesToolStripMenuItem.Text = "Nuevo";
+            // 
+            // clienteToolStripMenuItem
+            // 
+            this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.clienteToolStripMenuItem.Text = "Cliente";
+            this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
+            // 
+            // predioToolStripMenuItem1
+            // 
+            this.predioToolStripMenuItem1.Name = "predioToolStripMenuItem1";
+            this.predioToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
+            this.predioToolStripMenuItem1.Text = "Predio";
+            this.predioToolStripMenuItem1.Click += new System.EventHandler(this.predioToolStripMenuItem1_Click);
+            // 
+            // predioToolStripMenuItem
+            // 
+            this.predioToolStripMenuItem.Name = "predioToolStripMenuItem";
+            this.predioToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.predioToolStripMenuItem.Text = "Pago";
+            this.predioToolStripMenuItem.Click += new System.EventHandler(this.predioToolStripMenuItem_Click);
+            // 
+            // consultasToolStripMenuItem
+            // 
+            this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
+            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.consultasToolStripMenuItem.Text = "Consulta";
             // 
             // FrmVentaLote
             // 
