@@ -34,3 +34,4 @@ C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Release\itextsharp.
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Release\itextsharp.xml
 C:\Users\Miriam\terrenos\PvTerrenos\bin\Release\itextsharp.dll
 C:\Users\Miriam\terrenos\PvTerrenos\bin\Release\itextsharp.xml
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Release\PvTerrenos.frmModificaVenta.resources

@@ -17,13 +17,14 @@ namespace PvTerrenos
         string idPredio;
         string idLote;
         string[] splitIdManzana;
+        
+
 
         public FrmVentaLote()
         {
             InitializeComponent();
             cbFormaPago.Items.Add("Abonos");
             cbFormaPago.Items.Add("Contado");
-
 
             llenarComboPredio();
             llenaComboComprador();
@@ -141,12 +142,22 @@ namespace PvTerrenos
 
             cbNombre.Items.Clear();
             string repuestaNombreComprador = ws.cargaComprador();
-            string[] splitNombreComprador = repuestaNombreComprador.Split(new char[] { ',' });
+            string[] splitDatosComprador = repuestaNombreComprador.Split(new char[] { ',' });
+            Dictionary<string, string> NombreIdComprador = new Dictionary<string, string>();
 
-            foreach (string nombreComprador in splitNombreComprador)
+            foreach (string datos in splitDatosComprador)
             {
-                cbNombre.Items.Add(nombreComprador);
+                string[] desgloseIdNombre = datos.Split(new char[] { '|' });
+                cbNombre.Items.Add(desgloseIdNombre[0]);
+              //  NombreIdComprador.Add(desgloseIdNombre[0], desgloseIdNombre[1]);
+
             }
+
+           MessageBox.Show("el comprador que esta en el index10 "+splitDatosComprador[4]);
+
+            
+            
+
 
            
         }
@@ -256,6 +267,17 @@ namespace PvTerrenos
 
             return "hola";
         
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            frmModificaVenta modificarVenta = new frmModificaVenta();
+            modificarVenta.Show();  
+        }
+
+        private void cbNombre_TextChanged(object sender, EventArgs e)
+        {
+            //NombreIdComprador.
         }
 
     
