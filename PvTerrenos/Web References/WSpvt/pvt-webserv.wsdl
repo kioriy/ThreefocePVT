@@ -152,6 +152,7 @@
     <wsdl:part name="mensualidad" type="xsd:string" />
     <wsdl:part name="Fecha_compra" type="xsd:string" />
     <wsdl:part name="fecha_corte" type="xsd:string" />
+    <wsdl:part name="status_venta" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="registraVentaResponse">
     <wsdl:part name="return" type="xsd:string" />
@@ -432,7 +433,6 @@
     <wsdl:part name="id_venta" type="xsd:string" />
     <wsdl:part name="monto" type="xsd:string" />
     <wsdl:part name="proximo_pago" type="xsd:string" />
-    <wsdl:part name="tipo_pago" type="xsd:string" />
     <wsdl:part name="pago_actual" type="xsd:string" />
     <wsdl:part name="pago_final" type="xsd:string" />
   </wsdl:message>

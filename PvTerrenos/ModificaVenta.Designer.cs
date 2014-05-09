@@ -1,6 +1,6 @@
 ﻿namespace PvTerrenos
 {
-    partial class frmModificaVenta
+    partial class ModificaVenta
     {
         /// <summary>
         /// Required designer variable.

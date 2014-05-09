@@ -55,11 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fecha.cs" />
-    <Compile Include="frmModificaVenta.cs">
+    <Compile Include="ModificaVenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmModificaVenta.Designer.cs">
-      <DependentUpon>frmModificaVenta.cs</DependentUpon>
+    <Compile Include="ModificaVenta.Designer.cs">
+      <DependentUpon>ModificaVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="MedidaLote.cs">
       <SubType>Form</SubType>
@@ -106,8 +106,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmModificaVenta.resx">
-      <DependentUpon>frmModificaVenta.cs</DependentUpon>
+    <EmbeddedResource Include="ModificaVenta.resx">
+      <DependentUpon>ModificaVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedidaLote.resx">
       <DependentUpon>MedidaLote.cs</DependentUpon>

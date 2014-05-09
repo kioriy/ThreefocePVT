@@ -17,6 +17,7 @@ namespace PvTerrenos
         string idPredio;
         string idLote;
         string[] splitIdManzana;
+        string[] splitId;
         
 
 
@@ -28,8 +29,6 @@ namespace PvTerrenos
 
             llenarComboPredio();
             llenaComboComprador();
-            PdfCreate pdf = new PdfCreate();
-
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,16 +60,8 @@ namespace PvTerrenos
             }
         }
 
-        void cargaVentaDvg(string nombre, string id, string costo, string mensualidad, string predio, string manzana, string lote) 
-        {
-            this.dataGridView1.Rows.Insert(0, nombre, id, costo, mensualidad, predio, manzana, lote);
-
-        }
-
         private void cmdAgregar_Click(object sender, EventArgs e)
         {
-
-            
             ///llamamos a la funcion que nos valida que el formulario no tenga campos nulos
 
             //mostramos una ventana que le pregunte al usuario si en verdad quiere reistrar la venta
@@ -79,56 +70,98 @@ namespace PvTerrenos
             MessageBoxButtons botones = MessageBoxButtons.OKCancel;
             DialogResult resultado;
 
-            if (validar())
-            
-            {
+            if (validar())   
+            {   
                 resultado = MessageBox.Show(mensaje, caption, botones);
 
-                if (resultado == System.Windows.Forms.DialogResult.OK)
-            {
-                string idComprador = ws.getIdComprador(cbNombre.SelectedItem.ToString());
                 
-                string tipo_pago = cbFormaPago.SelectedItem.ToString();
-                string monto = txtCostoTerreno.Text;
-                string abono = txtAbono.Text;
-                string mensualidad = txtMensualidad.Text;
-                string fechaCompra = dtpFecha.Value.ToString();
-                string diaCorte = dtpFecha.Value.Day.ToString();
+                    string idComprador = splitId[cbNombre.SelectedIndex];
+                    string tipo_pago = cbFormaPago.SelectedItem.ToString();
+                    string monto = txtCostoTerreno.Text;
+                    string abono = txtAbono.Text;
+                    string mensualidad = txtMensualidad.Text;
+                    string fechaCompra = dtpFecha.Value.ToString();
+                    string diaCorte = dtpFecha.Value.Day.ToString();
+                    
+                if (resultado == System.Windows.Forms.DialogResult.OK && cbFormaPago.Text == "Abonos")
+                {
+                    ///////////  REGISTRO VENTA /////////////////////////////
+                    string respuestaAltaVenta = ws.registraVenta(idComprador, // id comprador
+                                                                 idLote,      // id lote
+                                                                 tipo_pago,   // forma de pago
+                                                                 monto,       // costo del terreno
+                                                                 mensualidad, // mesualidad 
+                                                                 fechaCompra, // fecha de compra
+                                                                 diaCorte,    // dia de corte
+                                                                 "ACTIVO");   // status de la venta
 
-                string respuestaAltaVenta = ws.registraVenta(idComprador, idLote, tipo_pago, monto, mensualidad, fechaCompra, diaCorte);
-                MessageBox.Show(respuestaAltaVenta+"\n\n Su dias de corte son "+diaCorte+" de cada mes");
+                    MessageBox.Show(respuestaAltaVenta+"\n\n Su dias de corte son "+diaCorte+" de cada mes");
+                    ////////////////////////////////////////////////////////
 
-                string respuestaStatus = ws.updateStatusLote(idLote);
+                    ws.updateStatusLote(idLote); //cambio del status de lote de 0 a 1
 
-                string idVenta = ws.getIdVentaPkLote(idLote);
+                    string idVenta = ws.getIdVentaPkLote(idLote); // obtengo el id de venta para el registro de proximo pago
 
-                int pagoActualMasUno = Convert.ToInt32(txtPagoActual.Text) + 1;
+                    int pagoActualMasUno = Convert.ToInt32(txtPagoActual.Text) + 1; // se genera el numero del siguiente pago
 
-                string respuestaProximoPago = ws.registraProximoPago(idVenta, mensualidad, proximoPago.Value.ToString(),"0", Convert.ToString(pagoActualMasUno), txtPagoFinal.Text);
-                MessageBox.Show(respuestaProximoPago+"\n\nsu proxima fecha de pago es "+proximoPago.Value.ToString());
+                    ///////////////// registro del proximo pago  //////////////
+                    string respuestaProximoPago = ws.registraProximoPago(idVenta,     // id de venta
+                                                                         mensualidad,             // costo de la mensualidad
+                                                                         proximoPago.Value.ToString(),   // fecha proximo pago
+                                                                         Convert.ToString(pagoActualMasUno), // pago actual 
+                                                                         txtPagoFinal.Text);                 //ultimo pago
+                    
+                    MessageBox.Show(respuestaProximoPago+"\n\nsu proxima fecha de pago es "+proximoPago.Value.ToString());
+                    ///////////////////////////////////////////////////////////
                 
-                string registraAbono = ws.registraAbono(idComprador, abono);
+                    string registraAbono = ws.registraAbono(idComprador, abono);
 
-                cargaVentaDvg(cbNombre.SelectedItem.ToString(), idComprador, monto, mensualidad, cbPredio.Text, cbManzana.Text, cbLotes.Text);
-                limpiar();
-               
-               
-                
+                    cargaVentaDvg(cbNombre.SelectedItem.ToString(), 
+                                  idComprador, 
+                                  monto, 
+                                  mensualidad, 
+                                  cbPredio.Text, 
+                                  cbManzana.Text, 
+                                  cbLotes.Text);
+                    limpiar();
             }
+                else if (resultado == System.Windows.Forms.DialogResult.OK && cbFormaPago.Text == "Contado") 
+                {
+                    ///////////////   REGISTRO DEL PAGO DE CONTADO  ////////////
+                    string respuestaRegistraVenta = ws.registraVenta(idComprador, // id comprador
+                                                                     idLote,      // id lote
+                                                                     tipo_pago,   // forma de pago
+                                                                     monto,       // costo del terreno
+                                                                     "NG",        // mensualidad
+                                                                     fechaCompra, // fecha de la compra
+                                                                     "NG",        // dia de corte
+                                                                     "PAGADO");   // status de la venta
+                    MessageBox.Show(respuestaRegistraVenta);
+                    ///////////////////////////////////////////////////////////
+
+                    ws.updateStatusLote(idLote); //cambio del status de lote de 0 a 1 
+                    
+                    string idVenta = ws.getIdVentaPkLote(idLote); //obtengo el id de la venta para el registro de pago
+                    
+                    ws.registraPago(idVenta,monto,DateTime.Today.ToString(),"",cbFormaPago.Text,""); //registro el pago unico -
+                                                                                                     //de la compra 
+                }
           }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            ModificaVenta modificarVenta = new ModificaVenta();
+            modificarVenta.Show();
         }
 
         private void dtpFecha_ValueChanged(object sender, EventArgs e)
         {
             if (txtPagoActual.Text != "" && txtPagoFinal.Text != "")
             {
-
                 Fecha obtenerProximoPago = new Fecha();
 
                 proximoPago = obtenerProximoPago.setProximoPago(dtpFecha.Value, txtPagoActual.Text);
-
-                //MessageBox.Show(resultado.ToString());
-
             }
             else
             {
@@ -138,28 +171,27 @@ namespace PvTerrenos
 
         public void llenaComboComprador() {
 
-
-
             cbNombre.Items.Clear();
-            string repuestaNombreComprador = ws.cargaComprador();
-            string[] splitDatosComprador = repuestaNombreComprador.Split(new char[] { ',' });
-            Dictionary<string, string> NombreIdComprador = new Dictionary<string, string>();
+            string respuestaNombreComprador = ws.cargaComprador();
+            string[] splitDatosComprador = respuestaNombreComprador.Split(new char[] { '|' });
+            string[] splitComprador = splitDatosComprador[0].Split(new char[] { ',' });
+            splitId = splitDatosComprador[1].Split(new char[] { ',' });
+
+            foreach(string comprador in splitComprador)
+            {
+                cbNombre.Items.Add(comprador);
+            }
+            
+            /*Dictionary<string, string> NombreIdComprador = new Dictionary<string, string>();
 
             foreach (string datos in splitDatosComprador)
             {
                 string[] desgloseIdNombre = datos.Split(new char[] { '|' });
                 cbNombre.Items.Add(desgloseIdNombre[0]);
-              //  NombreIdComprador.Add(desgloseIdNombre[0], desgloseIdNombre[1]);
+               // NombreIdComprador.Add(desgloseIdNombre[0], desgloseIdNombre[1]);
 
             }
-
-           MessageBox.Show("el comprador que esta en el index10 "+splitDatosComprador[4]);
-
-            
-            
-
-
-           
+           MessageBox.Show("el comprador que esta en el index10 "+splitDatosComprador[4]);*/
         }
 
         public void llenarComboPredio(){
@@ -172,9 +204,22 @@ namespace PvTerrenos
 
                 cbPredio.Items.Add(cargaCombo);
             }
+        }
 
+        void cargaVentaDvg(string nombre, 
+                           string id, 
+                           string costo,
+                           string mensualidad, 
+                           string predio, 
+                           string manzana, 
+                           string lote)
+        {
+            this.dataGridView1.Rows.Insert(0, nombre, id, costo, mensualidad, predio, manzana, lote);
+        }
 
-          
+        private void cbNombre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtId.Text = splitId[cbNombre.SelectedIndex];
         }
 
         private void cbPredio_SelectedIndexChanged(object sender, EventArgs e)
@@ -208,8 +253,19 @@ namespace PvTerrenos
             int tamaño = splitCargaLotes.Length;
             foreach (string cargaLotes in splitCargaLotes) {
           
-                cbLotes.Items.Add(cargaLotes);
+            cbLotes.Items.Add(cargaLotes);
             }
+        }
+
+        private void cbLotes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idLote = ws.getIdLote(ws.getIdManzana(cbManzana.SelectedItem.ToString(), 
+                                  ws.getIdPredio(cbPredio.SelectedItem.ToString())), 
+                                  cbLotes.SelectedItem.ToString());
+
+            MedidaLote MedidaLote = new MedidaLote();
+            MedidaLote.idLote = idLote;
+            MedidaLote.Show();
         }
 
         public void limpiar()
@@ -229,7 +285,6 @@ namespace PvTerrenos
 
         private bool validar()
         {
-
             //String id = txtId.Text;
             String pago = cbFormaPago.Text;
             String terreno = txtCostoTerreno.Text;
@@ -247,39 +302,10 @@ namespace PvTerrenos
 
                 return false;
             }
-
             else
             {
                 return true;
             }
-        }
-
-        private void cbLotes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            idLote = ws.getIdLote(ws.getIdManzana(cbManzana.SelectedItem.ToString(), ws.getIdPredio(cbPredio.SelectedItem.ToString())), cbLotes.SelectedItem.ToString());
-            MedidaLote MedidaLote = new MedidaLote();
-            MedidaLote.idLote = idLote;
-            MedidaLote.Show();
-        }
-
-        private string validaTexBox(object sender, KeyPressEventArgs e) {
-
-
-            return "hola";
-        
-        }
-
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            frmModificaVenta modificarVenta = new frmModificaVenta();
-            modificarVenta.Show();  
-        }
-
-        private void cbNombre_TextChanged(object sender, EventArgs e)
-        {
-            //NombreIdComprador.
-        }
-
-    
+        }     
     }
 }

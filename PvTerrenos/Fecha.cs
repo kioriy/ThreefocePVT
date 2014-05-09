@@ -119,12 +119,12 @@ namespace PvTerrenos
             int bMaxMes = 0;
             string respuestaRegistraMora = "";
 
-            /* for (int i = 1; proximoPago.Month <= hoy.AddMonths(-i).Month; i++)
+            /*for (int i = 1; proximoPago.Month <= hoy.AddMonths(-i).Month; i++)
              {
 
                  auxiliar = i; //en esta variable se guarda la distancia en meses de dos fecha "proximoPago"  y "fecha hoy" 
              }*/
-            auxiliar = (DateTime.Today.Year * 12 + DateTime.Today.Month) - (Convert.ToDateTime(proximoPago).Year * 12 + Convert.ToDateTime(proximoPago).Month);
+            auxiliar = (hoy.Year * 12 + hoy.Month) - (Convert.ToDateTime(proximoPago).Year * 12 + Convert.ToDateTime(proximoPago).Month);
 
             if (esMoroso && !statusMora)//esta sentencia determinamos si la fecha de "proximoPago" ya entro en mora ademas se checa
             {                           //en el status para saber si ya habia entrado a este ciclo de ser asi no se hace todo el calculo de mora desde su ultima fecha no pagada              

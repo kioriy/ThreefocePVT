@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PvTerrenos
 {
-    public partial class frmModificaVenta : Form
+    public partial class ModificaVenta : Form
     {
-        public frmModificaVenta()
+        public ModificaVenta()
         {
             InitializeComponent();
         }
