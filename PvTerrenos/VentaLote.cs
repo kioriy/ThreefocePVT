@@ -19,8 +19,6 @@ namespace PvTerrenos
         string[] splitIdManzana;
         string[] splitId;
         
-
-
         public FrmVentaLote()
         {
             InitializeComponent();
