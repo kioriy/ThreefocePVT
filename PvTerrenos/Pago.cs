@@ -22,10 +22,15 @@ namespace PvTerrenos
         string mensualidadDeVentas = "";
         string mensualidadProximoPago = "";
         string fecha_compra = "";
+        string idMesActualizar;
         string[] splitIdMora;
         string[] splitIdLote;
         string[] splitFechaMora;
+        string[] splitMontoMora;
         int[] arrayMeses;
+        double totalInteres = 0;
+        double sumaMesMora;
+        double diferencia;
 
         public FrmPago()
         {
@@ -45,6 +50,7 @@ namespace PvTerrenos
         {
             string IdComprador = ws.getIdComprador(cbComprador.SelectedItem.ToString());
             txtId.Text = IdComprador;
+            totalInteres = 0;
             llenarComboLote();
         }
 
@@ -84,16 +90,16 @@ namespace PvTerrenos
             txtPagoActual.Text = pago_actual;
             txtPagoFinal.Text = pago_final;
             txtMensualidad.Text = mensualidadProximoPago;
-            txtProximoPago.Text = Convert.ToDateTime(proximoPago).ToString("d");
-            cbPredio.Text = nombrePredio;
-            cbManzana.Text = numeroManzana;
+            txtProximoPago.Text = Convert.ToDateTime(proximoPago).ToString("MMMM");
+            txtPredio.Text = nombrePredio;
+            txtManzana.Text = numeroManzana;
 
             /////// SE REALIZA EL CALCULO DE LOS MESES MORATORIOS  /////////
             string respuestaResgistraMora = f.calculaMesesMorosos(f.estaEnMora(Convert.ToDateTime(proximoPago)), 
                                                                   f.statusMora(status_mora), 
                                                                   Convert.ToDateTime(proximoPago), 
                                                                   idVenta, 
-                                                                  mensualidadDeVentas);
+                                                                  mensualidadProximoPago);
             MessageBox.Show(respuestaResgistraMora);
 
             ////// LLENAR DATOS MORA /////////
@@ -102,7 +108,7 @@ namespace PvTerrenos
 
         private void cbMesesMora_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int distancia = (DateTime.Today.Year * 12 + DateTime.Today.Month) -
+            /*int distancia = (DateTime.Today.Year * 12 + DateTime.Today.Month) -
                             (Convert.ToDateTime(proximoPago).Year * 12 + Convert.ToDateTime(proximoPago).Month);
 
             int tamaño = splitFechaMora.Length;
@@ -120,46 +126,175 @@ namespace PvTerrenos
                     }
                     arrayMeses[i] = contador;
                 }
-            }
-            int index = Convert.ToInt32(cbMesesMora.SelectedIndex);
+            }*/
+            txtIntereses.Text = obtenerInteresMensual(cbMesesMora.FindString(cbMesesMora.Text));
 
-            txtIntereses.Text = Convert.ToString((Convert.ToDouble(mensualidadDeVentas) * 0.06)*
-                                                 (Convert.ToDouble(arrayMeses[index])));
+            //txtIntereses.Text = Convert.ToString((Convert.ToDouble(mensualidadDeVentas) * 0.06)*
+           //                                      (Convert.ToDouble(arrayMeses[cbMesesMora.SelectedIndex])));
         }
      
+
         private void cmdPagoMensualidad_Click(object sender, EventArgs e)
         {
-            ////// MEDIDAS DEL LOTE NORTE Y ESTE //////////////////////
+            // MEDIDAS DEL LOTE NORTE Y ESTE 
             string respuestaMedidaLote = ws.getMedidaLote(splitIdLote[cbLote.SelectedIndex]);
             string[] splitMedidaLote = respuestaMedidaLote.Split(new char[] { ',' });
             string norte = splitMedidaLote[0];
             string este = splitMedidaLote[2];
-            ///////////////////////////////////////////////////////////
+            // FN
 
-            /////// COLONIA Y MUNICIPIO DEL PREDIO  ///////////////////
-            string colonia = ws.getDatoPredio("colonia", "nombre_predio", cbPredio.Text);
-            string municipio = ws.getDatoPredio("municipio", "nombre_predio", cbPredio.Text);
-            ///////////////////////////////////////////////////////////
+            // COLONIA Y MUNICIPIO DEL PREDIO  
+            string colonia = ws.getDatoPredio("colonia", "nombre_predio", txtPredio.Text);
+            string municipio = ws.getDatoPredio("municipio", "nombre_predio", txtPredio.Text);
+            // FIN
 
-            if (Convert.ToInt32(txtMensualidad.Text) > Convert.ToInt32(mensualidadProximoPago)) {
+            
+
+
+
+
+
+
+            /*int mayorQuinientos = esMayorAQuinientos();
+            bool yaPagoMes = validarSiYaPagoMes();
+            //*********
+            
+            // ADELANTO AL PAGO DEL MES 
+            if (Convert.ToInt32(txtMensualidad.Text) > Convert.ToInt32(mensualidadDeVentas)) {
+
+                double cuantosPagos = Convert.ToDouble(txtMensualidad.Text) / Convert.ToDouble(mensualidadDeVentas);
+                pago_actual =  Convert.ToString(cuantosPagos + Convert.ToDouble(pago_actual));
+
+                pagoMensualidad(colonia, municipio, norte, este);
+
 
                 MessageBox.Show("es mayor");
             }
-            if (txtMensualidad.Text == mensualidadProximoPago && !validarSiYaPagoMes() && !esMayorAQuinientos())
+            // PAGO DE LA MENSUALIDAD 
+            if (txtMensualidad.Text == mensualidadProximoPago && !yaPagoMes && mayorQuinientos == 2 || mayorQuinientos == 3)
             {
                 pagoMensualidad(colonia, municipio, norte, este);
             }
-            else if (txtMensualidad.Text == mensualidadProximoPago && validarSiYaPagoMes() && esMayorAQuinientos()) 
+            // SI EL MES TIENE UNA DEUDA MAYOR A 5OO PESOS
+            else if (txtMensualidad.Text == mensualidadProximoPago && !yaPagoMes && mayorQuinientos == 1) 
             {
                 MessageBox.Show("tu mora del mes "+Convert.ToDateTime(proximoPago).ToString("MMMM").ToUpper()
                                 +" debe ser menor de $500 pesos",
                                  "NO SE PUEDE REALIZAR EL PAGO");
             }
-            
+            // YA PAGE EL MES PERO AUN TENGO DEUDA DEL MES ANTERIOR
+            else if (txtMensualidad.Text == mensualidadProximoPago && yaPagoMes && mayorQuinientos == 2) {
+
+                MessageBox.Show("page mes pero aun debo");
+            }
+            // ABONO A LA MENSUALIDAD
             if (Convert.ToInt32(txtMensualidad.Text) < Convert.ToInt32(mensualidadProximoPago))
             {
                 abonoMensualidad(colonia, municipio, norte, este);
                
+            }*/
+        }
+
+        private void cmdPagoInteres_Click(object sender, EventArgs e)
+        {
+            // LLENAR MENSAJE DE CONFIRMACION  
+            string mensaje = "¿Realizar pago de intereses?";
+            string caption = "Pago interes";
+            MessageBoxButtons botones = MessageBoxButtons.OKCancel;
+            DialogResult resultado;
+            // FIN
+
+            if (vacio())
+            {
+                double minInteres = Convert.ToDouble(mensualidadDeVentas) * 0.06;
+
+                //double totalInteres = Convert.ToDouble(txtTotalIntereses.Text);
+
+                //verifico que el abono de la mora por lo menos cubra un interes
+                if (Convert.ToInt32(txtInteresMensual.Text) < Convert.ToInt32(minInteres))
+                {
+                    MessageBox.Show("El abono minimo es " + minInteres, "NO SE PUEDE REALIZAR EL PAGO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+                else
+                {
+                    string respuestaIdMora = ws.getIdMora(idVenta);
+                    splitIdMora = respuestaIdMora.Split(new char[] { ',' });
+                    MessageBox.Show(respuestaIdMora);
+
+                    // MEDIDAS DEL LOTE NORTE Y ESTE 
+                    string respuestaMedidaLote = ws.getMedidaLote(splitIdLote[cbLote.SelectedIndex]);
+                    string[] splitMedidaLote = respuestaMedidaLote.Split(new char[] { ',' });
+                    string norte = splitMedidaLote[0];
+                    string este = splitMedidaLote[2];
+                    // FN
+
+                    string colonia = ws.getDatoPredio("colonia", "nombre_predio", txtPredio.Text);
+                    string municipio = ws.getDatoPredio("municipio", "nombre_predio", txtPredio.Text);
+
+                    double cuantosPagos = Math.Truncate(Convert.ToDouble(txtInteresMensual.Text) / minInteres);
+
+                    MessageBox.Show(Convert.ToString(cuantosPagos));
+
+                    resultado = MessageBox.Show(mensaje, caption, botones);
+
+                    if (resultado == System.Windows.Forms.DialogResult.OK)
+                    {
+                        // CUANDO SE REALIZA EL PAGO TOTAL DE LOS INTERESES
+                        if (Convert.ToInt32(txtInteresMensual.Text) == Convert.ToInt32(totalInteres))
+                        {
+                           string respuestaPagoMora =  ws.updateTablaMora(respuestaIdMora, "1", "status");
+
+                           if (respuestaIdMora == "1") 
+                           {
+                               MessageBox.Show("Pago de mora registrado con EXITO");
+                           }
+                        }// FIN
+
+                        // CUANDO SE PAGO EL TOTAL DE INTERESES DEL MES EN MORA
+                        else if ((Convert.ToInt32(txtInteresMensual.Text) == Convert.ToInt32(obtenerInteresMensual(0))))
+                        {
+                            pagoMora(cuantosPagos);
+                        }
+                        // CUANDO SE REALIZA UN ABONO SOBRE EL MES QUE ESTA EN MORA
+                        else if (Convert.ToInt32(txtInteresMensual.Text) < Convert.ToInt32(obtenerInteresMensual(0)))
+                        {
+                           bool actualiza = pagoMora(cuantosPagos);
+
+                           if (actualiza) 
+                           {
+                               actualizaMesEnMora(idMesActualizar);
+                           }
+                           
+                           string interesMesActual = obtenerInteresMensual(cbMesesMora.FindString(Convert.ToDateTime(proximoPago).ToString("MMMM")));
+ 
+                           //genero el recibo
+                           recibo.crearPdfReciboMora("abono",
+                                                  pago_actual,
+                                                  txtPagoFinal.Text,
+                                                  cbLote.Text,
+                                                  txtManzana.Text,
+                                                  cbComprador.Text,
+                                                  txtMensualidad.Text,
+                                                  Convert.ToDateTime(proximoPago).ToString("MMMM").ToUpper(),
+                                                  txtPredio.Text,
+                                                  colonia,
+                                                  municipio,
+                                                  norte,
+                                                  este,
+                                                  txtMensualidad.Text,
+                                                  interesMesActual,
+                                                  false);
+                        }
+                        cbMesesMora.Items.Clear();
+                        totalInteres = 0;
+                        llenarDatosMora();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Favor de Llenar el formulario");
             }
         }
 
@@ -176,73 +311,97 @@ namespace PvTerrenos
             return yaPago;
         }
 
-        private bool esMayorAQuinientos() {
+        private int esMayorAQuinientos() {
 
             int existeMes = cbMesesMora.FindString(Convert.ToDateTime(proximoPago).ToString("MMMM"));
+            int statusDeuda = 0;
 
-            if (existeMes != -1) {
-
-               double sumaMesMora = Convert.ToInt32(arrayMeses[existeMes])*(Convert.ToInt32(mensualidadDeVentas) * 0.06);
-
-               if (sumaMesMora >= 500) {
-
-                  return true;
-               }
-            }   
-            return false;
-        }
-
-        private void cmdPagoInteres_Click(object sender, EventArgs e)
-        {
-            ////// LLENAR MENSAJE DE CONFIRMACION  ////////////////
-            string mensaje = "¿Realizar pago de intereses?";
-            string caption = "Pago interes";
-            MessageBoxButtons botones = MessageBoxButtons.OKCancel;
-            DialogResult resultado;
-            //////////////////////////////////////////////////////
-
-            if (vacio())
+            if (existeMes != -1)
             {
-                resultado = MessageBox.Show(mensaje, caption, botones);
+                sumaMesMora = Convert.ToInt32(arrayMeses[existeMes]) * (Convert.ToInt32(mensualidadDeVentas) * 0.06);
 
-                if (resultado == System.Windows.Forms.DialogResult.OK)
+                if (sumaMesMora >= 500)
                 {
-                    string respuestaIdMora = ws.getIdMora(idVenta);
-                    splitIdMora = respuestaIdMora.Split(new char[] { ',' });
-                    MessageBox.Show(respuestaIdMora);
-
-                    double minInteres = Convert.ToDouble(mensualidadDeVentas) * 0.06;
-                    double cuantosPagos = Math.Truncate(Convert.ToDouble(txtTotalIntereses.Text) / minInteres);
-
-                    MessageBox.Show(Convert.ToString(cuantosPagos));
-
-                    double totalInteres = Convert.ToDouble(txtTotalIntereses.Text);
-
-                    AbonoMora(cuantosPagos);
+                    return statusDeuda = 1;
+                }
+                else if (sumaMesMora > 0 && sumaMesMora < 500)
+                {
+                    return statusDeuda = 2;
+                }
+                else if (sumaMesMora == 0)
+                {
+                    return statusDeuda = 3;
                 }
             }
-            else
+           return statusDeuda;   
+        }
+
+        private string obtenerInteresMensual(int indexMes) {
+
+            double interesMensual = 0;
+            int indexMontoMora = 0;
+
+            for (int i = 0; i < indexMes; i++)
             {
-                MessageBox.Show("Favor de Llenar el formulario");
+                indexMontoMora += arrayMeses[i];
+            }
+
+            for (int i = 0; i < arrayMeses[indexMes]; i++) 
+            {
+                interesMensual = interesMensual + Convert.ToDouble(splitMontoMora[indexMontoMora + i]);
+            }
+            return Convert.ToString( interesMensual);
+        }
+
+        private void obtenerCantidadMeses() //me dice la cantidad de veces que aparece un mes en mora
+        {
+            int distancia = (DateTime.Today.Year * 12 + DateTime.Today.Month) -
+                            (Convert.ToDateTime(proximoPago).Year * 12 + Convert.ToDateTime(proximoPago).Month);
+
+            int tamaño = splitFechaMora.Length;
+            int contador = 0;
+            arrayMeses = new int[distancia + 1];
+
+            for (int i = 0; i <= distancia; i++)
+            {
+                contador = 0;
+
+                for (int j = 0; j < tamaño; j++)
+                {
+                    if (Convert.ToDateTime(splitFechaMora[j]).Month == Convert.ToDateTime(proximoPago).AddMonths(i).Month)
+                    {
+                        contador++;
+                    }
+                    arrayMeses[i] = contador;
+                }
             }
         }
 
-        private void AbonoMora(double cuantosPagos)
+
+        private bool pagoMora(double cuantosPagos)
         {
-
             string implodeIdMora = "";
-            string idMesActualizar = "";
+            idMesActualizar = "";
+            string mes = Convert.ToDateTime(proximoPago).ToString("MMMM");
             int indexIdMora = 0;
+            diferencia = 0;
+            double pagos = 0;
 
-            if (cbMesesMora.SelectedIndex != 0)
+            for (int i = 0; i < cuantosPagos;i++) 
             {
+                pagos += Convert.ToDouble(splitMontoMora[i]);  
+            }
 
+            diferencia = Convert.ToDouble(txtInteresMensual.Text) - pagos;
+
+            /*if (cbMesesMora.SelectedIndex != 0)
+            {
                 for (int i = 0; i < cbMesesMora.SelectedIndex; i++)
                 {
                     indexIdMora += arrayMeses[i];
                 }
-            }
-
+            }*/
+            
             for (int i = 0; i <= cuantosPagos; i++)
             {
                 if (i < cuantosPagos)
@@ -254,10 +413,11 @@ namespace PvTerrenos
                 {
                     implodeIdMora += ",";
                 }
-
-                if (cuantosPagos < arrayMeses[cbMesesMora.SelectedIndex] && i == cuantosPagos)
+                 
+                if (cuantosPagos < arrayMeses[cbMesesMora.FindString(mes)] && i == cuantosPagos && diferencia != 0 )
                 {
                     idMesActualizar = splitIdMora[indexIdMora + i];
+                    return true;
                 }
             }
             MessageBox.Show(implodeIdMora);
@@ -265,6 +425,7 @@ namespace PvTerrenos
             string respuestUpdateMora = ws.updateTablaMora(implodeIdMora, "1", "status");
 
             MessageBox.Show(respuestUpdateMora);
+            return false;
             /* string implodeIdMora="";
              int indexMesSeleccionado = cbMesesMora.SelectedIndex;
              int indexMinimo = 0;
@@ -295,12 +456,11 @@ namespace PvTerrenos
 
         }
 
-        public string actualizaMesEnMora(int idMesEnMora)
+        public void actualizaMesEnMora(string idMesEnMora)
         {
-
-
-            return "hola";
+            ws.updateTablaMora(idMesActualizar,Convert.ToString(diferencia),"monto_mora");
         }
+
 
         private void abonoMensualidad(string colonia, string municipio, string norte, string este) {
             
@@ -308,73 +468,95 @@ namespace PvTerrenos
             string nuevaMensualidad = Convert.ToString(Convert.ToInt32(mensualidadProximoPago) - 
                                                        Convert.ToInt32(txtMensualidad.Text));
             //registro el pago como abono 
-            string registraPago = ws.registraPago(idVenta, 
-                                                  txtMensualidad.Text, 
-                                                  Convert.ToString(DateTime.Today), 
-                                                  proximoPago, 
-                                                  "abono", 
-                                                  pago_actual);
+            ws.registraPago(idVenta, 
+                            txtMensualidad.Text, 
+                            Convert.ToString(DateTime.Today), 
+                            proximoPago, 
+                            "abono", 
+                            pago_actual);
 
             //actualizo proximoPago con la nueva mensualidad
-            string respuestaUpdateProximoPago = ws.updateTablaProximoPago(idVenta, nuevaMensualidad);
+            ws.updateTablaProximoPago(idVenta, nuevaMensualidad);
+
             //registro el abono mensual del cliente
-            string respuestaAbonoMensualidad = ws.updateAbonoMensual(txtId.Text, txtMensualidad.Text);
+            ws.updateAbonoMensual(txtId.Text, txtMensualidad.Text);
+
+            string interesMesActual = obtenerInteresMensual(cbMesesMora.FindString(Convert.ToDateTime(proximoPago).ToString("MMMM")));
+
             //genero el recibo
             recibo.crearPdfRecibo("abono", 
                                    pago_actual, 
                                    txtPagoFinal.Text, 
                                    cbLote.Text, 
-                                   cbManzana.Text, 
+                                   txtManzana.Text, 
                                    cbComprador.Text, 
                                    txtMensualidad.Text, 
                                    Convert.ToDateTime(proximoPago).ToString("MMMM").ToUpper(), 
-                                   cbPredio.Text, 
+                                   txtPredio.Text, 
                                    colonia, 
                                    municipio, 
                                    norte, 
                                    este,
                                    nuevaMensualidad,
-                                   txtIntereses.Text,
+                                   interesMesActual,
                                    false);
         }
 
         private void pagoMensualidad(string colonia, string municipio, string norte, string este) {
 
-            string registraPago = ws.registraPago(idVenta, 
-                                                  txtMensualidad.Text, 
-                                                  Convert.ToString(DateTime.Today), 
-                                                  proximoPago, "Mensualidad", 
-                                                  pago_actual);
+            bool deudaDeMora = false;
+ 
+            //**la variable sumaMesMora es global y viene del metodo esMayorAQuinientos**
+            if (sumaMesMora > 0 && sumaMesMora < 500) //verifico que la deuda del mes sea menor 
+            {                                         //a 500 para imprimirla en el recibo 
+                deudaDeMora = true;
+            }
+
+            // REGISTRO DEL PAGO  
+            string registraPago = ws.registraPago(idVenta,                  //id de la venta
+                                                  txtMensualidad.Text,      //mensualidad
+                                                  DateTime.Today.ToString(),//fecha de pago
+                                                  proximoPago,              //fecha de corte pagada
+                                                  "Mensualidad",            //concepto del pago
+                                                  pago_actual);             //numero de pago
             MessageBox.Show(registraPago);
+            // FIN
             
-            DateTime proximaFechaDePago = f.setProximoPago(Convert.ToDateTime(fecha_compra),
-                                                           Convert.ToString((Convert.ToInt32(pago_actual))));
+            // CALCULO DE LA PROXIMA FECHA DE PAGO  
+            DateTime proximaFechaDePago = f.setProximoPago(Convert.ToDateTime(fecha_compra),                 // fecha de compra          
+                                                           Convert.ToString((Convert.ToInt32(pago_actual))));// pago actual
             MessageBox.Show(proximaFechaDePago.ToString());
-            
-            string respuetaUpdateProximoPago = ws.updateProximoPago(idVenta,
-                                                                    mensualidadDeVentas,
-                                                                    proximaFechaDePago.ToString(),
-                                                                    "0",
-                                                                    Convert.ToString(Convert.ToInt32(pago_actual)+1),
-                                                                    "0");
+            // FIN 
+
+            //  REGISTRO DE LOS DATOS DE LA TABLA FECHA DE PROXIMO PAGO 
+            string respuetaUpdateProximoPago = ws.updateProximoPago(idVenta,                      //id de la venta
+                                                                    mensualidadDeVentas,          //mesualidad del mes
+                                                                    proximaFechaDePago.ToString(),//proxime fecha de pago
+                                                                    "0",                          //tipo de pago
+                                                                    Convert.ToString(Convert.ToInt32(pago_actual)+1),//pago actual
+                                                                    "0");                         //status de mora
+            // FIN   
            
-            recibo.crearPdfRecibo("contado", 
-                                   pago_actual, 
-                                   txtPagoFinal.Text, 
-                                   cbLote.Text, 
-                                   cbManzana.Text, 
-                                   cbComprador.Text, 
-                                   txtMensualidad.Text, 
-                                   Convert.ToDateTime(proximoPago).ToString("MMMM").ToUpper(), 
-                                   cbPredio.Text, 
-                                   colonia, 
-                                   municipio, 
-                                   norte, 
-                                   este, 
-                                   "", 
-                                   txtIntereses.Text, 
-                                   false);
+            // GENERA EL RECIBO  
+            recibo.crearPdfRecibo("contado",                                                   //forma de pago
+                                   pago_actual,                                                //pago actual            
+                                   txtPagoFinal.Text,                                          //ultimo pago
+                                   cbLote.Text,                                                //numero de lote
+                                   txtManzana.Text,                                            //numero de manzana                                 
+                                   cbComprador.Text,                                           //nombre comprador
+                                   txtMensualidad.Text,                                        //mensualidad pagada
+                                   Convert.ToDateTime(proximoPago).ToString("MMMM").ToUpper(), //nombre de mes
+                                   txtPredio.Text,                                             //nombre del predio
+                                   colonia,                                                    //nombre de la colonia
+                                   municipio,                                                  //municipio
+                                   norte,                                                      //medida norte
+                                   este,                                                       //medida este
+                                   "",                                                         //resto mensualidad
+                                   txtIntereses.Text,                                          //deuda de intereses 
+                                   deudaDeMora);                                               //si hay mora mensual
+            // FIN
         }
+
 
         public void llenarComboComprador() { 
 
@@ -395,9 +577,7 @@ namespace PvTerrenos
             string respuestaMontoMora = ws.getMontoMora(idVenta);
 
             splitFechaMora = respuestaFechaMora.Split(new char[] { ',' });
-            string[] splitMontoMora = respuestaMontoMora.Split(new char[] { ',' });
-
-            double totalInteres = 0;
+            splitMontoMora = respuestaMontoMora.Split(new char[] { ',' });
          
             if (splitFechaMora[0] == ""){
                 entra = false;
@@ -410,7 +590,7 @@ namespace PvTerrenos
                     totalInteres = totalInteres + Convert.ToDouble(MontoMora);
                 }
             }
-                txtTotalIntereses.Text = Convert.ToString(totalInteres);
+                txtTotalInteres.Text = Convert.ToString(totalInteres);
 
             int contador = 0;
 
@@ -425,7 +605,9 @@ namespace PvTerrenos
             {
                 cbMesesMora.Items.Add(Convert.ToDateTime(proximoPago).AddMonths(i).ToString("MMMM"));
             }
-            
+
+            obtenerCantidadMeses(); // lleno la variable arrayMeses que contiene la cantidad de veces que un mes entro en mora
+
             if (cbMesesMora.Items.Count >= 1)
             {
                 cbMesesMora.SelectedIndex = 0;
@@ -433,6 +615,9 @@ namespace PvTerrenos
             else {
                 cbMesesMora.SelectedIndex = -1;
             }
+            txtInteresMensual.Text = obtenerInteresMensual(cbMesesMora.FindString(Convert.ToDateTime(proximoPago).ToString("MMMM")));
+
+            txtTotal.Text = Convert.ToString(Convert.ToInt32(txtMensualidad.Text) + Convert.ToInt32(txtInteresMensual.Text)); 
         }
 
         public void llenarComboLote() 
@@ -461,6 +646,7 @@ namespace PvTerrenos
             cbLote.SelectedIndex = 0;
         }
 
+
         private bool vacio() { 
         
           if(txtId.Text.Length == 0 || cbComprador.Text.Length == 0)
@@ -473,15 +659,24 @@ namespace PvTerrenos
           }
         }
 
-        private void lTotalInteres_Click(object sender, EventArgs e)
+        public string implode(string[] array) 
         {
-            int tamaño = splitFechaMora.Length;
-            txtTotalIntereses.Text = Convert.ToString(Convert.ToDouble(tamaño) * (Convert.ToDouble(txtMensualidad.Text) * 0.06));
-        }
+            string implode= "";
+            int tamaño = array.Length;
 
-        private void lMensualidad_Click(object sender, EventArgs e)
-        {
-            txtMensualidad.Text = mensualidadProximoPago;
+            for (int i = 0; i <= tamaño; i++)
+            {
+                if (i < tamaño)
+                {
+                    implode += array[i];
+                }
+
+                if (i < tamaño - 1)
+                {
+                    implode += ",";
+                }
+            }
+            return implode;
         }
     }
 }

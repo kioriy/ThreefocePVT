@@ -60,4 +60,7 @@ C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.csproj.GenerateResource
 C:\Users\Miriam\terrenos\PvTerrenos\bin\Debug\PvTerrenos.exe
 C:\Users\Miriam\terrenos\PvTerrenos\bin\Debug\PvTerrenos.pdb
 C:\Users\Miriam\terrenos\PvTerrenos\obj\Debug\PvTerrenos.frmMedidaLote.resources
-C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.frmMedidaLote.resources
+C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Debug\itextsharp.dll
+C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\bin\Debug\itextsharp.xml
+C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.ModificaVenta.resources
+C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Debug\PvTerrenos.MedidaLote.resources

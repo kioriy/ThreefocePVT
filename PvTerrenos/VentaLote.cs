@@ -16,6 +16,7 @@ namespace PvTerrenos
         WSpvt.PVT ws = new WSpvt.PVT();
         string idPredio;
         string idLote;
+        string respuestaCargaManzana;
         string[] splitIdManzana;
         string[] splitId;
         
@@ -125,6 +126,7 @@ namespace PvTerrenos
             }
                 else if (resultado == System.Windows.Forms.DialogResult.OK && cbFormaPago.Text == "Contado") 
                 {
+                    
                     ///////////////   REGISTRO DEL PAGO DE CONTADO  ////////////
                     string respuestaRegistraVenta = ws.registraVenta(idComprador, // id comprador
                                                                      idLote,      // id lote
@@ -143,6 +145,14 @@ namespace PvTerrenos
                     
                     ws.registraPago(idVenta,monto,DateTime.Today.ToString(),"",cbFormaPago.Text,""); //registro el pago unico -
                                                                                                      //de la compra 
+                    cargaVentaDvg(cbNombre.SelectedItem.ToString(),
+                                  idComprador,
+                                  monto,
+                                  mensualidad,
+                                  cbPredio.Text,
+                                  cbManzana.Text,
+                                  cbLotes.Text);
+                    limpiar();
                 }
           }
         }
@@ -174,7 +184,7 @@ namespace PvTerrenos
             string[] splitDatosComprador = respuestaNombreComprador.Split(new char[] { '|' });
             string[] splitComprador = splitDatosComprador[0].Split(new char[] { ',' });
             splitId = splitDatosComprador[1].Split(new char[] { ',' });
-
+            
             foreach(string comprador in splitComprador)
             {
                 cbNombre.Items.Add(comprador);
@@ -217,7 +227,11 @@ namespace PvTerrenos
 
         private void cbNombre_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtId.Text = splitId[cbNombre.SelectedIndex];
+            if (cbNombre.SelectedIndex != -1)
+            {
+                txtId.Text = splitId[cbNombre.SelectedIndex];
+            }
+
         }
 
         private void cbPredio_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,23 +239,44 @@ namespace PvTerrenos
             cbManzana.Items.Clear();
 
             idPredio = ws.getIdPredio(cbPredio.SelectedItem.ToString());
-            string respuestaCargaManzana = ws.cargaColumnaTablaManzana(idPredio,"n_manzana");
-            string respuestaIdManzana = ws.cargaColumnaTablaManzana(idPredio, "id_manzana");
-            
-            splitIdManzana = respuestaIdManzana.Split(new char[] { ',' });
-            
-            string[] splitCargaManzana = respuestaCargaManzana.Split(new char[] { ',' });
 
-            foreach (string cargaCombo in splitCargaManzana) {
+            respuestaCargaManzana = ws.cargaColumnaTablaManzana(idPredio,"n_manzana");
+            
+            if (respuestaCargaManzana != "")
+            {
+                string respuestaIdManzana = ws.cargaColumnaTablaManzana(idPredio, "id_manzana");
 
-                cbManzana.Items.Add(cargaCombo);
+                splitIdManzana = respuestaIdManzana.Split(new char[] { ',' });
+
+                string[] splitCargaManzana = respuestaCargaManzana.Split(new char[] { ',' });
+
+                foreach (string cargaCombo in splitCargaManzana)
+                {
+
+                    cbManzana.Items.Add(cargaCombo);
+                }
+            }
+            else 
+            {
+                cbManzana.Items.Clear();
+                cbLotes.Items.Clear();
+
+                // string idPredio = ws.getIdPredio((string)cbPredio.SelectedItem);
+                //string idManzana = ws.getIdManzana((string)cbManzana.SelectedItem, idPredio);
+                string respuestaCargaLote = ws.cargaLotesDePredio(idPredio);
+
+                string[] splitCargaLotes = respuestaCargaLote.Split(new char[] { ',' });
+                int tamaño = splitCargaLotes.Length;
+                foreach (string cargaLotes in splitCargaLotes)
+                {
+                    cbLotes.Items.Add(cargaLotes);
+                }
             }
         }
 
         private void cbManzana_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbLotes.Items.Clear();
-            WSpvt.PVT ws = new WSpvt.PVT();
 
            // string idPredio = ws.getIdPredio((string)cbPredio.SelectedItem);
            //string idManzana = ws.getIdManzana((string)cbManzana.SelectedItem, idPredio);
@@ -257,9 +292,14 @@ namespace PvTerrenos
 
         private void cbLotes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            idLote = ws.getIdLote(ws.getIdManzana(cbManzana.SelectedItem.ToString(), 
-                                  ws.getIdPredio(cbPredio.SelectedItem.ToString())), 
-                                  cbLotes.SelectedItem.ToString());
+            if (respuestaCargaManzana != "")
+            {
+                idLote = ws.getIdLote(splitIdManzana[cbManzana.SelectedIndex], cbLotes.SelectedItem.ToString(), "pk_manzana");
+            }
+            else 
+            {
+                idLote = ws.getIdLote(idPredio, cbLotes.SelectedItem.ToString(), "pk_predio");
+            }
 
             MedidaLote MedidaLote = new MedidaLote();
             MedidaLote.idLote = idLote;
@@ -304,6 +344,16 @@ namespace PvTerrenos
             {
                 return true;
             }
-        }     
+        }
+
+        private void cbFormaPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbFormaPago.SelectedItem.ToString() == "Contado") {
+                txtPagoActual.Text = "1";
+                txtPagoFinal.Text = "1";
+                txtMensualidad.Text = "0";
+                txtAbono.Text = "0";
+            }
+        } 
     }
 }
