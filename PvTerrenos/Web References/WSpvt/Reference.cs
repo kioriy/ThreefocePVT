@@ -71,6 +71,8 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback getIdCompradordeVentaOperationCompleted;
         
+        private System.Threading.SendOrPostCallback modificaDatoOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getVentadeIdLoteOperationCompleted;
         
         private System.Threading.SendOrPostCallback getIdLoteDeVentaOperationCompleted;
@@ -269,6 +271,9 @@ namespace PvTerrenos.WSpvt {
         
         /// <remarks/>
         public event getIdCompradordeVentaCompletedEventHandler getIdCompradordeVentaCompleted;
+        
+        /// <remarks/>
+        public event modificaDatoCompletedEventHandler modificaDatoCompleted;
         
         /// <remarks/>
         public event getVentadeIdLoteCompletedEventHandler getVentadeIdLoteCompleted;
@@ -1176,6 +1181,40 @@ namespace PvTerrenos.WSpvt {
             if ((this.getIdCompradordeVentaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getIdCompradordeVentaCompleted(this, new getIdCompradordeVentaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/modificaDato", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string modificaDato(string nombreColumna, string nuevoDato, string id_lote) {
+            object[] results = this.Invoke("modificaDato", new object[] {
+                        nombreColumna,
+                        nuevoDato,
+                        id_lote});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void modificaDatoAsync(string nombreColumna, string nuevoDato, string id_lote) {
+            this.modificaDatoAsync(nombreColumna, nuevoDato, id_lote, null);
+        }
+        
+        /// <remarks/>
+        public void modificaDatoAsync(string nombreColumna, string nuevoDato, string id_lote, object userState) {
+            if ((this.modificaDatoOperationCompleted == null)) {
+                this.modificaDatoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmodificaDatoOperationCompleted);
+            }
+            this.InvokeAsync("modificaDato", new object[] {
+                        nombreColumna,
+                        nuevoDato,
+                        id_lote}, this.modificaDatoOperationCompleted, userState);
+        }
+        
+        private void OnmodificaDatoOperationCompleted(object arg) {
+            if ((this.modificaDatoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.modificaDatoCompleted(this, new modificaDatoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3340,6 +3379,32 @@ namespace PvTerrenos.WSpvt {
         private object[] results;
         
         internal getIdCompradordeVentaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void modificaDatoCompletedEventHandler(object sender, modificaDatoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class modificaDatoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal modificaDatoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

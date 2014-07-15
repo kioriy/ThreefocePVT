@@ -19,6 +19,7 @@ namespace PvTerrenos
         string respuestaCargaManzana;
         string[] splitIdManzana;
         string[] splitId;
+        public string datosVenta;
         
         public FrmVentaLote()
         {

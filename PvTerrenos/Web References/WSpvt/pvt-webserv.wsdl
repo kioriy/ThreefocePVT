@@ -187,6 +187,14 @@
   <wsdl:message name="getIdCompradordeVentaResponse">
     <wsdl:part name="return" type="xsd:string" />
   </wsdl:message>
+  <wsdl:message name="modificaDatoRequest">
+    <wsdl:part name="nombreColumna" type="xsd:string" />
+    <wsdl:part name="nuevoDato" type="xsd:string" />
+    <wsdl:part name="id_lote" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modificaDatoResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
   <wsdl:message name="getVentadeIdLoteRequest">
     <wsdl:part name="id_lote" type="xsd:string" />
   </wsdl:message>
@@ -632,6 +640,10 @@
       <wsdl:input message="tns:getIdCompradordeVentaRequest" />
       <wsdl:output message="tns:getIdCompradordeVentaResponse" />
     </wsdl:operation>
+    <wsdl:operation name="modificaDato">
+      <wsdl:input message="tns:modificaDatoRequest" />
+      <wsdl:output message="tns:modificaDatoResponse" />
+    </wsdl:operation>
     <wsdl:operation name="getVentadeIdLote">
       <wsdl:input message="tns:getVentadeIdLoteRequest" />
       <wsdl:output message="tns:getVentadeIdLoteResponse" />
@@ -1013,6 +1025,15 @@
     </wsdl:operation>
     <wsdl:operation name="getIdCompradordeVenta">
       <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getIdCompradordeVenta" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificaDato">
+      <soap:operation soapAction="http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/modificaDato" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://serviciodeconsultas.hol.es/webservice/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
