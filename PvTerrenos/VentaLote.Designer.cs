@@ -244,7 +244,6 @@
             this.cbFormaPago.Name = "cbFormaPago";
             this.cbFormaPago.Size = new System.Drawing.Size(66, 21);
             this.cbFormaPago.TabIndex = 1;
-            this.cbFormaPago.SelectedIndexChanged += new System.EventHandler(this.cbFormaPago_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -339,6 +338,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(94, 20);
             this.txtId.TabIndex = 37;
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // label7
@@ -370,6 +370,7 @@
             this.btnModificar.TabIndex = 37;
             this.btnModificar.Text = "Moficar Venta";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Visible = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // cmdAgregar

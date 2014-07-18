@@ -190,7 +190,9 @@
   <wsdl:message name="modificaDatoRequest">
     <wsdl:part name="nombreColumna" type="xsd:string" />
     <wsdl:part name="nuevoDato" type="xsd:string" />
+    <wsdl:part name="fecha" type="xsd:string" />
     <wsdl:part name="id_lote" type="xsd:string" />
+    <wsdl:part name="id_venta" type="xsd:string" />
   </wsdl:message>
   <wsdl:message name="modificaDatoResponse">
     <wsdl:part name="return" type="xsd:string" />

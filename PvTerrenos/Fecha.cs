@@ -34,6 +34,7 @@ namespace PvTerrenos
 
         public DateTime setProximoPagoDos(DateTime ProximoPago)
         {
+
             ProximoPago = ProximoPago.AddMonths(1);
             return ProximoPago;
         }
@@ -71,6 +72,7 @@ namespace PvTerrenos
 
             foreach (string fechaMora in splitFechaMora)
             {
+
                 DateTime fechaMoraCompara = Convert.ToDateTime(fechaMora);
 
                 //for (int i = 0; )
@@ -140,9 +142,9 @@ namespace PvTerrenos
                         DateTime mesRecorrido = mesPrincipal.AddMonths(-j);
 
                         respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString(),"0");
+                        ws.updateStatusMora(idVenta);
                     }
-                } ws.updateStatusMora(idVenta);
-                return respuestaRegistraMora;
+                } return respuestaRegistraMora;
             }
 
             if (esMoroso && statusMora && !mesYaEstaEnMora(proximoPago, idVenta) && proximoPago.AddDays(6).Day <= DateTime.Today.Day)

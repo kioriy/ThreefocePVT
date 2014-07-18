@@ -36,3 +36,22 @@ C:\Users\Miriam\terrenos\PvTerrenos\bin\Release\itextsharp.dll
 C:\Users\Miriam\terrenos\PvTerrenos\bin\Release\itextsharp.xml
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Release\PvTerrenos.ModificaVenta.resources
 C:\Users\Miriam\terrenos\PvTerrenos\obj\Release\PvTerrenos.ModificaVenta.resources
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\bin\Release\PvTerrenos.exe.config
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.exe
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.pdb
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.XmlSerializers.dll
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\bin\Release\PvTerrenos.exe
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\bin\Release\PvTerrenos.XmlSerializers.dll
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\bin\Release\PvTerrenos.pdb
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\bin\Release\itextsharp.dll
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\bin\Release\itextsharp.xml
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.csprojResolveAssemblyReference.cache
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.ModificaVenta.resources
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.MedidaLote.resources
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.frmInicioSesion.resources
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.FrmVentaLote.resources
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.FrmAltaPredio.resources
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.FrmAltaCliente.resources
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.FrmPago.resources
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.Properties.Resources.resources
+C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.csproj.GenerateResource.Cache

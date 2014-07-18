@@ -20,6 +20,7 @@ namespace PvTerrenos
         public string numeroLoteActual;
         public string idPredio;
         public string idManzana;
+        
 
         WSpvt.PVT ws = new WSpvt.PVT();
 
@@ -37,6 +38,8 @@ namespace PvTerrenos
 
         public void cargarPredios() {
 
+           
+
             dataGridView1.Rows.Clear();
 
             string infoPredio = ws.getinfoPredio();
@@ -45,7 +48,12 @@ namespace PvTerrenos
             foreach (string datos in splitInfoPredio) {
                 string[] splitPredio = datos.Split(new char[] { ',' });
                 dataGridView1.Rows.Add(splitPredio[0], splitPredio[1], splitPredio[2], splitPredio[3]);
+
             }
+            
+            
+
+        
         }
 
         private void cbSeleccionaManzanaLote_SelectedIndexChanged(object sender, EventArgs e)
@@ -270,6 +278,7 @@ namespace PvTerrenos
             }
             else
             {
+
                 switch (opcion)
                 {
                     case 1:
@@ -319,7 +328,7 @@ namespace PvTerrenos
       
 
 
-            if (bandera/*cbNumeroManzana.SelectedIndex == Convert.ToInt32(txtNumManzanaLote.Text) */ || cbSeleccionaManzanaLote.SelectedIndex == 1)
+            if (bandera|| cbSeleccionaManzanaLote.SelectedIndex == 1)
             {
                 cmbNombrePredio.Text = "";
                 txtIdPredio.Text = "";

@@ -1187,28 +1187,32 @@ namespace PvTerrenos.WSpvt {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/modificaDato", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string modificaDato(string nombreColumna, string nuevoDato, string id_lote) {
+        public string modificaDato(string nombreColumna, string nuevoDato, string fecha, string id_lote, string id_venta) {
             object[] results = this.Invoke("modificaDato", new object[] {
                         nombreColumna,
                         nuevoDato,
-                        id_lote});
+                        fecha,
+                        id_lote,
+                        id_venta});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void modificaDatoAsync(string nombreColumna, string nuevoDato, string id_lote) {
-            this.modificaDatoAsync(nombreColumna, nuevoDato, id_lote, null);
+        public void modificaDatoAsync(string nombreColumna, string nuevoDato, string fecha, string id_lote, string id_venta) {
+            this.modificaDatoAsync(nombreColumna, nuevoDato, fecha, id_lote, id_venta, null);
         }
         
         /// <remarks/>
-        public void modificaDatoAsync(string nombreColumna, string nuevoDato, string id_lote, object userState) {
+        public void modificaDatoAsync(string nombreColumna, string nuevoDato, string fecha, string id_lote, string id_venta, object userState) {
             if ((this.modificaDatoOperationCompleted == null)) {
                 this.modificaDatoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmodificaDatoOperationCompleted);
             }
             this.InvokeAsync("modificaDato", new object[] {
                         nombreColumna,
                         nuevoDato,
-                        id_lote}, this.modificaDatoOperationCompleted, userState);
+                        fecha,
+                        id_lote,
+                        id_venta}, this.modificaDatoOperationCompleted, userState);
         }
         
         private void OnmodificaDatoOperationCompleted(object arg) {

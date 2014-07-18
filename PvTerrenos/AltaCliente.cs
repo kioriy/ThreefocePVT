@@ -38,11 +38,11 @@ namespace PvTerrenos
 
             cbNombre.Items.Clear();
             string respuestaCargaComprador = ws.cargaComprador();
-            string[] splitComprador = respuestaCargaComprador.Split(new char[] { '|' });
-            string[] nombreComprador = splitComprador[0].Split(new char[] { ',' });  
-            
-            foreach (string comprador in nombreComprador)
+            string[] splitComprador = respuestaCargaComprador.Split(new char[] { ',' });
+
+            foreach (string comprador in splitComprador)
             {
+
                 cbNombre.Items.Add(comprador);
             }
         }
@@ -87,6 +87,7 @@ namespace PvTerrenos
                 MessageBox.Show("Debes proporcionar por lo menos los siguientes datos " + ".:: Nombre ::.");
                 
             }
+           
            
                 try
                 {
@@ -170,6 +171,8 @@ namespace PvTerrenos
           private void btnActualizar_Click(object sender, EventArgs e)
           {     
              
+             
+
                   string mensaje = "¿Estas seguro de que quieres actualizar a este cliente?";
                   string caption = "Actualizar Cliente";
                   MessageBoxButtons botones = MessageBoxButtons.OKCancel;
@@ -199,6 +202,8 @@ namespace PvTerrenos
               }
 
           }
+
+
 
           public void cargaCliente() {
               string nombre = cbNombre.Text;
