@@ -34,7 +34,6 @@ namespace PvTerrenos
 
         public DateTime setProximoPagoDos(DateTime ProximoPago)
         {
-
             ProximoPago = ProximoPago.AddMonths(1);
             return ProximoPago;
         }
@@ -72,7 +71,6 @@ namespace PvTerrenos
 
             foreach (string fechaMora in splitFechaMora)
             {
-
                 DateTime fechaMoraCompara = Convert.ToDateTime(fechaMora);
 
                 //for (int i = 0; )
@@ -105,9 +103,11 @@ namespace PvTerrenos
         {
             DateTime hoy = DateTime.Today;
 
-            if (proximoPago.AddDays(6).Day >= DateTime.Today.Day)
-            {
+            int distancia = (hoy.Year * 12 + hoy.Month) - (Convert.ToDateTime(proximoPago).Year * 12 + Convert.ToDateTime(proximoPago).Month);
+            DateTime AuxiliarProximoPago = proximoPago.AddMonths(distancia);
 
+            if (/*proximoPago.AddDays(6).Day*/AuxiliarProximoPago.AddDays(6) >= DateTime.Today)
+            {
                 hoy = DateTime.Today.AddMonths(-1);
             }
 
@@ -142,12 +142,12 @@ namespace PvTerrenos
                         DateTime mesRecorrido = mesPrincipal.AddMonths(-j);
 
                         respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString(),"0");
-                        ws.updateStatusMora(idVenta);
                     }
-                } return respuestaRegistraMora;
+                } ws.updateStatusMora(idVenta);
+                return respuestaRegistraMora;
             }
 
-            if (esMoroso && statusMora && !mesYaEstaEnMora(proximoPago, idVenta) && proximoPago.AddDays(6).Day <= DateTime.Today.Day)
+            if (esMoroso && statusMora && !mesYaEstaEnMora(proximoPago, idVenta) && /*proximoPago.AddDays(6).Day*/AuxiliarProximoPago.AddDays(6) <= DateTime.Today)
             {
                 string ultimoMes = ultimoMesEnMora(idVenta);
 

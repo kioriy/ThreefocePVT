@@ -32,8 +32,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.txtAbonoExtra = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPagoActual = new System.Windows.Forms.TextBox();
+            this.txtManzana = new System.Windows.Forms.TextBox();
+            this.txtPagoFinal = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtPredio = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.cbComprador = new System.Windows.Forms.ComboBox();
             this.txtProximoPago = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -43,44 +49,48 @@
             this.txtDiaCorte = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cmdPagoInteres = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.txtTotalIntereses = new System.Windows.Forms.TextBox();
+            this.txtTotalInteres = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtMensualidad = new System.Windows.Forms.TextBox();
+            this.lMensualidad = new System.Windows.Forms.Label();
+            this.txtDescuento = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtInteresMensual = new System.Windows.Forms.TextBox();
             this.lTotalInteres = new System.Windows.Forms.Label();
             this.txtIntereses = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbMesesMora = new System.Windows.Forms.ComboBox();
             this.cbLote = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtMensualidad = new System.Windows.Forms.TextBox();
-            this.lMensualidad = new System.Windows.Forms.Label();
-            this.cmdPagoMensualidad = new System.Windows.Forms.Button();
-            this.txtPagoActual = new System.Windows.Forms.TextBox();
-            this.txtPagoFinal = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.cbManzana = new System.Windows.Forms.ComboBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.cbPredio = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.cmdPagoInteres = new System.Windows.Forms.Button();
+            this.cmdPagoMensualidad = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.txtAbonoExtra);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtPagoActual);
+            this.groupBox1.Controls.Add(this.txtManzana);
+            this.groupBox1.Controls.Add(this.txtPagoFinal);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.txtPredio);
+            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.cbComprador);
             this.groupBox1.Controls.Add(this.txtProximoPago);
             this.groupBox1.Controls.Add(this.label12);
@@ -91,12 +101,9 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.cbLote);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.cbManzana);
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.cbPredio);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label9);
@@ -108,22 +115,87 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Comprador";
             // 
-            // label16
+            // txtAbonoExtra
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(375, 25);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(72, 13);
-            this.label16.TabIndex = 48;
-            this.label16.Text = "Fecha actual:";
+            this.txtAbonoExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAbonoExtra.Location = new System.Drawing.Point(268, 129);
+            this.txtAbonoExtra.Name = "txtAbonoExtra";
+            this.txtAbonoExtra.Size = new System.Drawing.Size(78, 20);
+            this.txtAbonoExtra.TabIndex = 44;
+            this.txtAbonoExtra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // dateTimePicker1
+            // label3
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(453, 21);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 18);
-            this.dateTimePicker1.TabIndex = 47;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(195, 131);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Abono extra:";
+            // 
+            // txtPagoActual
+            // 
+            this.txtPagoActual.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtPagoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPagoActual.Location = new System.Drawing.Point(209, 209);
+            this.txtPagoActual.Name = "txtPagoActual";
+            this.txtPagoActual.ReadOnly = true;
+            this.txtPagoActual.Size = new System.Drawing.Size(52, 31);
+            this.txtPagoActual.TabIndex = 40;
+            this.txtPagoActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtManzana
+            // 
+            this.txtManzana.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtManzana.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtManzana.Location = new System.Drawing.Point(238, 93);
+            this.txtManzana.Name = "txtManzana";
+            this.txtManzana.ReadOnly = true;
+            this.txtManzana.Size = new System.Drawing.Size(37, 20);
+            this.txtManzana.TabIndex = 45;
+            this.txtManzana.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtPagoFinal
+            // 
+            this.txtPagoFinal.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtPagoFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPagoFinal.Location = new System.Drawing.Point(302, 209);
+            this.txtPagoFinal.Name = "txtPagoFinal";
+            this.txtPagoFinal.ReadOnly = true;
+            this.txtPagoFinal.Size = new System.Drawing.Size(52, 31);
+            this.txtPagoFinal.TabIndex = 37;
+            this.txtPagoFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(267, 216);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(27, 20);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "de";
+            // 
+            // txtPredio
+            // 
+            this.txtPredio.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtPredio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPredio.Location = new System.Drawing.Point(60, 93);
+            this.txtPredio.Name = "txtPredio";
+            this.txtPredio.ReadOnly = true;
+            this.txtPredio.Size = new System.Drawing.Size(144, 20);
+            this.txtPredio.TabIndex = 45;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(56, 216);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(132, 20);
+            this.label14.TabIndex = 34;
+            this.label14.Text = "Numero de Pago:";
             // 
             // cbComprador
             // 
@@ -131,48 +203,53 @@
             this.cbComprador.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbComprador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbComprador.FormattingEnabled = true;
-            this.cbComprador.Location = new System.Drawing.Point(61, 58);
+            this.cbComprador.Location = new System.Drawing.Point(60, 58);
             this.cbComprador.Name = "cbComprador";
-            this.cbComprador.Size = new System.Drawing.Size(285, 21);
+            this.cbComprador.Size = new System.Drawing.Size(286, 21);
             this.cbComprador.TabIndex = 46;
             this.cbComprador.SelectedIndexChanged += new System.EventHandler(this.cbComprador_SelectedIndexChanged);
             // 
             // txtProximoPago
             // 
-            this.txtProximoPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProximoPago.Location = new System.Drawing.Point(238, 124);
+            this.txtProximoPago.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtProximoPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProximoPago.Location = new System.Drawing.Point(213, 170);
             this.txtProximoPago.Name = "txtProximoPago";
-            this.txtProximoPago.Size = new System.Drawing.Size(108, 20);
+            this.txtProximoPago.ReadOnly = true;
+            this.txtProximoPago.Size = new System.Drawing.Size(133, 21);
             this.txtProximoPago.TabIndex = 45;
             this.txtProximoPago.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(167, 126);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(25, 170);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 13);
+            this.label12.Size = new System.Drawing.Size(182, 18);
             this.label12.TabIndex = 44;
-            this.label12.Text = "Fecha Pago:";
+            this.label12.Text = "Mes que se esta pagando:";
             // 
             // txtAbono
             // 
+            this.txtAbono.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtAbono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAbono.Location = new System.Drawing.Point(61, 124);
+            this.txtAbono.Location = new System.Drawing.Point(83, 127);
             this.txtAbono.Name = "txtAbono";
-            this.txtAbono.Size = new System.Drawing.Size(100, 20);
+            this.txtAbono.ReadOnly = true;
+            this.txtAbono.Size = new System.Drawing.Size(78, 20);
             this.txtAbono.TabIndex = 43;
+            this.txtAbono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(14, 126);
+            this.label10.Location = new System.Drawing.Point(14, 129);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.Size = new System.Drawing.Size(63, 13);
             this.label10.TabIndex = 43;
-            this.label10.Text = "Abono:";
+            this.label10.Text = "Abono mes:";
             // 
             // label5
             // 
@@ -186,11 +263,14 @@
             // 
             // txtDiaCorte
             // 
+            this.txtDiaCorte.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtDiaCorte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiaCorte.Location = new System.Drawing.Point(246, 24);
             this.txtDiaCorte.Name = "txtDiaCorte";
+            this.txtDiaCorte.ReadOnly = true;
             this.txtDiaCorte.Size = new System.Drawing.Size(35, 20);
             this.txtDiaCorte.TabIndex = 39;
+            this.txtDiaCorte.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -204,78 +284,128 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.cmdPagoInteres);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.txtTotalIntereses);
+            this.groupBox3.Controls.Add(this.txtTotalInteres);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.txtTotal);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.txtMensualidad);
+            this.groupBox3.Controls.Add(this.lMensualidad);
+            this.groupBox3.Controls.Add(this.txtDescuento);
             this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.txtInteresMensual);
             this.groupBox3.Controls.Add(this.lTotalInteres);
             this.groupBox3.Controls.Add(this.txtIntereses);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.cbMesesMora);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(368, 58);
+            this.groupBox3.Location = new System.Drawing.Point(368, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(291, 198);
+            this.groupBox3.Size = new System.Drawing.Size(291, 256);
             this.groupBox3.TabIndex = 36;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Resumen  intereses";
+            this.groupBox3.Text = "Resumen  de Pago";
             // 
-            // cmdPagoInteres
+            // txtTotalInteres
             // 
-            this.cmdPagoInteres.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdPagoInteres.Location = new System.Drawing.Point(126, 165);
-            this.cmdPagoInteres.Name = "cmdPagoInteres";
-            this.cmdPagoInteres.Size = new System.Drawing.Size(159, 27);
-            this.cmdPagoInteres.TabIndex = 4;
-            this.cmdPagoInteres.Text = "Pagar intereses";
-            this.cmdPagoInteres.UseVisualStyleBackColor = true;
-            this.cmdPagoInteres.Click += new System.EventHandler(this.cmdPagoInteres_Click);
+            this.txtTotalInteres.Location = new System.Drawing.Point(183, 53);
+            this.txtTotalInteres.Name = "txtTotalInteres";
+            this.txtTotalInteres.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalInteres.TabIndex = 48;
+            this.txtTotalInteres.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox4
+            // label17
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(79, 64);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 6;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(83, 56);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(94, 13);
+            this.label17.TabIndex = 47;
+            this.label17.Text = "Total de intereses:";
             // 
-            // txtTotalIntereses
+            // txtTotal
             // 
-            this.txtTotalIntereses.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalIntereses.Location = new System.Drawing.Point(173, 116);
-            this.txtTotalIntereses.Name = "txtTotalIntereses";
-            this.txtTotalIntereses.Size = new System.Drawing.Size(112, 31);
-            this.txtTotalIntereses.TabIndex = 44;
-            this.txtTotalIntereses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(183, 216);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(100, 22);
+            this.txtTotal.TabIndex = 46;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(19, 219);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(158, 15);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Cargos totales del mes:";
+            // 
+            // txtMensualidad
+            // 
+            this.txtMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMensualidad.Location = new System.Drawing.Point(183, 118);
+            this.txtMensualidad.Name = "txtMensualidad";
+            this.txtMensualidad.Size = new System.Drawing.Size(100, 22);
+            this.txtMensualidad.TabIndex = 42;
+            this.txtMensualidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lMensualidad
+            // 
+            this.lMensualidad.AutoSize = true;
+            this.lMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lMensualidad.Location = new System.Drawing.Point(83, 120);
+            this.lMensualidad.Name = "lMensualidad";
+            this.lMensualidad.Size = new System.Drawing.Size(94, 15);
+            this.lMensualidad.TabIndex = 41;
+            this.lMensualidad.Text = "Mensualidad:";
+            // 
+            // txtDescuento
+            // 
+            this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescuento.Location = new System.Drawing.Point(183, 172);
+            this.txtDescuento.Name = "txtDescuento";
+            this.txtDescuento.Size = new System.Drawing.Size(100, 22);
+            this.txtDescuento.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(4, 69);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(94, 176);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.Size = new System.Drawing.Size(79, 15);
             this.label6.TabIndex = 5;
             this.label6.Text = "Descuento:";
+            // 
+            // txtInteresMensual
+            // 
+            this.txtInteresMensual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInteresMensual.Location = new System.Drawing.Point(183, 144);
+            this.txtInteresMensual.Name = "txtInteresMensual";
+            this.txtInteresMensual.Size = new System.Drawing.Size(100, 22);
+            this.txtInteresMensual.TabIndex = 44;
+            this.txtInteresMensual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lTotalInteres
             // 
             this.lTotalInteres.AutoSize = true;
-            this.lTotalInteres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lTotalInteres.Location = new System.Drawing.Point(55, 124);
+            this.lTotalInteres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lTotalInteres.Location = new System.Drawing.Point(59, 147);
             this.lTotalInteres.Name = "lTotalInteres";
-            this.lTotalInteres.Size = new System.Drawing.Size(112, 16);
+            this.lTotalInteres.Size = new System.Drawing.Size(114, 15);
             this.lTotalInteres.TabIndex = 43;
-            this.lTotalInteres.Text = "Total intereses";
-            this.lTotalInteres.Click += new System.EventHandler(this.lTotalInteres_Click);
+            this.lTotalInteres.Text = "Interes Mensual:";
             // 
             // txtIntereses
             // 
-            this.txtIntereses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIntereses.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtIntereses.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIntereses.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.txtIntereses.Location = new System.Drawing.Point(183, 21);
+            this.txtIntereses.Location = new System.Drawing.Point(183, 23);
             this.txtIntereses.Name = "txtIntereses";
-            this.txtIntereses.Size = new System.Drawing.Size(102, 22);
+            this.txtIntereses.ReadOnly = true;
+            this.txtIntereses.Size = new System.Drawing.Size(100, 20);
             this.txtIntereses.TabIndex = 3;
             this.txtIntereses.Text = "Interes mensual";
             this.txtIntereses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -286,9 +416,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(4, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Mes a pagar:";
+            this.label2.Text = "Mes en mora:";
             // 
             // cbMesesMora
             // 
@@ -310,100 +440,6 @@
             this.cbLote.TabIndex = 33;
             this.cbLote.SelectedIndexChanged += new System.EventHandler(this.cbLote_SelectedIndexChanged);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.txtMensualidad);
-            this.groupBox2.Controls.Add(this.lMensualidad);
-            this.groupBox2.Controls.Add(this.cmdPagoMensualidad);
-            this.groupBox2.Controls.Add(this.txtPagoActual);
-            this.groupBox2.Controls.Add(this.txtPagoFinal);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Location = new System.Drawing.Point(0, 148);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(362, 108);
-            this.groupBox2.TabIndex = 35;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Pago del mes";
-            // 
-            // txtMensualidad
-            // 
-            this.txtMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMensualidad.Location = new System.Drawing.Point(256, 26);
-            this.txtMensualidad.Name = "txtMensualidad";
-            this.txtMensualidad.Size = new System.Drawing.Size(100, 31);
-            this.txtMensualidad.TabIndex = 42;
-            this.txtMensualidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lMensualidad
-            // 
-            this.lMensualidad.AutoSize = true;
-            this.lMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lMensualidad.Location = new System.Drawing.Point(156, 34);
-            this.lMensualidad.Name = "lMensualidad";
-            this.lMensualidad.Size = new System.Drawing.Size(97, 16);
-            this.lMensualidad.TabIndex = 41;
-            this.lMensualidad.Text = "Mensualidad";
-            this.lMensualidad.Click += new System.EventHandler(this.lMensualidad_Click);
-            // 
-            // cmdPagoMensualidad
-            // 
-            this.cmdPagoMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdPagoMensualidad.Location = new System.Drawing.Point(197, 75);
-            this.cmdPagoMensualidad.Name = "cmdPagoMensualidad";
-            this.cmdPagoMensualidad.Size = new System.Drawing.Size(159, 27);
-            this.cmdPagoMensualidad.TabIndex = 26;
-            this.cmdPagoMensualidad.Text = "Pagar Mensualidad";
-            this.cmdPagoMensualidad.UseVisualStyleBackColor = true;
-            this.cmdPagoMensualidad.Click += new System.EventHandler(this.cmdPagoMensualidad_Click);
-            // 
-            // txtPagoActual
-            // 
-            this.txtPagoActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPagoActual.Location = new System.Drawing.Point(47, 27);
-            this.txtPagoActual.Name = "txtPagoActual";
-            this.txtPagoActual.Size = new System.Drawing.Size(36, 22);
-            this.txtPagoActual.TabIndex = 40;
-            this.txtPagoActual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtPagoFinal
-            // 
-            this.txtPagoFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPagoFinal.Location = new System.Drawing.Point(100, 27);
-            this.txtPagoFinal.Name = "txtPagoFinal";
-            this.txtPagoFinal.Size = new System.Drawing.Size(36, 22);
-            this.txtPagoFinal.TabIndex = 37;
-            this.txtPagoFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(86, 28);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(15, 24);
-            this.label15.TabIndex = 36;
-            this.label15.Text = "/";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(6, 34);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(35, 13);
-            this.label14.TabIndex = 34;
-            this.label14.Text = "Pago:";
-            // 
-            // cbManzana
-            // 
-            this.cbManzana.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbManzana.FormattingEnabled = true;
-            this.cbManzana.Location = new System.Drawing.Point(238, 91);
-            this.cbManzana.Name = "cbManzana";
-            this.cbManzana.Size = new System.Drawing.Size(37, 21);
-            this.cbManzana.TabIndex = 25;
-            // 
             // txtId
             // 
             this.txtId.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -412,6 +448,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(94, 20);
             this.txtId.TabIndex = 15;
+            this.txtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // label7
@@ -433,15 +470,6 @@
             this.label13.Size = new System.Drawing.Size(20, 13);
             this.label13.TabIndex = 32;
             this.label13.Text = "M°";
-            // 
-            // cbPredio
-            // 
-            this.cbPredio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPredio.FormattingEnabled = true;
-            this.cbPredio.Location = new System.Drawing.Point(60, 91);
-            this.cbPredio.Name = "cbPredio";
-            this.cbPredio.Size = new System.Drawing.Size(145, 21);
-            this.cbPredio.TabIndex = 9;
             // 
             // label8
             // 
@@ -472,6 +500,45 @@
             this.label9.Size = new System.Drawing.Size(17, 13);
             this.label9.TabIndex = 17;
             this.label9.Text = "L°";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(17, 459);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(72, 13);
+            this.label16.TabIndex = 48;
+            this.label16.Text = "Fecha actual:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(95, 455);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 47;
+            // 
+            // cmdPagoInteres
+            // 
+            this.cmdPagoInteres.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdPagoInteres.Location = new System.Drawing.Point(347, 451);
+            this.cmdPagoInteres.Name = "cmdPagoInteres";
+            this.cmdPagoInteres.Size = new System.Drawing.Size(159, 27);
+            this.cmdPagoInteres.TabIndex = 4;
+            this.cmdPagoInteres.Text = "Pagar intereses";
+            this.cmdPagoInteres.UseVisualStyleBackColor = true;
+            this.cmdPagoInteres.Visible = false;
+            // 
+            // cmdPagoMensualidad
+            // 
+            this.cmdPagoMensualidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdPagoMensualidad.Location = new System.Drawing.Point(512, 451);
+            this.cmdPagoMensualidad.Name = "cmdPagoMensualidad";
+            this.cmdPagoMensualidad.Size = new System.Drawing.Size(159, 27);
+            this.cmdPagoMensualidad.TabIndex = 26;
+            this.cmdPagoMensualidad.Text = "Pagar Mensualidad";
+            this.cmdPagoMensualidad.UseVisualStyleBackColor = true;
+            this.cmdPagoMensualidad.Click += new System.EventHandler(this.cmdPagoMensualidad_Click);
             // 
             // dataGridView1
             // 
@@ -517,64 +584,72 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 443);
+            this.ClientSize = new System.Drawing.Size(683, 490);
+            this.Controls.Add(this.cmdPagoInteres);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.cmdPagoMensualidad);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.label16);
             this.Name = "FrmPago";
             this.Text = "Pago";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtPagoActual;
-        private System.Windows.Forms.TextBox txtPagoFinal;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button cmdPagoMensualidad;
         private System.Windows.Forms.ComboBox cbLote;
-        private System.Windows.Forms.ComboBox cbManzana;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox cbPredio;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtTotalIntereses;
+        private System.Windows.Forms.TextBox txtInteresMensual;
         private System.Windows.Forms.Label lTotalInteres;
         private System.Windows.Forms.TextBox txtMensualidad;
         private System.Windows.Forms.Label lMensualidad;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button cmdPagoInteres;
-        private System.Windows.Forms.TextBox txtIntereses;
         private System.Windows.Forms.ComboBox cbMesesMora;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtDescuento;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtDiaCorte;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtAbono;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtProximoPago;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbComprador;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtPagoActual;
+        private System.Windows.Forms.TextBox txtPagoFinal;
+        private System.Windows.Forms.TextBox txtIntereses;
+        private System.Windows.Forms.TextBox txtDiaCorte;
+        private System.Windows.Forms.TextBox txtAbono;
+        private System.Windows.Forms.TextBox txtProximoPago;
+        private System.Windows.Forms.TextBox txtManzana;
+        private System.Windows.Forms.TextBox txtPredio;
+        private System.Windows.Forms.Button cmdPagoInteres;
+        private System.Windows.Forms.TextBox txtAbonoExtra;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtTotalInteres;
+        private System.Windows.Forms.Label label17;
     }
 }

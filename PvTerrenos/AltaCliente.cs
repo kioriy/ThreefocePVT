@@ -38,16 +38,14 @@ namespace PvTerrenos
 
             cbNombre.Items.Clear();
             string respuestaCargaComprador = ws.cargaComprador();
-            string[] splitComprador = respuestaCargaComprador.Split(new char[] { ',' });
-
-            foreach (string comprador in splitComprador)
+            string[] splitComprador = respuestaCargaComprador.Split(new char[] { '|' });
+            string[] nombreComprador = splitComprador[0].Split(new char[] { ',' });  
+            
+            foreach (string comprador in nombreComprador)
             {
-
                 cbNombre.Items.Add(comprador);
             }
         }
-
-        
 
         public void cargaDatosCliente(string nombre,string idComprador) {
             MessageBox.Show(idComprador);
@@ -63,10 +61,6 @@ namespace PvTerrenos
             txtEc.Text = splitDatosComprador[4];
             txtTelefono2.Text = splitDatosComprador[5];
             txtTelefono.Text = splitDatosComprador[6];
-
-
-           
-        
         }
         void agregarCliente()
         {
@@ -87,7 +81,6 @@ namespace PvTerrenos
                 MessageBox.Show("Debes proporcionar por lo menos los siguientes datos " + ".:: Nombre ::.");
                 
             }
-           
            
                 try
                 {
@@ -117,15 +110,11 @@ namespace PvTerrenos
 
           void modificarCliente(string idcomprador)
           {
-              
               string nombreNuevo = cbNombre.Text.ToUpper();
               string respuestaActulizaCliente = ws.updateComprador(idcomprador, nombreNuevo, txtDireccion.Text, txtBeneficiario.Text, txtResidencia.Text, txtOcupacion.Text, txtEc.Text, txtTelefono.Text, txtTelefono2.Text);
               ventaLote.llenaComboComprador();
               llenarComboComprador();
               MessageBox.Show(respuestaActulizaCliente);
-              
-
-
           }
 
           private string generaId(string nombreComprador)
@@ -171,8 +160,6 @@ namespace PvTerrenos
           private void btnActualizar_Click(object sender, EventArgs e)
           {     
              
-             
-
                   string mensaje = "¿Estas seguro de que quieres actualizar a este cliente?";
                   string caption = "Actualizar Cliente";
                   MessageBoxButtons botones = MessageBoxButtons.OKCancel;
@@ -202,8 +189,6 @@ namespace PvTerrenos
               }
 
           }
-
-
 
           public void cargaCliente() {
               string nombre = cbNombre.Text;

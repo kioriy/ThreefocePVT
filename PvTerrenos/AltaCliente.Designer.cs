@@ -79,9 +79,9 @@
             // btnActualizar
             // 
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(309, 113);
+            this.btnActualizar.Location = new System.Drawing.Point(331, 113);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(175, 23);
+            this.btnActualizar.Size = new System.Drawing.Size(153, 27);
             this.btnActualizar.TabIndex = 32;
             this.btnActualizar.Text = "Actualizar Cliente";
             this.btnActualizar.UseVisualStyleBackColor = true;
