@@ -409,6 +409,7 @@
             this.txtIntereses.TabIndex = 3;
             this.txtIntereses.Text = "Interes mensual";
             this.txtIntereses.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            
             // 
             // label2
             // 

@@ -167,12 +167,8 @@ namespace PvTerrenos
 
         }
 
-
         private void llenarCombos()
         {
-
-           
-
             string respuestaCargaLote = medida.getMedida();
 
             string[] splitLotes = respuestaCargaLote.Split(new char[] { ',' });

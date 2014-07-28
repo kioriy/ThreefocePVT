@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbNombre = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -75,6 +75,7 @@
             this.predioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.predioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -244,6 +245,7 @@
             this.cbFormaPago.Name = "cbFormaPago";
             this.cbFormaPago.Size = new System.Drawing.Size(66, 21);
             this.cbFormaPago.TabIndex = 1;
+            this.cbFormaPago.SelectedIndexChanged += new System.EventHandler(this.cbFormaPago_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -409,8 +411,8 @@
             // 
             // dgvId
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvId.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvId.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvId.HeaderText = "ID Comprador";
             this.dgvId.Name = "dgvId";
             this.dgvId.ReadOnly = true;
@@ -418,8 +420,8 @@
             // 
             // dgvCostoTerreno
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvCostoTerreno.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvCostoTerreno.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvCostoTerreno.HeaderText = "Costo Terreno";
             this.dgvCostoTerreno.Name = "dgvCostoTerreno";
             this.dgvCostoTerreno.ReadOnly = true;
@@ -427,8 +429,8 @@
             // 
             // dgvMensualidad
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvMensualidad.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvMensualidad.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvMensualidad.HeaderText = "Mesualidad";
             this.dgvMensualidad.Name = "dgvMensualidad";
             this.dgvMensualidad.ReadOnly = true;
@@ -442,8 +444,8 @@
             // 
             // dvgManzana
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dvgManzana.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgManzana.DefaultCellStyle = dataGridViewCellStyle9;
             this.dvgManzana.HeaderText = "Manzana";
             this.dvgManzana.Name = "dvgManzana";
             this.dvgManzana.ReadOnly = true;
@@ -451,8 +453,8 @@
             // 
             // dgvLote
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvLote.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvLote.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvLote.HeaderText = "Lote";
             this.dgvLote.Name = "dgvLote";
             this.dgvLote.ReadOnly = true;
@@ -463,7 +465,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientesToolStripMenuItem,
             this.predioToolStripMenuItem,
-            this.consultasToolStripMenuItem});
+            this.consultasToolStripMenuItem,
+            this.iToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(753, 24);
@@ -505,6 +508,13 @@
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.consultasToolStripMenuItem.Text = "Consulta";
+            // 
+            // iToolStripMenuItem
+            // 
+            this.iToolStripMenuItem.Name = "iToolStripMenuItem";
+            this.iToolStripMenuItem.Size = new System.Drawing.Size(22, 20);
+            this.iToolStripMenuItem.Text = "i";
+            this.iToolStripMenuItem.Click += new System.EventHandler(this.iToolStripMenuItem_Click);
             // 
             // FrmVentaLote
             // 
@@ -575,6 +585,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dvgManzana;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvLote;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.ToolStripMenuItem iToolStripMenuItem;
     }
 }
 

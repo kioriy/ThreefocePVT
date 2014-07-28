@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="borrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="borrar.Designer.cs">
+      <DependentUpon>borrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fecha.cs" />
     <Compile Include="ModificaVenta.cs">
       <SubType>Form</SubType>
@@ -106,6 +112,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="borrar.resx">
+      <DependentUpon>borrar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModificaVenta.resx">
       <DependentUpon>ModificaVenta.cs</DependentUpon>
     </EmbeddedResource>

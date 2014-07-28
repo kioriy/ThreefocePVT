@@ -99,14 +99,14 @@ namespace PvTerrenos
             return splitUltimoMesMora[tamañoArreglo - 1];
         }
 
-        public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago, string idVenta, string monto)
+        public string calculaMesesMorosos(Boolean esMoroso, Boolean statusMora, DateTime proximoPago, string idVenta, string monto, int actualizo)
         {
             DateTime hoy = DateTime.Today;
 
             int distancia = (hoy.Year * 12 + hoy.Month) - (Convert.ToDateTime(proximoPago).Year * 12 + Convert.ToDateTime(proximoPago).Month);
             DateTime AuxiliarProximoPago = proximoPago.AddMonths(distancia);
 
-            if (/*proximoPago.AddDays(6).Day*/AuxiliarProximoPago.AddDays(6) >= DateTime.Today)
+            if (/*proximoPago.AddDays(6).Day*/ AuxiliarProximoPago.AddDays(5) >= DateTime.Today)
             {
                 hoy = DateTime.Today.AddMonths(-1);
             }
@@ -175,12 +175,13 @@ namespace PvTerrenos
 
                         respuestaRegistraMora = ws.registraMora(idVenta, Convert.ToString(montoMora), hoy.ToString(), mesRecorrido.ToString(), mesPrincipal.ToString(),"0");
                     }
-                } return (respuestaRegistraMora + " se registro nueva mora para este usuario");
+                } return (respuestaRegistraMora + " se registro nueva mora del mes de "+DateTime.Today.ToString("MMMM").ToUpper()+" para este usuario");
             }
-            else
+            else if (actualizo != 1)
             {
-                return "A la fecha no genera mora o nueva mora";
+                return "Usuario con mora \n\nPero no genera nueva mora del mes de "+DateTime.Today.ToString("MMMM").ToUpper();
             }
+            return "Usuario con pago al corriente";
         }
     }
 }
