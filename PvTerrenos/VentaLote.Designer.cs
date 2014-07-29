@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbNombre = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -411,8 +411,8 @@
             // 
             // dgvId
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvId.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvId.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvId.HeaderText = "ID Comprador";
             this.dgvId.Name = "dgvId";
             this.dgvId.ReadOnly = true;
@@ -420,8 +420,8 @@
             // 
             // dgvCostoTerreno
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvCostoTerreno.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvCostoTerreno.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCostoTerreno.HeaderText = "Costo Terreno";
             this.dgvCostoTerreno.Name = "dgvCostoTerreno";
             this.dgvCostoTerreno.ReadOnly = true;
@@ -429,8 +429,8 @@
             // 
             // dgvMensualidad
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvMensualidad.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvMensualidad.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMensualidad.HeaderText = "Mesualidad";
             this.dgvMensualidad.Name = "dgvMensualidad";
             this.dgvMensualidad.ReadOnly = true;
@@ -444,8 +444,8 @@
             // 
             // dvgManzana
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dvgManzana.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dvgManzana.DefaultCellStyle = dataGridViewCellStyle4;
             this.dvgManzana.HeaderText = "Manzana";
             this.dvgManzana.Name = "dvgManzana";
             this.dvgManzana.ReadOnly = true;
@@ -453,8 +453,8 @@
             // 
             // dgvLote
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvLote.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvLote.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvLote.HeaderText = "Lote";
             this.dgvLote.Name = "dgvLote";
             this.dgvLote.ReadOnly = true;

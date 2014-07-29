@@ -61,6 +61,12 @@
       <DependentUpon>borrar.cs</DependentUpon>
     </Compile>
     <Compile Include="Fecha.cs" />
+    <Compile Include="frmConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsulta.Designer.cs">
+      <DependentUpon>frmConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModificaVenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </Compile>
     <EmbeddedResource Include="borrar.resx">
       <DependentUpon>borrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsulta.resx">
+      <DependentUpon>frmConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModificaVenta.resx">
       <DependentUpon>ModificaVenta.cs</DependentUpon>
