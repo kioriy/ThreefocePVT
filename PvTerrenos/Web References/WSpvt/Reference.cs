@@ -69,6 +69,8 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback getVentaOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getVentasClienteOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getAllVentaOperationCompleted;
         
         private System.Threading.SendOrPostCallback getIdCompradordeVentaOperationCompleted;
@@ -150,6 +152,8 @@ namespace PvTerrenos.WSpvt {
         private System.Threading.SendOrPostCallback insertaMedidaOperationCompleted;
         
         private System.Threading.SendOrPostCallback infoLoteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getInfoLotesOperationCompleted;
         
         private System.Threading.SendOrPostCallback registraProximoPagoOperationCompleted;
         
@@ -278,6 +282,9 @@ namespace PvTerrenos.WSpvt {
         public event getVentaCompletedEventHandler getVentaCompleted;
         
         /// <remarks/>
+        public event getVentasClienteCompletedEventHandler getVentasClienteCompleted;
+        
+        /// <remarks/>
         public event getAllVentaCompletedEventHandler getAllVentaCompleted;
         
         /// <remarks/>
@@ -399,6 +406,9 @@ namespace PvTerrenos.WSpvt {
         
         /// <remarks/>
         public event infoLoteCompletedEventHandler infoLoteCompleted;
+        
+        /// <remarks/>
+        public event getInfoLotesCompletedEventHandler getInfoLotesCompleted;
         
         /// <remarks/>
         public event registraProximoPagoCompletedEventHandler registraProximoPagoCompleted;
@@ -1172,6 +1182,36 @@ namespace PvTerrenos.WSpvt {
             if ((this.getVentaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getVentaCompleted(this, new getVentaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getVentasCliente", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string getVentasCliente(string id_comprador) {
+            object[] results = this.Invoke("getVentasCliente", new object[] {
+                        id_comprador});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getVentasClienteAsync(string id_comprador) {
+            this.getVentasClienteAsync(id_comprador, null);
+        }
+        
+        /// <remarks/>
+        public void getVentasClienteAsync(string id_comprador, object userState) {
+            if ((this.getVentasClienteOperationCompleted == null)) {
+                this.getVentasClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetVentasClienteOperationCompleted);
+            }
+            this.InvokeAsync("getVentasCliente", new object[] {
+                        id_comprador}, this.getVentasClienteOperationCompleted, userState);
+        }
+        
+        private void OngetVentasClienteOperationCompleted(object arg) {
+            if ((this.getVentasClienteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getVentasClienteCompleted(this, new getVentasClienteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2485,6 +2525,36 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/getInfoLotes", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string getInfoLotes(string id_lote) {
+            object[] results = this.Invoke("getInfoLotes", new object[] {
+                        id_lote});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getInfoLotesAsync(string id_lote) {
+            this.getInfoLotesAsync(id_lote, null);
+        }
+        
+        /// <remarks/>
+        public void getInfoLotesAsync(string id_lote, object userState) {
+            if ((this.getInfoLotesOperationCompleted == null)) {
+                this.getInfoLotesOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetInfoLotesOperationCompleted);
+            }
+            this.InvokeAsync("getInfoLotes", new object[] {
+                        id_lote}, this.getInfoLotesOperationCompleted, userState);
+        }
+        
+        private void OngetInfoLotesOperationCompleted(object arg) {
+            if ((this.getInfoLotesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getInfoLotesCompleted(this, new getInfoLotesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/registraProximoPago", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public string registraProximoPago(string id_venta, string monto, string proximo_pago, string pago_actual, string pago_final) {
@@ -3630,6 +3700,32 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void getVentasClienteCompletedEventHandler(object sender, getVentasClienteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getVentasClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getVentasClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     public delegate void getAllVentaCompletedEventHandler(object sender, getAllVentaCompletedEventArgs e);
     
     /// <remarks/>
@@ -4681,6 +4777,32 @@ namespace PvTerrenos.WSpvt {
         private object[] results;
         
         internal infoLoteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    public delegate void getInfoLotesCompletedEventHandler(object sender, getInfoLotesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getInfoLotesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getInfoLotesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

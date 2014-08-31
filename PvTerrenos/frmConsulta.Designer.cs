@@ -28,74 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.controlDatos = new System.Windows.Forms.TabControl();
+            this.tabVenta = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPredio = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbHelp = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtManzana = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.txtNuevoDato = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbClientes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.cmbLote = new System.Windows.Forms.ComboBox();
+            this.cmbDato = new System.Windows.Forms.ComboBox();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.txtDatoActual = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.controlDatos.SuspendLayout();
+            this.tabVenta.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // controlDatos
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(12, 33);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(928, 422);
-            this.tabControl1.TabIndex = 0;
+            this.controlDatos.Controls.Add(this.tabVenta);
+            this.controlDatos.Controls.Add(this.tabPage3);
+            this.controlDatos.Controls.Add(this.tabPage4);
+            this.controlDatos.Location = new System.Drawing.Point(12, 33);
+            this.controlDatos.Name = "controlDatos";
+            this.controlDatos.SelectedIndex = 0;
+            this.controlDatos.Size = new System.Drawing.Size(928, 422);
+            this.controlDatos.TabIndex = 0;
             // 
-            // tabPage1
+            // tabVenta
             // 
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(920, 396);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Venta";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabVenta.Controls.Add(this.groupBox3);
+            this.tabVenta.Controls.Add(this.groupBox2);
+            this.tabVenta.Controls.Add(this.groupBox1);
+            this.tabVenta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.tabVenta.Location = new System.Drawing.Point(4, 22);
+            this.tabVenta.Name = "tabVenta";
+            this.tabVenta.Padding = new System.Windows.Forms.Padding(3);
+            this.tabVenta.Size = new System.Drawing.Size(920, 396);
+            this.tabVenta.TabIndex = 0;
+            this.tabVenta.Text = "Venta";
+            this.tabVenta.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox3.Location = new System.Drawing.Point(6, 291);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(908, 100);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Traspaso";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Gainsboro;
+            this.groupBox2.Location = new System.Drawing.Point(6, 135);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(908, 150);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Restructuracion";
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtDatoActual);
+            this.groupBox1.Controls.Add(this.btnModificar);
+            this.groupBox1.Controls.Add(this.cmbDato);
+            this.groupBox1.Controls.Add(this.cmbLote);
+            this.groupBox1.Controls.Add(this.txtPredio);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.lbHelp);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtManzana);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.txtNuevoDato);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
@@ -103,20 +129,52 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos venta";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // textBox2
+            // txtPredio
             // 
-            this.textBox2.Location = new System.Drawing.Point(54, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 0;
+            this.txtPredio.Location = new System.Drawing.Point(54, 19);
+            this.txtPredio.Name = "txtPredio";
+            this.txtPredio.ReadOnly = true;
+            this.txtPredio.Size = new System.Drawing.Size(100, 20);
+            this.txtPredio.TabIndex = 0;
             // 
-            // textBox3
+            // label6
             // 
-            this.textBox3.Location = new System.Drawing.Point(268, 19);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 1;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(398, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "No. Lote:";
+            // 
+            // lbHelp
+            // 
+            this.lbHelp.AutoSize = true;
+            this.lbHelp.Font = new System.Drawing.Font("Perpetua Titling MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbHelp.Location = new System.Drawing.Point(398, 52);
+            this.lbHelp.Name = "lbHelp";
+            this.lbHelp.Size = new System.Drawing.Size(460, 15);
+            this.lbHelp.TabIndex = 9;
+            this.lbHelp.Text = "Por favor selecciona un lote para que puedas ver sus datos";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(398, 83);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Nuevo dato:";
+            // 
+            // txtManzana
+            // 
+            this.txtManzana.Location = new System.Drawing.Point(268, 19);
+            this.txtManzana.Name = "txtManzana";
+            this.txtManzana.ReadOnly = true;
+            this.txtManzana.Size = new System.Drawing.Size(100, 20);
+            this.txtManzana.TabIndex = 1;
             // 
             // label3
             // 
@@ -132,66 +190,25 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(201, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(54, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "label4";
+            this.label4.Text = "Manzana:";
             // 
-            // label8
+            // txtNuevoDato
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(469, 47);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "label8";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(553, 47);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "label7";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(398, 47);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "label6";
+            this.txtNuevoDato.Location = new System.Drawing.Point(482, 79);
+            this.txtNuevoDato.Name = "txtNuevoDato";
+            this.txtNuevoDato.Size = new System.Drawing.Size(100, 20);
+            this.txtNuevoDato.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(333, 83);
+            this.label5.Location = new System.Drawing.Point(10, 82);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 7;
-            this.label5.Text = "label5";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(556, 80);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 4;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(690, 83);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 3;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(404, 83);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 2;
+            this.label5.Text = "Datos:";
             // 
             // tabPage3
             // 
@@ -213,13 +230,16 @@
             this.tabPage4.Text = "Pagos";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cmbClientes
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(100, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(355, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cmbClientes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbClientes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbClientes.FormattingEnabled = true;
+            this.cmbClientes.Location = new System.Drawing.Point(100, 6);
+            this.cmbClientes.Name = "cmbClientes";
+            this.cmbClientes.Size = new System.Drawing.Size(355, 21);
+            this.cmbClientes.TabIndex = 1;
+            this.cmbClientes.SelectedIndexChanged += new System.EventHandler(this.cmbClientes_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -239,12 +259,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "ID cliente:";
             // 
-            // textBox1
+            // txtIdCliente
             // 
-            this.textBox1.Location = new System.Drawing.Point(522, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(77, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtIdCliente.Location = new System.Drawing.Point(522, 6);
+            this.txtIdCliente.Name = "txtIdCliente";
+            this.txtIdCliente.Size = new System.Drawing.Size(77, 20);
+            this.txtIdCliente.TabIndex = 4;
             // 
             // label9
             // 
@@ -262,25 +282,51 @@
             this.textBox7.Size = new System.Drawing.Size(77, 20);
             this.textBox7.TabIndex = 6;
             // 
-            // groupBox2
+            // cmbLote
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox2.Location = new System.Drawing.Point(6, 135);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(908, 150);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Restructuracion";
+            this.cmbLote.FormattingEnabled = true;
+            this.cmbLote.Location = new System.Drawing.Point(482, 19);
+            this.cmbLote.Name = "cmbLote";
+            this.cmbLote.Size = new System.Drawing.Size(86, 21);
+            this.cmbLote.TabIndex = 11;
+            this.cmbLote.Visible = false;
+            this.cmbLote.SelectedIndexChanged += new System.EventHandler(this.cmbLote_SelectedIndexChanged);
             // 
-            // groupBox3
+            // cmbDato
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.LightGray;
-            this.groupBox3.Location = new System.Drawing.Point(6, 291);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(908, 100);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Traspaso";
+            this.cmbDato.Enabled = false;
+            this.cmbDato.FormattingEnabled = true;
+            this.cmbDato.Location = new System.Drawing.Point(54, 75);
+            this.cmbDato.Name = "cmbDato";
+            this.cmbDato.Size = new System.Drawing.Size(100, 21);
+            this.cmbDato.TabIndex = 12;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.Location = new System.Drawing.Point(741, 82);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(131, 23);
+            this.btnModificar.TabIndex = 13;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Visible = false;
+            // 
+            // txtDatoActual
+            // 
+            this.txtDatoActual.Location = new System.Drawing.Point(268, 76);
+            this.txtDatoActual.Name = "txtDatoActual";
+            this.txtDatoActual.Size = new System.Drawing.Size(100, 20);
+            this.txtDatoActual.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(197, 82);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Valor  actual:";
             // 
             // frmConsulta
             // 
@@ -289,15 +335,15 @@
             this.ClientSize = new System.Drawing.Size(952, 466);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtIdCliente);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.cmbClientes);
+            this.Controls.Add(this.controlDatos);
             this.Name = "frmConsulta";
             this.Text = "frmConsulta";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.controlDatos.ResumeLayout(false);
+            this.tabVenta.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -307,29 +353,32 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl controlDatos;
+        private System.Windows.Forms.TabPage tabVenta;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbClientes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPredio;
+        private System.Windows.Forms.TextBox txtManzana;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbHelp;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtNuevoDato;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtIdCliente;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cmbDato;
+        private System.Windows.Forms.ComboBox cmbLote;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtDatoActual;
     }
 }

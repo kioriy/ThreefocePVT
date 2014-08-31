@@ -57,3 +57,5 @@ C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvT
 C:\Users\Miriam\Desktop\threeForce\Respaldos\18 Junio\PvTerrenos\obj\Release\PvTerrenos.csproj.GenerateResource.Cache
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Release\PvTerrenos.borrar.resources
 C:\Users\Kioriy\Documents\GitHub\ThreefocePVT\PvTerrenos\obj\Release\PvTerrenos.frmConsulta.resources
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Release\PvTerrenos.borrar.resources
+C:\Users\Miriam\terrenos\PvTerrenos\obj\Release\PvTerrenos.frmConsulta.resources

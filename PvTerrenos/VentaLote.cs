@@ -381,5 +381,12 @@ namespace PvTerrenos
                 txtAbono.Text = "0";
             }
         }
+
+        private void consultasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsulta consulta = new frmConsulta();
+            consulta.llenaComboClientes(respuestaNombreComprador);
+            consulta.Show();
+        }
     }
 }
