@@ -44,8 +44,10 @@ namespace PvTerrenos
                 desgloseDatosLote = datosLote.Split(new char[] { ',' });
                 cmbLote.Items.Add(desgloseDatosLote[0]);// aqui cargo el combo con el numero del lote
                 /*cosa del chivo*/
-                datosParaMostrar.Add(datosLote + "," + splitVenta[1] + "," + splitVenta[2] + "," + splitVenta[4] + "," + splitVenta[0] + "," + splitVenta[3] + "," + splitVenta[5]);// agrego al array los datos del lote y a base de como se agrega en el index del combo lo guardo como idex
-               
+               // datosParaMostrar.Add(datosLote + "," + splitVenta[1] + "," + splitVenta[2] + "," + splitVenta[4] + "," + splitVenta[0] + "," + splitVenta[3] + "," + splitVenta[5]);// agrego al array los datos del lote y a base de como se agrega en el index del combo lo guardo como idex
+                datosParaMostrar.Add(datosLote + "," + splitVenta[1] + "," + splitVenta[2] + "," +
+                                         splitVenta[3] + "," + splitVenta[5] + "," + splitVenta[0] + "," +
+                                         splitVenta[4]);
             }
 
             string[] splitDatosComprador = respuestaNombreComprador.Split(new char[] { '|' });
@@ -106,7 +108,8 @@ namespace PvTerrenos
           int index = cmbLote.SelectedIndex;
           datosaModificar = datosParaMostrar[index].Split(new char[] { ',' });
 
-          txtDatoActual.Text = datosaModificar[cmbDatosModificar.SelectedIndex + 3];
+          txtDatoActual.Text = datosaModificar[cmbDatosModificar.SelectedIndex + 4];
+        //  MessageBox.Show("id lote: " + datosaModificar[3] + " id venta: " + datosaModificar[2] + "," + datosaModificar[1] + "," + datosaModificar[4] + "," + datosaModificar[5] + "," + datosaModificar[6] + "," + datosaModificar[7] );
           
         }
 
@@ -116,8 +119,8 @@ namespace PvTerrenos
             string nuevoDato = txtNuevoDato.Text;
             string mensaje = "¿Estas seguro de que quieres modificar " + datoModificar + " de esta venta?";
             string caption = "Registro de venta";
-            string idLote = datosaModificar[6];
-            string idVenta = datosaModificar[8];
+            string idLote = datosaModificar[3];
+            string idVenta = datosaModificar[7];
             string respuesta = "";
             string nuevaFecha = "";
             MessageBoxButtons botones = MessageBoxButtons.OKCancel;

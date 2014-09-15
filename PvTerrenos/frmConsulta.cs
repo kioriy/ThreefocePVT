@@ -172,12 +172,12 @@ namespace PvTerrenos
             }
 
            
-            if (fecha != dtpFecha.Text)
+           /* if (fecha != dtpFecha.Text)
             {
                 columna = "fecha_compra";
                 MessageBox.Show("la fecha es diferente");
 
-            }
+            }*/
 
 
             if (valida())
@@ -187,6 +187,7 @@ namespace PvTerrenos
                 {
                     if (columna == "fecha_corte")
                     {
+                        MessageBox.Show("modificaras la fecha de corte");
                         respuesta = ws.modificaDato(columna, nuevoDato, nuevaFecha, idLote, idVenta);
 
                     }
