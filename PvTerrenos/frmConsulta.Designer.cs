@@ -33,6 +33,12 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtDatoActual = new System.Windows.Forms.TextBox();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.cmbDato = new System.Windows.Forms.ComboBox();
+            this.cmbLote = new System.Windows.Forms.ComboBox();
             this.txtPredio = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lbHelp = new System.Windows.Forms.Label();
@@ -50,11 +56,7 @@
             this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.cmbLote = new System.Windows.Forms.ComboBox();
-            this.cmbDato = new System.Windows.Forms.ComboBox();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.txtDatoActual = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.controlDatos.SuspendLayout();
             this.tabVenta.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -108,6 +110,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.dtpFecha);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtDatoActual);
             this.groupBox1.Controls.Add(this.btnModificar);
@@ -130,6 +134,66 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos venta";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // dtpFecha
+            // 
+            this.dtpFecha.Location = new System.Drawing.Point(692, 22);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpFecha.TabIndex = 16;
+            this.dtpFecha.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(197, 82);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Valor  actual:";
+            // 
+            // txtDatoActual
+            // 
+            this.txtDatoActual.Location = new System.Drawing.Point(268, 76);
+            this.txtDatoActual.Name = "txtDatoActual";
+            this.txtDatoActual.Size = new System.Drawing.Size(100, 20);
+            this.txtDatoActual.TabIndex = 14;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.Location = new System.Drawing.Point(741, 82);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(131, 23);
+            this.btnModificar.TabIndex = 13;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Visible = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // cmbDato
+            // 
+            this.cmbDato.Enabled = false;
+            this.cmbDato.FormattingEnabled = true;
+            this.cmbDato.Items.AddRange(new object[] {
+            "Mensualidad",
+            "Monto",
+            "Fecha de Corte"});
+            this.cmbDato.Location = new System.Drawing.Point(54, 75);
+            this.cmbDato.Name = "cmbDato";
+            this.cmbDato.Size = new System.Drawing.Size(100, 21);
+            this.cmbDato.TabIndex = 12;
+            this.cmbDato.SelectedIndexChanged += new System.EventHandler(this.cmbDato_SelectedIndexChanged);
+            // 
+            // cmbLote
+            // 
+            this.cmbLote.FormattingEnabled = true;
+            this.cmbLote.Location = new System.Drawing.Point(482, 19);
+            this.cmbLote.Name = "cmbLote";
+            this.cmbLote.Size = new System.Drawing.Size(86, 21);
+            this.cmbLote.TabIndex = 11;
+            this.cmbLote.Visible = false;
+            this.cmbLote.SelectedIndexChanged += new System.EventHandler(this.cmbLote_SelectedIndexChanged);
             // 
             // txtPredio
             // 
@@ -282,51 +346,15 @@
             this.textBox7.Size = new System.Drawing.Size(77, 20);
             this.textBox7.TabIndex = 6;
             // 
-            // cmbLote
+            // label10
             // 
-            this.cmbLote.FormattingEnabled = true;
-            this.cmbLote.Location = new System.Drawing.Point(482, 19);
-            this.cmbLote.Name = "cmbLote";
-            this.cmbLote.Size = new System.Drawing.Size(86, 21);
-            this.cmbLote.TabIndex = 11;
-            this.cmbLote.Visible = false;
-            this.cmbLote.SelectedIndexChanged += new System.EventHandler(this.cmbLote_SelectedIndexChanged);
-            // 
-            // cmbDato
-            // 
-            this.cmbDato.Enabled = false;
-            this.cmbDato.FormattingEnabled = true;
-            this.cmbDato.Location = new System.Drawing.Point(54, 75);
-            this.cmbDato.Name = "cmbDato";
-            this.cmbDato.Size = new System.Drawing.Size(100, 21);
-            this.cmbDato.TabIndex = 12;
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(741, 82);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(131, 23);
-            this.btnModificar.TabIndex = 13;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Visible = false;
-            // 
-            // txtDatoActual
-            // 
-            this.txtDatoActual.Location = new System.Drawing.Point(268, 76);
-            this.txtDatoActual.Name = "txtDatoActual";
-            this.txtDatoActual.Size = new System.Drawing.Size(100, 20);
-            this.txtDatoActual.TabIndex = 14;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(197, 82);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Valor  actual:";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(596, 26);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(93, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Fecha de compra:";
+            this.label10.Visible = false;
             // 
             // frmConsulta
             // 
@@ -380,5 +408,7 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDatoActual;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.Label label10;
     }
 }
