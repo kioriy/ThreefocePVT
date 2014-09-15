@@ -110,7 +110,7 @@ namespace PvTerrenos
 
           txtDatoActual.Text = datosaModificar[cmbDatosModificar.SelectedIndex + 4];
         //  MessageBox.Show("id lote: " + datosaModificar[3] + " id venta: " + datosaModificar[2] + "," + datosaModificar[1] + "," + datosaModificar[4] + "," + datosaModificar[5] + "," + datosaModificar[6] + "," + datosaModificar[7] );
-          
+          MessageBox.Show(datosaModificar[8]);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -137,8 +137,8 @@ namespace PvTerrenos
             if(cmbDatosModificar.SelectedIndex == 2)
             {
                 columna = "fecha_corte";
-                string fecha = datosaModificar[7];
-                string [] desgloseFecha = datosaModificar[7].Split(new char[] { '/' });
+                //string fecha = datosaModificar[7];
+                string [] desgloseFecha = datosaModificar[8].Split(new char[] { '/' });
                 nuevaFecha = txtNuevoDato.Text+"/"+desgloseFecha[1]+"/"+desgloseFecha[2];
             }
 
@@ -189,7 +189,7 @@ namespace PvTerrenos
             else if (cmbDatosModificar.Text == "Fecha de corte")
             {
 
-            string[] desgloseFecha = datosaModificar[7].Split(new char[] { '/' });
+            string[] desgloseFecha = datosaModificar[8].Split(new char[] { '/' });
             int dia = Convert.ToInt32(txtNuevoDato.Text);
 
             switch (desgloseFecha[1])
