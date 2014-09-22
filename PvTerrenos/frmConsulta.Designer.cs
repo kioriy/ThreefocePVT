@@ -33,21 +33,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtDatoActual = new System.Windows.Forms.TextBox();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.cmbDato = new System.Windows.Forms.ComboBox();
-            this.cmbLote = new System.Windows.Forms.ComboBox();
-            this.txtPredio = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lbHelp = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtManzana = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtNuevoDato = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.cmbLotes = new System.Windows.Forms.ComboBox();
+            this.dgvDatosVenta = new System.Windows.Forms.DataGridView();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.cmbClientes = new System.Windows.Forms.ComboBox();
@@ -56,10 +45,19 @@
             this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.predioDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.manzanaDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loteDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montoDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mensualidadDGV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtpFechaCompra = new System.Windows.Forms.DateTimePicker();
+            this.dtpProximoPago = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.controlDatos.SuspendLayout();
             this.tabVenta.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosVenta)).BeginInit();
             this.SuspendLayout();
             // 
             // controlDatos
@@ -100,9 +98,9 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox2.Location = new System.Drawing.Point(6, 135);
+            this.groupBox2.Location = new System.Drawing.Point(3, 179);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(908, 150);
+            this.groupBox2.Size = new System.Drawing.Size(911, 106);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Restructuracion";
@@ -110,169 +108,71 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.dtpFecha);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtDatoActual);
-            this.groupBox1.Controls.Add(this.btnModificar);
-            this.groupBox1.Controls.Add(this.cmbDato);
-            this.groupBox1.Controls.Add(this.cmbLote);
-            this.groupBox1.Controls.Add(this.txtPredio);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.lbHelp);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtManzana);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtNuevoDato);
             this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.dtpProximoPago);
+            this.groupBox1.Controls.Add(this.dtpFechaCompra);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cmbLotes);
+            this.groupBox1.Controls.Add(this.dgvDatosVenta);
+            this.groupBox1.Controls.Add(this.btnModificar);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(908, 123);
+            this.groupBox1.Size = new System.Drawing.Size(908, 167);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos venta";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // dtpFecha
+            // label3
             // 
-            this.dtpFecha.Location = new System.Drawing.Point(692, 22);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
-            this.dtpFecha.TabIndex = 16;
-            this.dtpFecha.Visible = false;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(795, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "No Lote:";
+            this.label3.Visible = false;
             // 
-            // label7
+            // cmbLotes
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(197, 82);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Valor  actual:";
+            this.cmbLotes.FormattingEnabled = true;
+            this.cmbLotes.Location = new System.Drawing.Point(849, 19);
+            this.cmbLotes.Name = "cmbLotes";
+            this.cmbLotes.Size = new System.Drawing.Size(53, 21);
+            this.cmbLotes.TabIndex = 15;
+            this.cmbLotes.Visible = false;
+            this.cmbLotes.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // txtDatoActual
+            // dgvDatosVenta
             // 
-            this.txtDatoActual.Location = new System.Drawing.Point(268, 76);
-            this.txtDatoActual.Name = "txtDatoActual";
-            this.txtDatoActual.Size = new System.Drawing.Size(100, 20);
-            this.txtDatoActual.TabIndex = 14;
+            this.dgvDatosVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.predioDGV,
+            this.manzanaDGV,
+            this.loteDGV,
+            this.montoDGV,
+            this.mensualidadDGV});
+            this.dgvDatosVenta.Location = new System.Drawing.Point(6, 19);
+            this.dgvDatosVenta.Name = "dgvDatosVenta";
+            this.dgvDatosVenta.Size = new System.Drawing.Size(471, 101);
+            this.dgvDatosVenta.TabIndex = 14;
+            this.dgvDatosVenta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatosVenta_CellContentClick);
+            this.dgvDatosVenta.RowDefaultCellStyleChanged += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDatosVenta_RowDefaultCellStyleChanged);
+            this.dgvDatosVenta.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatosVenta_RowEnter);
             // 
             // btnModificar
             // 
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(741, 82);
+            this.btnModificar.Location = new System.Drawing.Point(787, 93);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(131, 23);
+            this.btnModificar.Size = new System.Drawing.Size(115, 27);
             this.btnModificar.TabIndex = 13;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Visible = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
-            // cmbDato
-            // 
-            this.cmbDato.Enabled = false;
-            this.cmbDato.FormattingEnabled = true;
-            this.cmbDato.Items.AddRange(new object[] {
-            "Mensualidad",
-            "Monto",
-            "Fecha de Corte"});
-            this.cmbDato.Location = new System.Drawing.Point(54, 75);
-            this.cmbDato.Name = "cmbDato";
-            this.cmbDato.Size = new System.Drawing.Size(100, 21);
-            this.cmbDato.TabIndex = 12;
-            this.cmbDato.SelectedIndexChanged += new System.EventHandler(this.cmbDato_SelectedIndexChanged);
-            // 
-            // cmbLote
-            // 
-            this.cmbLote.FormattingEnabled = true;
-            this.cmbLote.Location = new System.Drawing.Point(482, 19);
-            this.cmbLote.Name = "cmbLote";
-            this.cmbLote.Size = new System.Drawing.Size(86, 21);
-            this.cmbLote.TabIndex = 11;
-            this.cmbLote.Visible = false;
-            this.cmbLote.SelectedIndexChanged += new System.EventHandler(this.cmbLote_SelectedIndexChanged);
-            // 
-            // txtPredio
-            // 
-            this.txtPredio.Location = new System.Drawing.Point(54, 19);
-            this.txtPredio.Name = "txtPredio";
-            this.txtPredio.ReadOnly = true;
-            this.txtPredio.Size = new System.Drawing.Size(100, 20);
-            this.txtPredio.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(398, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "No. Lote:";
-            // 
-            // lbHelp
-            // 
-            this.lbHelp.AutoSize = true;
-            this.lbHelp.Font = new System.Drawing.Font("Perpetua Titling MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHelp.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbHelp.Location = new System.Drawing.Point(398, 52);
-            this.lbHelp.Name = "lbHelp";
-            this.lbHelp.Size = new System.Drawing.Size(460, 15);
-            this.lbHelp.TabIndex = 9;
-            this.lbHelp.Text = "Por favor selecciona un lote para que puedas ver sus datos";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(398, 83);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 13);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Nuevo dato:";
-            // 
-            // txtManzana
-            // 
-            this.txtManzana.Location = new System.Drawing.Point(268, 19);
-            this.txtManzana.Name = "txtManzana";
-            this.txtManzana.ReadOnly = true;
-            this.txtManzana.Size = new System.Drawing.Size(100, 20);
-            this.txtManzana.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Predio:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(201, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Manzana:";
-            // 
-            // txtNuevoDato
-            // 
-            this.txtNuevoDato.Location = new System.Drawing.Point(482, 79);
-            this.txtNuevoDato.Name = "txtNuevoDato";
-            this.txtNuevoDato.Size = new System.Drawing.Size(100, 20);
-            this.txtNuevoDato.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 82);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Datos:";
             // 
             // tabPage3
             // 
@@ -346,15 +246,73 @@
             this.textBox7.Size = new System.Drawing.Size(77, 20);
             this.textBox7.TabIndex = 6;
             // 
-            // label10
+            // predioDGV
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(596, 26);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 13);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "Fecha de compra:";
-            this.label10.Visible = false;
+            this.predioDGV.HeaderText = "Predio";
+            this.predioDGV.Name = "predioDGV";
+            this.predioDGV.ReadOnly = true;
+            this.predioDGV.Width = 130;
+            // 
+            // manzanaDGV
+            // 
+            this.manzanaDGV.HeaderText = "Manzana";
+            this.manzanaDGV.Name = "manzanaDGV";
+            this.manzanaDGV.ReadOnly = true;
+            this.manzanaDGV.Width = 75;
+            // 
+            // loteDGV
+            // 
+            this.loteDGV.HeaderText = "No. Lote";
+            this.loteDGV.Name = "loteDGV";
+            this.loteDGV.ReadOnly = true;
+            this.loteDGV.Width = 45;
+            // 
+            // montoDGV
+            // 
+            this.montoDGV.HeaderText = "Monto";
+            this.montoDGV.Name = "montoDGV";
+            // 
+            // mensualidadDGV
+            // 
+            this.mensualidadDGV.HeaderText = "Mensualidad";
+            this.mensualidadDGV.Name = "mensualidadDGV";
+            this.mensualidadDGV.Width = 75;
+            // 
+            // dtpFechaCompra
+            // 
+            this.dtpFechaCompra.Location = new System.Drawing.Point(517, 43);
+            this.dtpFechaCompra.Name = "dtpFechaCompra";
+            this.dtpFechaCompra.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaCompra.TabIndex = 17;
+            this.dtpFechaCompra.Visible = false;
+            // 
+            // dtpProximoPago
+            // 
+            this.dtpProximoPago.Location = new System.Drawing.Point(517, 93);
+            this.dtpProximoPago.Name = "dtpProximoPago";
+            this.dtpProximoPago.Size = new System.Drawing.Size(200, 20);
+            this.dtpProximoPago.TabIndex = 18;
+            this.dtpProximoPago.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(514, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Fecha Compra:";
+            this.label4.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(514, 77);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Proximo Pago:";
+            this.label5.Visible = false;
             // 
             // frmConsulta
             // 
@@ -374,6 +332,7 @@
             this.tabVenta.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosVenta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,27 +347,24 @@
         private System.Windows.Forms.ComboBox cmbClientes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtPredio;
-        private System.Windows.Forms.TextBox txtManzana;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lbHelp;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtNuevoDato;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtIdCliente;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox cmbDato;
-        private System.Windows.Forms.ComboBox cmbLote;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtDatoActual;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dgvDatosVenta;
+        private System.Windows.Forms.ComboBox cmbLotes;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dtpProximoPago;
+        private System.Windows.Forms.DateTimePicker dtpFechaCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn predioDGV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manzanaDGV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loteDGV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montoDGV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mensualidadDGV;
     }
 }

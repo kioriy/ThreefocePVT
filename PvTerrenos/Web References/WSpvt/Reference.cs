@@ -59,9 +59,9 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback listarCompradoresOperationCompleted;
         
-        private System.Threading.SendOrPostCallback buscarCompradorPorOperationCompleted;
-        
         private System.Threading.SendOrPostCallback eliminaCompradorOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback buscarCompradorOperationCompleted;
         
         private System.Threading.SendOrPostCallback registraVentaOperationCompleted;
         
@@ -75,7 +75,7 @@ namespace PvTerrenos.WSpvt {
         
         private System.Threading.SendOrPostCallback getIdCompradordeVentaOperationCompleted;
         
-        private System.Threading.SendOrPostCallback modificaDatoOperationCompleted;
+        private System.Threading.SendOrPostCallback modificaVentaOperationCompleted;
         
         private System.Threading.SendOrPostCallback getVentadeIdLoteOperationCompleted;
         
@@ -267,10 +267,10 @@ namespace PvTerrenos.WSpvt {
         public event listarCompradoresCompletedEventHandler listarCompradoresCompleted;
         
         /// <remarks/>
-        public event buscarCompradorPorCompletedEventHandler buscarCompradorPorCompleted;
+        public event eliminaCompradorCompletedEventHandler eliminaCompradorCompleted;
         
         /// <remarks/>
-        public event eliminaCompradorCompletedEventHandler eliminaCompradorCompleted;
+        public event buscarCompradorCompletedEventHandler buscarCompradorCompleted;
         
         /// <remarks/>
         public event registraVentaCompletedEventHandler registraVentaCompleted;
@@ -291,7 +291,7 @@ namespace PvTerrenos.WSpvt {
         public event getIdCompradordeVentaCompletedEventHandler getIdCompradordeVentaCompleted;
         
         /// <remarks/>
-        public event modificaDatoCompletedEventHandler modificaDatoCompleted;
+        public event modificaVentaCompletedEventHandler modificaVentaCompleted;
         
         /// <remarks/>
         public event getVentadeIdLoteCompletedEventHandler getVentadeIdLoteCompleted;
@@ -972,40 +972,6 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/buscarCompradorPor", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
-        [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string buscarCompradorPor(string id_sesion, string modo, string valor) {
-            object[] results = this.Invoke("buscarCompradorPor", new object[] {
-                        id_sesion,
-                        modo,
-                        valor});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void buscarCompradorPorAsync(string id_sesion, string modo, string valor) {
-            this.buscarCompradorPorAsync(id_sesion, modo, valor, null);
-        }
-        
-        /// <remarks/>
-        public void buscarCompradorPorAsync(string id_sesion, string modo, string valor, object userState) {
-            if ((this.buscarCompradorPorOperationCompleted == null)) {
-                this.buscarCompradorPorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnbuscarCompradorPorOperationCompleted);
-            }
-            this.InvokeAsync("buscarCompradorPor", new object[] {
-                        id_sesion,
-                        modo,
-                        valor}, this.buscarCompradorPorOperationCompleted, userState);
-        }
-        
-        private void OnbuscarCompradorPorOperationCompleted(object arg) {
-            if ((this.buscarCompradorPorCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.buscarCompradorPorCompleted(this, new buscarCompradorPorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/eliminaComprador", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
         public string eliminaComprador(string id_sesion, string id_comprador) {
@@ -1034,6 +1000,36 @@ namespace PvTerrenos.WSpvt {
             if ((this.eliminaCompradorCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.eliminaCompradorCompleted(this, new eliminaCompradorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/buscarComprador", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [return: System.Xml.Serialization.SoapElementAttribute("return")]
+        public string buscarComprador(string nombre) {
+            object[] results = this.Invoke("buscarComprador", new object[] {
+                        nombre});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void buscarCompradorAsync(string nombre) {
+            this.buscarCompradorAsync(nombre, null);
+        }
+        
+        /// <remarks/>
+        public void buscarCompradorAsync(string nombre, object userState) {
+            if ((this.buscarCompradorOperationCompleted == null)) {
+                this.buscarCompradorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnbuscarCompradorOperationCompleted);
+            }
+            this.InvokeAsync("buscarComprador", new object[] {
+                        nombre}, this.buscarCompradorOperationCompleted, userState);
+        }
+        
+        private void OnbuscarCompradorOperationCompleted(object arg) {
+            if ((this.buscarCompradorCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.buscarCompradorCompleted(this, new buscarCompradorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1275,40 +1271,42 @@ namespace PvTerrenos.WSpvt {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/modificaDato", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://serviciodeconsultas.hol.es/webservice/pvt-webserv.php/modificaVenta", RequestNamespace="http://serviciodeconsultas.hol.es/webservice/", ResponseNamespace="http://serviciodeconsultas.hol.es/webservice/")]
         [return: System.Xml.Serialization.SoapElementAttribute("return")]
-        public string modificaDato(string nombreColumna, string nuevoDato, string fecha, string id_lote, string id_venta) {
-            object[] results = this.Invoke("modificaDato", new object[] {
-                        nombreColumna,
-                        nuevoDato,
-                        fecha,
+        public string modificaVenta(string monto, string mensualidad, string fecha_compra, string proximo_pago, string id_lote, string id_venta) {
+            object[] results = this.Invoke("modificaVenta", new object[] {
+                        monto,
+                        mensualidad,
+                        fecha_compra,
+                        proximo_pago,
                         id_lote,
                         id_venta});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void modificaDatoAsync(string nombreColumna, string nuevoDato, string fecha, string id_lote, string id_venta) {
-            this.modificaDatoAsync(nombreColumna, nuevoDato, fecha, id_lote, id_venta, null);
+        public void modificaVentaAsync(string monto, string mensualidad, string fecha_compra, string proximo_pago, string id_lote, string id_venta) {
+            this.modificaVentaAsync(monto, mensualidad, fecha_compra, proximo_pago, id_lote, id_venta, null);
         }
         
         /// <remarks/>
-        public void modificaDatoAsync(string nombreColumna, string nuevoDato, string fecha, string id_lote, string id_venta, object userState) {
-            if ((this.modificaDatoOperationCompleted == null)) {
-                this.modificaDatoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmodificaDatoOperationCompleted);
+        public void modificaVentaAsync(string monto, string mensualidad, string fecha_compra, string proximo_pago, string id_lote, string id_venta, object userState) {
+            if ((this.modificaVentaOperationCompleted == null)) {
+                this.modificaVentaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmodificaVentaOperationCompleted);
             }
-            this.InvokeAsync("modificaDato", new object[] {
-                        nombreColumna,
-                        nuevoDato,
-                        fecha,
+            this.InvokeAsync("modificaVenta", new object[] {
+                        monto,
+                        mensualidad,
+                        fecha_compra,
+                        proximo_pago,
                         id_lote,
-                        id_venta}, this.modificaDatoOperationCompleted, userState);
+                        id_venta}, this.modificaVentaOperationCompleted, userState);
         }
         
-        private void OnmodificaDatoOperationCompleted(object arg) {
-            if ((this.modificaDatoCompleted != null)) {
+        private void OnmodificaVentaOperationCompleted(object arg) {
+            if ((this.modificaVentaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.modificaDatoCompleted(this, new modificaDatoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.modificaVentaCompleted(this, new modificaVentaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3570,17 +3568,17 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void buscarCompradorPorCompletedEventHandler(object sender, buscarCompradorPorCompletedEventArgs e);
+    public delegate void eliminaCompradorCompletedEventHandler(object sender, eliminaCompradorCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class buscarCompradorPorCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class eliminaCompradorCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal buscarCompradorPorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal eliminaCompradorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -3596,17 +3594,17 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void eliminaCompradorCompletedEventHandler(object sender, eliminaCompradorCompletedEventArgs e);
+    public delegate void buscarCompradorCompletedEventHandler(object sender, buscarCompradorCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class eliminaCompradorCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class buscarCompradorCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal eliminaCompradorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal buscarCompradorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -3778,17 +3776,17 @@ namespace PvTerrenos.WSpvt {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
-    public delegate void modificaDatoCompletedEventHandler(object sender, modificaDatoCompletedEventArgs e);
+    public delegate void modificaVentaCompletedEventHandler(object sender, modificaVentaCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.33440")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class modificaDatoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class modificaVentaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal modificaDatoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal modificaVentaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

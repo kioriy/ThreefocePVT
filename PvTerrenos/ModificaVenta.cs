@@ -113,7 +113,7 @@ namespace PvTerrenos
           MessageBox.Show(datosaModificar[8]);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+    private void button1_Click(object sender, EventArgs e)
         {
             string datoModificar = cmbDatosModificar.Text;
             string nuevoDato = txtNuevoDato.Text;
@@ -158,12 +158,12 @@ namespace PvTerrenos
                 {
                     if (columna == "fecha_corte")
                     {
-                        respuesta = ws.modificaDato(columna, nuevoDato, nuevaFecha, idLote, idVenta);
+                       // respuesta = ws.modificaDato(columna, nuevoDato, nuevaFecha, idLote, idVenta);
 
                     }
                     else
                     {
-                        respuesta = ws.modificaDato(columna, nuevoDato, "", idLote, idVenta);
+                        //respuesta = ws.modificaDato(columna, nuevoDato, "", idLote, idVenta);
                     }
                         MessageBox.Show(respuesta);
                     txtNuevoDato.Text = "";

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace PvTerrenos
 {
@@ -16,8 +17,16 @@ namespace PvTerrenos
         string[] splitId;
         string datosVentaCliente;
         List<string> datosParaMostrar = new List<string>();
-        string[] datosaModificar;
-        string fecha;
+        string predio;
+        string manzana;
+        string noLote;
+        string idVenta;
+        string idLote;
+        string mensualidad;
+        string monto;
+        string fechaCompra;
+        string proximoPago;
+       
 
         public frmConsulta()
         {
@@ -39,48 +48,22 @@ namespace PvTerrenos
             }
         
         }
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
-        }
-
-        private void cmbLote_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lbHelp.Visible = false;
-            label10.Visible = true;
-            dtpFecha.Visible = true;
-            btnModificar.Visible = true;
-            cmbDato.Enabled = true;
-
-            int index = cmbLote.SelectedIndex;
-            string[] datosParaLlenar = datosParaMostrar[index].Split(new char[] { ',' });
-
-            
-            txtDatoActual.Clear();//en caso de haber un dato en el combo de dato actual lo limpio
-            cmbDato.Text = "";
-            txtNuevoDato.Text = "";
-            txtPredio.Text = datosParaLlenar[1];
-            txtManzana.Text = datosParaLlenar[2];/// y lleno los textBox con sus datos
-
-            fecha = datosParaLlenar[8] + ".";
-            dtpFecha.Value = Convert.ToDateTime(fecha);
-
-            
-        }
-
-        private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e)
+        public void llenaVentas()
         {
             txtIdCliente.Text = splitId[cmbClientes.SelectedIndex];
             string idCliente = txtIdCliente.Text;
             string[] separaVenta;
             string[] splitVenta;
+            
+
             datosVentaCliente = ws.getVentasCliente(idCliente);
-            //MessageBox.Show("las ventas; "+datosVentaCliente );
-            cmbLote.Items.Clear();
 
             if (datosVentaCliente.Length > 6)
             {
-                cmbLote.Visible = true;
+                cmbLotes.Visible = true;
+                label3.Visible = true;
+                MessageBox.Show("Selecciona un lote para ver sus datos");
 
                 separaVenta = datosVentaCliente.Split(new char[] { '|' });/// primero separamos venta a venta, en caso de q haya mas de una
                 foreach (string datos in separaVenta)
@@ -88,122 +71,104 @@ namespace PvTerrenos
 
                     splitVenta = datos.Split(new char[] { ',' });/// separamos los datos que estamos reciviendo de la venta para ponerlo
 
-                    /* splitVenta[0] -> IdVenta
-                     * splitVenta[1] -> idLote 
-                     * splitVenta[2] -> Mensualidad
-                     * splitVenta[3] -> Monto
-                     * splitVenta[4] -> FechaCompra
-                     * splitVenta[5] -> diaCorte
-                     */
-                    string idLote = splitVenta[1];
+                    idLote = splitVenta[1];
 
-                   
                     string datosLote = ws.getInfoLotes(idLote);
-                    //MessageBox.Show("datos idLote: " + idLote + " datos: " + datosLote);
-                    string[]  desgloseDatosLote = datosLote.Split(new char[] { ',' });
-                    cmbLote.Items.Add(desgloseDatosLote[0]);// aqui cargo el combo con el numero del lote
+                    string[] desgloseDatosLote = datosLote.Split(new char[] { ',' });
 
-                    /*cosa del chivo*/
+                    //datosLote -> numero Lote, Predio, numero manzana
+                    string[] splitLote = datosLote.Split(new char[] { ',' });
 
-                 
-                    datosParaMostrar.Add(datosLote + "," + splitVenta[1] + "," + splitVenta[2] + "," +
-                                         splitVenta[3] + "," + splitVenta[5] + "," + splitVenta[0] + "," +
-                                         splitVenta[4]);// agrego al array los datos del lote y a base de como
-                    //se agrega en el index del combo lo guardo como index
+                    idVenta = splitVenta[0];
+                    mensualidad = splitVenta[2];
+                    monto = splitVenta[3];
+                    fechaCompra = splitVenta[4];
+
+                    noLote = splitLote[0];
+                    predio = splitLote[1];
+                    manzana = splitLote[2];
+
+
+                    string proximoPagoValues = ws.getProximoPago(idVenta);
+                    string[] splitPago = proximoPagoValues.Split(new char[] { ',' });
+                    proximoPago = splitPago[1];
+                    cmbLotes.Items.Add(desgloseDatosLote[0]);
+                    datosParaMostrar.Add(predio + "," + manzana + "," + noLote + "," + monto + "," + mensualidad + "," + fechaCompra + "," + proximoPago + "," + idLote + "," + idVenta);
+
+
 
 
                 }
             }
-            else
-            {
-                cmbLote.Visible = false;
-                MessageBox.Show("Este cliente no tiene compras registradas!");
-
+            else {
+                MessageBox.Show("Este cliente no tiene ventas registradas");
             }
-            
 
         }
 
-        private void cmbDato_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = cmbLote.SelectedIndex;
-            datosaModificar = datosParaMostrar[index].Split(new char[] { ',' });
+       
 
-            txtDatoActual.Text = datosaModificar[cmbDato.SelectedIndex + 4];
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+  
+
+        private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtIdCliente.Text = splitId[cmbClientes.SelectedIndex];
+            string idCliente = txtIdCliente.Text;
+            datosVentaCliente = ws.getVentasCliente(idCliente);
+            cmbLotes.Visible = false;
+            label3.Visible = false;
+            btnModificar.Visible = false;
+            label4.Visible = false;
+            label5.Visible = false;
+            dtpFechaCompra.Visible = false;
+            dtpProximoPago.Visible = false;
+            cmbLotes.Items.Clear();
+            cmbLotes.Text = "";
+            dgvDatosVenta.Rows.Clear();
+            llenaVentas();
+
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            string respuesta;
+            string[] datosModificacion;
+            string monto;
+            string mensualidad;
+            string fechaCompra;
+            string proximoPago;
+            datosModificacion = datosParaMostrar[cmbLotes.SelectedIndex].Split(new char[] { ',' });
+            idLote = datosModificacion[7];
+            idVenta = datosModificacion[8];
+           
 
-            string datoModificar = cmbDato.Text;
-            string nuevoDato = txtNuevoDato.Text;
             string mensaje = "¿Estas seguro de que quieres modificar esta venta?";
-            string caption = "Registro de venta";
-            string idLote = datosaModificar[6];
-            string idVenta = datosaModificar[8];
-            string respuesta = "";
-            string nuevaFecha = "";
+            string caption = "Modificación de venta";
             MessageBoxButtons botones = MessageBoxButtons.OKCancel;
             DialogResult resultado;
-            string columna = "";
-
-
-
-            int seleccion = cmbDato.SelectedIndex;
-
-            switch (seleccion)
-            {
-
-                case 0:
-                    columna = "mensualidad";
-                    break;
-
-                case 1:
-                    columna = "monto";
-                    break;
-
-                case 2:
-                    columna = "fecha_corte";
-                    //string fecha = datosaModificar[7];
-                    string[] desgloseFecha = datosaModificar[7].Split(new char[] { '/' });
-                    nuevaFecha = txtNuevoDato.Text + "/" + desgloseFecha[1] + "/" + desgloseFecha[2];
-                    break;
-
-            }
-
            
-           /* if (fecha != dtpFecha.Text)
-            {
-                columna = "fecha_compra";
-                MessageBox.Show("la fecha es diferente");
+           
+       
 
-            }*/
-
-
-            if (valida())
+          if (valida())
             {
                 resultado = MessageBox.Show(mensaje, caption, botones);
                 if (resultado == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (columna == "fecha_corte")
-                    {
-                        MessageBox.Show("modificaras la fecha de corte");
-                        respuesta = ws.modificaDato(columna, nuevoDato, nuevaFecha, idLote, idVenta);
+                    monto = dgvDatosVenta[3, 0].Value.ToString();
+                    mensualidad = dgvDatosVenta[4, 0].Value.ToString();
+                    fechaCompra = dtpFechaCompra.Value.ToString();
+                    proximoPago = dtpProximoPago.Value.ToString();
 
-                    }
-                    else
-                        if (columna == "fecha_compra")
-                        {
-
-
-                        }
-                        else
-                        {
-                            respuesta = ws.modificaDato(columna, nuevoDato, "", idLote, idVenta);
-                        }
+                    respuesta = ws.modificaVenta(monto, mensualidad, fechaCompra, proximoPago, idLote, idVenta);
                     MessageBox.Show(respuesta);
-                    txtNuevoDato.Text = "";
                 }
+               
             }
 
 
@@ -212,100 +177,74 @@ namespace PvTerrenos
 
         }
 
+        private void dgvDatosVenta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvDatosVenta_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void dgvDatosVenta_RowDefaultCellStyleChanged(object sender, DataGridViewRowEventArgs e)
+        {
+        
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] datosDGV;
+            //limpiamos el dataGridview
+            this.dgvDatosVenta.Rows.Clear();
+            btnModificar.Visible = true;
+            string fechaCompra;
+            string fechaProximoPago;
+            DateTime dateCompra;
+            DateTime dateProximoPago;
+            label4.Visible = true;
+            label5.Visible = true;
+            dtpFechaCompra.Visible = true;
+            dtpProximoPago.Visible = true;
+
+
+            int index = cmbLotes.SelectedIndex;
+            datosDGV  = datosParaMostrar[index].Split(new char[] { ',' });
+            //llenamos el dataGridView
+            this.dgvDatosVenta.Rows.Insert(0, datosDGV[0], datosDGV[1], datosDGV[2], datosDGV[3],datosDGV[4]);
+            fechaCompra = datosDGV[5]+".";
+            fechaProximoPago = datosDGV[6]+".";
+            //lleno la fecha de compra
+            dateCompra = Convert.ToDateTime(fechaCompra);
+            dtpFechaCompra.Value = dateCompra;
+            //lleno la fecha de corte
+            dateProximoPago = Convert.ToDateTime(fechaProximoPago);
+            dtpProximoPago.Value = dateProximoPago;
+            
+            
+           
+        }
+
         public bool valida() {
 
-            bool tieneError = false;
-            bool modificaFechaCompra = false;
-
-            //if (!fecha.CompareTo(dtpFecha.ToString()))
+            if (dgvDatosVenta[3, 0].Value.ToString() == null || dgvDatosVenta[3, 0].Value.ToString() == " ")
             {
-                modificaFechaCompra = true;
-
-            }
-
-            if (cmbDato.Text == "" && modificaFechaCompra == false)
-            {
-                MessageBox.Show("Selecciona el Campo que deseas modificar!");
+           
+                MessageBox.Show("El campo monto está vacío!");
                 return false;
             }
-            else if (txtNuevoDato.Text == "" && modificaFechaCompra == false)
+
+            if (dgvDatosVenta[4, 0].Value.ToString() == null || dgvDatosVenta[4, 0].Value.ToString() == " ")
             {
-                MessageBox.Show("Por favor ingresa el nuevo valor que deseas ingresar");
+
+                MessageBox.Show("El campo mensualidad está vacío!");
                 return false;
             }
-            else if (dtpFecha.Text == "")
-            {
-                MessageBox.Show("El campo de la fecha de compra no puede estar vacio!");
-                return false;
-            }
-            else if (cmbDato.Text == "Fecha de corte")
-            {
-
-                string[] desgloseFecha = datosaModificar[7].Split(new char[] { '/' });
-                int dia = Convert.ToInt32(txtNuevoDato.Text);
-
-                switch (desgloseFecha[1])
-                {
-                    case "01":
-                    case "03":
-                    case "07":
-                    case "08":
-                    case "10":
-                    case "12":
-                        if (dia > 30)
-                        {
-                            MessageBox.Show("El dia excede el rango permitido para el mes de registro de venta!");
-                            tieneError = true;
-                        }
-                        break;
-
-                    case "04":
-                    case "09":
-                    case "11":
-                        if (dia > 30)
-                        {
-                            MessageBox.Show("El dia excede el rango permitido para el mes de registro de venta!");
-                            tieneError = true;
-                        }
-                        break;
-
-                    case "02":
-
-                        if (DateTime.IsLeapYear(Convert.ToInt32(desgloseFecha[2])))
-                        {
-                            if (dia > 29)
-                            {
-                                MessageBox.Show("El dia excede el rango permitido para el mes de registro de venta!");
-                                tieneError = true;
-                            }
-                        }
-                        else
-                        {
-                            if (dia > 28)
-                            {
-                                MessageBox.Show("El dia excede el rango permitido para el mes de registro de venta!");
-                                tieneError = true;
-                            }
-                        }
-                        break;
-                }
-                if (tieneError == false)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
-            }
-
             else
             {
-
                 return true;
             }
-        
+
         }
 
 
