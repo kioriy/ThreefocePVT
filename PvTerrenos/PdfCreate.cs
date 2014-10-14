@@ -109,22 +109,66 @@ namespace PvTerrenos
                             + "LOTE No " + numeroLote + " MANZANA " + numeroManzana
                             + Chunk.NEWLINE
                             + Chunk.NEWLINE
+                            + "CLIENTE" + nombreComprador
                             + Chunk.NEWLINE
-                            + "RECIBI DEL SR(a). " + nombreComprador + ", LA CANTIDAD DE " + mensualidad
-                            + " (SON " + mensualidadLetra + " PESOS M.N) POR CONCEPTO DE ABONO DEL MES DE " + mes
-                            + " DEL LOTE No. " + numeroLote + " DE LA MANZANA " + numeroManzana + ", UBICADO EN EL “FRACCIONAMIENTO”, " + predio
-                            + " EN "+ colonia +", MUNICIPIO DE "+ ciudad +", JALISCO, DICHO LOTE TIENE UNA MEDIDA DE"
-                            + " "+ norte +" POR "+ poniente +" MTS  SIENDO UN TOTAL DE "+(Convert.ToInt32(norte)*Convert.ToInt32(poniente))+" MTS. CUADRADOS. QUEDANDO EN DEUDA UN TOTAL DE "+restoMensualidad
-                            + " y "+ interes +" DE INTERES CORRESPONDIENTE DEL MISMO MES"
+                            + "FECHA DE PAGO" + mes
                             + Chunk.NEWLINE
                             + Chunk.NEWLINE
-                            + Chunk.NEWLINE
-                            + "                                              SR. MOISES SANTIAGO FIGUEROA"
-                            + Chunk.NEWLINE
-                            + "                                                            VENDEDOR");
+                            + Chunk.NEWLINE);
             }
             //Añadimos el parrafo al documento
             recibo.Add(parrafo);
+
+            //creamos la tabla 
+            PdfPTable table = new PdfPTable(4);
+
+            table.TotalWidth = 400f;
+
+            table.LockedWidth = true;
+
+            //PdfPCell header = new PdfPCell(new Phrase("Header"));
+
+            //header.Colspan = 4;
+
+            //table.AddCell(header);
+
+            table.AddCell("CONCEPTO");
+
+            table.AddCell("AQUI VA EL CONCEPTO DE PAGO");
+
+            table.AddCell("PAGO");
+
+            table.AddCell("AQUI VA LA CANTIDAD QUE SE ESTA PAGANDO");
+
+            table.AddCell("TOTAL");
+
+            table.AddCell("AQUI VA EL TOTAL DE LO QUE SE PAGO DE LOS CONCEPTOS");
+
+            table.AddCell("RESTAN");
+
+            table.AddCell("AQUI VE EL RESTO DE ADEUDO SI ES QUE EXISTIERA");
+
+            //PdfPTable nested = new PdfPTable(1);
+
+            //nested.AddCell("Nested Row 1");
+
+            //nested.AddCell("Nested Row 2");
+
+            //nested.AddCell("Nested Row 3");
+
+            //PdfPCell nesthousing = new PdfPCell(nested);
+
+            //nesthousing.Padding = 0f;
+
+            //table.AddCell(nesthousing);
+
+            //PdfPCell bottom = new PdfPCell(new Phrase("bottom"));
+
+            //bottom.Colspan = 3;
+
+            //table.AddCell(bottom);
+
+            recibo.Add(table);
 
             //cerramos la escritura del documento
             recibo.Close();
